@@ -1,7 +1,7 @@
 {
-  "name": "gridiron-exteriors",
+  "name": "exgenetics-application",
   "version": "1.0.0",
-  "description": "Gridiron Exteriors Website",
+  "description": "ExGenetics Node Application",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
