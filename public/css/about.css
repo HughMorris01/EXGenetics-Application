@@ -1,0 +1,28 @@
+.middle-about {
+    height: 300px;
+}
+
+.about-div {
+    margin: 0 auto 0 auto;
+    width: 70%;
+}
+
+.about-div p {
+    font-size: 22px;
+    padding: 5px;
+    font-family: serif;
+    color: rgb(254, 254, 254);
+}
+
+.about-div span {
+    color: orange;
+}
+
+@media only screen and (max-width: 600px)  {
+    .about-div {
+        width: 95%;
+    }
+    .about-div p {
+        font-size: 1.1rem;
+    }
+}

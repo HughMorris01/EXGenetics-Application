@@ -1,0 +1,47 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: black;
+}
+
+/* Header */
+.logoPic p {
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 5px;
+  position: relative;
+  right: 10px;
+}
+
+/* Footer */
+
+.footer-logo {
+  position: relative;
+  top: 15px;
+  margin-bottom: 20px;
+}
+
+.llc-name {
+  position: relative;
+  top: 15px;
+  right: 20px;
+}
+
+.social-icons {
+  color: azure;
+  display: inline-block;
+  padding: 0px 15px;
+  margin: 0 5px;
+}
+
+.social-container {
+  position: relative;
+  bottom: 5px;
+  text-align: center;
+  margin-bottom: 33px;
+}

@@ -1,0 +1,102 @@
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.65); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 3px solid rgb(222, 184, 17);
+  width: 80%;
+}
+
+.modalParagraph {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-style: normal;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The Close Button */
+.modalBtn {
+  margin-right: 15px;
+  color: #aaaaaa;
+  font-size: 15px;
+  font-weight: 600;
+  width: 150px;
+  display: inline-block;
+}
+
+a .modalBtn {
+  text-decoration: none;
+  color: #aaaaaa;
+  font-size: 15px;
+  font-weight: 600;
+  width: 150px;
+}
+
+.modalBtn:hover,
+.modalBtn:focus,
+.modalBtn a:hover,
+.modalBtn a:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Middle Section / Carousel */
+.middle {
+  background-color: black;
+  height: 400px;
+  width: 70%;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 10px auto;
+}
+
+.carousel {
+  padding: 0;
+  width: 400px;
+  margin: auto;
+}
+
+.carousel-img {
+  border-radius: 25%;
+  height: 400px;
+}
+
+@media only screen and (max-width: 500px) {
+  .middle {
+    width: 100%;
+  }
+  .carousel {
+    width: 100%;
+  }
+
+  .carousel-img {
+    border-radius: 10%;
+  }
+}
