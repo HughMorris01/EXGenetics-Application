@@ -1,8 +1,9 @@
 .middle-contact {
-    height: 300px;
+  height: 300px;
+  margin-top: 300px;
 }
 
 .contact-email {
-    color: blue;
-    text-decoration: underline;
+  color: blue;
+  text-decoration: underline;
 }
