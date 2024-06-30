@@ -89,6 +89,17 @@ body {
   text-shadow: 1px 1px green;
 }
 
+/* Store Images*/
+
+.store-image {
+  display: block;
+  width: 70%;
+  height: 200px;
+  border: 1px solid black;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
 /* Middle Section / Carousel */
 .middle {
   background-color: black;
