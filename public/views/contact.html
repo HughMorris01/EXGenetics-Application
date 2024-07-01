@@ -13,6 +13,19 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/contact.css" rel="stylesheet" />
         <link href="css/animations.css" rel="stylesheet" />
+
+        <!-- CSS From portfolio app-->
+         <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300;400;700&family=Jost:wght@100;200;300;400;500;600;700;800;900&family=Monoton&family=Nunito:wght@200;300;400;500;600;700;800;900&family=Oswald:wght@200;300;400;500;600;700&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- end of css from portfolio app-->
     </head>
     <body id="main">
         <!-- Navigation-->
@@ -40,6 +53,48 @@
                 </div>
             </div>
         </header> -->
+
+        <!-- Contact Form -->
+      <section class="section-4" id="contact">
+        <h1 class="section-4-heading">Contact Us</h1>
+        <form class="contact-form center">
+          <input type="text" id="name" class="form-input" placeholder="Name" />
+          <p id="name-validation" class="validation-color"></p>
+          <input
+            type="email"
+            id="email"
+            class="form-input"
+            placeholder="Email"
+          />
+          <p id="email-validation" class="validation-color"></p>
+          <input
+            type="text"
+            id="subject"
+            class="form-input"
+            placeholder="Subject"
+          />
+          <p id="subject-validation" class="validation-color"></p>
+          <textarea
+            name="message"
+            id="message"
+            class="form-input"
+            cols="30"
+            rows="10"
+            placeholder="Message"
+          ></textarea>
+          <p id="message-validation" class="validation-color"></p>
+          <input
+            id="submit-btn"
+            type="submit"
+            name="submit"
+            value="send message"
+            class="contact-form-btn"
+          />
+          <div class="success"></div>
+        </form>
+      </section>
+      <!-- End of Contact Form -->
+
         <section class="middle-contact">
             <a class="nav-link contact-email" style="text-align: center;" href="mailto:hi@exgenetics.com">Email: Hi@ExGenetics.com</a>
         </section>
