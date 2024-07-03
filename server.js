@@ -51,7 +51,7 @@ app.post('/contact', (req, res) => {
   };
 
   const mailOptions2 = {
-    from: process.env.ZOHO_USERNAME,
+    from: process.env.HI_EMAIL,
     to: process.env.JASONS_EMAIL,
     subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
     text: req.body.message,
