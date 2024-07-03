@@ -75,7 +75,6 @@ app.post('/contact', (req, res) => {
       }
     });
 
-    if (req.body.name !== undefined) {
     transporter.sendMail(mailOptions2, (err, info) => {
       if (err) {
         console.log(err);
