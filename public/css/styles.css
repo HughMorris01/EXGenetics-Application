@@ -10,8 +10,12 @@
   font-weight: 400;
 }
 
+body {
+  background-color: rgb(0, 0, 0);
+}
+
 html {
-  font-size: 100%;
+  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
@@ -29,19 +33,19 @@ html {
 }
 /* End of Reset and Common Styles */
 
-body {
-  background-color: black;
-}
-
 /* Header */
 .logoPic p {
   color: white;
-  font-size: 0.7rem;
+  font-size: 110%;
   font-weight: 400;
   font-style: italic;
   margin-top: 5px;
   position: relative;
   right: 10px;
+}
+
+.nav-item {
+  font-size: 100%;
 }
 
 /* Footer */
@@ -53,12 +57,14 @@ body {
 }
 
 .llc-name {
+  font-size: medium;
   position: relative;
   top: 15px;
   right: 20px;
 }
 
 .social-icons {
+  font-size: large;
   color: azure;
   display: inline-block;
   padding: 0px 15px;
@@ -70,4 +76,148 @@ body {
   bottom: 5px;
   text-align: center;
   margin-bottom: 33px;
+}
+
+@media screen and (max-width: 1400px) {
+  .section-1 {
+    padding-top: 15%;
+  }
+
+  .service h2 {
+    font-size: 4rem;
+  }
+
+  .service i {
+    font-size: 8rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .section-1 {
+    padding-top: 20%;
+  }
+
+  .section-1-heading {
+    font-size: 5rem;
+  }
+
+  .profile-img,
+  .profile-name {
+    margin-top: 7rem;
+  }
+
+  .about-me {
+    line-height: 1.5;
+    font-size: 1.5;
+  }
+
+  .service i {
+    font-size: 6rem;
+  }
+
+  .section-2-heading,
+  .section-3-heading,
+  .section-4-heading {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .service h2 {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .service h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  html {
+    font-size: 50%;
+  }
+
+  .lead {
+    margin-left: 15px;
+    font-size: medium;
+  }
+
+  .section-1 {
+    background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.8)
+      ),
+      url(/images/mobile-bg.jpg) center no-repeat;
+  }
+
+  .about-me {
+    line-height: 1.2;
+    font-size: 1.2;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  html {
+    font-size: 46%;
+  }
+
+  .lead {
+    margin-left: 15px;
+    font-size: medium;
+  }
+
+  .section-1 {
+    padding-top: 40%;
+  }
+
+  .section-1-heading {
+    font-size: 4rem;
+  }
+
+  .navbar-link {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 1.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .section-1 {
+    padding-top: 50%;
+  }
+
+  .lead {
+    margin-left: 15px;
+    font-size: medium;
+  }
+
+  .section-1-heading,
+  .section-2-heading,
+  .section-3-heading,
+  .section-4-heading {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  .navbar-link {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .service h2 {
+    font-size: 1.8rem;
+  }
+
+  .service i {
+    font-size: 4rem;
+  }
+
+  .contact-form {
+    width: 90%;
+    flex-direction: column;
+  }
 }
