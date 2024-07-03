@@ -1,1 +1,1 @@
-ExGenetics is a startup cannabis company located in upstate NY. Right now the project exists as a static website protype and is on pause until the owner receives full authorization to operate from the state.
+ExGenetics is a startup cannabis company located in upstate NY. 
