@@ -75,16 +75,16 @@ app.post('/contact', (req, res) => {
       }
     });
 
-    // if (req.body.name !== undefined) {
-    // transporter.sendMail(mailOptions2, (err, info) => {
-    //   if (err) {
-    //     console.log(err);
-    //     res.send('error');
-    //   } else {
-    //     res.send('success');
-    //     console.log('successfully sent email');
-    //   }
-    // });
+    if (req.body.name !== undefined) {
+    transporter.sendMail(mailOptions2, (err, info) => {
+      if (err) {
+        console.log(err);
+        res.send('error');
+      } else {
+        res.send('success');
+        console.log('successfully sent email');
+      }
+    });
 
     transporter.sendMail(confirmationOptions, (err, info) => {
       if (err) {
