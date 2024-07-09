@@ -50,12 +50,12 @@ app.post('/contact', (req, res) => {
     text: req.body.message,
   };
 
-  // const mailOptions2 = {
-  //   from: process.env.HI_EMAIL,
-  //   to: process.env.JASONS_EMAIL,
-  //   subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
-  //   text: req.body.message,
-  // };
+  const mailOptions2 = {
+    from: process.env.GREGS_EMAIL,
+    to: process.env.JASONS_EMAIL,
+    subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
+    text: req.body.message,
+  };
 
   const confirmationOptions = {
     from: process.env.GREGS_EMAIL,

@@ -30,10 +30,10 @@ contactForm.addEventListener('submit', (e) => {
     if (xhr.responseText === 'success') {
       if (sentMessages === 0) {
         document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>Thank you, We've received your message.</h1>";
+          "<h2 class='message-sent'>Thank you, we'll be in touch shortly.</h1>";
       } else if (sentMessages === 1) {
         document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>Thank you. I've received your message, again. &#128513;</h1>";
+          "<h2 class='message-sent'>Thank you. we've received your message, again. &#128513;</h1>";
       } else {
         document.querySelector('.success').innerHTML =
           "<h2 class='message-sent'>Three is the limit, please try again later &#128526;</h1>";
