@@ -30,7 +30,7 @@ contactForm.addEventListener('submit', (e) => {
     if (xhr.responseText === 'success') {
       if (sentMessages === 0) {
         document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>Thank you, I've received your message.</h1>";
+          "<h2 class='message-sent'>Thank you, We've received your message.</h1>";
       } else if (sentMessages === 1) {
         document.querySelector('.success').innerHTML =
           "<h2 class='message-sent'>Thank you. I've received your message, again. &#128513;</h1>";
