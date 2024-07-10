@@ -48,7 +48,6 @@ contactForm.addEventListener('submit', (e) => {
       senderEmail.value = '';
       senderSubject.value = '';
       senderMessage.value = '';
-      submitButton.style.border = 'none';
 
       sentMessages++;
     } else {

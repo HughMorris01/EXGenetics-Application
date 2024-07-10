@@ -3,7 +3,7 @@
   text-decoration: underline;
 }
 
-.middle-contact {
+.direct-email {
   color: white;
   font-weight: 500;
   margin-bottom: 100px;
@@ -158,6 +158,14 @@
 
   h3 {
     font-size: 1rem;
+  }
+
+  .direct-email {
+    font-size: 0.7rem;
+  }
+
+  #contact {
+    font-size: 0.7rem;
   }
 }
 
