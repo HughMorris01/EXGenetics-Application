@@ -75,15 +75,15 @@ app.post('/contact', (req, res) => {
       }
     });
 
-    // transporter.sendMail(mailOptions2, (err, info) => {
-    //   if (err) {
-    //     console.log(err);
-    //     res.send('error');
-    //   } else {
-    //     res.send('success');
-    //     console.log('successfully sent email');
-    //   }
-    // });
+    transporter.sendMail(mailOptions2, (err, info) => {
+      if (err) {
+        console.log(err);
+        res.send('error');
+      } else {
+        res.send('success');
+        console.log('successfully sent email');
+      }
+    });
 
     transporter.sendMail(confirmationOptions, (err, info) => {
       if (err) {

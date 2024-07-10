@@ -100,36 +100,16 @@
   margin-bottom: 10px;
 }
 
-/* Middle Section / Carousel */
-.middle {
-  background-color: black;
-  height: 400px;
-  width: 70%;
-  padding-left: 0;
-  padding-right: 0;
-  margin: 10px auto;
-}
-
-.carousel {
-  padding: 0;
-  width: 400px;
-  margin: auto;
-}
-
-.carousel-img {
-  border-radius: 25%;
-  height: 400px;
-}
-
-@media only screen and (max-width: 500px) {
-  .middle {
-    width: 100%;
-  }
-  .carousel {
-    width: 100%;
+@media screen and (max-width: 550px) {
+  .modalBtn {
+    width: 35%;
   }
 
-  .carousel-img {
-    border-radius: 10%;
+  .store-image {
+    width: 85%;
+  }
+
+  .temp-header {
+    font-size: 0.7rem;
   }
 }
