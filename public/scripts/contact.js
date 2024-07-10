@@ -29,14 +29,14 @@ contactForm.addEventListener('submit', (e) => {
   xhr.onload = function () {
     if (xhr.responseText === 'success') {
       if (sentMessages === 0) {
-        document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>Thank you, we'll be in touch shortly.</h1>";
+        document.querySelector('#success').innerHTML =
+          "<h4 class='message-sent'>Thank you, we'll be in touch shortly.</h4>";
       } else if (sentMessages === 1) {
-        document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>Thank you. we've received your message, again. &#128513;</h1>";
+        document.querySelector('#success').innerHTML =
+          "<h4 class='message-sent'>Thank you. We've received your message, again. &#128513;</h4>";
       } else {
-        document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>Three is the limit, please try again later &#128526;</h1>";
+        document.querySelector('#success').innerHTML =
+          "<h4 class='message-sent'>Three is the limit, please try again later &#128526;</h4>";
         senderName.disabled = true;
         senderEmail.disabled = true;
         senderSubject.disabled = true;
@@ -52,12 +52,12 @@ contactForm.addEventListener('submit', (e) => {
       sentMessages++;
     } else {
       if (errorMessages === 0) {
-        document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>Uh, oh. Something went wrong.......</h1>";
+        document.querySelector('#success').innerHTML =
+          "<h4 class='message-sent'>Uh, oh. Something went wrong.......</h4>";
         errorMessages++;
       } else {
-        document.querySelector('.success').innerHTML =
-          "<h2 class='message-sent'>There must be an issue, please try again later.</h1>";
+        document.querySelector('#success').innerHTML =
+          "<h4 class='message-sent'>There must be an issue, please try again later.</h4>";
       }
       senderName.value = '';
       senderEmail.value = '';
