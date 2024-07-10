@@ -41,7 +41,7 @@
 
 .contact-form {
   width: 550px;
-  max-width: 80%;
+  max-width: 90%;
   background-color: rgba(255, 255, 255, 0.2);
   border: 1rem solid rgba(255, 255, 255, 0.4);
   padding: 1em;
@@ -148,21 +148,16 @@
 @media screen and (max-width: 550px) {
   .contact-form input,
   .contact-form textarea,
-  .contact-form .contact-form-btn,
-  .validation-color {
+  .contact-form .contact-form-btn {
     font-size: 0.7rem;
+  }
+
+  .validation-color {
+    font-size: 0.6rem;
   }
 
   h3 {
     font-size: 1rem;
-  }
-
-  .middle-contact {
-    font-size: 0.7rem;
-  }
-
-  #contact {
-    font-size: 0.7rem;
   }
 }
 
