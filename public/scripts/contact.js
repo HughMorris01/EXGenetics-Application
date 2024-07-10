@@ -44,10 +44,12 @@ contactForm.addEventListener('submit', (e) => {
         submitButton.disabled = true;
         submitButton.classList.add('disable-btn');
       }
+
       senderName.value = '';
       senderEmail.value = '';
       senderSubject.value = '';
       senderMessage.value = '';
+      document.activeElement.blur();
 
       sentMessages++;
     } else {
