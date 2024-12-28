@@ -38,30 +38,30 @@ app.post('/contact', (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.GREGS_EMAIL,
-      pass: process.env.GREGS_PASSWORD,
+      user: process.env.HI_EMAIL,
+      pass: process.env.HI_EMAIL_PASSWORD,
     },
   });
 
   const mailOptions1 = {
-    from: process.env.GREGS_EMAIL,
+    from: process.env.HI_EMAIL,
     to: process.env.GREGS_EMAIL,
     subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
     text: req.body.message,
   };
 
   const mailOptions2 = {
-    from: process.env.GREGS_EMAIL,
+    from: process.env.HI_EMAIL,
     to: process.env.JASONS_EMAIL,
     subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
     text: req.body.message,
   };
 
   const confirmationOptions = {
-    from: process.env.GREGS_EMAIL,
+    from: process.env.HI_EMAIL,
     to: req.body.email,
     subject: `Message Receipt Confirmation`,
-    text: "We've received the message that you sent through our website and will get back to you shortly.",
+    text: "Hi! We've received the message that you sent through our website and will get back to you shortly.",
   };
 
   if (req.body.name !== undefined) {
@@ -70,20 +70,20 @@ app.post('/contact', (req, res) => {
         console.log(err);
         res.send('error');
       } else {
-        res.send('success');
         console.log('successfully sent email');
+        res.send('success');
       }
     });
 
-    transporter.sendMail(mailOptions2, (err, info) => {
-      if (err) {
-        console.log(err);
-        res.send('error');
-      } else {
-        res.send('success');
-        console.log('successfully sent email');
-      }
-    });
+    // transporter.sendMail(mailOptions2, (err, info) => {
+    //   if (err) {
+    //     console.log(err);
+    //     res.send('error');
+    //   } else {
+    //     res.send('success');
+    //     console.log('successfully sent email');
+    //   }
+    // });
 
     transporter.sendMail(confirmationOptions, (err, info) => {
       if (err) {
