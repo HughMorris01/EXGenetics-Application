@@ -50,12 +50,12 @@ app.post('/contact', (req, res) => {
     text: req.body.message,
   };
 
-  const mailOptions2 = {
-    from: process.env.HI_EMAIL,
-    to: process.env.JASONS_EMAIL,
-    subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
-    text: req.body.message,
-  };
+  // const mailOptions2 = {
+  //   from: process.env.HI_EMAIL,
+  //   to: process.env.JASONS_EMAIL,
+  //   subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
+  //   text: req.body.message,
+  // };
 
   const confirmationOptions = {
     from: process.env.HI_EMAIL,
@@ -75,15 +75,15 @@ app.post('/contact', (req, res) => {
       }
     });
 
-    transporter.sendMail(mailOptions2, (err, info) => {
-      if (err) {
-        console.log(err);
-        res.send('error');
-      } else {
-        res.send('success');
-        console.log('successfully sent email');
-      }
-    });
+    // transporter.sendMail(mailOptions2, (err, info) => {
+    //   if (err) {
+    //     console.log(err);
+    //     res.send('error');
+    //   } else {
+    //     res.send('success');
+    //     console.log('successfully sent email');
+    //   }
+    // });
 
     transporter.sendMail(confirmationOptions, (err, info) => {
       if (err) {
