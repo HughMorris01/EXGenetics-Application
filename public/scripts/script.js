@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   // Collapse responsive navbar when toggler is visible
   const navbarToggler = document.body.querySelector('.navbar-toggler');
   const responsiveNavItems = [].slice.call(
-    document.querySelectorAll('#navbarResponsive .nav-link')
+    document.querySelectorAll('#navbarResponsive .nav-link'),
   );
   responsiveNavItems.map(function (responsiveNavItem) {
     responsiveNavItem.addEventListener('click', () => {
@@ -29,10 +29,43 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     });
   });
+
+  // Set copyright year automatically
+  const yearElement = document.querySelector('#copyrightYear');
+  if (yearElement) {
+    yearElement.innerHTML = new Date().getFullYear();
+  }
 });
 
-// Set copyright year
-const element = document.querySelector('#copyrightYear');
-const year = new Date().getFullYear();
-element.innerHTML = year;
-// End of set copyright year
+/* -----------------------------------------
+   Back to Top Button Logic
+----------------------------------------- */
+
+// Get the button element
+let mybutton = document.getElementById('backToTop');
+
+// When the user scrolls down 300px from the top, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (mybutton) {
+    if (
+      document.body.scrollTop > 300 ||
+      document.documentElement.scrollTop > 300
+    ) {
+      mybutton.style.display = 'block';
+    } else {
+      mybutton.style.display = 'none';
+    }
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth', // Smooth scrolling effect
+  });
+}

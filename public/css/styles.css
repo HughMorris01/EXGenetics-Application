@@ -5,9 +5,15 @@
   outline: none;
   box-sizing: border-box;
   text-decoration: none;
+  color: inherit; /* Removes default blue links globally */
   list-style-type: none;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 body {
