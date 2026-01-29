@@ -31,7 +31,7 @@ app.get('/contact', (req, res) => {
 });
 
 app.post('/contact', (req, res) => {
-  //   console.log(req.body);
+  // console.log(req.body);
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
@@ -50,12 +50,22 @@ app.post('/contact', (req, res) => {
     text: req.body.message,
   };
 
-  // const mailOptions2 = {
-  //   from: process.env.HI_EMAIL,
-  //   to: process.env.JASONS_EMAIL,
-  //   subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
-  //   text: req.body.message,
-  // };
+  /* // UNCOMMENT THIS BLOCK TO SEND TO JASON ONCE BOTS ARE HANDLED
+  const mailOptions2 = {
+    from: process.env.HI_EMAIL,
+    to: process.env.JASONS_EMAIL,
+    subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
+    text: req.body.message,
+  };
+
+  transporter.sendMail(mailOptions2, (err, info) => {
+    if (err) {
+      console.log("Error sending to Jason:", err);
+    } else {
+      console.log('Successfully sent email to Jason');
+    }
+  });
+  */
 
   const confirmationOptions = {
     from: process.env.HI_EMAIL,
@@ -65,33 +75,25 @@ app.post('/contact', (req, res) => {
   };
 
   if (req.body.name !== undefined) {
+    // 1. Send the primary notification to Greg
     transporter.sendMail(mailOptions1, (err, info) => {
       if (err) {
-        console.log(err);
-        res.send('error');
+        console.log('Error sending to Greg:', err);
       } else {
-        console.log('successfully sent email');
-        res.send('success');
+        console.log('Successfully sent email to Greg');
       }
     });
 
-    // transporter.sendMail(mailOptions2, (err, info) => {
-    //   if (err) {
-    //     console.log(err);
-    //     res.send('error');
-    //   } else {
-    //     res.send('success');
-    //     console.log('successfully sent email');
-    //   }
-    // });
-
+    // 2. Send confirmation to the User AND trigger the SINGLE response to the browser
     transporter.sendMail(confirmationOptions, (err, info) => {
       if (err) {
-        console.log(err);
-        res.send('error');
+        console.log('Error sending confirmation:', err);
+        // We still send 'success' to the client so the frontend doesn't hang,
+        // but you can change this to res.send('error') if you want the user to know it failed.
+        return res.send('success');
       } else {
-        res.send('success');
-        console.log('successfully sent email');
+        console.log('Successfully sent confirmation email');
+        res.send('success'); // This is the ONLY res.send that should execute
       }
     });
   }
