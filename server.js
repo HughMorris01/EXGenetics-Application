@@ -97,6 +97,24 @@ app.post('/contact', (req, res) => {
   }
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is listening on port ${port}.`);
 });
+
+// Graceful Shutdown Logic
+const gracefulShutdown = () => {
+  console.log('SIGTERM/SIGINT signal received: closing HTTP server...');
+  server.close(() => {
+    console.log('HTTP server closed. Port 3000 is now free.');
+    // If you add a database later, close the connection here
+    process.exit(0);
+  });
+
+  // Force shutdown after 10s if graceful close fails
+  setTimeout(() => {
+    console.error(
+      'Could not close connections in time, forcefully shutting down',
+    );
+    process.exit(1);
+  }, 10000);
+};
