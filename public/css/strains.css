@@ -1,7 +1,6 @@
 /* Strain Card Overhaul */
 .strain-grid {
   display: grid;
-  /* 2 columns, each taking 1 'fraction' of the available space */
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   padding: 40px 5%;
@@ -11,7 +10,7 @@
 
 .strain-card {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(234, 84, 85, 0.2); /* Using your accent red */
+  border: 1px solid rgba(234, 84, 85, 0.2);
   border-radius: 12px;
   overflow: hidden;
   transition:
@@ -25,13 +24,102 @@
   border-color: #ea5455;
 }
 
+/* 1. Image Container - Forces Uniform Shape */
+.strain-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Ensures every card is the same height/width ratio */
+  overflow: hidden;
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 2. Base Image State - Zoom In Effect */
+.strain-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1); /* Starts at normal size */
+  transition: transform 0.7s cubic-bezier(0.2, 0, 0.2, 1); /* Buttery smooth easing */
+  cursor: pointer;
+}
+
+/* Hover State - Scale Up for a Zoom-In feel */
+.strain-card:hover .strain-image {
+  transform: scale(1.15);
+}
+
+/* 3. Color-Coded Seed Badges */
+.seed-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  pointer-events: none; /* Allows clicks to go through to the image */
+}
+
+.badge-reg {
+  background: rgba(85, 85, 85, 0.9);
+  color: #fff;
+}
+.badge-fem {
+  background: rgba(234, 84, 85, 0.95);
+  color: #fff;
+}
+
+/* 4. Text & Info Styles */
+.strain-info {
+  padding: 1.5rem;
+}
+
+.strain-name {
+  font-family: 'Jost', sans-serif;
+  color: #ffb74d;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.strain-lineage {
+  display: block;
+  font-size: 0.85rem;
+  color: #ea5455; /* Northern Legacy Red */
+  font-style: italic;
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.strain-tag {
+  display: inline-block;
+  background: #ea5455;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.strain-info p {
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+/* Header & Utility */
 .strains-header {
   text-align: center;
-  /* Ensure this is exactly 40px 20px to match the About page feel */
   padding: 50px 20px;
 }
 
-/* Header Title (Current Inventory) */
 .strains-header h1 {
   color: #ffffff;
   font-family: 'Jost', sans-serif;
@@ -45,46 +133,9 @@
   margin-top: 10px;
 }
 
-.strain-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.strain-info {
-  padding: 1.5rem;
-}
-
-.strain-info p {
-  color: #cccccc; /* Light gray for the description */
-  line-height: 1.6;
-}
-
-.strain-name {
-  font-family: 'Jost', sans-serif;
-  color: #ffb74d; /* Using your orange highlight */
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-
-.strain-tag {
-  display: inline-block;
-  background: #ea5455; /* Your accent red */
-  color: #ffffff; /* Stark white text */
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-
 /* Responsive adjustment for phones */
 @media screen and (max-width: 768px) {
   .strain-grid {
-    /* Force to 1 column on smaller screens */
     grid-template-columns: 1fr;
     gap: 20px;
   }
