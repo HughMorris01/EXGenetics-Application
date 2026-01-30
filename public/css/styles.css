@@ -356,15 +356,46 @@ header {
   }
 }
 
-/* --- Global Mobile Refinements (All Pages) --- */
+/* --- Global Mobile Refinements --- */
 @media screen and (max-width: 768px) {
-  /* 1. Global Heading Scale-Down */
+  /* 1. Header & Logo: Restored to full size */
+  header {
+    height: 160px !important; /* Matches desktop height so logo fits */
+  }
+
+  .logo {
+    width: 175px !important; /* Forces logo to stay large */
+    height: auto;
+  }
+
+  /* 2. Content Spacing */
+  .content-wrapper {
+    /* Pushes content down so it doesn't hide behind the taller header */
+    padding-top: 160px !important;
+  }
+
+  .nav-menu.active {
+    top: 160px !important; /* Dropdown starts exactly at bottom of header */
+  }
+
+  /* 3. Hamburger Menu: Larger & Shifted Left */
+  .menu-toggle {
+    gap: 6px !important; /* More space between the bars */
+    margin-right: 10%; /* Pushes the menu icon 10% away from the right edge */
+  }
+
+  .bar {
+    width: 35px !important; /* Increased width (was 25px) */
+    height: 3px !important; /* Slightly thicker for visibility */
+  }
+
+  /* 4. Typography Adjustments */
   h1,
   .hero-title,
   .strains-header h1,
   .about-hero h1,
   .contact-header h1 {
-    font-size: 2rem !important; /* Unified size for all page titles */
+    font-size: 2rem !important;
     letter-spacing: 3px !important;
     line-height: 1.2;
     margin-bottom: 25px !important;
@@ -375,32 +406,8 @@ header {
     font-size: 1.5rem !important;
   }
 
-  /* 2. Header & Hamburger Alignment */
-  header {
-    height: 100px !important; /* Shorter header on mobile for more screen space */
-  }
-
-  .nav-menu.active {
-    top: 100px !important; /* Adjusts menu dropdown to meet the shorter header */
-  }
-
-  /* Makes the Hamburger icon slightly more compact */
-  .menu-toggle {
-    gap: 4px !important;
-  }
-
-  .bar {
-    width: 22px !important;
-    height: 2px !important;
-  }
-
-  /* 3. Hero & Spacing Adjustments */
   .hero-justice {
-    padding: 120px 20px 60px !important; /* Less vertical dead space */
-  }
-
-  .content-wrapper {
-    padding-top: 100px !important; /* Matches new header height */
+    padding: 60px 20px 60px !important;
   }
 
   .about-hero {
