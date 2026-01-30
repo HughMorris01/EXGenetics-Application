@@ -1,72 +1,63 @@
-.middle-about {
-  /* margin-top increased to create space between header and text */
-  margin-top: 200px;
-  min-height: 100vh;
-  padding-bottom: 120px;
+/* --- About Page Specific Layout --- */
+.about-hero {
+  /* Match the 40px used on the strains page header */
+  padding: 50px 10% 40px;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.about-div {
-  margin: 0 auto;
-  /* Narrowed to 55% for better readability on large monitors */
-  width: 57%;
-}
-
-.about-div p {
-  font-size: 22px;
-  padding: 15px 5px;
-  font-family: serif;
-  color: rgb(254, 254, 254);
-  line-height: 1.6;
-}
-
-/* Updated Span Color to pop against dark background */
-.about-div span {
+.about-hero h1 {
+  font-size: 3rem;
   color: #ffb74d;
-  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
-/* Back to Top Button Styling */
-#backToTop {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  z-index: 99;
-  display: none;
-  background-color: #ffb74d;
-  color: #000;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+.about-text {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  margin-bottom: 40px;
+  color: #f0f0f0;
+  max-width: 850px; /* Slightly tighter for a more editorial feel */
+  text-align: justify; /* Optional: gives it a clean, newspaper-style edge */
 }
 
-#backToTop:hover {
-  background-color: #ffa726;
-  transform: translateY(-3px);
+/* --- Emphatic Spans --- */
+.highlight-orange {
+  color: #ffb74d; /* Signature Orange */
+  font-weight: 700;
 }
 
-/* Responsive adjustments */
-@media only screen and (max-width: 1200px) {
-  .about-div {
-    width: 75%;
-  }
+.highlight-white {
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-@media only screen and (max-width: 600px) {
-  .middle-about {
-    margin-top: 180px;
+.highlight-red {
+  color: #ea5455; /* The "Outrage" Red */
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  .about-hero {
+    padding: 120px 5% 60px;
   }
-  .about-div {
-    width: 90%;
+
+  .about-hero h1 {
+    font-size: 2.2rem;
   }
-  .about-div p {
-    font-size: 1.15rem;
-  }
-  #backToTop {
-    bottom: 20px;
-    right: 20px;
+
+  .about-text {
+    font-size: 1.1rem;
+    text-align: left;
   }
 }

@@ -31,7 +31,12 @@ app.get('/contact', (req, res) => {
 });
 
 app.post('/contact', (req, res) => {
-  // console.log(req.body);
+  // 1. Honeypot Anti-Bot Check
+  // If the hidden 'honeypot' field is filled, it's a bot.
+  if (req.body.honeypot && req.body.honeypot !== '') {
+    console.log('Bot submission blocked.');
+    return res.send('success'); // Send success so the bot thinks it worked
+  }
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
@@ -43,57 +48,51 @@ app.post('/contact', (req, res) => {
     },
   });
 
-  const mailOptions1 = {
+  // Prepare the content for internal notification
+  const internalMessage = `
+    New Partnership Inquiry:
+    ------------------------
+    Type: ${req.body.partnerType}
+    Name: ${req.body.name}
+    Business: ${req.body.business || 'N/A'}
+    Email: ${req.body.email}
+    
+    Message:
+    ${req.body.message}
+  `;
+
+  // Internal Notification (Sent to You and Jay)
+  const adminMailOptions = {
     from: process.env.HI_EMAIL,
-    to: process.env.GREGS_EMAIL,
-    subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
-    text: req.body.message,
+    to: [process.env.GREGS_EMAIL, process.env.JASONS_EMAIL], // Array sends to both
+    subject: `EXG Portal: ${req.body.partnerType} Inquiry from ${req.body.name}`,
+    text: internalMessage,
   };
 
-  /* // UNCOMMENT THIS BLOCK TO SEND TO JASON ONCE BOTS ARE HANDLED
-  const mailOptions2 = {
-    from: process.env.HI_EMAIL,
-    to: process.env.JASONS_EMAIL,
-    subject: `Message from: ${req.body.name} <${req.body.email}> : ${req.body.subject}`,
-    text: req.body.message,
-  };
-
-  transporter.sendMail(mailOptions2, (err, info) => {
-    if (err) {
-      console.log("Error sending to Jason:", err);
-    } else {
-      console.log('Successfully sent email to Jason');
-    }
-  });
-  */
-
+  // Automated Confirmation (Sent to User)
   const confirmationOptions = {
     from: process.env.HI_EMAIL,
     to: req.body.email,
-    subject: `Message Receipt Confirmation`,
-    text: "Hi! We've received the message that you sent through our website and will get back to you shortly.",
+    subject: `Excelsior Genetics - Inquiry Received`,
+    text: `Hi ${req.body.name}! We've received your inquiry regarding a ${req.body.partnerType} partnership. Our team is currently reviewing your message and we will get back to you shortly.`,
   };
 
+  // Execution
   if (req.body.name !== undefined) {
-    // 1. Send the primary notification to Greg
-    transporter.sendMail(mailOptions1, (err, info) => {
-      if (err) {
-        console.log('Error sending to Greg:', err);
-      } else {
-        console.log('Successfully sent email to Greg');
-      }
+    // Send Admin Notification
+    transporter.sendMail(adminMailOptions, (err) => {
+      if (err) console.log('Error sending admin notification:', err);
+      else console.log('Successfully sent inquiry to Greg and Jason');
     });
 
-    // 2. Send confirmation to the User AND trigger the SINGLE response to the browser
-    transporter.sendMail(confirmationOptions, (err, info) => {
+    // Send User Confirmation
+    transporter.sendMail(confirmationOptions, (err) => {
       if (err) {
-        console.log('Error sending confirmation:', err);
-        // We still send 'success' to the client so the frontend doesn't hang,
-        // but you can change this to res.send('error') if you want the user to know it failed.
-        return res.send('success');
+        console.log('Error sending user confirmation:', err);
+        return res.send('error');
       } else {
-        console.log('Successfully sent confirmation email');
-        res.send('success'); // This is the ONLY res.send that should execute
+        console.log('Successfully sent confirmation to user');
+        res.send('success');
       }
     });
   }

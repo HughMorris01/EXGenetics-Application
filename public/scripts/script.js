@@ -76,12 +76,15 @@ window.onscroll = function () {
 };
 
 function scrollFunction() {
+  // We define it inside here so it's found when the user scrolls
+  let mybutton = document.getElementById('backToTop');
+
   if (mybutton) {
     if (
       document.body.scrollTop > 300 ||
       document.documentElement.scrollTop > 300
     ) {
-      mybutton.style.display = 'block';
+      mybutton.style.display = 'flex';
     } else {
       mybutton.style.display = 'none';
     }

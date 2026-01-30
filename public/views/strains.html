@@ -203,10 +203,6 @@
           </div>
         </article>
       </div>
-
-      <button onclick="topFunction()" id="backToTop" title="Go to top">
-        <i class="fa-solid fa-arrow-up"></i>
-      </button>
     </main>
     <!-- End of Main Content-->
 
@@ -215,14 +211,22 @@
       <div class="container">
         <div class="footer-branding">
           <img
-            src="assets/excelsior_social_transparent.png"
+            src="/assets/excelsior_social_transparent.png"
             alt="EXG Logo"
             class="footer-logo-anim"
           />
-          <p>&copy; <span id="copyrightYear"></span> Excelsior Genetics, LLC</p>
+          <div class="footer-text-block">
+            <p>
+              &copy; <span id="copyrightYear"></span> Excelsior Genetics, LLC
+            </p>
+            <div class="footer-address">
+              <span>42901 NY-12, Suite B</span>
+              <span>Alexandria Bay, NY 13607</span>
+            </div>
+          </div>
         </div>
 
-        <ul class="social-list">
+        <!-- <ul class="social-list">
           <li>
             <a href="#" aria-label="Twitter"
               ><i class="fa-brands fa-twitter"></i
@@ -241,7 +245,7 @@
               ><i class="fa-brands fa-instagram"></i
             ></a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </footer>
     <!-- End of Footer-->
@@ -253,5 +257,8 @@
     ></script>
     <!-- Core theme JS-->
     <script src="/scripts/script.js"></script>
+    <button onclick="topFunction()" id="backToTop" title="Go to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
   </body>
 </html>

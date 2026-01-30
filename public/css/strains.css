@@ -27,7 +27,8 @@
 
 .strains-header {
   text-align: center;
-  padding: 40px 20px; /* Reduced from 120px */
+  /* Ensure this is exactly 40px 20px to match the About page feel */
+  padding: 50px 20px;
 }
 
 /* Header Title (Current Inventory) */
