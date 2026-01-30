@@ -1,83 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>ExGenetics</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/index.css" rel="stylesheet" />
-        <link href="css/animations.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Excelsior Genetics - Premium Cannabis Dispensary"
+    />
+    <meta name="author" content="Excelsior Genetics" />
+    <title>ExGenetics</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
+
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/index.css" rel="stylesheet" />
   </head>
   <body>
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <p class="modalParagraph">Are you at least 21 years of age or older?</p>
-          <div class="center">
-            <a class="modalBtn" id="yesBtn">Yes</a>
-            <a class= "modalBtn" id="noBtn" href="/denied">No</a>
-          </div>
+    <!-- Age Verification Modal-->
+    <div id="age-overlay" class="age-overlay">
+      <div class="age-content">
+        <img
+          src="/assets/logo_clear_bg.png"
+          alt="Excelsior Genetics"
+          class="age-logo"
+        />
+        <h2>Respect the Plant</h2>
+        <p>You must be 21 years of age or older to enter this site.</p>
+
+        <div class="age-buttons">
+          <button id="age-verify-yes" class="btn-verify">I am 21+</button>
+          <button id="age-verify-no" class="btn-exit">Exit</button>
+        </div>
+
+        <p class="age-disclaimer">
+          By clicking enter, you agree to our terms of service and acknowledge
+          you are of legal age in your jurisdiction.
+        </p>
+      </div>
+    </div>
+    <!-- End of Age Verification Modal-->
+
+    <!-- Site Header-->
+    <header>
+      <div class="header-container">
+        <a href="/" class="header-logo-link">
+          <img
+            src="/assets/logo_clear_bg.png"
+            alt="Excelsior Genetics Logo"
+            class="logo"
+          />
+        </a>
+
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="/about">Our Story</a></li>
+            <li><a href="/strains">Featured Strains</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- End of Site Header-->
+
+    <!-- Main Content-->
+    <main class="content-wrapper">
+      <div class="container px-4 text-center">
+        <div class="col-lg-8">
+          <h2 class="temp-header">Coming Soon.....</h2>
+          <p class="temp-header">
+            A Thousand Islands Region Cannabis Dispensary
+          </p>
+          <img
+            class="store-image"
+            src="/assets/storefront.jpg"
+            alt="storefront photo"
+          />
+          <img
+            class="store-image"
+            src="/assets/interior-3.jpg"
+            alt="interior view 1"
+          />
+          <img
+            class="store-image"
+            src="/assets/interior-2.jpg"
+            alt="interior view 2"
+          />
         </div>
       </div>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top" id="mainNav">
-            <div class="container px-4">
-                <div class="logoPic">
-                <a class="navbar-brand" href="/"><img src="assets/logo_clear_bg.png" class="logo inline-logo header-logo" /></a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="/about">Our Story</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/strains">Featured Strains</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-primary bg-black text-white under-construction">
-            <div class="container px-4 text-center">
-                <div class="col-lg-8" >
-                    <h2 class="temp-header">Coming Soon.....</h2>
-                    <p class="temp-header">A Thousand Islands Region Cannabis Dispensary</p>
-                    <img class="store-image" src="assets/storefront.jpg" alt="storefront photo">
-                    <img class="store-image" src="assets/interior-3.jpg" alt="storefront photo">
-                    <img class="store-image" src="assets/interior-2.jpg" alt="storefront photo">
-                </div>
-            </div>
-        </header>
-        <!-- End of Header-->
+    </main>
+    <!-- End of Main Content-->
 
-        <!-- Footer-->
-        <footer class="py-2 bg-black">
-            <div class="container px-4">
-              <p class="m-0 text-center text-white">
-                <img src="assets/excelsior_social_transparent.png" width="80px" class="footer-logo"/>
-                <span class="llc-name">&copy; <span id="copyrightYear"></span> Excelsior Genetics, LLC</span>
-              </p>
-            </div>
-            <div class="social-container">
-              <div class="social-icons"><i class="fa-brands fa-twitter"></i></a></div>
-              <div class="social-icons"><i class="fa-brands fa-facebook"></i></a></div>
-              <div class="social-icons"><a href="https://instagram.com/excelsior_exg"><i class="fa-brands fa-instagram"></i></a></div>
-            </div>
-        </footer>
-        <!--End of Footer-->
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-        <!-- FontAwesome Social Icons-->
-        <script src="https://kit.fontawesome.com/d5dc95c60e.js" crossorigin="anonymous"></script>
-        <!-- Core Theme JS-->
-        <script src="scripts/script.js"></script>
-        <!-- Page Specific JS-->
-        <script src="scripts/index.js"></script>
+    <!-- Footer-->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-branding">
+          <img
+            src="/assets/excelsior_social_transparent.png"
+            alt="EXG Logo"
+            class="footer-logo-anim"
+          />
+          <p>&copy; <span id="copyrightYear"></span> Excelsior Genetics, LLC</p>
+        </div>
 
+        <ul class="social-list">
+          <li>
+            <a href="#" aria-label="Twitter"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Facebook"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://instagram.com/excelsior_exg"
+              target="_blank"
+              aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <!-- End of Footer-->
+
+    <script
+      src="https://kit.fontawesome.com/d5dc95c60e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/index.js"></script>
   </body>
 </html>

@@ -1,36 +1,65 @@
-/*!
- * Start Bootstrap - Scrolling Nav v5.0.5 (https://startbootstrap.com/template/scrolling-nav)
- * Copyright 2013-2022 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
- */
-//
-// Scripts
-//
+/* -----------------------------------------
+   Excelsior Genetics - Core Logic
+----------------------------------------- */
+
+/* --- Age Verification Logic --- */
+const setupAgeGate = () => {
+  const overlay = document.getElementById('age-overlay');
+  const verifyBtn = document.getElementById('age-verify-yes');
+  const exitBtn = document.getElementById('age-verify-no');
+
+  if (!overlay) return;
+
+  // Check if the "cookie" exists in LocalStorage
+  if (localStorage.getItem('exg_age_verified') === 'true') {
+    overlay.style.display = 'none';
+  } else {
+    overlay.style.display = 'flex'; // Ensure it shows if not verified
+  }
+
+  verifyBtn.addEventListener('click', () => {
+    overlay.style.opacity = '0';
+    // Set the "cookie" so it doesn't pop up again
+    localStorage.setItem('exg_age_verified', 'true');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 600);
+  });
+
+  exitBtn.addEventListener('click', () => {
+    window.location.href = 'https://www.google.com';
+  });
+};
+
+// Add this to your existing DOMContentLoaded listener
+document.addEventListener('DOMContentLoaded', () => {
+  setupAgeGate();
+  // ... your other existing JS (copyright year, etc)
+});
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  // Activate Bootstrap scrollspy on the main nav element
-  const mainNav = document.body.querySelector('#mainNav');
-  if (mainNav) {
-    new bootstrap.ScrollSpy(document.body, {
-      target: '#mainNav',
-      offset: 74,
+  // 1. Mobile Menu Toggle (Pure JS Replacement for Bootstrap)
+  const menuToggle = document.querySelector('#mobile-menu');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function () {
+      // Toggles classes for the hamburger animation and menu visibility
+      menuToggle.classList.toggle('is-active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked (useful for mobile UX)
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('is-active');
+        navMenu.classList.remove('active');
+      });
     });
   }
 
-  // Collapse responsive navbar when toggler is visible
-  const navbarToggler = document.body.querySelector('.navbar-toggler');
-  const responsiveNavItems = [].slice.call(
-    document.querySelectorAll('#navbarResponsive .nav-link'),
-  );
-  responsiveNavItems.map(function (responsiveNavItem) {
-    responsiveNavItem.addEventListener('click', () => {
-      if (window.getComputedStyle(navbarToggler).display !== 'none') {
-        navbarToggler.click();
-      }
-    });
-  });
-
-  // Set copyright year automatically
+  // 2. Automated Copyright Year
   const yearElement = document.querySelector('#copyrightYear');
   if (yearElement) {
     yearElement.innerHTML = new Date().getFullYear();
@@ -40,11 +69,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 /* -----------------------------------------
    Back to Top Button Logic
 ----------------------------------------- */
-
-// Get the button element
 let mybutton = document.getElementById('backToTop');
 
-// When the user scrolls down 300px from the top, show the button
 window.onscroll = function () {
   scrollFunction();
 };
@@ -62,10 +88,9 @@ function scrollFunction() {
   }
 }
 
-// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth', // Smooth scrolling effect
+    behavior: 'smooth',
   });
 }

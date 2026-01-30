@@ -1,96 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Featured Strains</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <!-- <link href="css/styles.css" rel="stylesheet" /> -->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/strains.css" rel="stylesheet" />
-        <link href="css/animations.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top" id="mainNav">
-            <div class="container px-4">
-                <div class="logoPic">
-                <a class="navbar-brand" href="/"><img src="assets/logo_clear_bg.png" class="logo inline-logo header-logo" /></a>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="/about">Our Story</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/strains">Featured Strains</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Header-->
-        <header class="bg-primary bg-black text-white under-construction">
-            <div class="container px-4 text-center">
-                <p class="construction">This website is under construction. Please check back soon.</p>
-            </div>
-        </header>
-        <!-- End of Header-->
-         
-        <!-- Carousel-->
-        <!-- <section class= "middle center">
-          <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="assets/carousel/finished_product2.jpg" class="d-block w-100 carousel-img" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="assets/carousel/lsd_night_before.jpg" class="d-block w-100 carousel-img" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="assets/carousel/grow_room1.jpg" class="d-block w-100 carousel-img" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="assets/carousel/finished_product1.jpg" class="d-block w-100 carousel-img" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="assets/carousel/cure1.jpg" class="d-block w-100 carousel-img" alt="...">
-              </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-      </section> -->
-      <!-- End of Carousel -->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Featured Strains</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/strains.css" rel="stylesheet" />
+  </head>
 
-        <!-- Footer-->
-        <footer class="py-2 bg-black">
-            <div class="container px-4">
-              <p class="m-0 text-center text-white">
-                <img src="assets/excelsior_social_transparent.png" width="80px" class="footer-logo"/>
-                <span class="llc-name">&copy; <span id="copyrightYear"></span> Excelsior Genetics, LLC</span>
-              </p>
-            </div>
-            <div class="social-container">
-              <div class="social-icons"><i class="fa-brands fa-twitter"></i></a></div>
-              <div class="social-icons"><i class="fa-brands fa-facebook"></i></a></div>
-              <div class="social-icons"><a href="https://instagram.com/excelsior_exg"><i class="fa-brands fa-instagram"></i></a></div>
-            </div>
-        </footer>
-        <!-- End of Footer-->
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-        <!-- FontAwesome Social Icons-->
-        <script src="https://kit.fontawesome.com/d5dc95c60e.js" crossorigin="anonymous"></script>
-        <!-- Core theme JS-->
-        <script src="scripts/script.js"></script>
-    </body>
+  <body>
+    <!-- Age Verification Modal-->
+    <div id="age-overlay" class="age-overlay">
+      <div class="age-content">
+        <img
+          src="/assets/logo_clear_bg.png"
+          alt="Excelsior Genetics"
+          class="age-logo"
+        />
+        <h2>Respect the Plant</h2>
+        <p>You must be 21 years of age or older to enter this site.</p>
+
+        <div class="age-buttons">
+          <button id="age-verify-yes" class="btn-verify">I am 21+</button>
+          <button id="age-verify-no" class="btn-exit">Exit</button>
+        </div>
+
+        <p class="age-disclaimer">
+          By clicking enter, you agree to our terms of service and acknowledge
+          you are of legal age in your jurisdiction.
+        </p>
+      </div>
+    </div>
+    <!-- End of Age Verification Modal-->
+
+    <!-- Site Header-->
+    <header>
+      <div class="header-container">
+        <a href="/" class="header-logo-link">
+          <img
+            src="/assets/logo_clear_bg.png"
+            alt="Excelsior Genetics Logo"
+            class="logo"
+          />
+        </a>
+
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="/about">Our Story</a></li>
+            <li><a href="/strains">Featured Strains</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- End of Site Header-->
+
+    <!-- Main Content-->
+    <main class="content-wrapper">
+      <section class="strains-header">
+        <h1>Current Inventory</h1>
+        <p class="disclaimer">
+          <em
+            >* For educational and genetic reference only. Not available for
+            retail sale.</em
+          >
+        </p>
+      </section>
+
+      <div class="strain-grid">
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 1"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Indica Dominant</span>
+            <h2 class="strain-name">Northern Legacy Kush</h2>
+            <p>
+              Deep earthy tones with a sharp citrus finish. Optimized for
+              northern climates.
+            </p>
+          </div>
+        </article>
+
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 2"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Sativa</span>
+            <h2 class="strain-name">River Run Haze</h2>
+            <p>Energetic and uplifted profile with notes of pine and berry.</p>
+          </div>
+        </article>
+
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 3"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Hybrid</span>
+            <h2 class="strain-name">Thousand Island Gold</h2>
+            <p>A balanced, resinous variety perfect for extraction.</p>
+          </div>
+        </article>
+
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 4"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Indica</span>
+            <h2 class="strain-name">Clayton Midnight</h2>
+            <p>Heavy relaxation with a sweet, doughy aroma.</p>
+          </div>
+        </article>
+
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 5"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Sativa Dominant</span>
+            <h2 class="strain-name">Sunrise Diesel</h2>
+            <p>Sharp, gassy notes with a creative mental clarity.</p>
+          </div>
+        </article>
+
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 6"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Hybrid</span>
+            <h2 class="strain-name">Excelsior OG</h2>
+            <p>The flagship genetic. Potent, stable, and highly aromatic.</p>
+          </div>
+        </article>
+
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 7"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Indica Dominant</span>
+            <h2 class="strain-name">Borderline Blue</h2>
+            <p>Sweet berry sweetness with a slow-onset physical calm.</p>
+          </div>
+        </article>
+
+        <article class="strain-card">
+          <div class="strain-image-container">
+            <img
+              src="/assets/placeholder.jpg"
+              alt="Strain 8"
+              class="strain-image"
+            />
+          </div>
+          <div class="strain-info">
+            <span class="strain-tag">Hybrid</span>
+            <h2 class="strain-name">St. Lawrence Skunk</h2>
+            <p>A nostalgic profile with modern potency and yields.</p>
+          </div>
+        </article>
+      </div>
+
+      <button onclick="topFunction()" id="backToTop" title="Go to top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </main>
+    <!-- End of Main Content-->
+
+    <!-- Footer-->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-branding">
+          <img
+            src="assets/excelsior_social_transparent.png"
+            alt="EXG Logo"
+            class="footer-logo-anim"
+          />
+          <p>&copy; <span id="copyrightYear"></span> Excelsior Genetics, LLC</p>
+        </div>
+
+        <ul class="social-list">
+          <li>
+            <a href="#" aria-label="Twitter"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#" aria-label="Facebook"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://instagram.com/excelsior_exg"
+              target="_blank"
+              aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <!-- End of Footer-->
+
+    <!-- FontAwesome Social Icons-->
+    <script
+      src="https://kit.fontawesome.com/d5dc95c60e.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Core theme JS-->
+    <script src="/scripts/script.js"></script>
+  </body>
 </html>

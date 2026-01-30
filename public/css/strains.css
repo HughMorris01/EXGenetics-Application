@@ -1,43 +1,90 @@
-.under-construction {
-  margin: 200px auto 50px auto;
+/* Strain Card Overhaul */
+.strain-grid {
+  display: grid;
+  /* 2 columns, each taking 1 'fraction' of the available space */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 40px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Carousel */
-.middle {
-  background-color: black;
-  height: 400px;
-  width: 70%;
-  padding-left: 0;
-  padding-right: 0;
-  margin: 10px auto;
+.strain-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(234, 84, 85, 0.2); /* Using your accent red */
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.carousel {
-  padding: 0;
-  width: 400px;
-  margin: auto;
+.strain-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: #ea5455;
 }
 
-.carousel-img {
-  border-radius: 25%;
-  height: 400px;
+.strains-header {
+  text-align: center;
+  padding: 40px 20px; /* Reduced from 120px */
 }
 
-@media only screen and (max-width: 550px) {
-  .middle {
-    width: 80%;
+/* Header Title (Current Inventory) */
+.strains-header h1 {
+  color: #ffffff;
+  font-family: 'Jost', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.disclaimer {
+  color: #ea5455;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.strain-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.strain-info {
+  padding: 1.5rem;
+}
+
+.strain-info p {
+  color: #cccccc; /* Light gray for the description */
+  line-height: 1.6;
+}
+
+.strain-name {
+  font-family: 'Jost', sans-serif;
+  color: #ffb74d; /* Using your orange highlight */
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.strain-tag {
+  display: inline-block;
+  background: #ea5455; /* Your accent red */
+  color: #ffffff; /* Stark white text */
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Responsive adjustment for phones */
+@media screen and (max-width: 768px) {
+  .strain-grid {
+    /* Force to 1 column on smaller screens */
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .carousel {
-    width: 100%;
-  }
-
-  .carousel-img {
-    height: 300px;
-    border-radius: 10%;
-  }
-
-  .construction {
-    font-size: 0.7rem;
-  }
 }
-/* End of Carousel */

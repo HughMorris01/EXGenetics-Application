@@ -1,104 +1,270 @@
-/* Reset and Common Styles */
+/* --- Global Reset & Theme --- */
 * {
   margin: 0;
   padding: 0;
-  outline: none;
   box-sizing: border-box;
-  text-decoration: none;
-  color: inherit; /* Removes default blue links globally */
-  list-style-type: none;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-}
-
-a {
-  text-decoration: none !important;
-  color: inherit !important;
 }
 
 body {
-  background-color: rgb(0, 0, 0);
-}
-
-html {
-  /* font-size: 62.5%; */
-  scroll-behavior: smooth;
-}
-
-:root {
-  --navy-color: #002b5b;
-  --red-color: #ea5455;
-  --beige-color: #f9f5eb;
-  --grey-color: #ccc;
-}
-
-.center {
+  background-color: #000000; /* True Black as requested */
+  color: #ffffff;
+  font-family: 'Jost', sans-serif;
+  line-height: 1.6;
   display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Age Verification Overlay --- */
+.age-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(12px); /* Premium glass effect */
+  display: flex;
+  justify-content: center;
   align-items: center;
+  z-index: 10000; /* Above the header */
+  transition: opacity 0.6s ease;
+}
+
+.age-content {
+  text-align: center;
+  background: #0a0a0a;
+  padding: 4rem 3rem;
+  border: 1px solid rgba(105, 104, 104, 0.4);
+  max-width: 550px;
+  width: 90%;
+
+  /* This creates a very deep, smooth rounded shape */
+  border-radius: 80px 15px 80px 15px;
+
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.age-logo {
+  width: 160px;
+  margin-bottom: 2rem;
+}
+
+.age-content h2 {
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: #ffb74d; /* Signature Orange */
+}
+
+.age-buttons {
+  display: flex;
+  gap: 25px;
   justify-content: center;
 }
-/* End of Reset and Common Styles */
 
-/* Header */
+.btn-verify,
+.btn-exit {
+  /* Set a fixed minimum width to ensure they match */
+  min-width: 130px;
+  padding: 10px 0;
+  margin: 10px 0;
+  font-family: 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  text-align: center; /* Ensures text stays centered in the fixed width */
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-verify {
+  background-color: #ffb74d;
+  color: #000;
+}
+
+.btn-verify:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.btn-exit {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-exit:hover {
+  border-color: #ffb74d;
+  color: #ffb74d;
+}
+
+/* --- Fixed Header & Navigation --- */
+header {
+  background-color: rgba(10, 10, 10, 0.95);
+  width: 100%;
+  /* Increased height to prevent logo overlap */
+  height: 160px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgb(36, 36, 36);
+  display: flex;
+  align-items: center;
+  /* Remove any existing padding here so height/container handle the spacing */
+  padding: 0;
+}
+
+.header-container {
+  /* Lowering this percentage pulls the logo and nav closer to the center */
+  width: 75%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Logo Styling --- */
 .logo {
+  /* Set to your preferred 175px */
   width: 175px;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  /* Ensures it stays perfectly centered in the 140px tall bar */
+  margin: 0;
 }
 
-/* End of Header */
-
-/* Footer */
-
-.footer-logo {
-  position: relative;
-  top: 15px;
-  margin-bottom: 20px;
+.logo:hover {
+  transform: scale(1.02);
 }
 
-.llc-name {
-  font-size: medium;
-  position: relative;
-  top: 15px;
-  right: 20px;
+/* --- Navigation Menu --- */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Space between links */
+  margin: 0;
+  padding: 0;
+  padding-top: 30px;
 }
 
-.social-icons {
-  font-size: large;
-  color: azure;
-  display: inline-block;
-  padding: 0px 15px;
-  margin: 0 5px;
+.nav-menu ul li a {
+  text-decoration: none;
+  color: #ffffffe8;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+  letter-spacing: 2px; /* Adjust this value (e.g., 1px, 2px) to your liking */
 }
 
-.social-container {
-  position: relative;
-  bottom: 5px;
+.nav-menu ul li a:hover {
+  color: #ffb74d; /* Signature Orange */
+}
+
+/* --- Content Wrapper --- */
+.content-wrapper {
+  padding-top: 120px; /* Ensures content clears the fixed header */
+  flex: 1;
+}
+
+/* --- Footer Layout --- */
+.site-footer {
+  background-color: #000000;
+  padding: 2rem 0;
   text-align: center;
-  margin-bottom: 33px;
+  border-top: 1px solid rgba(234, 84, 85, 0.2);
 }
 
-@media screen and (max-width: 1400px) {
+.footer-branding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0; /* Gap removed per your tweak */
+  margin-bottom: 10px; /* Socials moved closer */
 }
 
-@media screen and (max-width: 1000px) {
+.footer-branding p {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  font-size: 1.1rem;
 }
 
-@media screen and (max-width: 850px) {
-}
-
-@media screen and (max-width: 750px) {
-}
-
-@media screen and (max-width: 650px) {
-  /* html {
-    font-size: 50%;
-  } */
-}
-
-@media screen and (max-width: 550px) {
-  .modalBtn {
-    width: 45%;
+/* --- Heartbeat Animation --- */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.15);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
-@media screen and (max-width: 400px) {
+.footer-logo-anim {
+  width: 80px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  animation: heartbeat 2s infinite running;
+  margin-right: -5px; /* Negative margin tweak restored */
+}
+
+/* --- Social Icons --- */
+.social-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  padding-left: 40px;
+  margin-top: -10px;
+  gap: 30px;
+}
+
+.social-list i {
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-list i:hover {
+  color: #ffb74d;
+}
+
+/* --- Mobile Toggle --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-menu {
+    display: none; /* Hide standard nav on mobile */
+  }
 }
