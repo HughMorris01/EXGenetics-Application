@@ -174,17 +174,15 @@ header {
 /* --- Footer Layout --- */
 .site-footer {
   background-color: #000000;
-  padding: 2rem 0;
+  padding: 1.5rem 0 1.2rem; /* Added slightly less padding at bottom */
   text-align: center;
-  border-top: 1px solid rgba(234, 84, 85, 0.2);
+  border-top: 1px solid rgba(36, 36, 36);
 }
 
 .footer-branding {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0; /* Gap removed per your tweak */
-  margin-bottom: 10px; /* Socials moved closer */
 }
 
 .footer-branding p {
@@ -217,36 +215,61 @@ header {
 }
 
 .footer-logo-anim {
-  width: 80px;
+  width: 120px;
   height: auto;
   display: inline-block;
   vertical-align: middle;
   animation: heartbeat 2s infinite running;
-  margin-right: -5px; /* Negative margin tweak restored */
 }
 
 .footer-text-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  align-items: center; /* Centers everything nicely */
+  margin: 12px 0 0 -15px;
+  letter-spacing: 2px;
+  gap: 2px; /* Adds breathing room between the 3 sections */
+  text-align: center;
 }
 
-/* Match the copyright text style exactly */
-.footer-text-block p {
+.footer-company-name {
+  color: #ffffff;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
   margin: 0;
-  font-size: 1rem;
-  color: #ffffffff;
 }
 
 .footer-address {
   display: flex;
-  flex-direction: column; /* This creates the two-line break */
-  font-size: 0.75rem; /* Slightly smaller than the copyright line */
-  color: #ffffffbd; /* Same color as copyright */
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  line-height: 1.4;
+  flex-direction: column;
+  color: #a6a6a6;
+  margin-top: -3px;
+  font-size: 0.8rem; /* Slightly smaller than the name */
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+
+.footer-email {
+  text-decoration: none;
+  color: #a6a6a6;
+  transition: color 0.3s ease;
+}
+
+.footer-email:hover {
+  color: #ffb74d; /* Orange on hover */
+  text-decoration: underline;
+}
+
+/* The Ghostly Period */
+.copyright-text {
+  display: block; /* Forces it onto its own line */
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  margin-left: 20px;
+  color: #8c8c8c; /* Your chosen "lighter than #777" gray */
+  letter-spacing: 1px;
+  opacity: 0.5; /* Slight fade to make it feel "ghostly" */
 }
 
 /* --- Social Icons --- */
