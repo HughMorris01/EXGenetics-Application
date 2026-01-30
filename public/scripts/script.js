@@ -2,54 +2,45 @@
    Excelsior Genetics - Core Logic
 ----------------------------------------- */
 
-/* --- Age Verification Logic --- */
-const setupAgeGate = () => {
+document.addEventListener('DOMContentLoaded', () => {
+  /* --- 1. Age Verification Logic --- */
   const overlay = document.getElementById('age-overlay');
   const verifyBtn = document.getElementById('age-verify-yes');
   const exitBtn = document.getElementById('age-verify-no');
 
-  if (!overlay) return;
+  if (overlay) {
+    // Check if verified in LocalStorage
+    if (localStorage.getItem('exg_age_verified') === 'true') {
+      overlay.style.display = 'none';
+    } else {
+      overlay.style.display = 'flex';
+      overlay.style.opacity = '1'; // Ensure visibility on mobile
+    }
 
-  // Check if the "cookie" exists in LocalStorage
-  if (localStorage.getItem('exg_age_verified') === 'true') {
-    overlay.style.display = 'none';
-  } else {
-    overlay.style.display = 'flex'; // Ensure it shows if not verified
+    verifyBtn.addEventListener('click', () => {
+      overlay.style.opacity = '0';
+      localStorage.setItem('exg_age_verified', 'true');
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 600);
+    });
+
+    exitBtn.addEventListener('click', () => {
+      window.location.href = 'https://www.google.com';
+    });
   }
 
-  verifyBtn.addEventListener('click', () => {
-    overlay.style.opacity = '0';
-    // Set the "cookie" so it doesn't pop up again
-    localStorage.setItem('exg_age_verified', 'true');
-    setTimeout(() => {
-      overlay.style.display = 'none';
-    }, 600);
-  });
-
-  exitBtn.addEventListener('click', () => {
-    window.location.href = 'https://www.google.com';
-  });
-};
-
-// Add this to your existing DOMContentLoaded listener
-document.addEventListener('DOMContentLoaded', () => {
-  setupAgeGate();
-  // ... your other existing JS (copyright year, etc)
-});
-
-window.addEventListener('DOMContentLoaded', (event) => {
-  // 1. Mobile Menu Toggle (Pure JS Replacement for Bootstrap)
+  /* --- 2. Mobile Menu Toggle --- */
   const menuToggle = document.querySelector('#mobile-menu');
   const navMenu = document.querySelector('.nav-menu');
 
   if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', function () {
-      // Toggles classes for the hamburger animation and menu visibility
+    menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('is-active');
       navMenu.classList.toggle('active');
     });
 
-    // Close menu when a link is clicked (useful for mobile UX)
+    // Close menu when a link is clicked
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
@@ -59,26 +50,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-  // 2. Automated Copyright Year
+  /* --- 3. Automated Copyright Year --- */
   const yearElement = document.querySelector('#copyrightYear');
   if (yearElement) {
     yearElement.innerHTML = new Date().getFullYear();
   }
 });
 
-/* -----------------------------------------
-   Back to Top Button Logic
------------------------------------------ */
-let mybutton = document.getElementById('backToTop');
-
+/* --- 4. Back to Top Button Logic --- */
 window.onscroll = function () {
   scrollFunction();
 };
 
 function scrollFunction() {
-  // We define it inside here so it's found when the user scrolls
-  let mybutton = document.getElementById('backToTop');
-
+  const mybutton = document.getElementById('backToTop');
   if (mybutton) {
     if (
       document.body.scrollTop > 300 ||
