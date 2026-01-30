@@ -319,3 +319,39 @@ header {
   background-color: #ffffff;
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 768px) {
+  .header-container {
+    width: 90%; /* Pushes elements closer to the edges than the desktop 75% */
+  }
+  /* This shows the menu when the 'active' class is toggled by script.js */
+  .nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 160px; /* Right below the header */
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.98);
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(36, 36, 36);
+    text-align: center;
+  }
+
+  .nav-menu.active ul {
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 0;
+  }
+
+  /* Hamburger Animation: Turns the 3 bars into an 'X' */
+  .menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
