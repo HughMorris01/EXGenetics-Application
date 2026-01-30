@@ -366,6 +366,7 @@ header {
   .logo {
     width: 175px !important; /* Forces logo to stay large */
     height: auto;
+    margin-left: -15px;
   }
 
   /* 2. Content Spacing */
@@ -381,7 +382,7 @@ header {
   /* 3. Hamburger Menu: Larger & Shifted Left */
   .menu-toggle {
     gap: 6px !important; /* More space between the bars */
-    margin-right: 10%; /* Pushes the menu icon 10% away from the right edge */
+    margin-right: 5%; /* Pushes the menu icon 10% away from the right edge */
   }
 
   .bar {
