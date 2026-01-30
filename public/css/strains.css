@@ -1,3 +1,21 @@
+.strains-header h1 {
+  font-family: 'Jost', sans-serif;
+  font-size: 3.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+
+  /* Signature Orange Gradient */
+  background: linear-gradient(180deg, #ffcc80 0%, #ffb74d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* The Visionary Glow */
+  text-shadow: 0 10px 30px rgba(255, 183, 77, 0.2);
+}
+
 /* Strain Card Overhaul */
 .strain-grid {
   display: grid;
@@ -118,13 +136,6 @@
 .strains-header {
   text-align: center;
   padding: 50px 20px;
-}
-
-.strains-header h1 {
-  color: #ffffff;
-  font-family: 'Jost', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 10px;
 }
 
 .disclaimer {

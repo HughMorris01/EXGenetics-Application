@@ -236,7 +236,7 @@ header {
 .footer-text-block p {
   margin: 0;
   font-size: 1rem;
-  color: #ffffffbd;
+  color: #ffffffff;
 }
 
 .footer-address {
@@ -353,5 +353,57 @@ header {
   }
   .menu-toggle.is-active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* --- Global Mobile Refinements (All Pages) --- */
+@media screen and (max-width: 768px) {
+  /* 1. Global Heading Scale-Down */
+  h1,
+  .hero-title,
+  .strains-header h1,
+  .about-hero h1,
+  .contact-header h1 {
+    font-size: 2rem !important; /* Unified size for all page titles */
+    letter-spacing: 3px !important;
+    line-height: 1.2;
+    margin-bottom: 25px !important;
+  }
+
+  h2,
+  .portal-card h2 {
+    font-size: 1.5rem !important;
+  }
+
+  /* 2. Header & Hamburger Alignment */
+  header {
+    height: 100px !important; /* Shorter header on mobile for more screen space */
+  }
+
+  .nav-menu.active {
+    top: 100px !important; /* Adjusts menu dropdown to meet the shorter header */
+  }
+
+  /* Makes the Hamburger icon slightly more compact */
+  .menu-toggle {
+    gap: 4px !important;
+  }
+
+  .bar {
+    width: 22px !important;
+    height: 2px !important;
+  }
+
+  /* 3. Hero & Spacing Adjustments */
+  .hero-justice {
+    padding: 120px 20px 60px !important; /* Less vertical dead space */
+  }
+
+  .content-wrapper {
+    padding-top: 100px !important; /* Matches new header height */
+  }
+
+  .about-hero {
+    padding: 40px 5% !important;
   }
 }

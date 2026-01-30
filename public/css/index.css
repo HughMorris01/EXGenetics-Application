@@ -1,6 +1,6 @@
 /* --- Hero & Justice Layout --- */
 .hero-justice {
-  padding: 140px 20px 80px;
+  padding: 100px 20px 80px;
   text-align: center;
   background:
     linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
@@ -10,19 +10,47 @@
   border-bottom: 1px solid rgb(36, 36, 36);
 }
 
+/* Updated Hero Typography */
 .hero-title {
-  font-size: 3.5rem;
-  color: #ffb74d;
-  text-transform: uppercase;
-  letter-spacing: 6px;
-  margin-bottom: 40px;
+  font-family: 'Jost', sans-serif;
+  font-size: 3.8rem;
   font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+
+  /* Signature Orange Gradient */
+  background: linear-gradient(180deg, #ffcc80 0%, #ffb74d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 10px 30px rgba(255, 183, 77, 0.2);
+}
+
+.hero-title span {
+  display: block;
+  font-size: 0.55em; /* Controlled size (not too large) */
+  color: #ffffff; /* Solid White Fill */
+  -webkit-text-fill-color: #ffffff;
+
+  /* The "Block Letter" Character */
+  font-weight: 900; /* Maximum thickness for that blocky feel */
+  text-transform: none; /* Disables the all-caps from the parent H1 */
+  letter-spacing: 1px; /* Normal spacing to keep it readable */
+
+  /* The Font Border */
+  -webkit-text-stroke: 1px #ffb74d; /* Thin orange outline matching the header */
+  paint-order: stroke fill; /* Ensures the border doesn't eat into the letters */
+
+  margin-top: 10px;
+  font-style: normal; /* Keeps it upright and sturdy */
 }
 
 .hero-copy {
   max-width: 900px;
   margin: 0 auto;
-  text-align: left; /* Aligned left for better readability of longer text */
+  text-align: left;
 }
 
 .hero-copy p {
@@ -100,16 +128,11 @@
 }
 
 .location-context h3 {
-  text-align: center; /* This centers the "Our Future Home" text */
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 40px;
   color: #ffb74d;
-}
-
-.location-context .container {
-  margin: 0 auto;
-  text-align: center;
 }
 
 /* --- Gallery Section --- */
@@ -117,7 +140,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 40px 10%;
+  /* Matches the 850px width of the hero-copy for perfect alignment */
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 40px 0; /* Vertical padding only */
 }
 
 .gallery-img {
@@ -125,16 +151,13 @@
   height: 300px;
   object-fit: cover;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px; /* Optional: adds a tiny polish to match the refined text */
 }
 
+/* Ensure mobile stacking still works */
 @media screen and (max-width: 768px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
   .gallery-grid {
     grid-template-columns: 1fr;
-  }
-  .hero-copy {
-    text-align: center;
+    padding: 40px 20px; /* Adds side padding back on mobile so it doesn't touch edges */
   }
 }
