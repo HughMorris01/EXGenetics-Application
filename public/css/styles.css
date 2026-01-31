@@ -1,4 +1,23 @@
-/* --- Global Reset & Theme --- */
+/* --- 1. THE DESIGN SYSTEM --- */
+:root {
+  /* Brand Colors */
+  --bg-color: #000000; /* True Black */
+  --bg-glass: rgba(10, 10, 10, 0.95); /* For headers/modals */
+  --text-main: #ffffff;
+  --text-muted: #a6a6a6; /* Address text */
+  --text-dark: #8c8c8c; /* Copyright text */
+
+  /* Accents */
+  --signature-orange: #ffb74d; /* "Signature Orange" */
+  --accent-red: #ea5455; /* Errors or Alerts */
+  --border-color: #242424; /* Subtle dividers */
+
+  /* Spacing & Layout */
+  --header-height: 160px;
+  --mobile-header-height: 160px;
+  --container-width: 1100px;
+} /* --- Global Reset & Theme --- */
+
 * {
   margin: 0;
   padding: 0;
@@ -174,62 +193,69 @@ header {
   flex: 1;
 }
 
-/* --- Footer Layout (Final Fix) --- */
+/* --- Footer Layout --- */
 .site-footer {
   background-color: #000000;
   border-top: 1px solid rgba(36, 36, 36);
-  /* Equal spacing logic: Padding Bottom matches Copyright Margin Top */
   padding: 2rem 0 30px;
   text-align: center;
 }
 
+/* THE MASTER CONTAINER */
 .footer-branding-container {
   display: flex;
-  justify-content: center; /* Centers Logo+Text horizontally */
-  align-items: center; /* Centers Text vertically against the Logo */
-  gap: 15px; /* Compact gap between Logo and Text */
-  margin: 0 auto;
+  justify-content: center; /* Centers the whole unit on the page */
+  align-items: center; /* Vertically aligns logo and text */
+
+  /* We use 0 gap here because we are doing manual overlapping below */
+  gap: 0;
+
+  margin: 0 0 0 -20px;
   width: 100%;
 }
 
 .footer-logo-anim {
-  height: 125px; /* Large Logo Size */
+  height: 125px; /* Big Logo */
   width: auto;
   display: block;
   animation: heartbeat 2s infinite running;
+
+  /* Optional: If the logo has dead space on the LEFT too, pull it back */
+  /* margin-right: -10px; */
 }
 
 .footer-text-block {
   display: flex;
   flex-direction: column;
-  text-align: left;
-  justify-content: center; /* Centers the block vertically */
-  gap: 2px; /* Tight text packing */
+  justify-content: space-between;
+  text-align: center;
+  /* THE FIX: Pulls text LEFT, overlapping the logo's empty black space */
+  margin: 10px 0 0 -20px;
 }
 
-/* Footer Typography */
+/* Typography Constraints */
 .footer-company-name {
   color: #ffffff;
   font-family: 'Jost', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
-  margin: 0;
-  line-height: 1.1;
+  margin-bottom: 2px;
+  line-height: 1;
 }
 
 .footer-line {
   color: #a6a6a6;
   font-size: 0.8rem;
-  margin: 0;
-  line-height: 1.1;
-  letter-spacing: 1.5px;
+  line-height: 1;
+  margin-top: 5px;
+  letter-spacing: 1.2px;
 }
 
 .footer-email {
   color: #a6a6a6;
   font-size: 0.8rem;
-  margin: 0;
-  line-height: 1.1;
+  margin-top: 5px;
+  line-height: 1;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -248,8 +274,16 @@ header {
   color: #8c8c8c;
   letter-spacing: 1px;
   opacity: 0.5;
-  margin-top: 30px;
-  margin-bottom: 0;
+}
+
+/* --- Mobile Safety Check --- */
+@media screen and (max-width: 768px) {
+  .footer-branding-container {
+    padding: 0 10px;
+    /* On mobile, you might want to reset this if the logo gets smaller */
+    /* gap: 10px; */
+    /* .footer-text-block { margin-left: 0; } */
+  }
 }
 
 /* --- Heartbeat Animation --- */
@@ -405,10 +439,6 @@ header {
   h2,
   .portal-card h2 {
     font-size: 1.5rem !important;
-  }
-
-  .hero-justice {
-    padding: 60px 20px 60px !important;
   }
 
   .about-hero {

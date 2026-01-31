@@ -1,5 +1,5 @@
 /* --- Hero & Justice Layout --- */
-.hero-justice {
+.hero-index {
   padding: 100px 20px 80px;
   text-align: center;
   background:
@@ -159,5 +159,9 @@
   .gallery-grid {
     grid-template-columns: 1fr;
     padding: 40px 20px; /* Adds side padding back on mobile so it doesn't touch edges */
+  }
+
+  .hero-index {
+    padding: 30px 20px 60px;
   }
 }
