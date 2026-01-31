@@ -535,8 +535,28 @@ header {
 
   /* Stabilize the Zoomer on mobile */
   .footer-zoomer {
-    animation: none; /* Optional: Disable the zoom entirely if it's still buggy */
-    /* OR keep the animation but contained: */
-    /* transform: translateZ(0); */
+    /* REPLACES 'animation: none' */
+    /* Uses the new 2D animation instead of the 3D 'physical-zoom' */
+    animation: mobile-ghost-fade 10s infinite ease-in-out;
+
+    /* Forces it to stay flat so the header doesn't jitter */
+    transform: translateZ(0);
+
+    /* Ensures it sits behind the text if needed, or just ghosts over it */
+    pointer-events: none;
+  }
+
+  /* --- Mobile-Safe Ghost Animation --- */
+  /* Simulates the 3D depth without the heavy math that shakes the phone */
+  @keyframes mobile-ghost-fade {
+    0%,
+    100% {
+      opacity: 0.1; /* Ghost: Almost invisible */
+      transform: scale(0.8); /* Far away */
+    }
+    50% {
+      opacity: 0.5; /* Eclipse: Visible but see-through */
+      transform: scale(1.1); /* Close up */
+    }
   }
 }
