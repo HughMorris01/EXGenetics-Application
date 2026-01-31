@@ -330,7 +330,7 @@ header {
   .logo {
     width: 175px !important;
     height: auto;
-    margin: 0; /* Clean centering */
+    margin: 0;
   }
 
   /* 2. Content Spacing */
@@ -342,10 +342,15 @@ header {
     width: 90%;
   }
 
-  /* 3. Mobile Navigation Menu */
+  /* 3. Mobile Navigation Menu - THE FIX */
+  .nav-menu {
+    display: none; /* Hides the desktop links by default on mobile */
+  }
+
+  /* When JS adds .active, we show it as a column */
   .nav-menu.active {
     top: 160px !important;
-    display: flex;
+    display: flex !important; /* Forces it to show when active */
     flex-direction: column;
     position: absolute;
     left: 0;
@@ -364,7 +369,7 @@ header {
 
   /* 4. Hamburger Icon Styling */
   .menu-toggle {
-    display: flex;
+    display: flex; /* Shows the hamburger */
     gap: 6px !important;
     margin-right: 5%;
   }
