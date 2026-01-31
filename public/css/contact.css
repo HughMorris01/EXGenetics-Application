@@ -71,6 +71,10 @@
   font-family: var(--font-main);
   font-size: var(--fs-body);
   transition: var(--transition-smooth);
+  /* ADD THESE LINES - Forces it to stay inside the card */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't add to width */
 }
 
 .portal-form input:focus,
