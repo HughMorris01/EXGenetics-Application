@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Excelsior Genetics - Visionary Cannabis Cultivation in the North Country" />
+    <meta name="author" content="Excelsior Genetics" />
+    
+    <title><%= title %></title>
+    
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
+    
+    <link href="/css/styles.css" rel="stylesheet" />
+    
+    <% if (currentPath === '/') { %>
+      <link href="/css/index.css" rel="stylesheet" />
+    <% } else if (currentPath === '/about') { %>
+      <link href="/css/about.css" rel="stylesheet" />
+    <% } else if (currentPath === '/strains') { %>
+      <link href="/css/strains.css" rel="stylesheet" />
+    <% } else if (currentPath === '/contact') { %>
+      <link href="/css/contact.css" rel="stylesheet" />
+    <% } %>
+  </head>
+  <body>

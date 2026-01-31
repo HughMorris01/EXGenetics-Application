@@ -1,6 +1,12 @@
+/* --- Strains Page Header --- */
+.strains-header {
+  text-align: center;
+  padding: 50px 20px;
+}
+
 .strains-header h1 {
-  font-family: 'Jost', sans-serif;
-  font-size: 3.8rem;
+  font-family: var(--font-headers);
+  font-size: var(--fs-hero); /* Automatically scales via styles.css */
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.1;
@@ -8,15 +14,22 @@
   margin-bottom: 10px;
 
   /* Signature Orange Gradient */
-  background: linear-gradient(180deg, #ffcc80 0%, #ffb74d 100%);
+  background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* The Visionary Glow */
-  text-shadow: 0 10px 30px rgba(255, 183, 77, 0.2);
+  /* Standardized Brand Glow */
+  text-shadow: var(--glow-orange);
 }
 
-/* Strain Card Overhaul */
+.disclaimer {
+  color: var(--accent-red);
+  font-family: var(--font-main);
+  font-size: var(--fs-small);
+  margin-top: 10px;
+}
+
+/* --- Strain Card Overhaul --- */
 .strain-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -29,40 +42,37 @@
 .strain-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(234, 84, 85, 0.2);
-  border-radius: 12px;
+  border-radius: var(--radius-large);
   overflow: hidden;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: var(--transition-smooth);
 }
 
 .strain-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  border-color: #ea5455;
+  box-shadow: var(--shadow-dark);
+  border-color: var(--accent-red);
 }
 
-/* 1. Image Container - Forces Uniform Shape */
+/* 1. Image Container */
 .strain-image-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9; /* Ensures every card is the same height/width ratio */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-black);
+  border-bottom: var(--border-subtle);
 }
 
-/* 2. Base Image State - Zoom In Effect */
+/* 2. Base Image State */
 .strain-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1); /* Starts at normal size */
-  transition: transform 0.7s cubic-bezier(0.2, 0, 0.2, 1); /* Buttery smooth easing */
+  transform: scale(1);
+  transition: transform 0.7s cubic-bezier(0.2, 0, 0.2, 1);
   cursor: pointer;
 }
 
-/* Hover State - Scale Up for a Zoom-In feel */
 .strain-card:hover .strain-image {
   transform: scale(1.15);
 }
@@ -74,22 +84,24 @@
   right: 15px;
   z-index: 10;
   padding: 5px 12px;
-  border-radius: 4px;
+  border-radius: var(--radius-subtle);
+  font-family: var(--font-headers);
   font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-  pointer-events: none; /* Allows clicks to go through to the image */
+  pointer-events: none;
 }
 
 .badge-reg {
   background: rgba(85, 85, 85, 0.9);
-  color: #fff;
+  color: var(--text-main);
 }
+
 .badge-fem {
   background: rgba(234, 84, 85, 0.95);
-  color: #fff;
+  color: var(--text-main);
 }
 
 /* 4. Text & Info Styles */
@@ -98,16 +110,17 @@
 }
 
 .strain-name {
-  font-family: 'Jost', sans-serif;
-  color: #ffb74d;
+  font-family: var(--font-headers);
+  color: var(--signature-orange);
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
 }
 
 .strain-lineage {
   display: block;
+  font-family: var(--font-main);
   font-size: 0.85rem;
-  color: #ea5455; /* Northern Legacy Red */
+  color: var(--accent-red);
   font-style: italic;
   margin-bottom: 12px;
   font-weight: 500;
@@ -116,10 +129,11 @@
 
 .strain-tag {
   display: inline-block;
-  background: #ea5455;
-  color: #ffffff;
+  background: var(--accent-red);
+  color: var(--text-main);
   padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  border-radius: var(--radius-subtle);
+  font-family: var(--font-headers);
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.75rem;
@@ -130,21 +144,11 @@
 .strain-info p {
   color: #cccccc;
   line-height: 1.6;
+  font-family: var(--font-main);
+  font-size: var(--fs-body);
 }
 
-/* Header & Utility */
-.strains-header {
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.disclaimer {
-  color: #ea5455;
-  font-size: 0.9rem;
-  margin-top: 10px;
-}
-
-/* Responsive adjustment for phones */
+/* Responsive adjustment */
 @media screen and (max-width: 768px) {
   .strain-grid {
     grid-template-columns: 1fr;

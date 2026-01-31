@@ -1,0 +1,76 @@
+<%- include('partials/head') %> <%- include('partials/header') %>
+<!-- Main Content-->
+<main class="content-wrapper">
+  <section class="contact-header">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p class="contact-intro">
+        Whether you're a neighbor with a question or a professional looking to
+        collaborate, we're ready to connect.
+      </p>
+    </div>
+  </section>
+
+  <section class="partnership-portal">
+    <div class="container">
+      <div class="portal-card">
+        <h2>Partnership Portal</h2>
+        <p>
+          Excelsior Genetics is actively building a network of elite partners.
+          Licensed dispensaries, local vendors, and community advocates are
+          encouraged to reach out.
+        </p>
+
+        <form id="contact-form" class="portal-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>I am a...</label>
+              <select name="type" required>
+                <option value="" disabled selected>
+                  Select Inquiry Type...
+                </option>
+                <option value="dispensary">
+                  Licensed Dispensary (Wholesale)
+                </option>
+                <option value="vendor">Local Vendor / Partner</option>
+                <option value="community">Community Member</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Full Name" required />
+            <input
+              type="text"
+              name="business"
+              placeholder="Business Name (Optional)"
+            />
+          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="How can we work together?"
+            required
+          ></textarea>
+          <div style="position: absolute; left: -5000px" aria-hidden="true">
+            <input
+              type="text"
+              id="honeypot"
+              name="honeypot"
+              tabindex="-1"
+              value=""
+            />
+          </div>
+          <button type="submit" class="btn-portal">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- End of Main Content-->
+<%- include('partials/footer') %>

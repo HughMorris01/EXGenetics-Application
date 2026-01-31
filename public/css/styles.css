@@ -1,23 +1,44 @@
 /* --- 1. THE DESIGN SYSTEM --- */
 :root {
+  /* Brand Fonts */
+  --font-main: 'Jost', sans-serif;
+  --font-headers: 'Montserrat', sans-serif;
+  --font-nav: 'Montserrat', sans-serif;
+  --font-accent: 'Playfair Display', serif;
+
+  /* Font Sizes (Desktop) */
+  --fs-hero: 3.8rem;
+  --fs-h2: 2rem;
+  --fs-body: 1rem;
+  --fs-nav: 1rem;
+  --fs-small: 0.8rem;
+
   /* Brand Colors */
-  --bg-color: #000000; /* True Black */
-  --bg-glass: rgba(10, 10, 10, 0.95); /* For headers/modals */
+  --signature-orange: #f8c25d;
+  --bg-black: #000000;
+  --bg-glass: rgba(10, 10, 10, 0.95);
   --text-main: #ffffff;
-  --text-muted: #a6a6a6; /* Address text */
-  --text-dark: #8c8c8c; /* Copyright text */
+  --text-muted: #a6a6a6;
+  --text-ghost: #8c8c8c;
+  --accent-red: #ea5455;
 
-  /* Accents */
-  --signature-orange: #ffb74d; /* "Signature Orange" */
-  --accent-red: #ea5455; /* Errors or Alerts */
-  --border-color: #242424; /* Subtle dividers */
+  /* UI Accents & Polish */
+  --glow-orange: 0 10px 30px rgba(248, 194, 93, 0.2);
+  --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.3);
+  --radius-subtle: 4px; /* For images and buttons */
+  --radius-large: 15px; /* For cards and modal corners */
 
-  /* Spacing & Layout */
+  /* Layout & Spacing */
+  --border-subtle: 1px solid rgb(36, 36, 36);
+  --transition-smooth: all 0.3s ease;
   --header-height: 160px;
   --mobile-header-height: 160px;
-  --container-width: 1100px;
-} /* --- Global Reset & Theme --- */
+  --hero-padding: 100px 20px 80px; /* Standard Desktop Hero Spacing */
+  --container-width: 75%;
+  --max-width: 1100px;
+}
 
+/* --- Global Reset & Theme --- */
 * {
   margin: 0;
   padding: 0;
@@ -25,9 +46,10 @@
 }
 
 body {
-  background-color: #000000; /* True Black as requested */
-  color: #ffffff;
-  font-family: 'Jost', sans-serif;
+  background-color: var(--bg-black);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: var(--fs-body);
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -42,11 +64,11 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(12px); /* Premium glass effect */
+  backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000; /* Above the header */
+  z-index: 10000;
   transition: opacity 0.6s ease;
 }
 
@@ -57,7 +79,7 @@ body {
   border: 1px solid rgba(105, 104, 104, 0.4);
   max-width: 550px;
   width: 90%;
-  border-radius: 80px 15px 80px 15px; /* Deep rounded shape */
+  border-radius: 80px var(--radius-large) 80px var(--radius-large);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
 
@@ -67,11 +89,12 @@ body {
 }
 
 .age-content h2 {
+  font-family: var(--font-headers);
   font-size: 1.8rem;
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
-  color: #ffb74d; /* Signature Orange */
+  color: var(--signature-orange);
 }
 
 .age-buttons {
@@ -85,54 +108,56 @@ body {
   min-width: 130px;
   padding: 10px 0;
   margin: 10px 0;
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-headers);
   text-transform: uppercase;
   letter-spacing: 2.5px;
   cursor: pointer;
   border: none;
   font-weight: 600;
   text-align: center;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: var(--transition-smooth);
 }
 
 .btn-verify {
-  background-color: #ffb74d;
-  color: #000;
+  background-color: var(--signature-orange);
+  color: var(--bg-black);
+  border-radius: var(--radius-subtle);
 }
 
 .btn-verify:hover {
-  background-color: #ffffff;
+  background-color: var(--text-main);
   transform: scale(1.05);
 }
 
 .btn-exit {
   background: transparent;
-  color: #ffffff;
+  color: var(--text-main);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-subtle);
 }
 
 .btn-exit:hover {
-  border-color: #ffb74d;
-  color: #ffb74d;
+  border-color: var(--signature-orange);
+  color: var(--signature-orange);
 }
 
 /* --- Fixed Header & Navigation --- */
 header {
-  background-color: rgba(10, 10, 10, 0.95);
+  background-color: var(--bg-glass);
   width: 100%;
-  height: 160px;
+  height: var(--header-height);
   position: fixed;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgb(36, 36, 36);
+  border-bottom: var(--border-subtle);
   display: flex;
   align-items: center;
   padding: 0;
 }
 
 .header-container {
-  width: 75%;
-  max-width: 1100px;
+  width: var(--container-width);
+  max-width: var(--max-width);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -143,7 +168,7 @@ header {
   width: 175px;
   height: auto;
   display: block;
-  transition: transform 0.3s ease;
+  transition: var(--transition-smooth);
   margin: 0;
 }
 
@@ -162,18 +187,20 @@ header {
 
 .nav-menu ul li a {
   text-decoration: none;
-  color: #ffffffe8;
-  font-weight: 500;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
-  letter-spacing: 2px;
+  color: var(--text-main);
+  font-family: var(--font-nav);
+  font-weight: 600;
+  font-size: var(--fs-nav);
+  transition: var(--transition-smooth);
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 .nav-menu ul li a:hover {
-  color: #ffb74d;
+  color: var(--signature-orange);
 }
 
-/* --- Mobile Menu Toggle (Hamburger) --- */
+/* --- Mobile Menu Toggle --- */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -184,7 +211,7 @@ header {
 .bar {
   width: 25px;
   height: 3px;
-  background-color: #ffffff;
+  background-color: var(--text-main);
 }
 
 /* --- Content Wrapper --- */
@@ -193,100 +220,111 @@ header {
   flex: 1;
 }
 
-/* --- Footer Layout --- */
+/* --- Footer Layout (The "Ghost Eclipse" Logic) --- */
 .site-footer {
-  background-color: #000000;
-  border-top: 1px solid rgba(36, 36, 36);
-  padding: 2rem 0 30px;
+  background-color: var(--bg-black);
+  border-top: var(--border-subtle);
+  padding-bottom: 30px;
   text-align: center;
+  position: relative;
+  overflow: visible; /* Required for the 3D pop */
 }
 
-/* THE MASTER CONTAINER */
 .footer-branding-container {
+  position: relative;
   display: flex;
-  justify-content: center; /* Centers the whole unit on the page */
-  align-items: center; /* Vertically aligns logo and text */
-
-  /* We use 0 gap here because we are doing manual overlapping below */
-  gap: 0;
-
-  margin: 0 0 0 -20px;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
   width: 100%;
+  /* Enables true 3D depth so objects can pass through each other */
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
+/* 1. THE ZOOMER (The Vehicle) */
+/* Moves the logo physically back and forth in 3D space */
+.footer-zoomer {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10; /* Ensures it sits above the text layer */
+  animation: physical-zoom 10s infinite ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* 2. THE LOGO (The Passenger) */
+/* Keeps your original 2s heartbeat rhythm perfectly intact */
 .footer-logo-anim {
-  height: 125px; /* Big Logo */
+  height: 150px;
   width: auto;
-  display: block;
+  /* opacity: 0.15;  <-- REMOVED! This was causing the invisibility */
   animation: heartbeat 2s infinite running;
-
-  /* Optional: If the logo has dead space on the LEFT too, pull it back */
-  /* margin-right: -10px; */
 }
 
+/* 3. THE TEXT (The Anchor) */
+/* anchored at Z=0 so the logo can fly past it */
 .footer-text-block {
+  position: relative;
+  transform: translateZ(0);
+  z-index: 2;
+  pointer-events: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  /* THE FIX: Pulls text LEFT, overlapping the logo's empty black space */
-  margin: 10px 0 0 -20px;
 }
 
-/* Typography Constraints */
 .footer-company-name {
-  color: #ffffff;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.85rem;
+  color: var(--text-main);
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  font-style: italic;
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   line-height: 1;
+  text-shadow: 0 0 10px var(--bg-black); /* Text shadow helps readability during eclipse */
 }
 
 .footer-line {
-  color: #a6a6a6;
-  font-size: 0.8rem;
-  line-height: 1;
-  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.4;
   letter-spacing: 1.2px;
 }
 
 .footer-email {
-  color: #a6a6a6;
-  font-size: 0.8rem;
-  margin-top: 5px;
-  line-height: 1;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: var(--transition-smooth);
 }
 
 .footer-email:hover {
-  color: #ffb74d;
-  text-decoration: underline;
+  color: var(--signature-orange);
 }
 
-/* Copyright Centering */
 .copyright-text {
   display: block;
   width: 100%;
+  margin-top: -30px;
   text-align: center;
   font-size: 0.75rem;
-  color: #8c8c8c;
+  color: var(--text-ghost);
   letter-spacing: 1px;
   opacity: 0.5;
 }
 
-/* --- Mobile Safety Check --- */
-@media screen and (max-width: 768px) {
-  .footer-branding-container {
-    padding: 0 10px;
-    /* On mobile, you might want to reset this if the logo gets smaller */
-    /* gap: 10px; */
-    /* .footer-text-block { margin-left: 0; } */
-  }
-}
+/* --- Footer Animations --- */
 
-/* --- Heartbeat Animation --- */
+/* The Pulse (Your Original Rhythm) */
 @keyframes heartbeat {
   0% {
     transform: scale(1);
@@ -308,6 +346,18 @@ header {
   }
 }
 
+@keyframes physical-zoom {
+  0%,
+  100% {
+    transform: translateZ(-130px);
+    opacity: 0.15; /* Base Ghost Visibility */
+  }
+  50% {
+    transform: translateZ(200px);
+    opacity: 0.8; /* Eclipse Visibility (Much clearer) */
+  }
+}
+
 /* --- Social Icons --- */
 .social-list {
   display: flex;
@@ -318,80 +368,81 @@ header {
 }
 
 .social-list i {
-  color: #ffffff;
+  color: var(--text-main);
   font-size: 1.5rem;
-  transition: color 0.3s ease;
+  transition: var(--transition-smooth);
 }
 
 .social-list i:hover {
-  color: #ffb74d;
+  color: var(--signature-orange);
 }
 
 /* --- Back to Top Button --- */
 #backToTop {
-  display: none; /* Hidden by default; shown by script.js on scroll */
+  display: none;
   position: fixed;
   bottom: 30px;
   right: 30px;
   z-index: 999;
   border: none;
   outline: none;
-  background-color: #ffb74d;
-  color: #000000;
+  background-color: var(--signature-orange);
+  color: var(--bg-black);
   cursor: pointer;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   font-size: 1.2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
+  transition: var(--transition-smooth);
   align-items: center;
   justify-content: center;
 }
 
 #backToTop:hover {
-  background-color: #ffffff;
+  background-color: var(--text-main);
   transform: scale(1.1);
 }
 
 /* --- Global Mobile Refinements --- */
 @media screen and (max-width: 768px) {
-  /* 1. Header & Logo: Restored to full size */
+  :root {
+    --fs-hero: 2.2rem;
+    --fs-h2: 1.5rem;
+    --hero-padding: 30px 20px 60px;
+  }
+
   header {
-    height: 160px !important;
+    height: var(--mobile-header-height) !important;
   }
 
   .logo {
     width: 175px !important;
-    height: auto;
     margin: 0;
   }
 
-  /* 2. Content Spacing */
   .content-wrapper {
-    padding-top: 160px !important;
+    padding-top: var(--mobile-header-height) !important;
   }
 
   .header-container {
     width: 90%;
   }
 
-  /* 3. Mobile Navigation Menu - THE FIX */
   .nav-menu {
-    display: none; /* Hides the desktop links by default on mobile */
+    display: none;
   }
 
-  /* When JS adds .active, we show it as a column */
   .nav-menu.active {
-    top: 160px !important;
-    display: flex !important; /* Forces it to show when active */
+    top: var(--mobile-header-height) !important;
+    display: flex !important;
     flex-direction: column;
     position: absolute;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 10, 10, 0.98);
+    background-color: var(--bg-glass);
     padding: 20px 0;
-    border-bottom: 1px solid rgb(36, 36, 36);
+    border-bottom: var(--border-subtle);
     text-align: center;
   }
 
@@ -401,9 +452,8 @@ header {
     padding-top: 0;
   }
 
-  /* 4. Hamburger Icon Styling */
   .menu-toggle {
-    display: flex; /* Shows the hamburger */
+    display: flex;
     gap: 6px !important;
     margin-right: 5%;
   }
@@ -413,7 +463,6 @@ header {
     height: 3px !important;
   }
 
-  /* Hamburger Animation */
   .menu-toggle.is-active .bar:nth-child(2) {
     opacity: 0;
   }
@@ -424,13 +473,13 @@ header {
     transform: translateY(-8px) rotate(-45deg);
   }
 
-  /* 5. Typography Adjustments */
+  /* Universal Font Reset using the Variables */
   h1,
   .hero-title,
   .strains-header h1,
   .about-hero h1,
   .contact-header h1 {
-    font-size: 2rem !important;
+    font-size: var(--fs-hero) !important;
     letter-spacing: 3px !important;
     line-height: 1.2;
     margin-bottom: 25px !important;
@@ -438,14 +487,13 @@ header {
 
   h2,
   .portal-card h2 {
-    font-size: 1.5rem !important;
+    font-size: var(--fs-h2) !important;
   }
 
   .about-hero {
     padding: 40px 5% !important;
   }
 
-  /* 6. Footer Mobile Safety */
   .footer-branding-container {
     padding: 0 10px;
   }

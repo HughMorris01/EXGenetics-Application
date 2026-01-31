@@ -1,7 +1,7 @@
 /* --- About Page Specific Layout --- */
 .about-hero {
-  /* Match the 40px used on the strains page header */
-  padding: 50px 10% 40px;
+  /* Match the breathing room of the other pages using the hero-padding variable */
+  padding: var(--hero-padding);
   min-height: auto;
   display: flex;
   flex-direction: column;
@@ -9,58 +9,60 @@
 }
 
 .about-hero h1 {
-  font-family: 'Jost', sans-serif;
-  font-size: 3.8rem;
+  font-family: var(--font-headers);
+  /* The Magic: This variable automatically shrinks on mobile via styles.css */
+  font-size: var(--fs-hero);
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: 2px;
   margin-bottom: 50px;
   text-align: center;
-  background: linear-gradient(180deg, #ffcc80 0%, #ffb74d 100%);
+
+  /* Signature Orange Gradient */
+  background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 10px 30px rgba(255, 183, 77, 0.2);
+
+  /* Standardized Glow */
+  text-shadow: var(--glow-orange);
 }
 
 .about-text {
-  font-size: 1.2rem;
+  font-family: var(--font-main);
+  font-size: 1.2rem; /* Editorial size for better reading flow */
   line-height: 1.9;
   margin-bottom: 40px;
   color: #f0f0f0;
-  max-width: 850px; /* Slightly tighter for a more editorial feel */
-  text-align: justify; /* Optional: gives it a clean, newspaper-style edge */
+  max-width: 850px;
+  text-align: justify;
 }
 
 /* --- Emphatic Spans --- */
 .highlight-orange {
-  color: #ffb74d; /* Signature Orange */
+  color: var(--signature-orange);
   font-weight: 700;
 }
 
 .highlight-white {
-  color: #ffffff;
+  color: var(--text-main);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .highlight-red {
-  color: #ea5455; /* The "Outrage" Red */
+  color: var(--accent-red);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-/* Mobile Adjustments */
+/* --- Mobile Adjustments --- */
 @media screen and (max-width: 768px) {
-  .about-hero {
-    padding: 120px 5% 60px;
-  }
-
-  .about-hero h1 {
-    font-size: 2.2rem;
-  }
+  /* Note: font-size for h1 and padding are now handled automatically 
+     by the variables redefined in styles.css. We only need page-specific 
+     tweaks here. */
 
   .about-text {
     font-size: 1.1rem;

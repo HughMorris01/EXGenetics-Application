@@ -1,19 +1,20 @@
-/* --- Hero & Justice Layout --- */
+/* --- Hero & Index Layout --- */
 .hero-index {
-  padding: 100px 20px 80px;
+  /* The Magic: This padding automatically shrinks on mobile via styles.css */
+  padding: var(--hero-padding);
   text-align: center;
   background:
     linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
     url('/assets/storefront.jpg');
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid rgb(36, 36, 36);
+  border-bottom: var(--border-subtle);
 }
 
 /* Updated Hero Typography */
 .hero-title {
-  font-family: 'Jost', sans-serif;
-  font-size: 3.8rem;
+  font-family: var(--font-headers);
+  font-size: var(--fs-hero);
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.1;
@@ -21,30 +22,30 @@
   margin-bottom: 40px;
 
   /* Signature Orange Gradient */
-  background: linear-gradient(180deg, #ffcc80 0%, #ffb74d 100%);
+  background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  text-shadow: 0 10px 30px rgba(255, 183, 77, 0.2);
+  /* Standardized Glow */
+  text-shadow: var(--glow-orange);
 }
 
 .hero-title span {
   display: block;
-  font-size: 0.55em; /* Controlled size (not too large) */
-  color: #ffffff; /* Solid White Fill */
-  -webkit-text-fill-color: #ffffff;
+  font-size: 0.55em;
+  color: var(--text-main);
+  -webkit-text-fill-color: var(--text-main);
 
-  /* The "Block Letter" Character */
-  font-weight: 900; /* Maximum thickness for that blocky feel */
-  text-transform: none; /* Disables the all-caps from the parent H1 */
-  letter-spacing: 1px; /* Normal spacing to keep it readable */
+  font-weight: 900;
+  text-transform: none;
+  letter-spacing: 1px;
 
   /* The Font Border */
-  -webkit-text-stroke: 1px #ffb74d; /* Thin orange outline matching the header */
-  paint-order: stroke fill; /* Ensures the border doesn't eat into the letters */
+  -webkit-text-stroke: 1px var(--signature-orange);
+  paint-order: stroke fill;
 
   margin-top: 10px;
-  font-style: normal; /* Keeps it upright and sturdy */
+  font-style: normal;
 }
 
 .hero-copy {
@@ -58,28 +59,32 @@
   font-size: 1.15rem;
   line-height: 1.8;
   color: #f0f0f0;
+  font-family: var(--font-main);
 }
 
 .hero-copy strong {
-  color: #ffb74d;
+  color: var(--signature-orange);
 }
 
 .hero-outrage {
-  border-left: 3px solid #ea5455;
+  border-left: 3px solid var(--accent-red);
   padding-left: 20px;
   font-style: italic;
-  color: #ffffff !important;
+  color: var(--text-main) !important;
 }
 
 /* --- Call to Action --- */
 .action-container {
   margin: 50px 0;
   padding: 30px;
-  background: rgba(255, 183, 77, 0.05);
-  border: 1px solid rgba(255, 183, 77, 0.2);
+  /* Matches #f8c25d opacity */
+  background: rgba(248, 194, 93, 0.05);
+  border: 1px solid rgba(248, 194, 93, 0.2);
+  border-radius: var(--radius-subtle);
 }
 
 .cta-text {
+  font-family: var(--font-main);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -89,17 +94,20 @@
 .btn-petition {
   display: inline-block;
   padding: 15px 40px;
-  background-color: #ffb74d;
-  color: #000;
+  background-color: var(--signature-orange);
+  color: var(--bg-black);
   text-decoration: none;
+  border-radius: var(--radius-subtle);
+
+  font-family: var(--font-headers);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 3px;
-  transition: all 0.3s ease;
+  transition: var(--transition-smooth);
 }
 
 .btn-petition:hover {
-  background-color: #ffffff;
+  background-color: var(--text-main);
   transform: scale(1.05);
 }
 
@@ -113,26 +121,29 @@
 
 .status-badge {
   padding: 10px 20px;
-  border: 1px solid #ea5455;
-  color: #ea5455;
+  border: 1px solid var(--accent-red);
+  color: var(--accent-red);
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: var(--fs-small);
   letter-spacing: 1.5px;
+  font-family: var(--font-main);
+  border-radius: var(--radius-subtle);
 }
 
 /* --- Location Context Section --- */
 .location-context {
   padding: 60px 0;
-  background: #000;
+  background: var(--bg-black);
 }
 
 .location-context h3 {
+  font-family: var(--font-headers);
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 40px;
-  color: #ffb74d;
+  color: var(--signature-orange);
 }
 
 /* --- Gallery Section --- */
@@ -140,10 +151,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  /* Matches the 850px width of the hero-copy for perfect alignment */
   max-width: 850px;
   margin: 0 auto;
-  padding: 40px 0; /* Vertical padding only */
+  padding: 40px 0;
 }
 
 .gallery-img {
@@ -151,17 +161,15 @@
   height: 300px;
   object-fit: cover;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px; /* Optional: adds a tiny polish to match the refined text */
+  border-radius: var(--radius-subtle);
 }
 
-/* Ensure mobile stacking still works */
+/* --- Mobile Logic --- */
 @media screen and (max-width: 768px) {
+  /* Variable scaling (Hero font/padding) is handled by styles.css */
+
   .gallery-grid {
     grid-template-columns: 1fr;
-    padding: 40px 20px; /* Adds side padding back on mobile so it doesn't touch edges */
-  }
-
-  .hero-index {
-    padding: 30px 20px 60px;
+    padding: 40px 20px;
   }
 }

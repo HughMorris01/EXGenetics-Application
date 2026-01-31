@@ -1,0 +1,63 @@
+<div id="age-overlay" class="age-overlay">
+  <div class="age-content">
+    <img
+      src="/assets/logo_clear_bg.png"
+      alt="Excelsior Genetics"
+      class="age-logo"
+    />
+    <h2>Respect the Plant</h2>
+    <p>You must be 21 years of age or older to enter this site.</p>
+    <div class="age-buttons">
+      <button id="age-verify-yes" class="btn-verify">I am 21+</button>
+      <button id="age-verify-no" class="btn-exit">Exit</button>
+    </div>
+    <p class="age-disclaimer">
+      By clicking enter, you agree to our terms of service and acknowledge you
+      are of legal age.
+    </p>
+  </div>
+</div>
+
+<header>
+  <div class="header-container">
+    <a href="/" class="header-logo-link">
+      <img
+        src="/assets/logo_clear_bg.png"
+        alt="Excelsior Genetics Logo"
+        class="logo"
+      />
+    </a>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <nav class="nav-menu">
+      <ul>
+        <li>
+          <a
+            href="/about"
+            class="<%= currentPath === '/about' ? 'active-link' : '' %>"
+            >Our Story</a
+          >
+        </li>
+        <li>
+          <a
+            href="/strains"
+            class="<%= currentPath === '/strains' ? 'active-link' : '' %>"
+            >Featured Strains</a
+          >
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class="<%= currentPath === '/contact' ? 'active-link' : '' %>"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
