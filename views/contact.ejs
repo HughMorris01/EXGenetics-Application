@@ -21,7 +21,12 @@
           encouraged to reach out.
         </p>
 
-        <form id="contact-form" class="portal-form">
+        <form
+          id="contact-form"
+          class="portal-form"
+          method="POST"
+          action="/contact"
+        >
           <div class="form-row">
             <div class="form-group">
               <label>I am a...</label>
@@ -45,12 +50,19 @@
               placeholder="Business Name (Optional)"
             />
           </div>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
+          <div class="form-row">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number (Optional)"
+            />
+          </div>
           <textarea
             name="message"
             rows="5"

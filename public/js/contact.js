@@ -1,4 +1,13 @@
 const contactForm = document.querySelector('.portal-form');
+const successModal = document.getElementById('success-modal');
+const closeModalBtn = document.getElementById('close-modal');
+
+// Close Modal Logic
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', () => {
+    successModal.style.display = 'none';
+  });
+}
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -6,7 +15,8 @@ contactForm.addEventListener('submit', (e) => {
   const formData = {
     name: contactForm.querySelector('input[name="name"]').value,
     email: contactForm.querySelector('input[name="email"]').value,
-    partnerType: contactForm.querySelector('select[name="type"]').value, // This line is the fix
+    phone: contactForm.querySelector('input[name="phone"]').value, // <--- ADD THIS
+    partnerType: contactForm.querySelector('select[name="type"]').value,
     business: contactForm.querySelector('input[name="business"]').value,
     message: contactForm.querySelector('textarea[name="message"]').value,
     honeypot: document.getElementById('honeypot').value,
@@ -20,7 +30,8 @@ contactForm.addEventListener('submit', (e) => {
     .then((res) => res.text())
     .then((data) => {
       if (data === 'success') {
-        alert('Thank you! Your inquiry has been sent to our team.');
+        // SHOW CUSTOM MODAL instead of alert
+        successModal.style.display = 'flex';
         contactForm.reset();
       } else {
         alert('There was an issue sending your message. Please try again.');
