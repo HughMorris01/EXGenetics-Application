@@ -1,6 +1,6 @@
 /**
  * Excelsior Genetics - Master Logic
- * Refactored for modularity, performance, and configuration.
+ * Refactored for modularity, performance, and stability.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -74,15 +74,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearSpan = document.querySelector('#copyrightYear');
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // B. Back to Top Logic
+    // B. Back to Top Logic (Jitter-Free Fade Version)
     const topBtn = document.getElementById('backToTop');
-    if (topBtn) {
+    const footer = document.querySelector('.site-footer');
+
+    if (topBtn && footer) {
       // 1. Scroll Detection
       window.addEventListener('scroll', () => {
         const scrolled =
           document.documentElement.scrollTop || document.body.scrollTop;
-        topBtn.style.display =
-          scrolled > CONFIG.scrollThreshold ? 'flex' : 'none';
+
+        // Basic Visibility Check
+        if (scrolled > CONFIG.scrollThreshold) {
+          // COLLISION DETECTION:
+          // Check distance to the bottom of the page
+          // (window.innerHeight + window.scrollY) = Current Viewport Bottom
+          const distToBottom =
+            document.body.offsetHeight - (window.innerHeight + window.scrollY);
+          const footerHeight = footer.offsetHeight;
+
+          // If we are within the footer zone (plus 50px buffer), fade out
+          if (distToBottom < footerHeight + 50) {
+            topBtn.style.opacity = '0';
+            topBtn.style.pointerEvents = 'none'; // Prevent clicking while invisible
+          } else {
+            topBtn.style.opacity = '1';
+            topBtn.style.pointerEvents = 'auto';
+            topBtn.style.display = 'flex'; // Ensure it's visible for the fade in
+          }
+        } else {
+          // Hide when at the top of the page
+          topBtn.style.opacity = '0';
+          topBtn.style.pointerEvents = 'none';
+        }
       });
 
       // 2. Click Action (Smooth Scroll)
