@@ -88,8 +88,26 @@ app.post('/contact', (req, res) => {
   });
 
   const selectedJoke = getRandomJoke();
+  const type = req.body.partnerType;
 
-  // 3. SHARED: Bot Signature
+  // 3. DEFINE CUSTOM MESSAGES
+  const responseMap = {
+    dispensary: `We are excited about the potential of bringing Northern Legacy's craft genetics to your shelves. Our wholesale team is reviewing your inquiry to ensure our small-batch drops align with your dispensary's needs.`,
+    vendor: `We believe in building a robust local ecosystem in the North Country. We are reviewing your information now to see how we might collaborate to mutually strengthen our supply chain.`,
+    community: `We are more than just a brand; we are 1000 Islands locals. The support of our neighbors drives everything we do. Thank you for reaching out—we always love to hear from fellow River Rats!`,
+    default: `Our leadership team is currently reviewing your message to determine how we can best collaborate to bring world-class quality to the North Country.`,
+  };
+
+  const customMessage = responseMap[type] || responseMap['default'];
+
+  // 4. SHARED: Logo Attachment Logic (Fixes Blocking)
+  const logoAttachment = {
+    filename: 'logo_clear_bg.png',
+    path: path.join(__dirname, 'public', 'assets', 'logo_clear_bg.png'),
+    cid: 'exg-logo', // Same cid must be used in the html img src
+  };
+
+  // 5. SHARED: Bot Signature
   const signatureHTML = `
     <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eeeeee;">
       <p style="margin: 0; font-size: 16px; font-weight: 700; color: #000;">The Bot-any Dept. (Automated)</p>
@@ -99,10 +117,9 @@ app.post('/contact', (req, res) => {
     </div>
   `;
 
-  // 4. SHARED: Full Legal Footer
+  // 6. SHARED: Full Legal Footer
   const legalFooterHTML = `
     <div style="background-color: #ffffff; padding: 20px; font-family: Arial, sans-serif; font-size: 11px; color: #999999; text-align: justify; line-height: 1.4; border-top: 1px solid #eeeeee;">
-      
       <p style="margin-bottom: 10px; margin-top: 0;"><strong style="color: #666666;">Confidentiality Notice:</strong><br>
       This email and any accompanying attachments are intended solely for the designated recipient(s) and may contain confidential, privileged, or proprietary information. If you are not the intended recipient, any unauthorized review, dissemination, or use of this communication is strictly prohibited. Please notify the sender immediately and permanently delete this email from your system.</p>
 
@@ -117,16 +134,17 @@ app.post('/contact', (req, res) => {
     </div>
   `;
 
-  // 5. ADMIN EMAIL OPTIONS (Internal)
+  // 7. ADMIN EMAIL OPTIONS (Internal)
   const adminMailOptions = {
     from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
     to: [process.env.GREGS_EMAIL, process.env.JASONS_EMAIL],
     subject: `EXG Portal: ${req.body.partnerType} Inquiry from ${req.body.name}`,
+    attachments: [logoAttachment], // <--- ATTACH IMAGE
     html: `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0;">
         
         <div style="background-color: #000000; padding: 25px; text-align: center; border-bottom: 3px solid #f8c25d;">
-          <img src="https://exgenetics.com/assets/logo_clear_bg.png" alt="Excelsior Genetics" width="150" style="display: block; margin: 0 auto;">
+          <img src="cid:exg-logo" alt="Excelsior Genetics" width="150" style="display: block; margin: 0 auto;">
         </div>
 
         <div style="padding: 30px;">
@@ -148,7 +166,6 @@ app.post('/contact', (req, res) => {
           
           <div style="text-align: center; margin: 20px 0; padding: 10px; border: 1px dashed #ccc; background-color: #fafafa; border-radius: 4px;">
             <p style="margin: 0; font-size: 12px; color: #666;">
-              <i class="fa-solid fa-info-circle"></i> 
               <strong>System Note:</strong> The user was served the following joke:<br>
               <em>"${selectedJoke}"</em>
             </p>
@@ -160,16 +177,17 @@ app.post('/contact', (req, res) => {
     `,
   };
 
-  // 6. USER CONFIRMATION OPTIONS (External)
+  // 8. USER CONFIRMATION OPTIONS (External)
   const confirmationOptions = {
     from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
     to: req.body.email,
     subject: `Received: Your Inquiry to Excelsior Genetics`,
+    attachments: [logoAttachment], // <--- ATTACH IMAGE
     html: `
       <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333333; line-height: 1.6; border: 1px solid #e0e0e0;">
         
         <div style="background-color: #000000; padding: 25px; text-align: center; border-bottom: 3px solid #f8c25d;">
-          <img src="https://exgenetics.com/assets/logo_clear_bg.png" alt="Excelsior Genetics" width="150" style="display: block; margin: 0 auto;">
+          <img src="cid:exg-logo" alt="Excelsior Genetics" width="150" style="display: block; margin: 0 auto;">
         </div>
 
         <div style="padding: 30px 25px; background-color: #ffffff;">
@@ -177,7 +195,7 @@ app.post('/contact', (req, res) => {
           
           <p>Thank you for reaching out to <strong>Excelsior Genetics</strong>.</p>
           
-          <p>We have received your inquiry through the partnership portal on our website. Our leadership team is currently reviewing your message to determine how we can collaborate to bring world-class quality to the North Country.</p>
+          <p>${customMessage}</p>
           
           <p>You can expect to hear from a human member of our team shortly.</p>
           
