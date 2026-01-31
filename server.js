@@ -70,11 +70,13 @@ const getRandomJoke = () =>
 
 // --- 3. CONTACT FORM LOGIC ---
 app.post('/contact', (req, res) => {
+  // 1. Honeypot Trap
   if (req.body.honeypot && req.body.honeypot !== '') {
     console.log('Bot submission blocked.');
     return res.send('success');
   }
 
+  // 2. Setup Mailer
   const transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
     port: 465,
@@ -87,7 +89,7 @@ app.post('/contact', (req, res) => {
 
   const selectedJoke = getRandomJoke();
 
-  // SHARED SIGNATURE HTML
+  // 3. SHARED: Bot Signature
   const signatureHTML = `
     <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eeeeee;">
       <p style="margin: 0; font-size: 16px; font-weight: 700; color: #000;">The Bot-any Dept. (Automated)</p>
@@ -97,17 +99,25 @@ app.post('/contact', (req, res) => {
     </div>
   `;
 
-  // LEGAL FOOTER HTML
+  // 4. SHARED: Full Legal Footer
   const legalFooterHTML = `
     <div style="background-color: #ffffff; padding: 20px; font-family: Arial, sans-serif; font-size: 11px; color: #999999; text-align: justify; line-height: 1.4; border-top: 1px solid #eeeeee;">
+      
       <p style="margin-bottom: 10px; margin-top: 0;"><strong style="color: #666666;">Confidentiality Notice:</strong><br>
-      This email and any accompanying attachments are intended solely for the designated recipient(s)...</p>
+      This email and any accompanying attachments are intended solely for the designated recipient(s) and may contain confidential, privileged, or proprietary information. If you are not the intended recipient, any unauthorized review, dissemination, or use of this communication is strictly prohibited. Please notify the sender immediately and permanently delete this email from your system.</p>
+
+      <p style="margin-bottom: 10px;"><strong style="color: #666666;">Privacy & Security:</strong><br>
+      While we implement reasonable measures to safeguard the integrity of this email and its attachments, we cannot provide an absolute guarantee that they are free from viruses or other potentially harmful components. It remains the recipient's responsibility to ensure their systems are adequately protected.</p>
+
+      <p style="margin-bottom: 10px;"><strong style="color: #666666;">No Binding Agreement:</strong><br>
+      Unless explicitly stated otherwise within the body of this email or in any attached documentation, this communication does not constitute a binding agreement or contractual commitment. Any proposals, offers, or terms presented herein are subject to the formal terms of any signed agreements and applicable laws.</p>
+
       <p style="margin-bottom: 0;"><strong style="color: #666666;">Cannabis Industry Disclaimer:</strong><br>
-      Excelsior Genetics, LLC operates in the cannabis sector...</p>
+      Excelsior Genetics, LLC operates in the cannabis sector, which is governed by specific legal and regulatory frameworks, and as such, the information contained in this communication should not be construed as legal advice. We make no warranties or representations regarding compliance with applicable laws, and recipients are advised to seek independent legal counsel concerning cannabis-related matters.</p>
     </div>
   `;
 
-  // 1. ADMIN EMAIL OPTIONS (Internal - Now with Logo & Phone)
+  // 5. ADMIN EMAIL OPTIONS (Internal)
   const adminMailOptions = {
     from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
     to: [process.env.GREGS_EMAIL, process.env.JASONS_EMAIL],
@@ -135,18 +145,22 @@ app.post('/contact', (req, res) => {
             <p style="margin-top:0; font-size: 14px; text-transform: uppercase; color: #888; font-weight: bold;">Message</p>
             <p style="font-style: italic;">"${req.body.message}"</p>
           </div>
-
-          <p style="margin-top: 30px; color: #555; text-align: center;">
-            I shared this <em><strong>Joke of the Day:</strong> "${selectedJoke}"</em>
-          </p>
           
+          <div style="text-align: center; margin: 20px 0; padding: 10px; border: 1px dashed #ccc; background-color: #fafafa; border-radius: 4px;">
+            <p style="margin: 0; font-size: 12px; color: #666;">
+              <i class="fa-solid fa-info-circle"></i> 
+              <strong>System Note:</strong> The user was served the following joke:<br>
+              <em>"${selectedJoke}"</em>
+            </p>
+          </div>
+
           ${signatureHTML}
         </div>
       </div>
     `,
   };
 
-  // 2. USER CONFIRMATION OPTIONS (External)
+  // 6. USER CONFIRMATION OPTIONS (External)
   const confirmationOptions = {
     from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
     to: req.body.email,
