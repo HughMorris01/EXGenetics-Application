@@ -36,6 +36,19 @@ app.get('/about', (req, res) => {
   });
 });
 
+app.get('/northern-legacy', (req, res) => {
+  res.render('northern-legacy', {
+    title: 'Northern Legacy | Alexandria Bay Dispensary',
+    currentPath: '/northern-legacy',
+  });
+});
+
+app.get('/cultivation', (req, res) => {
+  res.render('cultivation', {
+    title: 'Cultivation Science | Excelsior Genetics',
+    currentPath: '/cultivation',
+  });
+});
 app.get('/strains', (req, res) => {
   res.render('strains', {
     title: 'Featured Strains | Northern Legacy',

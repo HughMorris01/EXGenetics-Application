@@ -10,12 +10,18 @@
     
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
     
-    <link href="/css/styles.css" rel="stylesheet" />
+   <link href="/css/styles.css" rel="stylesheet" />
+   <link href="/css/header.css" rel="stylesheet" />
+   <link href="/css/footer.css" rel="stylesheet" />
     
     <% if (currentPath === '/') { %>
       <link href="/css/index.css" rel="stylesheet" />
     <% } else if (currentPath === '/about') { %>
       <link href="/css/about.css" rel="stylesheet" />
+    <% } else if (currentPath === '/northern-legacy') { %>
+      <link href="/css/northern-legacy.css" rel="stylesheet" />
+    <% } else if (currentPath === '/cultivation') { %>
+      <link href="/css/cultivation.css" rel="stylesheet" />
     <% } else if (currentPath === '/strains') { %>
       <link href="/css/strains.css" rel="stylesheet" />
     <% } else if (currentPath === '/contact') { %>

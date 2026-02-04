@@ -22,19 +22,19 @@
   --text-ghost: #8c8c8c;
   --accent-red: #ea5455;
 
-  /* UI Accents & Polish */
+  /* UI Accents */
   --glow-orange: 0 10px 30px rgba(248, 194, 93, 0.2);
   --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.3);
-  --radius-subtle: 4px; /* For images and buttons */
-  --radius-large: 15px; /* For cards and modal corners */
+  --radius-subtle: 4px; 
+  --radius-large: 15px;
 
-  /* Layout & Spacing */
+  /* Layout */
   --border-subtle: 1px solid rgb(36, 36, 36);
   --transition-smooth: all 0.3s ease;
   --header-height: 160px;
   --mobile-header-height: 160px;
-  --hero-padding: 100px 20px 80px; /* Standard Desktop Hero Spacing */
-  --container-width: 75%;
+  --hero-padding: 100px 20px 80px; 
+  --container-width: 90%;
   --max-width: 1100px;
 }
 
@@ -45,9 +45,8 @@
   box-sizing: border-box;
 }
 
-/* --- Global Reset & Theme --- */
 html {
-  overflow-x: hidden; /* Stops horizontal scroll at the root */
+  overflow-x: hidden;
   width: 100%;
   max-width: 100%;
 }
@@ -61,14 +60,66 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-  /* Double lock */
   overflow-x: hidden;
-  width: 100%;
   position: relative;
 }
 
-/* --- Age Verification Overlay --- */
+/* --- CORE LAYOUT UTILITIES --- */
+.container {
+  width: var(--container-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+.content-wrapper {
+  padding-top: 120px;
+  flex: 1; /* Ensures footer stays at bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- SHARED TYPOGRAPHY --- */
+.hero-title {
+  font-family: var(--font-headers);
+  font-size: var(--fs-hero);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-align: center;
+
+  background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow-orange);
+}
+
+.hero-title span {
+  display: block;
+  font-size: 0.55em;
+  color: var(--text-main);
+  -webkit-text-fill-color: var(--text-main);
+  font-weight: 900;
+  text-transform: none;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 1px var(--signature-orange);
+  margin-top: 10px;
+}
+
+.hero-intro {
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #f0f0f0;
+  max-width: 900px;
+  margin: 0 auto 25px auto;
+  text-align: center;
+}
+
+/* --- COMPONENT: Age Verification Overlay --- */
 .age-overlay {
   position: fixed;
   top: 0;
@@ -95,10 +146,7 @@ body {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
 }
 
-.age-logo {
-  width: 160px;
-  margin-bottom: 2rem;
-}
+.age-logo { width: 160px; margin-bottom: 2rem; }
 
 .age-content h2 {
   font-family: var(--font-headers);
@@ -109,14 +157,9 @@ body {
   color: var(--signature-orange);
 }
 
-.age-buttons {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-}
+.age-buttons { display: flex; gap: 25px; justify-content: center; }
 
-.btn-verify,
-.btn-exit {
+.btn-verify, .btn-exit {
   min-width: 130px;
   padding: 10px 0;
   margin: 10px 0;
@@ -126,7 +169,6 @@ body {
   cursor: pointer;
   border: none;
   font-weight: 600;
-  text-align: center;
   transition: var(--transition-smooth);
 }
 
@@ -135,11 +177,7 @@ body {
   color: var(--bg-black);
   border-radius: var(--radius-subtle);
 }
-
-.btn-verify:hover {
-  background-color: var(--text-main);
-  transform: scale(1.05);
-}
+.btn-verify:hover { background-color: var(--text-main); transform: scale(1.05); }
 
 .btn-exit {
   background: transparent;
@@ -147,256 +185,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-subtle);
 }
+.btn-exit:hover { border-color: var(--signature-orange); color: var(--signature-orange); }
 
-.btn-exit:hover {
-  border-color: var(--signature-orange);
-  color: var(--signature-orange);
-}
-
-/* --- Fixed Header & Navigation --- */
-header {
-  background-color: var(--bg-glass);
-
-  /* FIXED: 100vw causes overflow. 100% is safe. */
-  width: 100%;
-  left: 0;
-
-  height: var(--header-height);
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  border-bottom: var(--border-subtle);
-  display: flex;
-  align-items: center;
-  padding: 0;
-
-  /* Keep this to stop the jitter */
-  transform: translateZ(0);
-}
-
-.header-container {
-  width: var(--container-width);
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  width: 175px;
-  height: auto;
-  display: block;
-  transition: var(--transition-smooth);
-  margin: 0;
-}
-
-.logo:hover {
-  transform: scale(1.02);
-}
-
-.nav-menu ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-  padding-top: 30px;
-}
-
-.nav-menu ul li a {
-  text-decoration: none;
-  color: var(--text-main);
-  font-family: var(--font-nav);
-  font-weight: 600;
-  font-size: var(--fs-nav);
-  transition: var(--transition-smooth);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.nav-menu ul li a:hover {
-  color: var(--signature-orange);
-}
-
-/* --- Mobile Menu Toggle --- */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.bar {
-  width: 25px;
-  height: 3px;
-  background-color: var(--text-main);
-}
-
-/* --- Content Wrapper --- */
-.content-wrapper {
-  padding-top: 120px;
-  flex: 1;
-}
-
-/* --- Footer Layout (The "Ghost Eclipse" Logic) --- */
-.site-footer {
-  background-color: var(--bg-black);
-  border-top: var(--border-subtle);
-  padding-bottom: 30px;
-  text-align: center;
-  position: relative;
-  overflow: visible; /* Required for the 3D pop */
-}
-
-.footer-branding-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 180px;
-  width: 100%;
-  /* Enables true 3D depth so objects can pass through each other */
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-/* 1. THE ZOOMER (The Vehicle) */
-/* Moves the logo physically back and forth in 3D space */
-.footer-zoomer {
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-  z-index: 10; /* Ensures it sits above the text layer */
-  animation: physical-zoom 10s infinite ease-in-out;
-  transform-style: preserve-3d;
-}
-
-/* 2. THE LOGO (The Passenger) */
-/* Keeps your original 2s heartbeat rhythm perfectly intact */
-.footer-logo-anim {
-  height: 150px;
-  width: auto;
-  /* opacity: 0.15;  <-- REMOVED! This was causing the invisibility */
-  animation: heartbeat 2s infinite running;
-}
-
-/* 3. THE TEXT (The Anchor) */
-/* anchored at Z=0 so the logo can fly past it */
-.footer-text-block {
-  position: relative;
-  transform: translateZ(0);
-  z-index: 2;
-  pointer-events: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.footer-company-name {
-  color: var(--text-main);
-  font-family: var(--font-accent);
-  font-size: 1rem;
-  font-style: italic;
-  font-weight: 700;
-  margin-bottom: 3px;
-  line-height: 1;
-  text-shadow: 0 0 10px var(--bg-black); /* Text shadow helps readability during eclipse */
-}
-
-.footer-line {
-  color: var(--text-muted);
-  font-size: var(--fs-small);
-  line-height: 1.4;
-  letter-spacing: 1.2px;
-}
-
-.footer-email {
-  color: var(--text-muted);
-  font-size: var(--fs-small);
-  text-decoration: none;
-  transition: var(--transition-smooth);
-}
-
-.footer-email:hover {
-  color: var(--signature-orange);
-}
-
-.copyright-text {
-  display: block;
-  width: 100%;
-  margin-top: -30px;
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--text-ghost);
-  letter-spacing: 1px;
-  opacity: 0.5;
-}
-
-/* --- Footer Animations --- */
-
-/* The Pulse (Your Original Rhythm) */
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(1.15);
-  }
-  20% {
-    transform: scale(1);
-  }
-  30% {
-    transform: scale(1.05);
-  }
-  40% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes physical-zoom {
-  0%,
-  100% {
-    transform: translateZ(-130px);
-    opacity: 0.15; /* Base Ghost Visibility */
-  }
-  50% {
-    transform: translateZ(200px);
-    opacity: 0.8; /* Eclipse Visibility (Much clearer) */
-  }
-}
-
-/* --- Social Icons --- */
-.social-list {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  gap: 30px;
-}
-
-.social-list i {
-  color: var(--text-main);
-  font-size: 1.5rem;
-  transition: var(--transition-smooth);
-}
-
-.social-list i:hover {
-  color: var(--signature-orange);
-}
-
-/* --- Back to Top Button --- */
+/* --- COMPONENT: Back to Top Button --- */
 #backToTop {
   display: none;
   position: fixed;
@@ -417,153 +208,11 @@ header {
   align-items: center;
   justify-content: center;
 }
+#backToTop:hover { background-color: var(--text-main); transform: scale(1.1); }
 
-#backToTop:hover {
-  background-color: var(--text-main);
-  transform: scale(1.1);
-}
-
-/* --- Global Mobile Refinements --- */
-@media screen and (max-width: 768px) {
-  :root {
-    --fs-hero: 2.2rem;
-    --fs-h2: 1.5rem;
-    --hero-padding: 30px 20px 60px;
-  }
-
-  header {
-    height: var(--mobile-header-height) !important;
-  }
-
-  .logo {
-    width: 175px !important;
-    margin: 0;
-  }
-
-  .content-wrapper {
-    padding-top: var(--mobile-header-height) !important;
-  }
-
-  .header-container {
-    width: 90%;
-  }
-
-  .nav-menu {
-    display: none;
-  }
-
-  .nav-menu.active {
-    top: var(--mobile-header-height) !important;
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    background-color: var(--bg-glass);
-    padding: 20px 0;
-    border-bottom: var(--border-subtle);
-    text-align: center;
-  }
-
-  .nav-menu.active ul {
-    flex-direction: column;
-    gap: 20px;
-    padding-top: 0;
-  }
-
-  .menu-toggle {
-    display: flex;
-    gap: 6px !important;
-    margin-right: 5%;
-  }
-
-  .bar {
-    width: 35px !important;
-    height: 3px !important;
-  }
-
-  .menu-toggle.is-active .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-toggle.is-active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .menu-toggle.is-active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  /* Universal Font Reset using the Variables */
-  h1,
-  .hero-title,
-  .strains-header h1,
-  .about-hero h1,
-  .contact-header h1 {
-    font-size: var(--fs-hero) !important;
-    letter-spacing: 3px !important;
-    line-height: 1.2;
-    margin-bottom: 25px !important;
-  }
-
-  h2,
-  .portal-card h2 {
-    font-size: var(--fs-h2) !important;
-  }
-
-  .about-hero {
-    padding: 40px 5% !important;
-  }
-
-  /* ADD THIS - Fixes the weird button behavior */
-  #backToTop {
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-    z-index: 9999; /* Ensures it sits above everything but the age gate */
-  }
-
-  .footer-branding-container {
-    padding: 0 10px;
-  }
-
-  /* ADD THIS: Sacrifices the 3D 'pop' on mobile to save the layout */
-  .site-footer {
-    overflow: hidden !important;
-    padding-bottom: 20px; /* Give it a little internal breathing room */
-  }
-
-  /* Stabilize the Zoomer on mobile */
-  .footer-zoomer {
-    /* REPLACES 'animation: none' */
-    /* Uses the new 2D animation instead of the 3D 'physical-zoom' */
-    animation: mobile-ghost-fade 10s infinite ease-in-out;
-
-    /* Forces it to stay flat so the header doesn't jitter */
-    transform: translateZ(0);
-
-    /* Ensures it sits behind the text if needed, or just ghosts over it */
-    pointer-events: none;
-  }
-
-  /* --- Mobile-Safe Ghost Animation --- */
-  /* Simulates the 3D depth without the heavy math that shakes the phone */
-  @keyframes mobile-ghost-fade {
-    0%,
-    100% {
-      opacity: 0.1; /* Ghost: Almost invisible */
-      transform: scale(0.8); /* Far away */
-    }
-    50% {
-      opacity: 0.5; /* Eclipse: Visible but see-through */
-      transform: scale(1.1); /* Close up */
-    }
-  }
-}
-
-/* --- Success Modal --- */
+/* --- COMPONENT: Success Modal --- */
 .modal-overlay {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -571,7 +220,7 @@ header {
   height: 100%;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
-  z-index: 11000; /* Above everything */
+  z-index: 11000;
   justify-content: center;
   align-items: center;
 }
@@ -588,48 +237,33 @@ header {
   animation: modalPop 0.3s ease-out;
 }
 
-.modal-icon i {
-  font-size: 3rem;
-  color: var(--signature-orange);
-  margin-bottom: 20px;
-}
-
-.modal-content h3 {
-  font-family: var(--font-headers);
-  color: var(--text-main);
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.modal-content p {
-  color: var(--text-muted);
-  margin-bottom: 30px;
-}
-
-.btn-modal {
-  background: var(--signature-orange);
-  color: #000;
-  border: none;
-  padding: 10px 30px;
-  font-weight: 700;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: var(--radius-subtle);
-  transition: all 0.2s;
-}
-
-.btn-modal:hover {
-  background: #fff;
-  transform: scale(1.05);
-}
+.modal-icon i { font-size: 3rem; color: var(--signature-orange); margin-bottom: 20px; }
+.modal-content h3 { font-family: var(--font-headers); color: var(--text-main); margin-bottom: 10px; font-size: 1.5rem; }
+.modal-content p { color: var(--text-muted); margin-bottom: 30px; }
+.btn-modal { background: var(--signature-orange); color: #000; border: none; padding: 10px 30px; font-weight: 700; text-transform: uppercase; cursor: pointer; border-radius: var(--radius-subtle); transition: all 0.2s; }
+.btn-modal:hover { background: #fff; transform: scale(1.05); }
 
 @keyframes modalPop {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Global Mobile Overrides --- */
+@media screen and (max-width: 768px) {
+  :root {
+    --fs-hero: 2.2rem;
+    --fs-h2: 1.5rem;
+    --hero-padding: 30px 20px 60px;
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
+  
+  .content-wrapper { padding-top: var(--mobile-header-height) !important; }
+  
+  h1, .hero-title {
+    font-size: var(--fs-hero) !important;
+    letter-spacing: 3px !important;
+    line-height: 1.2;
+    margin-bottom: 25px !important;
   }
+  
+  #backToTop { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem; }
 }
