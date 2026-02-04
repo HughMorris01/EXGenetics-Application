@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- 1. CONFIGURATION (The Control Center) ---
   const CONFIG = {
-    ageStorageKey: 'exg_age_verified', // Key for LocalStorage
+    ageStorageKey: 'exg_age_verified', // Key for SessionStorage
     animDuration: 600, // Matches CSS transition time
     scrollThreshold: 300, // Scroll distance before button appears
     redirectUrl: 'https://google.com', // Where under-21s go
@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('age-overlay');
     if (!overlay) return;
 
-    // Check LocalStorage: If verified, hide immediately
-    if (localStorage.getItem(CONFIG.ageStorageKey) === 'true') {
+    // Check SessionStorage: Only persists while the tab/browser is open
+    // If they close the tab and come back, this will be false again.
+    if (sessionStorage.getItem(CONFIG.ageStorageKey) === 'true') {
       overlay.style.display = 'none';
       return;
     }
@@ -29,7 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // "Yes" Action
     document.getElementById('age-verify-yes')?.addEventListener('click', () => {
       overlay.style.opacity = '0'; // Trigger CSS Fade
-      localStorage.setItem(CONFIG.ageStorageKey, 'true');
+      
+      // Save to SessionStorage (expires when tab closes)
+      sessionStorage.setItem(CONFIG.ageStorageKey, 'true');
 
       // Remove from DOM after animation completes
       setTimeout(() => {
