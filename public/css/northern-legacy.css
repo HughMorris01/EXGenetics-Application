@@ -1,23 +1,8 @@
-/* --- 1. Northern Legacy Hero --- */
-.legacy-hero {
-  /* Flexbox is crucial here to center the .container vertically inside the hero */
-  display: flex;
-  align-items: center; 
-  justify-content: center;
-  min-height: 60vh;
-  padding: var(--hero-padding);
-  
-  /* Background */
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-    url('/assets/storefront.jpg'); 
-  background-size: cover;
-  background-position: center;
-  border-bottom: var(--border-subtle);
-  text-align: center;
-}
+/* --- Northern Legacy Specific Styles --- */
 
-/* --- 2. Gallery Section --- */
+/* Note: .legacy-hero layout/bg is now handled in styles.css */
+
+/* --- Gallery Section --- */
 .legacy-gallery {
   padding: 80px 0;
   background-color: var(--bg-black);
@@ -43,7 +28,7 @@
   border-color: var(--signature-orange);
 }
 
-/* --- 3. Petition Section (Split Layout) --- */
+/* --- Petition Split Section --- */
 .petition-split {
   padding: 80px 0;
   background: #050505;

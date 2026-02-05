@@ -1,31 +1,12 @@
-/* --- Contact Page Header --- */
-.contact-header {
-  text-align: center;
-  padding: 50px 20px;
-}
+/* --- Contact Specific Styles --- */
 
-.contact-header h1 {
-  font-family: var(--font-headers);
-  /* Automatically scales via styles.css */
-  font-size: var(--fs-hero);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.1;
-  letter-spacing: 2px;
-  text-align: center;
-
-  /* Signature Orange Gradient */
-  background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* Standardized Brand Glow */
-  text-shadow: var(--glow-orange);
-}
+/* Note: .contact-hero layout/bg is now handled in styles.css */
 
 /* --- Partnership Portal Card --- */
 .partnership-portal {
   padding: 0 10% 80px;
+  /* Add margin to separate from the hero slightly */
+  margin-top: 40px; 
 }
 
 .portal-card {
@@ -40,7 +21,7 @@
 
 .portal-card h2 {
   font-family: var(--font-headers);
-  font-size: var(--fs-h2); /* Automatically scales via styles.css */
+  font-size: var(--fs-h2);
   color: var(--signature-orange);
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -71,10 +52,9 @@
   font-family: var(--font-main);
   font-size: var(--fs-body);
   transition: var(--transition-smooth);
-  /* ADD THESE LINES - Forces it to stay inside the card */
   width: 100%;
   max-width: 100%;
-  box-sizing: border-box; /* Ensures padding doesn't add to width */
+  box-sizing: border-box; 
 }
 
 .portal-form input:focus,

@@ -150,7 +150,7 @@ app.post('/contact', (req, res) => {
   // 7. ADMIN EMAIL OPTIONS (Internal)
   const adminMailOptions = {
     from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
-    to: [process.env.GREGS_EMAIL, process.env.JASONS_EMAIL],
+    to: [process.env.GREGS_EMAIL],
     subject: `EXG Portal: ${req.body.partnerType} Inquiry from ${req.body.name}`,
     attachments: [logoAttachment], // <--- ATTACH IMAGE
     html: `

@@ -1,26 +1,6 @@
-/* --- Strains Page Header --- */
-.strains-header {
-  text-align: center;
-  padding: 50px 20px;
-}
+/* --- Strains Specific Styles --- */
 
-.strains-header h1 {
-  font-family: var(--font-headers);
-  font-size: var(--fs-hero); /* Automatically scales via styles.css */
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.1;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-
-  /* Signature Orange Gradient */
-  background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* Standardized Brand Glow */
-  text-shadow: var(--glow-orange);
-}
+/* Note: .strains-hero layout/bg is now handled in styles.css */
 
 .disclaimer {
   color: var(--accent-red);
@@ -148,10 +128,67 @@
   font-size: var(--fs-body);
 }
 
+/* --- NEW: Strains Petition Banner --- */
+.strains-petition-banner {
+  background: linear-gradient(90deg, #1a1a1a 0%, #0a0a0a 100%);
+  padding: 60px 0;
+  border-top: 1px solid rgba(248, 194, 93, 0.3);
+  margin-top: 60px;
+}
+
+.banner-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.banner-content h3 {
+  font-family: var(--font-headers);
+  font-size: 1.8rem;
+  color: var(--signature-orange);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.banner-content p {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0;
+}
+
+.btn-petition-alt {
+  padding: 15px 40px;
+  background: transparent;
+  border: 2px solid var(--signature-orange);
+  color: var(--signature-orange);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-petition-alt:hover {
+  background: var(--signature-orange);
+  color: #000;
+}
+
 /* Responsive adjustment */
 @media screen and (max-width: 768px) {
   .strain-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+  
+  .banner-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .btn-petition-alt {
+    width: 100%;
+    text-align: center;
   }
 }

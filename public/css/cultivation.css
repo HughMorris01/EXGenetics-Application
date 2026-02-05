@@ -1,30 +1,17 @@
-/* --- 1. Cultivation Hero --- */
-.cultivation-hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  padding: var(--hero-padding);
-  text-align: center;
+/* --- Cultivation Specific Styles --- */
 
-  /* Darker Green Gradient */
-  background: 
-    linear-gradient(rgba(5, 20, 10, 0.85), rgba(5, 20, 10, 0.9)), 
-    url('/assets/cultivation-hero.jpg');
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+/* Note: .cultivation-hero layout/bg is now handled in styles.css */
 
-/* --- 2. Philosophy Section --- */
+/* --- 2. Philosophy Section (Clean & Technical) --- */
 .cultivation-philosophy {
   padding: 100px 0;
   background-color: var(--bg-black);
+  position: relative;
 }
 
 .philosophy-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.2fr 0.8fr; /* Text gets more space */
   gap: 80px;
   align-items: center;
 }
@@ -51,6 +38,7 @@
   color: #f0f0f0;
 }
 
+/* Custom Green "Science" Accents for the bullets */
 .tech-list li::before {
   content: '';
   position: absolute;
@@ -58,7 +46,7 @@
   top: 8px;
   width: 8px;
   height: 8px;
-  background-color: #4caf50;
+  background-color: #4caf50; /* A distinct 'Grow Green' for this page */
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
 }
@@ -76,7 +64,7 @@
   object-fit: cover;
 }
 
-/* --- 3. Petition Banner --- */
+/* --- 3. Petition Banner (Horizontal Variant) --- */
 .petition-banner {
   background: linear-gradient(90deg, #1a1a1a 0%, #0a0a0a 100%);
   padding: 60px 0;
@@ -94,20 +82,30 @@
   font-family: var(--font-headers);
   font-size: 1.8rem;
   color: var(--signature-orange);
-  text-transform: uppercase;
   margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.banner-content p {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0;
 }
 
 .btn-petition-alt {
+  display: inline-block;
   padding: 15px 40px;
   background: transparent;
   border: 2px solid var(--signature-orange);
   color: var(--signature-orange);
-  text-decoration: none;
-  text-transform: uppercase;
+  font-family: var(--font-headers);
   font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 2px;
+  border-radius: var(--radius-subtle);
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .btn-petition-alt:hover {
@@ -115,9 +113,24 @@
   color: #000;
 }
 
-/* Mobile Fixes */
+/* --- Mobile Fixes --- */
 @media (max-width: 900px) {
-  .philosophy-grid { grid-template-columns: 1fr; text-align: center; }
-  .tech-list li { text-align: left; }
-  .banner-flex { flex-direction: column; text-align: center; }
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .tech-list li {
+    text-align: left;
+  }
+
+  .banner-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn-petition-alt {
+    width: 100%;
+    text-align: center;
+  }
 }

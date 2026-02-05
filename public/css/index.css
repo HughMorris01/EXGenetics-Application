@@ -1,26 +1,12 @@
-/* --- Hero Index (Unique to Home) --- */
-.hero-index {
-  /* Using Flexbox to center vertical content like the other pages */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh; /* Taller hero for home page */
-  padding: var(--hero-padding);
-  
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
-    url('/assets/storefront.jpg');
-  background-size: cover;
-  background-position: center;
-  border-bottom: var(--border-subtle);
-}
+/* --- Index Content Styles --- */
 
-/* Override global alignment for specific home intro parts */
+/* Note: .hero-index layout/bg is now handled in styles.css */
+
+/* Hero Copy Adjustments (Specific to Home) */
 .hero-copy {
   max-width: 900px;
   margin: 0 auto;
-  text-align: left; /* Keep the paragraph text left-aligned if desired */
+  text-align: left;
 }
 
 /* Location Text */
@@ -78,6 +64,7 @@
 
 .btn-petition:hover {
   background-color: var(--text-main);
+  transform: scale(1.05);
 }
 
 /* Status Badges */
@@ -96,4 +83,47 @@
   text-transform: uppercase;
   font-size: var(--fs-small);
   letter-spacing: 1.5px;
+  font-family: var(--font-main);
+  border-radius: var(--radius-subtle);
+}
+
+/* Location Context Section */
+.location-context {
+  padding: 60px 0;
+  background: var(--bg-black);
+}
+
+.location-context h3 {
+  font-family: var(--font-headers);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  color: var(--signature-orange);
+}
+
+/* Gallery Section */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-subtle);
+}
+
+/* Mobile Logic */
+@media screen and (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
 }

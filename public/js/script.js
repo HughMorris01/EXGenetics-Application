@@ -1,52 +1,16 @@
 /**
  * Excelsior Genetics - Master Logic
- * Refactored for modularity, performance, and stability.
+ * Refactored: Age Gate logic moved to views/partials/agegate.ejs
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 1. CONFIGURATION (The Control Center) ---
+  // --- CONFIGURATION ---
   const CONFIG = {
-    ageStorageKey: 'exg_age_verified', // Key for SessionStorage
-    animDuration: 600, // Matches CSS transition time
-    scrollThreshold: 300, // Scroll distance before button appears
-    redirectUrl: 'https://google.com', // Where under-21s go
+    animDuration: 600, 
+    scrollThreshold: 300, 
   };
 
-  // --- 2. AGE VERIFICATION SYSTEM ---
-  const initAgeGate = () => {
-    const overlay = document.getElementById('age-overlay');
-    if (!overlay) return;
-
-    // Check SessionStorage: Only persists while the tab/browser is open
-    // If they close the tab and come back, this will be false again.
-    if (sessionStorage.getItem(CONFIG.ageStorageKey) === 'true') {
-      overlay.style.display = 'none';
-      return;
-    }
-
-    // Ensure visibility if not verified
-    overlay.style.display = 'flex';
-
-    // "Yes" Action
-    document.getElementById('age-verify-yes')?.addEventListener('click', () => {
-      overlay.style.opacity = '0'; // Trigger CSS Fade
-      
-      // Save to SessionStorage (expires when tab closes)
-      sessionStorage.setItem(CONFIG.ageStorageKey, 'true');
-
-      // Remove from DOM after animation completes
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, CONFIG.animDuration);
-    });
-
-    // "No" Action
-    document.getElementById('age-verify-no')?.addEventListener('click', () => {
-      window.location.href = CONFIG.redirectUrl;
-    });
-  };
-
-  // --- 3. MOBILE NAVIGATION ---
+  // --- 1. MOBILE NAVIGATION ---
   const initMobileMenu = () => {
     const toggle = document.getElementById('mobile-menu');
     const nav = document.querySelector('.nav-menu');
@@ -58,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => {
       const isActive = toggle.classList.toggle('is-active');
       nav.classList.toggle('active');
-      toggle.setAttribute('aria-expanded', isActive); // Accessibility Win
+      toggle.setAttribute('aria-expanded', isActive);
     });
 
     // Close Menu on Link Click
@@ -71,56 +35,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // --- 4. UTILITIES (Scroll & Date) ---
+  // --- 2. UTILITIES (Scroll & Date) ---
   const initUtilities = () => {
     // A. Copyright Year
     const yearSpan = document.querySelector('#copyrightYear');
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // B. Back to Top Logic (Jitter-Free Fade Version)
+    // B. Back to Top Logic
     const topBtn = document.getElementById('backToTop');
     const footer = document.querySelector('.site-footer');
 
     if (topBtn && footer) {
-      // 1. Scroll Detection
+      // Scroll Detection
       window.addEventListener('scroll', () => {
         const scrolled =
           document.documentElement.scrollTop || document.body.scrollTop;
 
         // Basic Visibility Check
         if (scrolled > CONFIG.scrollThreshold) {
-          // COLLISION DETECTION:
-          // Check distance to the bottom of the page
-          // (window.innerHeight + window.scrollY) = Current Viewport Bottom
+          // Collision Detection with Footer
           const distToBottom =
             document.body.offsetHeight - (window.innerHeight + window.scrollY);
           const footerHeight = footer.offsetHeight;
 
-          // If we are within the footer zone (plus 50px buffer), fade out
+          // If within footer zone, fade out
           if (distToBottom < footerHeight + 50) {
             topBtn.style.opacity = '0';
-            topBtn.style.pointerEvents = 'none'; // Prevent clicking while invisible
+            topBtn.style.pointerEvents = 'none';
           } else {
             topBtn.style.opacity = '1';
             topBtn.style.pointerEvents = 'auto';
-            topBtn.style.display = 'flex'; // Ensure it's visible for the fade in
+            topBtn.style.display = 'flex';
           }
         } else {
-          // Hide when at the top of the page
+          // Hide at top
           topBtn.style.opacity = '0';
           topBtn.style.pointerEvents = 'none';
         }
       });
 
-      // 2. Click Action (Smooth Scroll)
+      // Click Action
       topBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
   };
 
-  // --- INITIALIZE ALL MODULES ---
-  initAgeGate();
+  // --- INITIALIZE MODULES ---
   initMobileMenu();
   initUtilities();
 });

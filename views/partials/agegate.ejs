@@ -1,0 +1,67 @@
+<div id="age-overlay" class="age-overlay" style="display: flex;">
+  <div id="age-content" class="age-content">
+    <img
+      src="/assets/logo_clear_bg.png"
+      alt="Excelsior Genetics"
+      class="age-logo"
+    />
+    <h2>Respect the Plant</h2>
+    <p>You must be 21 years of age or older to enter this site.</p>
+    <div class="age-buttons">
+      <button id="btn-verify-yes" class="btn-verify">I am 21+</button>
+      <button id="btn-verify-no" class="btn-exit">Exit</button>
+    </div>
+    <p class="age-disclaimer">
+      By clicking enter, you agree to our terms of service and acknowledge you
+      are of legal age.
+    </p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const ageOverlay = document.getElementById('age-overlay');
+    const ageContent = document.getElementById('age-content');
+    const btnYes = document.getElementById('btn-verify-yes');
+    const btnNo = document.getElementById('btn-verify-no');
+
+    // 1. Check Session Immediately
+    if (sessionStorage.getItem('exg_age_verified') === 'true') {
+      ageOverlay.style.display = 'none';
+    } else {
+      ageOverlay.style.display = 'flex';
+    }
+
+    // 2. Handle "I am 21+" Click
+    if (btnYes) {
+      btnYes.addEventListener('click', function() {
+        // Save verification
+        sessionStorage.setItem('exg_age_verified', 'true');
+        
+        // --- SEQUENCE STEP 1: FADE TEXT ---
+        // (0ms) Start fading the text content only
+        ageContent.classList.add('fade-out');
+        
+        // --- SEQUENCE STEP 2: CLOSE IRIS ---
+        // (500ms) Wait for text to disappear, then shrink the black circle
+        setTimeout(function() {
+          ageOverlay.classList.add('iris-closed');
+          
+          // --- SEQUENCE STEP 3: REMOVE DOM ---
+          // (1500ms later) Wait for iris to fully close, then hide overlay
+          setTimeout(function() {
+            ageOverlay.style.display = 'none';
+          }, 3000); // Matches CSS transition time (1.5s)
+          
+        }, 500); // Matches CSS opacity transition time (0.5s)
+      });
+    }
+
+    // 3. Handle "Exit" Click
+    if (btnNo) {
+      btnNo.addEventListener('click', function() {
+        window.location.href = "https://www.google.com";
+      });
+    }
+  });
+</script>

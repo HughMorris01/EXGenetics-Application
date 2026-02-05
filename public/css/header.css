@@ -32,7 +32,7 @@ header {
 }
 
 .logo:hover {
-  transform: scale(1.02);
+  transform: scale(1.1);
 }
 
 /* --- Desktop Menu --- */
@@ -52,7 +52,7 @@ header {
   font-weight: 600;
   font-size: var(--fs-nav);
   transition: var(--transition-smooth);
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   position: relative;
 }
@@ -72,7 +72,7 @@ header {
   width: 100%;
   height: 2px;
   background: var(--signature-orange);
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 /* --- Mobile Menu Toggle --- */
