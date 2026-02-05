@@ -1,50 +1,108 @@
 <%- include('partials/head') %> <%- include('partials/header') %>
+
 <main class="content-wrapper">
-  
   <section class="hero-section contact-hero">
     <div class="container">
       <h1 class="hero-title">Contact Us</h1>
       <p class="hero-intro-text">
-        Whether you're a neighbor with a question or a professional looking to collaborate, we're ready to connect.
+        Whether you're a neighbor with a question or a professional looking to
+        collaborate, we're ready to connect.
       </p>
     </div>
   </section>
 
   <section class="partnership-portal">
     <div class="container">
-      <div class="portal-card">
-        <h2>Partnership Portal</h2>
-        
+      <div class="portal-card portal-light">
+        <h2 class="portal-heading">Partnership Portal</h2>
+
         <form action="/contact" method="POST" class="portal-form">
-          <div style="display: none;">
-            <label for="honeypot">Leave empty:</label>
-            <input type="text" name="honeypot" id="honeypot" tabindex="-1" autocomplete="off">
+          <div style="display: none">
+            <input
+              type="text"
+              name="honeypot"
+              id="honeypot"
+              tabindex="-1"
+              autocomplete="off"
+            />
           </div>
 
           <div class="form-row">
             <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Email Address" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
           </div>
-          
+
           <div class="form-row">
             <input type="tel" name="phone" placeholder="Phone (Optional)" />
-            <input type="text" name="business" placeholder="Business / Organization (Optional)" />
+            <input
+              type="text"
+              name="business"
+              placeholder="Business / Organization (Optional)"
+            />
           </div>
 
-          <select name="partnerType" required>
-            <option value="" disabled selected>I am a...</option>
-            <option value="dispensary">Licensed Dispensary (Wholesale)</option>
-            <option value="vendor">Local Vendor / Supplier</option>
-            <option value="community">Community Member</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="select-wrapper">
+            <select name="partnerType" required>
+              <option value="" disabled selected>I am a...</option>
+              <option value="dispensary">
+                Licensed Dispensary (Wholesale)
+              </option>
+              <option value="vendor">Local Vendor / Supplier</option>
+              <option value="community">Community Member</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
 
-          <textarea name="message" rows="5" placeholder="How can we grow together?" required></textarea>
+          <div class="textarea-container">
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="How can we grow together?"
+              maxlength="1000"
+              required
+            ></textarea>
+            <div id="char-counter" class="char-counter">
+              1000 characters remaining
+            </div>
+          </div>
+          <div class="captcha-row">
+            <input type="hidden" name="math_a" value="<%= captcha.num1 %>" />
+            <input type="hidden" name="math_b" value="<%= captcha.num2 %>" />
+
+            <label for="math_answer" class="captcha-label">
+              Security Check: What is
+              <strong><%= captcha.num1 %> + <%= captcha.num2 %></strong> ?
+            </label>
+
+            <input
+              type="number"
+              name="math_answer"
+              class="captcha-input"
+              placeholder="?"
+              required
+            />
+          </div>
 
           <button type="submit" class="btn-portal">Send Message</button>
         </form>
       </div>
     </div>
   </section>
+
+  <div id="status-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div id="modal-icon-container" class="modal-icon"></div>
+
+      <h3 id="modal-title">Status</h3>
+      <p id="modal-message">Processing your request...</p>
+
+      <button id="close-modal" class="btn-modal">Close</button>
+    </div>
+  </div>
 </main>
 <%- include('partials/footer') %>

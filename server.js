@@ -1,26 +1,21 @@
-require('dotenv').config(); // simplified path
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const path = require('path'); // Added for safer file paths
+const path = require('path');
 const port = process.env.PORT || 3000;
 
 const app = express();
 
 // --- 1. CONFIGURATION ---
-// Tell Express to use EJS for templates
 app.set('view engine', 'ejs');
-// Tell Express your templates are in the 'views' folder
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-// Serve static assets (CSS, JS, Images) from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // --- 2. PAGE ROUTES ---
-// Notice how much cleaner this is? No more full file paths.
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -36,19 +31,13 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.get('/northern-legacy', (req, res) => {
-  res.render('northern-legacy', {
-    title: 'Northern Legacy | Alexandria Bay Dispensary',
-    currentPath: '/northern-legacy',
-  });
-});
-
 app.get('/cultivation', (req, res) => {
   res.render('cultivation', {
     title: 'Cultivation Science | Excelsior Genetics',
     currentPath: '/cultivation',
   });
 });
+
 app.get('/strains', (req, res) => {
   res.render('strains', {
     title: 'Featured Strains | Northern Legacy',
@@ -56,10 +45,22 @@ app.get('/strains', (req, res) => {
   });
 });
 
+app.get('/retail', (req, res) => {
+  res.render('retail', {
+    title: 'Northern Legacy | 1000 Islands\' Dispensary',
+    currentPath: '/retail',
+  });
+});
+
+// UPDATED: Now sends 'captcha' object to fix the ReferenceError
 app.get('/contact', (req, res) => {
+  const num1 = Math.floor(Math.random() * 10) + 1;
+  const num2 = Math.floor(Math.random() * 10) + 1;
+  
   res.render('contact', {
     title: 'Contact Us | Partnership Inquiry',
     currentPath: '/contact',
+    captcha: { num1, num2 } 
   });
 });
 
@@ -85,11 +86,20 @@ const getRandomJoke = () =>
 app.post('/contact', (req, res) => {
   // 1. Honeypot Trap
   if (req.body.honeypot && req.body.honeypot !== '') {
-    console.log('Bot submission blocked.');
+    console.log('Bot submission blocked (honeypot).');
     return res.send('success');
   }
 
-  // 2. Setup Mailer
+  // 2. UPDATED: Math Captcha Validation
+  const { math_a, math_b, math_answer } = req.body;
+  const expectedSum = parseInt(math_a) + parseInt(math_b);
+  
+  if (parseInt(math_answer) !== expectedSum) {
+    console.log('Bot submission blocked (math fail).');
+    return res.send('captcha_error');
+  }
+
+  // 3. Setup Mailer
   const transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
     port: 465,
@@ -103,7 +113,7 @@ app.post('/contact', (req, res) => {
   const selectedJoke = getRandomJoke();
   const type = req.body.partnerType;
 
-  // 3. DEFINE CUSTOM MESSAGES
+  // 4. DEFINE CUSTOM MESSAGES
   const responseMap = {
     dispensary: `We are excited about the potential of bringing Northern Legacy's craft genetics to your shelves. Our wholesale team is reviewing your inquiry to ensure our small-batch drops align with your dispensary's needs.`,
     vendor: `We believe in building a robust local ecosystem in the North Country. We are reviewing your information now to see how we might collaborate to mutually strengthen our supply chain.`,
@@ -113,14 +123,14 @@ app.post('/contact', (req, res) => {
 
   const customMessage = responseMap[type] || responseMap['default'];
 
-  // 4. SHARED: Logo Attachment Logic (Fixes Blocking)
+  // 5. Logo Attachment
   const logoAttachment = {
     filename: 'logo_clear_bg.png',
     path: path.join(__dirname, 'public', 'assets', 'logo_clear_bg.png'),
-    cid: 'exg-logo', // Same cid must be used in the html img src
+    cid: 'exg-logo',
   };
 
-  // 5. SHARED: Bot Signature
+  // 6. Bot Signature
   const signatureHTML = `
     <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eeeeee;">
       <p style="margin: 0; font-size: 16px; font-weight: 700; color: #000;">The Bot-any Dept. (Automated)</p>
@@ -130,40 +140,32 @@ app.post('/contact', (req, res) => {
     </div>
   `;
 
-  // 6. SHARED: Full Legal Footer
+  // 7. Full Legal Footer
   const legalFooterHTML = `
     <div style="background-color: #ffffff; padding: 20px; font-family: Arial, sans-serif; font-size: 11px; color: #999999; text-align: justify; line-height: 1.4; border-top: 1px solid #eeeeee;">
       <p style="margin-bottom: 10px; margin-top: 0;"><strong style="color: #666666;">Confidentiality Notice:</strong><br>
       This email and any accompanying attachments are intended solely for the designated recipient(s) and may contain confidential, privileged, or proprietary information. If you are not the intended recipient, any unauthorized review, dissemination, or use of this communication is strictly prohibited. Please notify the sender immediately and permanently delete this email from your system.</p>
-
       <p style="margin-bottom: 10px;"><strong style="color: #666666;">Privacy & Security:</strong><br>
       While we implement reasonable measures to safeguard the integrity of this email and its attachments, we cannot provide an absolute guarantee that they are free from viruses or other potentially harmful components. It remains the recipient's responsibility to ensure their systems are adequately protected.</p>
-
-      <p style="margin-bottom: 10px;"><strong style="color: #666666;">No Binding Agreement:</strong><br>
-      Unless explicitly stated otherwise within the body of this email or in any attached documentation, this communication does not constitute a binding agreement or contractual commitment. Any proposals, offers, or terms presented herein are subject to the formal terms of any signed agreements and applicable laws.</p>
-
       <p style="margin-bottom: 0;"><strong style="color: #666666;">Cannabis Industry Disclaimer:</strong><br>
-      Excelsior Genetics, LLC operates in the cannabis sector, which is governed by specific legal and regulatory frameworks, and as such, the information contained in this communication should not be construed as legal advice. We make no warranties or representations regarding compliance with applicable laws, and recipients are advised to seek independent legal counsel concerning cannabis-related matters.</p>
+      Excelsior Genetics, LLC operates in the cannabis sector. The information contained in this communication should not be construed as legal advice.</p>
     </div>
   `;
 
-  // 7. ADMIN EMAIL OPTIONS (Internal)
+  // 8. ADMIN EMAIL OPTIONS
   const adminMailOptions = {
     from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
     to: [process.env.GREGS_EMAIL],
     subject: `EXG Portal: ${req.body.partnerType} Inquiry from ${req.body.name}`,
-    attachments: [logoAttachment], // <--- ATTACH IMAGE
+    attachments: [logoAttachment],
     html: `
       <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0;">
-        
         <div style="background-color: #000000; padding: 25px; text-align: center; border-bottom: 3px solid #f8c25d;">
           <img src="cid:exg-logo" alt="Excelsior Genetics" width="150" style="display: block; margin: 0 auto;">
         </div>
-
         <div style="padding: 30px;">
           <p style="font-size: 16px;">Hey Guys,</p>
-          <p>We just received this message through the website. I sent them a confirmation email, but you'll want to reach out whenever you have a few minutes.</p>
-          
+          <p>We just received this message through the website.</p>
           <div style="background: #f9f9f9; padding: 20px; border-left: 4px solid #f8c25d; margin: 25px 0;">
             <p style="margin-top:0; font-size: 14px; text-transform: uppercase; color: #888; font-weight: bold;">Inquiry Details</p>
             <ul style="padding-left: 20px; margin-bottom: 20px;">
@@ -176,49 +178,36 @@ app.post('/contact', (req, res) => {
             <p style="margin-top:0; font-size: 14px; text-transform: uppercase; color: #888; font-weight: bold;">Message</p>
             <p style="font-style: italic;">"${req.body.message}"</p>
           </div>
-          
           <div style="text-align: center; margin: 20px 0; padding: 10px; border: 1px dashed #ccc; background-color: #fafafa; border-radius: 4px;">
-            <p style="margin: 0; font-size: 12px; color: #666;">
-              <strong>System Note:</strong> The user was served the following joke:<br>
-              <em>"${selectedJoke}"</em>
-            </p>
+            <p style="margin: 0; font-size: 12px; color: #666;"><strong>System Note:</strong> The user successfully solved: ${math_a} + ${math_b}</p>
           </div>
-
           ${signatureHTML}
         </div>
       </div>
     `,
   };
 
-  // 8. USER CONFIRMATION OPTIONS (External)
+  // 9. USER CONFIRMATION OPTIONS
   const confirmationOptions = {
     from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
     to: req.body.email,
     subject: `Received: Your Inquiry to Excelsior Genetics`,
-    attachments: [logoAttachment], // <--- ATTACH IMAGE
+    attachments: [logoAttachment],
     html: `
       <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333333; line-height: 1.6; border: 1px solid #e0e0e0;">
-        
         <div style="background-color: #000000; padding: 25px; text-align: center; border-bottom: 3px solid #f8c25d;">
           <img src="cid:exg-logo" alt="Excelsior Genetics" width="150" style="display: block; margin: 0 auto;">
         </div>
-
         <div style="padding: 30px 25px; background-color: #ffffff;">
           <h2 style="color: #000000; margin-top: 0; font-weight: 700;">Hi ${req.body.name},</h2>
-          
           <p>Thank you for reaching out to <strong>Excelsior Genetics</strong>.</p>
-          
           <p>${customMessage}</p>
-          
           <p>You can expect to hear from a human member of our team shortly.</p>
-          
           <p style="margin-top: 30px; color: #555; text-align: center;">
             <em><strong>Joke of the Day:</strong> "${selectedJoke}"</em>
           </p>
-          
           ${signatureHTML}
         </div>
-
         ${legalFooterHTML}
       </div>
     `,
@@ -242,12 +231,18 @@ app.post('/contact', (req, res) => {
   }
 });
 
-// --- 4. SERVER START ---
+// --- Place this AFTER all your other app.get() routes ---
+app.use((req, res) => {
+  res.status(404).render('404', {
+    title: '404 | Lost in the Clouds',
+    currentPath: '/404'
+  });
+});
+
 const server = app.listen(port, () => {
   console.log(`Server is listening on port ${port}.`);
 });
 
-// Graceful Shutdown Logic
 const gracefulShutdown = () => {
   console.log('SIGTERM/SIGINT signal received: closing HTTP server...');
   server.close(() => {
@@ -255,9 +250,7 @@ const gracefulShutdown = () => {
     process.exit(0);
   });
   setTimeout(() => {
-    console.error(
-      'Could not close connections in time, forcefully shutting down',
-    );
+    console.error('Could not close connections in time, forcefully shutting down');
     process.exit(1);
   }, 10000);
 };

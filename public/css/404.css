@@ -1,0 +1,89 @@
+/* --- 404 ERROR PAGE STYLES --- */
+.error-page-section {
+  padding: 100px 20px;
+  min-height: 80vh;
+  background-color: #1a1a1a;
+  background-image: radial-gradient(circle at center, #252525 0%, #111111 100%);
+  display: flex;
+  align-items: center;
+}
+
+.error-card {
+  background: #ffffff;
+  padding: 60px 40px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.error-icon i {
+  font-size: 4rem;
+  color: var(--signature-orange);
+  margin-bottom: 20px;
+}
+
+.error-title {
+  font-size: 5rem;
+  font-family: var(--font-headers);
+  color: #000;
+  margin: 0;
+  line-height: 1;
+}
+
+.error-subtitle {
+  font-family: var(--font-headers);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.error-text {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.error-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-outline {
+  padding: 18px 30px;
+  border: 2px solid #000;
+  color: #000;
+  text-decoration: none;
+  font-family: var(--font-headers);
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .error-actions { flex-direction: column; }
+}
+
+/* --- Missing Animation Keyframes --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

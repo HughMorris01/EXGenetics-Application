@@ -1,16 +1,57 @@
 /**
  * Excelsior Genetics - Master Logic
- * Refactored: Age Gate logic moved to views/partials/agegate.ejs
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- CONFIGURATION ---
   const CONFIG = {
     animDuration: 600, 
-    scrollThreshold: 300, 
+    scrollThreshold: 300,
+    mobileBreakpoint: 768, // Matches your CSS media query
   };
 
-  // --- 1. MOBILE NAVIGATION ---
+  // --- 1. AGE GATE MODULE ---
+  const initAgeGate = () => {
+    const ageOverlay = document.getElementById('age-overlay');
+    const btnYes = document.getElementById('btn-verify-yes');
+    const btnNo = document.getElementById('btn-verify-no');
+
+    if (!ageOverlay) return;
+
+    // A. Check Session immediately
+    if (sessionStorage.getItem('exg_age_verified') !== 'true') {
+      ageOverlay.style.display = 'flex';
+    }
+
+    // B. Handle "I am 21+" Click
+    if (btnYes) {
+      btnYes.addEventListener('click', () => {
+        sessionStorage.setItem('exg_age_verified', 'true');
+
+        // Step 1: Shrink to Rectangle
+        ageOverlay.classList.add('rect-shrink');
+
+        // Step 2: Fade Out
+        setTimeout(() => {
+          ageOverlay.classList.add('final-fade');
+
+          // Step 3: Remove from DOM
+          setTimeout(() => {
+            ageOverlay.style.display = 'none';
+          }, 500); 
+        }, 1000); 
+      });
+    }
+
+    // C. Handle "Exit" Click
+    if (btnNo) {
+      btnNo.addEventListener('click', () => {
+        window.location.href = "https://www.google.com";
+      });
+    }
+  };
+
+  // --- 2. MOBILE NAVIGATION ---
   const initMobileMenu = () => {
     const toggle = document.getElementById('mobile-menu');
     const nav = document.querySelector('.nav-menu');
@@ -18,14 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!toggle || !nav) return;
 
-    // Toggle Menu State
     toggle.addEventListener('click', () => {
       const isActive = toggle.classList.toggle('is-active');
       nav.classList.toggle('active');
       toggle.setAttribute('aria-expanded', isActive);
     });
 
-    // Close Menu on Link Click
     links.forEach((link) => {
       link.addEventListener('click', () => {
         toggle.classList.remove('is-active');
@@ -35,46 +74,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // --- 2. UTILITIES (Scroll & Date) ---
+  // --- 3. UTILITIES (Scroll & Date) ---
   const initUtilities = () => {
     // A. Copyright Year
     const yearSpan = document.querySelector('#copyrightYear');
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // B. Back to Top Logic
+    // B. Back to Top Logic (Hybrid: Collision detection on Mobile only)
     const topBtn = document.getElementById('backToTop');
     const footer = document.querySelector('.site-footer');
+    
+    if (topBtn) {
+      // Helper to Hide/Show
+      const toggleBtn = (show) => {
+        topBtn.style.opacity = show ? '1' : '0';
+        topBtn.style.pointerEvents = show ? 'auto' : 'none';
+      };
 
-    if (topBtn && footer) {
-      // Scroll Detection
       window.addEventListener('scroll', () => {
-        const scrolled =
-          document.documentElement.scrollTop || document.body.scrollTop;
+        const scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+        const isMobile = window.innerWidth < CONFIG.mobileBreakpoint;
 
-        // Basic Visibility Check
-        if (scrolled > CONFIG.scrollThreshold) {
-          // Collision Detection with Footer
-          const distToBottom =
-            document.body.offsetHeight - (window.innerHeight + window.scrollY);
+        // 1. If we are at the top, always hide
+        if (scrolled <= CONFIG.scrollThreshold) {
+          toggleBtn(false);
+          return;
+        }
+
+        // 2. If we are scrolled down...
+        if (isMobile && footer) {
+          // MOBILE: Check for collision with footer
+          const distToBottom = document.body.offsetHeight - (window.innerHeight + window.scrollY);
           const footerHeight = footer.offsetHeight;
 
-          // If within footer zone, fade out
-          if (distToBottom < footerHeight + 50) {
-            topBtn.style.opacity = '0';
-            topBtn.style.pointerEvents = 'none';
+          // If button is entering footer territory, hide it
+          if (distToBottom < footerHeight + 20) {
+            toggleBtn(false);
           } else {
-            topBtn.style.opacity = '1';
-            topBtn.style.pointerEvents = 'auto';
-            topBtn.style.display = 'flex';
+            toggleBtn(true);
           }
         } else {
-          // Hide at top
-          topBtn.style.opacity = '0';
-          topBtn.style.pointerEvents = 'none';
+          // DESKTOP: Always show (no collision check needed)
+          toggleBtn(true);
         }
       });
 
-      // Click Action
       topBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
@@ -82,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // --- INITIALIZE MODULES ---
+  initAgeGate();
   initMobileMenu();
   initUtilities();
 });
