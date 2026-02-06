@@ -15,18 +15,26 @@
    <link href="/css/header.css" rel="stylesheet" />
    <link href="/css/footer.css" rel="stylesheet" />
     
-    <% if (currentPath === '/') { %>
-      <link href="/css/index.css" rel="stylesheet" />
+   <% if (typeof currentPath !== 'undefined' && currentPath === '/') { %>
+      <link href="/css/desktop/index-desktop.css" rel="stylesheet" />
+      <link href="/css/mobile/index-mobile.css" rel="stylesheet" />
+
     <% } else if (currentPath === '/about') { %>
-      <link href="/css/about.css" rel="stylesheet" />
+      <link href="/css/desktop/about-desktop.css" rel="stylesheet" />
+      <link href="/css/mobile/about-mobile.css" rel="stylesheet" />
+
     <% } else if (currentPath === '/cultivation') { %>
       <link href="/css/cultivation.css" rel="stylesheet" />
+
     <% } else if (currentPath === '/strains') { %>
       <link href="/css/strains.css" rel="stylesheet" />
+
     <% } else if (currentPath === '/retail') { %>
       <link href="/css/retail.css" rel="stylesheet" />
+
     <% } else if (currentPath === '/contact') { %>
       <link href="/css/contact.css" rel="stylesheet" />
+
     <% } else if (currentPath === '/404') { %>
       <link href="/css/404.css" rel="stylesheet" />
     <% } %>

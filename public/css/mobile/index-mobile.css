@@ -1,0 +1,159 @@
+/* ==========================================================================
+   INDEX-MOBILE.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  .index-layout {
+  padding-top: 80px; /* Header (160px) + Banner (40px) */
+}
+
+.content-wrapper, .copy-wrapper {
+  width: 100%
+}
+
+  /* --- 2. HERO SECTION --- */
+  .index-hero {
+    padding: 120px 15px 0;
+  }
+
+  .index-hero-title {
+    font-size: 1.3rem;
+  }
+
+  .index-hero span {
+    paint-order: stroke fill; 
+    font-size: .9rem;
+    font-weight: 600;
+  }
+  
+  .hero-outrage {
+    font-size: 1rem;
+    border-top: none;
+    border-left: 3px solid var(--accent-red) !important;
+    padding-left: 15px;
+    margin-top: 20px;
+  }
+
+  /* --- 3. GHOST STATS (Vertical Stack) --- */
+  .ghost-stats-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .ghost-divider {
+    width: 50%;
+    height: 1px; 
+  }
+  
+  .stat-number {
+    font-size: 2.5rem !important;
+  }
+
+  .genetics-section {
+  padding-top: 20px; 
+}
+
+.genetics-section h2 {
+  font-size: 1.3rem;
+}
+
+.disclaimer {
+  font-size: 0.6rem !important;
+  font-weight: 300 !important;
+  letter-spacing: 1px !important;
+  margin-top: 10px !important; 
+  display: block;
+}
+
+  /* --- 4. CAROUSEL SECTION --- */
+  .carousel-section {
+    padding: 40px 0 30px;
+  }
+
+  .carousel-section h2 {
+    margin-bottom: 30px;
+  }
+  
+  .carousel-intro p {
+    font-size: 1rem;
+  }
+
+  /* Carousel Cards (Smaller for Phone) */
+  .carousel-wrapper {
+    height: 340px; 
+    width: 100%;
+  }
+
+  .carousel-slide {
+    width: 180px; /* Fixes the horizontal scroll */
+    margin-right: 20px; 
+  }
+
+  .card-image {
+    width: 160px; 
+    height: 200px; 
+    margin-bottom: 15px;
+    border-radius: 25px; 
+    border: 1px solid var(--signature-orange);
+  }
+
+  .card-content h4 { font-size: 1.1rem; }
+  .card-content .lineage { font-size: 0.8rem; }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    background: rgba(0,0,0,0.6); 
+  }
+  
+  .carousel-track-container {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  /* --- 5. ACTION CONTAINER --- */
+  .action-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 25px 15px;
+    box-sizing: border-box;
+    margin: 0 0 30px;
+  }
+  
+  .cta-header { font-size: 1.2rem; }
+  .cta-description { font-size: 1rem; }
+
+  /* --- 6. STATUS BADGES FIX --- */
+  .status-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    box-sizing: border-box;
+    margin-top: 20px;
+  }
+
+  .status-badge {
+    display: flex !important; /* Fixes alignment offset */
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    
+    /* Uniform Font Size */
+    font-size: 0.85rem !important; 
+    padding: 12px 15px;
+  }
+  
+  /* Reduce Boldness on the 3rd Badge so it matches others */
+  .status-badge.status-warning span {
+    font-weight: 600 !important; 
+  }
+}

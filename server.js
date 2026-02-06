@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Northern Legacy | Visionary Cultivation',
+    title: 'Excelsior Genetics | Visionary Cultivation',
     currentPath: '/',
     pageScript: '/js/index.js'
   });

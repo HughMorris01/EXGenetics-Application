@@ -39,6 +39,7 @@ header {
 
 .alert-flex {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 20px;
@@ -90,7 +91,6 @@ header {
 .header-logo-link {
   position: relative;
   z-index: 2200;
-  margin-top: -30px;
   background: radial-gradient(closest-side, rgba(0,0,0,0.8) 30%, transparent 100%);
   border-radius: 50%;
 }
@@ -183,17 +183,15 @@ header {
 
   /* 3. Banner Fix (The Safety Constraints) */
   .petition-alert-bar {
-    padding: 10px 0;
-    /* Ensure overflow is hidden specifically here */
-    overflow: hidden; 
+    padding: 5px 0;
+    font-size: .6rem;
   }
 
   .alert-flex {
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
     text-align: center;
-    
-    /* WIDTH FIX: Hard stops at 100% */
+    align-content: center;
+    justify-content: center;
     width: 100%;
     max-width: 100vw; 
     margin: 0;
@@ -207,16 +205,17 @@ header {
   }
 
   .alert-btn {
-    display: inline-block;
+    display: inline;
     width: auto;
-    margin-top: 2px;
+    font-size: .5rem;
+    padding: 3px 3px;
   }
 
   /* 4. Hamburger Menu */
   .menu-toggle {
     display: flex;
     z-index: 2300;
-    margin-right: 5px; 
+    margin-right: 25px; 
   }
   
   .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
@@ -229,7 +228,6 @@ header {
   .nav-menu.active {
     display: flex !important;
     flex-direction: column;
-    
     position: absolute;
     top: 100%;
     left: 0; 

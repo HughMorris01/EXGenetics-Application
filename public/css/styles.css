@@ -33,6 +33,7 @@
   --mobile-header-height: 120px;
   --hero-height: 30vh; 
   --container-width: 90%;
+  --content-width: 90%;
   --max-width: 1100px;
 }
 
@@ -54,17 +55,67 @@ body {
 
 /* --- LAYOUT UTILITIES --- */
 .container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: var(--container-width);
   max-width: var(--max-width);
   margin: 0 auto;
-  position: relative;
 }
 
 .content-wrapper {
-  padding-top: var(--header-height);
+  width: var(--content-width);
+  padding: 10px 0;
+  text-align: center;
+}
+/* --- GLOBAL TEXT LAYOUTS (Refactored) --- */
+
+.copy-wrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 80%;
+  margin: auto; 
+  text-align: center;
+}
+
+.copy-text {
+  font-family: var(--font-main);
+  color: var(--text-main);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 20px 0 25px;
+}
+
+.copy-text strong {
+  color: var(--signature-orange);
+  font-weight: 700;
+}
+
+.disclaimer {
+  color: var(--accent-red) !important;
+  font-family: Georgia, 'Times New Roman', Times, serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  
+  /* Layout: Just add space on top, let the parent align it */
+  margin-top: 30px !important; 
+  display: block;
+}
+
+/* --- GLOBAL DIVIDER --- */
+.neon-divider {
+  border: 0;
+  height: 1px;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1200px; 
+  background: linear-gradient(90deg, transparent, var(--signature-orange), transparent);
+  opacity: 0.7;
+  transform: scaleY(1.1);
 }
 
 /* --- THE UNIFIED HERO SYSTEM --- */
@@ -75,36 +126,13 @@ body {
   align-items: center;
   text-align: center;
   min-height: var(--hero-height);
-  padding: 0 20px;
   background-size: cover;
   background-position: center;
+  padding-top: 160px;
   border-bottom: 1px solid rgb(36, 36, 36);
   position: relative;
 }
 
-.disclaimer {
-  display: block;
-  font-family: var(--font-main); /* Ensure it uses a clean font */
-  font-size: 0.85rem;
-  
-  /* CRITICAL FIX: Force lines apart when they wrap */
-  line-height: 1.6 !important; 
-  
-  /* Add breathing room between the two statements */
-  margin-top: 10px;
-  margin-bottom: 10px; 
-  
-  color: #999;
-  
-  /* Mobile safety */
-  padding: 0 10px; 
-}
-
-.disclaimer em {
-  font-style: italic;
-  /* Ensure the italic text inherits the line-height */
-  line-height: inherit; 
-}
 
 
 .about-hero {
@@ -131,7 +159,7 @@ body {
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: 2px;
-  margin-bottom: 15px;
+  margin-bottom: 75px;
 
   background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
   -webkit-background-clip: text;
@@ -139,9 +167,10 @@ body {
   text-shadow: var(--glow-orange);
 }
 
-.hero-title span {
+.hero-title > span {
   display: block;
-  font-size: 0.5em;
+  font-family: var(--font-headers);
+  /* font-size: 0.5em; */
   color: var(--text-main);
   -webkit-text-fill-color: var(--text-main);
   text-transform: none;
@@ -207,27 +236,4 @@ body {
   background-color: var(--text-main); /* White on hover */
   transform: translateY(-5px); /* Little hop effect */
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
-}
-
-/* --- Mobile Overrides --- */
-@media screen and (max-width: 768px) {
-  :root { --fs-hero: 2.2rem; --header-height: 120px; }
-  .content-wrapper { padding-top: var(--header-height) !important; }
-  .hero-subtitle { font-size: 1rem; max-width: 90%; }
-}
-
-.disclaimer-wrapper {
-  margin: auto;
-  text-align: center;
-}
-
-.disclaimer {
-  color: var(--accent-red) !important;
-  font-family: var(--font-main) !important;
-  font-size: .7rem !important;
-  margin-top: 20px !important;
-  text-transform: uppercase !important;
-  font-weight: 500 !important;
-  letter-spacing: 1px !important;
-  line-height: .2 !important;
 }
