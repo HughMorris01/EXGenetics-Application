@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
   res.render('index', {
     title: 'Northern Legacy | Visionary Cultivation',
     currentPath: '/',
+    pageScript: '/js/index.js'
   });
 });
 
@@ -60,6 +61,7 @@ app.get('/contact', (req, res) => {
   res.render('contact', {
     title: 'Contact Us | Partnership Inquiry',
     currentPath: '/contact',
+    pageScript: '/js/contact.js',
     captcha: { num1, num2 } 
   });
 });

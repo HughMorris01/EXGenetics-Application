@@ -47,8 +47,9 @@
 <script src="https://kit.fontawesome.com/d5dc95c60e.js" crossorigin="anonymous"></script>
 <script src="/js/script.js"></script>
 
-<% if (currentPath === '/contact') { %>
-  <script src="/js/contact.js"></script>
+
+<% if (typeof pageScript !== 'undefined' && pageScript) { %>
+    <script src="<%= pageScript %>"></script>
 <% } %>
 
 </body>

@@ -2,14 +2,7 @@
 
 /* Note: .strains-hero layout/bg is now handled in styles.css */
 
-.disclaimer {
-  color: var(--accent-red);
-  font-family: var(--font-main);
-  font-size: var(--fs-small);
-  margin-top: 10px;
-}
-
-/* --- Strain Card Overhaul --- */
+/* --- Strain Card  --- */
 .strain-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

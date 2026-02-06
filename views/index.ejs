@@ -1,40 +1,355 @@
 <%- include('partials/head') %> <%- include('partials/header') %>
-<main class="content-wrapper">
-  
+
+<main class="content-wrapper index-layout">
   <section class="hero-section index-hero">
     <div class="container">
-      <h1 class="hero-title">Visionary Cultivation</h1>
-      <p class="hero-subtitle">For the North Country</p>
+      <h1 class="index-hero-title">
+        Visionary Cultivation
+        <span class="index-hero-subtitle">For the North Country</span>
+      </h1>
+
+      <div class="index-hero-copy index-font">
+        <p class="index-hero-intro">
+          <strong>Excelsior Genetics</strong> is a premier craft genetics
+          collective specializing in elite cultivation and the science of the
+          cannabis plant. Founded on the mission of bringing world-class quality
+          and transparency to the North Country.
+        </p>
+
+        <p class="index-hero-location">
+          Our retail arm, <strong>Northern Legacy</strong>, is set to become the
+          1000 Islands first dedicated cannabis dispensary. Located squarely
+          between <strong>Clayton and Alexandria Bay</strong>, directly across
+          from the <strong>1000 Islands Bait Store</strong> and just a stones
+          throw away from the I-81 offramp and
+          <strong>Wellesley Island!</strong>
+        </p>
+
+        <p class="hero-outrage index-font">
+          While we have the full support of our local community, we are
+          currently facing a licensing standstill due to administrative delays
+          by NYS. We are doing all that we can to make sure that we are ready to
+          bring a premium cannabis shopping experience to the 1000 Islands and
+          Greater North Country areas as soon as possible.
+        </p>
+      </div>
+
+      <div class="ghost-stats-container">
+        <div class="ghost-stat">
+          <span class="stat-number" id="days-waiting">814</span>
+          <span class="stat-label">Days Waiting</span>
+        </div>
+        <div class="ghost-divider"></div>
+        <div class="ghost-stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Operational Readiness</span>
+        </div>
+        <div class="ghost-divider"></div>
+        <div class="ghost-stat">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Licenses Issued</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="location-context" style="padding-top: 60px;">
-    <div class="container" style="text-align: center;">
-      <div class="hero-copy" style="max-width: 900px; margin: 0 auto; text-align: left;">
-        <p class="hero-intro-text" style="color: #f0f0f0; margin-bottom: 20px;">
-          <strong>Excelsior Genetics</strong> is a premier craft genetics collective specializing in elite cultivation and the science of the cannabis plant. Founded on the mission of bringing world-class quality and transparency to the North Country.
-        </p>
-        <p class="hero-intro-text" style="color: #f0f0f0; margin-bottom: 20px;">
-          Our retail arm, <strong>Northern Legacy</strong>, is set to become the 1000 Islands first dedicated cannabis dispensary.
-        </p>
+  <section class="carousel-section">
+    <h2>Featured Genetics</h2>
+    <div class="carousel-intro">
+      <p class="index-font">
+        Our genetic library is the culmination of decades spent cultivating
+        relationships with the industry’s most revered and exclusive breeders.
+        We source from only the most elite, proven lineages—preserving
+        proprietary phenotypes that define the true craft experience.
+      </p>
+
+      <p class="disclaimer">
+        <em>* For educational and genetic reference only.</em>
+      </p>
+      <p class="disclaimer">
+        <em>* Not currently available for wholesale or retail distribution.</em>
+      </p>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" id="prevBtn">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div class="carousel-track-container">
+        <ul class="carousel-track">
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/yellow_snow.jpg"
+                  alt="Yellow Snow"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Yellow Snow</h4>
+                <span class="lineage">Snowman S1 x LemondHeads</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/dirt_nap.jpg"
+                  alt="Dirt Nap"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Dirt Nap</h4>
+                <span class="lineage">Ghost OG x Dosidos</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/polynesian_thin_mints.jpg"
+                  alt="Polynesian Thin Mints"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Polynesian Thin Mints</h4>
+                <span class="lineage">Thin Mint GSC x Face Off OG</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/ice_cream_cone.jpg"
+                  alt="Ice Cream Cone"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Ice Cream Cone</h4>
+                <span class="lineage">Snowman S1 x Face Off OG</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/creepy_killer.jpg"
+                  alt="Creepy Killer"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Creepy Killer</h4>
+                <span class="lineage">Face Off OG #4 x Dosidos</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/sugar_biscuits.jpg"
+                  alt="Sugar Biscuits"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Sugar Biscuits</h4>
+                <span class="lineage">Animal Cookies x Dosidos</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/alien_rock_candy.jpg"
+                  alt="Alien Rock Candy"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Alien Rock Candy</h4>
+                <span class="lineage">Sour Dubble x Tahoe Alien</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/diesel_dough.jpg"
+                  alt="Diesel Dough"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Diesel Dough</h4>
+                <span class="lineage">Sour Diesel x Dosidos</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/valley_vixen.jpg"
+                  alt="Valley Vixen"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Valley Vixen</h4>
+                <span class="lineage">SFV OG x Dosidos</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/moon_boots.jpg"
+                  alt="Moon Boots"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Moon Boots</h4>
+                <span class="lineage">White Tahoe Cookies x Moon Bow</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/junior_mintz.jpg"
+                  alt="Junior Mintz"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Junior Mintz</h4>
+                <span class="lineage">Thin Mint GSC x Face Off OG</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/hash_blast.jpg"
+                  alt="Hash Blast"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Hash Blast</h4>
+                <span class="lineage">Hashbar OG x Dark Rainbow #11</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/dubba_dosi.jpg"
+                  alt="Dubba Dosi"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Dubba Dosi</h4>
+                <span class="lineage">Bubba Diagonal x Dosido</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/scooby_snacks.jpg"
+                  alt="Scooby Snacks"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Scooby Snacks</h4>
+                <span class="lineage">Platinum GSC x Face Off OG</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="carousel-slide">
+            <div class="soft-card">
+              <div class="card-image">
+                <img
+                  src="/assets/strains/dosidos_4.jpg"
+                  alt="Dosidos #4 (F2)"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-content">
+                <h4>Dosidos #4 (F2)</h4>
+                <span class="lineage">OGKB x Face Off OG</span>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-      
-      <div class="action-container">
-        <p class="cta-text">Stand with us. Help us open the 1000 Islands' first dispensary.</p>
-        <a href="#petition" class="btn-petition">Sign Our Petition</a>
-      </div>
+
+      <button class="carousel-btn next" id="nextBtn">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </div>
   </section>
 
-  <section class="location-context">
-    <div class="container">
-      <h3>Our Future Home</h3>
-      <div class="gallery-grid">
-        <img class="gallery-img" src="/assets/storefront.jpg" alt="Alexandria Bay Gateway" />
-        <img class="gallery-img" src="/assets/interior-3.jpg" alt="Future Retail Space" />
-        <img class="gallery-img" src="/assets/interior-2.jpg" alt="Future Lounge Area" />
-      </div>
+  <div class="status-group">
+    <div class="status-badge status-ready">
+      <i class="fa-solid fa-circle-check"></i>
+      <span>Location Secured</span>
     </div>
-  </section>
+
+    <div class="status-badge status-ready">
+      <i class="fa-solid fa-circle-check"></i>
+      <span>Experienced Team in Place</span>
+    </div>
+
+    <div class="status-badge status-warning">
+      <i class="fa-solid fa-clock"></i> <span>Status: Application Pending</span>
+    </div>
+  </div>
+  <div class="action-container">
+    <h3 class="cta-header">Help Us Open Our Doors</h3>
+    <p class="cta-description">
+      We've' secured the location, built the team, and made all of the
+      preparatons. All that stands between us and opening day is final
+      administrative processing. If you are ready to welcome the 1000 Islands'
+      first and only premier cannabis destination, please lend us your voice.
+    </p>
+    <a href="/retail#petition" class="btn-petition">Sign Our Petition</a>
+  </div>
 </main>
+
 <%- include('partials/footer') %>

@@ -17,7 +17,7 @@
   --signature-orange: #f8c25d;
   --bg-black: #000000;
   --bg-glass: rgba(10, 10, 10, 0.95);
-  --text-main: #ffffff;
+  --text-main: #f0f0f0;
   --text-muted: #a6a6a6;
   --accent-red: #ea5455;
 
@@ -29,7 +29,7 @@
   --transition-smooth: all 0.3s ease;
 
   /* Layout Constants */
-  --header-height: 190px;
+  --header-height: 160px;
   --mobile-header-height: 120px;
   --hero-height: 30vh; 
   --container-width: 90%;
@@ -38,6 +38,7 @@
 
 /* --- Global Reset --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 html { overflow-x: hidden; width: 100%; }
 body {
   background-color: var(--bg-black);
@@ -81,10 +82,31 @@ body {
   position: relative;
 }
 
-/* Background Image Assignments */
-.index-hero {
-  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/assets/storefront.jpg');
+.disclaimer {
+  display: block;
+  font-family: var(--font-main); /* Ensure it uses a clean font */
+  font-size: 0.85rem;
+  
+  /* CRITICAL FIX: Force lines apart when they wrap */
+  line-height: 1.6 !important; 
+  
+  /* Add breathing room between the two statements */
+  margin-top: 10px;
+  margin-bottom: 10px; 
+  
+  color: #999;
+  
+  /* Mobile safety */
+  padding: 0 10px; 
 }
+
+.disclaimer em {
+  font-style: italic;
+  /* Ensure the italic text inherits the line-height */
+  line-height: inherit; 
+}
+
+
 .about-hero {
   background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/assets/interior-3.jpg');
 }
@@ -192,4 +214,20 @@ body {
   :root { --fs-hero: 2.2rem; --header-height: 120px; }
   .content-wrapper { padding-top: var(--header-height) !important; }
   .hero-subtitle { font-size: 1rem; max-width: 90%; }
+}
+
+.disclaimer-wrapper {
+  margin: auto;
+  text-align: center;
+}
+
+.disclaimer {
+  color: var(--accent-red) !important;
+  font-family: var(--font-main) !important;
+  font-size: .7rem !important;
+  margin-top: 20px !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  line-height: .2 !important;
 }

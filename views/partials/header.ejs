@@ -1,6 +1,16 @@
-<%- include('agegate') %>
-
 <header>
+  <% if (typeof currentPath !== 'undefined' && currentPath === '/') { %>
+    <div class="petition-alert-bar">
+      <div class="container alert-flex">
+        <span class="alert-text">
+          <i class="fa-solid fa-bullhorn"></i> 
+          <strong>Community Action:</strong> Help us to bring the 1000 Islands its first cannabis dispensary!
+        </span>
+        <a href="/retail#petition" class="alert-btn">Sign the Petition <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  <% } %>
+
   <div class="header-container">
     <a href="/" class="header-logo-link">
       <img
