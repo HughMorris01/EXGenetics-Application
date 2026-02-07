@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // A. Check Session immediately
     if (sessionStorage.getItem('exg_age_verified') !== 'true') {
       ageOverlay.style.display = 'flex';
+      
+      // FIX: LOCK THE SCROLL
+      // This stops the user from scrolling the background, 
+      // which fixes the "flashing blur" glitch.
+      document.body.classList.add('lock-scroll');
     }
 
     // B. Handle "I am 21+" Click
@@ -28,28 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
       btnYes.addEventListener('click', () => {
         sessionStorage.setItem('exg_age_verified', 'true');
 
-        // Step 1: Shrink to Rectangle
+        // FIX: UNLOCK THE SCROLL
+        // Allow the user to scroll again immediately
+        document.body.classList.remove('lock-scroll');
+
+        // TRIGGER ANIMATION:
         ageOverlay.classList.add('rect-shrink');
+        ageOverlay.classList.add('final-fade');
 
-        // Step 2: Fade Out
+        // CLEANUP:
         setTimeout(() => {
-          ageOverlay.classList.add('final-fade');
-
-          // Step 3: Remove from DOM
-          setTimeout(() => {
-            ageOverlay.style.display = 'none';
-          }, 500); 
-        }, 1000); 
+          ageOverlay.style.display = 'none';
+        }, 2200); 
       });
     }
-
-    // C. Handle "Exit" Click
-    if (btnNo) {
-      btnNo.addEventListener('click', () => {
-        window.location.href = "https://www.google.com";
-      });
-    }
-  };
+  }
 
   // --- 2. MOBILE NAVIGATION ---
   const initMobileMenu = () => {
