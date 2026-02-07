@@ -18,7 +18,7 @@
 
   /* --- Hero Typography Overrides --- */
   .hero-title {
-    font-size: 2.5rem; /* Smaller than desktop 3.5rem */
+    font-size: 1.8rem; /* Smaller than desktop 3.5rem */
     margin-bottom: 40px;
     line-height: 1.2;
   }
@@ -26,16 +26,6 @@
   .hero-title > span {
     font-size: 1.2rem; /* Adjusted for readability */
     margin-top: 10px;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-    padding: 0 15px;
-  }
-
-  .hero-intro-text {
-    font-size: 0.95rem;
-    padding: 0 10px;
   }
 
   /* --- Layout Adjustments --- */

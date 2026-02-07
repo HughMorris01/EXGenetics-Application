@@ -1,0 +1,13 @@
+/* --- 3. GHOST STATS (Vertical Stack) --- */
+  .ghost-stats-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .ghost-divider {
+    width: 50%;
+    height: 1px; 
+  }

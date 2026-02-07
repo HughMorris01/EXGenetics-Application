@@ -19,36 +19,12 @@
     padding: 120px 15px 0;
   }
 
-  .index-hero-title {
-    font-size: 1.8rem;
-  }
-
-  .index-hero span {
-    paint-order: stroke fill; 
-    font-size: .9rem;
-    font-weight: 600;
-  }
-  
   .hero-outrage {
     font-size: 1rem;
     border-top: none;
     border-left: 3px solid var(--accent-red) !important;
     padding-left: 15px;
     margin-top: 20px;
-  }
-
-  /* --- 3. GHOST STATS (Vertical Stack) --- */
-  .ghost-stats-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 30px;
-    margin-top: 30px;
-    width: 100%;
-  }
-  
-  .ghost-divider {
-    width: 50%;
-    height: 1px; 
   }
   
   .stat-number {
