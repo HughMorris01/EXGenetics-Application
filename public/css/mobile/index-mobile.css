@@ -5,13 +5,14 @@
 
 @media (max-width: 768px) {
 
+  /* --- 1. GLOBAL LAYOUT --- */
   .index-layout {
-  padding-top: 80px; /* Header (160px) + Banner (40px) */
-}
+    padding-top: 80px; /* Header (160px) + Banner (40px) */
+  }
 
-.content-wrapper, .copy-wrapper {
-  width: 100%
-}
+  .content-wrapper, .copy-wrapper {
+    width: 100%;
+  }
 
   /* --- 2. HERO SECTION --- */
   .index-hero {
@@ -19,7 +20,7 @@
   }
 
   .index-hero-title {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
   }
 
   .index-hero span {
@@ -54,36 +55,28 @@
     font-size: 2.5rem !important;
   }
 
+  /* --- GENETICS SECTION --- */
   .genetics-section {
-  padding-top: 20px; 
-}
+    padding-top: 20px; 
+  }
 
-.genetics-section h2 {
-  font-size: 1.3rem;
-}
+  .genetics-section h2 {
+    font-size: 1.3rem;
+  }
 
-.disclaimer {
-  font-size: 0.6rem !important;
-  font-weight: 300 !important;
-  letter-spacing: 1px !important;
-  margin-top: 10px !important; 
-  display: block;
-}
+  .genetics-section h2 a {
+    font-size: 1.4rem;
+  }
+
+  .disclaimer {
+    font-size: 0.6rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 1px !important;
+    margin-top: 10px !important; 
+    display: block;
+  }
 
   /* --- 4. CAROUSEL SECTION --- */
-  .carousel-section {
-    padding: 40px 0 30px;
-  }
-
-  .carousel-section h2 {
-    margin-bottom: 30px;
-  }
-  
-  .carousel-intro p {
-    font-size: 1rem;
-  }
-
-  /* Carousel Cards (Smaller for Phone) */
   .carousel-wrapper {
     height: 340px; 
     width: 100%;
@@ -101,7 +94,15 @@
     border-radius: 25px; 
     border: 1px solid var(--signature-orange);
   }
+/* Fit names Polynesian Thin Minds on one line*/
+  .fs-polynesian{
+  font-size: .75rem !important;
+}
 
+.carousel-slide .card-content .lineage {
+  font-size: 0.75rem !important; 
+  white-space: nowrap; 
+}
   .card-content h4 { font-size: 1.1rem; }
   .card-content .lineage { font-size: 0.8rem; }
 
@@ -120,7 +121,7 @@
   /* --- 5. ACTION CONTAINER --- */
   .action-container {
     width: 100%;
-    max-width: 100%;
+    margin: auto;
     padding: 25px 15px;
     box-sizing: border-box;
     margin: 0 0 30px;

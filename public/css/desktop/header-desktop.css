@@ -1,0 +1,197 @@
+/* ==========================================================================
+   HEADER-DESKTOP.CSS (Base Styles & Large Screens)
+   ========================================================================== */
+
+/* --- FIXED HEADER & NAVIGATION --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  /* SAFETY: Never allow header to be wider than screen */
+  max-width: 100vw; 
+  box-sizing: border-box;
+  
+  z-index: 1000;
+  background-color: var(--bg-glass);
+  border-bottom: var(--border-subtle);
+  
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: var(--header-height);
+  
+  transition: transform 0.3s ease;
+}
+
+/* --- 1. BANNER (Top Bar) --- */
+.petition-alert-bar {
+  background: linear-gradient(
+    180deg, 
+    #f9dd9d 0%,               
+    var(--signature-orange) 40%, 
+    #dba745 100%             
+  );;
+  color: var(--bg-black);
+  width: 100%;
+  position: relative;
+  z-index: 2001;
+  font-family: var(--font-nav);
+  padding: 8px 0;
+  overflow: hidden; 
+  box-sizing: border-box;
+  border-bottom: 1pxx solid #dba745; 
+  box-shadow: 0 4px 12px rgba(0,0,0,1)
+}
+
+.alert-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; 
+  gap: 15px; 
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* SECTION 1: Horn (Added a slight tilt for style) */
+.alert-icon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  transform: rotate(-10deg); /* dynamic tilt */
+}
+
+/* SECTION 2: Title (Stamped Look) */
+.alert-title {
+  font-family: var(--font-headers); /* Matches your H1s */
+  font-weight: 900;
+  font-style: italic; /* Adds urgency */
+  text-transform: uppercase;
+  font-size: 1.2rem; 
+  line-height: 1;    
+  text-align: right; 
+  white-space: nowrap;
+  
+  /* FANCY TWEAK: 'Stamped' effect (White shadow on bottom right) */
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
+}
+
+/* SECTION 3: Message */
+.alert-message {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: left;
+  max-width: 400px; 
+}
+
+/* SECTION 4: Button (Tactile Feel) */
+.alert-btn {
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 15px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.alert-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px); 
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3); 
+}
+
+/* --- 2. NAVBAR CONTAINER (Logo + Links) --- */
+.header-container {
+  width: var(--container-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+/* --- 3. LOGO --- */
+.header-logo-link {
+  position: relative;
+  z-index: 2200;
+  background: radial-gradient(closest-side, rgba(0,0,0,0.8) 30%, transparent 100%);
+  border-radius: 50%;
+}
+
+.logo {
+  width: 175px;
+  height: auto;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+/* --- 4. DESKTOP NAVIGATION --- */
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  padding-top: 15px;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-family: var(--font-nav);
+  font-weight: 600;
+  font-size: var(--fs-nav);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.nav-menu ul li a:hover,
+.active-link {
+  color: var(--signature-orange) !important;
+}
+
+.active-link::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--signature-orange);
+  margin-top: 5px;
+}
+
+/* --- 5. MOBILE ELEMENTS (Hidden on Desktop) --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.bar {
+  width: 30px;
+  height: 3px;
+  background-color: var(--text-main);
+  transition: all 0.3s ease;
+}

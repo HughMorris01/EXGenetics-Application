@@ -1,0 +1,57 @@
+/* ==========================================================================
+   MOBILE-STYLES.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+  
+  /* --- Global Text Adjustments --- */
+  .copy-wrapper {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .copy-text {
+    font-size: 1rem;
+    margin: 15px 0 20px;
+  }
+
+  /* --- Hero Typography Overrides --- */
+  .hero-title {
+    font-size: 2.5rem; /* Smaller than desktop 3.5rem */
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  .hero-title > span {
+    font-size: 1.2rem; /* Adjusted for readability */
+    margin-top: 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  .hero-intro-text {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  /* --- Layout Adjustments --- */
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  .content-wrapper {
+    width: 100%;
+  }
+
+  /* --- Back To Top Button --- */
+  #backToTop {
+    bottom: 20px;
+    right: 20px;
+    font-size: 2.8rem; /* Slightly smaller on mobile to avoid blocking content */
+  }
+}

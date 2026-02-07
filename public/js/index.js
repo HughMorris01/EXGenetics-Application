@@ -1,35 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // --- 1. Days Waiting Counter ---
   const startDate = new Date('2023-11-15');
-    const today = new Date();
-    
-    // Calculate difference in time (milliseconds)
-    const timeDiff = today - startDate;
-    
-    // Convert to days (1000ms * 60s * 60m * 24h)
-    const dayDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    
-    // Update the number
-    const counterElement = document.getElementById('days-waiting');
-    if (counterElement) {
-      counterElement.textContent = dayDiff;
-    }
+  const today = new Date();
+  const timeDiff = today - startDate;
+  const dayDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  
+  const counterElement = document.getElementById('days-waiting');
+  if (counterElement) {
+    counterElement.textContent = dayDiff;
+  }
 
-
+  // --- 2. Bi-Directional Infinite Carousel ---
   const track = document.querySelector('.carousel-track');
   if (!track) return;
 
   const nextBtn = document.getElementById('nextBtn');
   const prevBtn = document.getElementById('prevBtn');
 
-  // --- Configuration ---
-  const SPEED_NORMAL = 0.5; // Auto-scroll speed
-  const SPEED_FAST = 15;    // Button click speed
+  // Configuration
+  const SPEED_NORMAL = 0.5; // Passive scroll speed (always moves left)
+  const SPEED_FAST = 15;    // Snap speed when button clicked
   
   let currentOffset = 0;
-  let targetSnap = null;    // Used for button clicks
+  let targetSnap = null;    // Where we want to end up
   let isSnapping = false;
 
-  // Measure one slide (width + gap)
+  // Helper: Get width of one card + its margin
   const getSlideWidth = () => {
     const firstSlide = track.firstElementChild;
     if (!firstSlide) return 0;
@@ -45,69 +41,76 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Determine how much to move this frame
-    let moveAmount = SPEED_NORMAL;
-
-    // If snapping (button clicked), move faster towards the target
+    // --- MOVEMENT LOGIC ---
     if (isSnapping && targetSnap !== null) {
-      // Calculate distance remaining to the snap point
-      // (The snap point is essentially "one slide width away")
-      const distance = Math.abs(targetSnap - currentOffset);
+      // We are snapping to a specific point (Next or Prev)
+      const diff = targetSnap - currentOffset;
       
-      if (distance < SPEED_FAST) {
-        // We are close enough, snap exactly and stop fast mode
-        moveAmount = distance; 
+      if (Math.abs(diff) < SPEED_FAST) {
+        // Close enough: Snap exactly
+        currentOffset = targetSnap;
         isSnapping = false;
         targetSnap = null;
       } else {
-        moveAmount = SPEED_FAST;
+        // Move fast towards target (Math.sign handles direction)
+        currentOffset += Math.sign(diff) * SPEED_FAST;
       }
+    } else {
+      // Passive Mode: Always drift slowly to the left
+      currentOffset -= SPEED_NORMAL;
     }
 
-    // Apply movement (negative moves left)
-    currentOffset -= moveAmount;
+    // --- INFINITE LOOP LOGIC (Boundaries) ---
 
-    // --- INFINITE LOOP LOGIC ---
-    // If the first slide has gone completely off-screen to the left...
-    if (Math.abs(currentOffset) >= slideWidth) {
-      // 1. Move the first slide to the very end of the list
+    // 1. Left Boundary: First slide has gone off-screen
+    if (currentOffset <= -slideWidth) {
       const firstSlide = track.firstElementChild;
-      track.appendChild(firstSlide);
+      track.appendChild(firstSlide); // Move head to tail
+      currentOffset += slideWidth;   // Adjust coordinate to match visual change
       
-      // 2. Instantly reset the offset by adding one slide width back
-      // This makes it look seamless because we physically moved the DOM element
-      currentOffset += slideWidth;
-      
-      // If we were snapping, adjust the target because our coordinate system just shifted
-      if (targetSnap !== null) {
-        targetSnap += slideWidth;
-      }
+      // If snapping, adjust target too so we don't lose our spot
+      if (targetSnap !== null) targetSnap += slideWidth;
     }
 
-    // Apply the visual transform
-    track.style.transform = `translateX(${currentOffset}px)`;
+    // 2. Right Boundary: We are pulling empty space from the left
+    // (This happens when we click "Prev" repeatedly)
+    if (currentOffset > 0) {
+      const lastSlide = track.lastElementChild;
+      track.prepend(lastSlide);      // Move tail to head
+      currentOffset -= slideWidth;   // Adjust coordinate
+      
+      if (targetSnap !== null) targetSnap -= slideWidth;
+    }
 
+    // Apply the transform
+    track.style.transform = `translateX(${currentOffset}px)`;
     requestAnimationFrame(animate);
   };
 
   // --- Button Events ---
-  
+
   nextBtn.addEventListener('click', () => {
     const slideWidth = getSlideWidth();
-    // Set a target: "Slide a full card width from where we are now"
-    // Since we are moving left (negative), we subtract width
-    targetSnap = currentOffset - slideWidth;
+    // Move LEFT (Negative)
+    targetSnap = Math.round((currentOffset - slideWidth) / slideWidth) * slideWidth;
     isSnapping = true;
   });
 
-  // Prev button logic (Optional: For a conveyor, usually we just speed up forward, 
-  // but if you want to reverse, it's complex. Let's make Prev just "Pause" or behave like Next for now)
   prevBtn.addEventListener('click', () => {
-     // For a true infinite conveyor, "Prev" often just accelerates forward too 
-     // unless we write reverse logic. Let's keep it simple: Both buttons advance content.
-     const slideWidth = getSlideWidth();
-     targetSnap = currentOffset - slideWidth;
-     isSnapping = true;
+    const slideWidth = getSlideWidth();
+    
+    // SAFETY: If we are at 0 (start), we need to prepend an item *immediately*
+    // before we try to move right, otherwise we see empty space.
+    if (currentOffset >= 0) {
+      const lastSlide = track.lastElementChild;
+      track.prepend(lastSlide);
+      currentOffset -= slideWidth;
+    }
+
+    // Move RIGHT (Positive)
+    // We snap to the next "grid" position to the right
+    targetSnap = Math.round((currentOffset + slideWidth) / slideWidth) * slideWidth;
+    isSnapping = true;
   });
 
   // Start the engine

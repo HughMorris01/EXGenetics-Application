@@ -1,122 +1,183 @@
 /* ==========================================================================
-   ABOUT-DESKTOP.CSS (Base Styles)
-   Structure: Typography -> Petition Split -> Action Card
+   ABOUT-DESKTOP.CSS (Pro Version)
    ========================================================================== */
 
-/* --- Main Text Block --- */
+/* --- Typography & Rhythm --- */
+.about-content {
+  padding: 80px 0;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+}
+
+.about-chapter {
+  padding: 60px 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.chapter-title {
+  font-family: var(--font-headers);
+  font-size: 2.5rem;
+  color: #444; /* Subtle numbering color */
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  border-left: 4px solid var(--signature-orange);
+  padding-left: 20px;
+}
+
+.chapter-title.error-color {
+  border-left-color: var(--accent-red);
+}
+
 .about-text {
   font-family: var(--font-main);
-  font-size: 1.2rem;
-  line-height: 1.9;
-  color: #f0f0f0;
-  max-width: 850px;
-  text-align: justify;
-  
-  /* Center the block itself */
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 40px;
+  font-size: 1.3rem; /* Larger, easier to read */
+  line-height: 1.8;
+  color: #e0e0e0;
+  margin-bottom: 25px;
 }
 
-/* --- Emphatic Spans --- */
-.highlight-orange {
+.lead-text {
+  font-size: 1.6rem;
+  font-style: italic;
   color: var(--signature-orange);
-  font-weight: 700;
+  font-family: serif; /* Distinct manifesto feel */
 }
 
-.highlight-white {
-  color: var(--text-main);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.highlight-red {
-  color: var(--accent-red);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-/* --- Petition Split Section --- */
-.about-petition-split {
-  padding: 80px 0;
-  background: #050505;
-  border-top: var(--border-subtle);
-  margin-top: 40px;
-}
-
-.split-layout {
+/* --- Chapter 2 Grid Layout --- */
+.chapter-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* --- Image Styling --- */
+.framed-image {
+  width: 100%;
+  border-radius: 4px;
+  border: 4px solid #fff; /* Photo frame style */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transform: rotate(2deg); /* Organic "tossed photo" look */
+  transition: transform 0.3s ease;
+}
+
+.framed-image:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+figcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* --- Alert Box (Chapter 4) --- */
+.alert-box {
+  background: rgba(255, 69, 58, 0.1); /* Red tint */
+  border-left: 4px solid var(--accent-red);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+/* --- PETITION SECTION (The closer) --- */
+.petition-wrapper {
+  background: #111;
+  border-top: 1px solid #333;
+  padding: 100px 0;
+}
+
+.petition-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
 }
 
-.petition-text h2 {
+.petition-header {
   font-family: var(--font-headers);
-  font-size: 2.5rem;
-  margin-bottom: 25px;
-  text-transform: uppercase;
+  font-size: 3rem;
   color: var(--accent-red);
-}
-
-.petition-text p {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  line-height: 1.8;
+  text-transform: uppercase;
+  line-height: 1;
   margin-bottom: 20px;
 }
 
-/* --- Action Card (Right Side) --- */
-.petition-action {
-  display: flex;
-  justify-content: center;
+.petition-points {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
 }
 
-.action-card {
+.petition-points li {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.petition-points i {
+  color: var(--signature-orange);
+  margin-right: 10px;
+}
+
+/* --- Petition Card --- */
+.petition-card {
   background: var(--bg-glass);
-  padding: 40px;
   border: 1px solid var(--signature-orange);
   border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(248, 194, 93, 0.1);
+}
+
+.card-header {
+  background: var(--signature-orange);
+  padding: 15px;
   text-align: center;
-  box-shadow: var(--glow-orange);
-  width: 100%;
-  max-width: 400px;
 }
 
-.action-card h3 {
+.card-header h3 {
+  color: #000;
+  margin: 0;
   font-family: var(--font-headers);
-  font-size: 1.8rem;
-  color: var(--text-main);
   text-transform: uppercase;
-  margin-bottom: 10px;
 }
 
-.action-card p {
-  color: var(--signature-orange);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
+.card-body {
+  padding: 30px;
+  text-align: center;
 }
 
-.btn-petition {
-  display: block;
+.progress-bar {
   width: 100%;
-  padding: 15px 0;
-  background-color: var(--signature-orange);
-  color: var(--bg-black);
-  text-decoration: none;
-  border-radius: var(--radius-subtle);
-  font-family: var(--font-headers);
+  height: 10px;
+  background: #333;
+  border-radius: 5px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-red);
+}
+
+.btn-petition-large {
+  display: inline-block;
+  background: #fff;
+  color: #000;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  transition: var(--transition-smooth);
+  padding: 15px 40px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 50px; /* Pill shape */
+  transition: all 0.3s ease;
 }
 
-.btn-petition:hover {
-  background-color: var(--text-main);
-  transform: scale(1.02);
+.btn-petition-large:hover {
+  background: var(--signature-orange);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--signature-orange);
 }

@@ -1,0 +1,113 @@
+/* ==========================================================================
+   HEADER-MOBILE.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+  
+  /* 1. Header Reset */
+  header {
+    height: auto !important;
+    min-height: var(--mobile-header-height);
+  }
+
+  .header-container {
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  /* 2. Logo Reset */
+  .header-logo-link {
+    margin-top: 0;
+    background: none;
+  }
+  .logo {
+    width: 120px !important;
+    margin: 0;
+  }
+
+  /* 3. Banner Fixes */
+  .petition-alert-bar {
+    padding: 6px 0;
+    border-bottom: 3px solid #dba745; 
+  }
+
+  .alert-flex {
+    flex-direction: row;
+    flex-wrap: nowrap; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 6px; 
+    width: 100%;
+    margin: 0;
+    padding: 0 5px;
+  }
+
+  .alert-icon { font-size: 0.9rem; } 
+
+  .alert-title {
+    font-size: 0.7rem; 
+    line-height: 1;
+    /* Inherits the font-family, italic, and text-shadow from desktop automatically! */
+  }
+
+  .alert-message {
+    font-size: 0.55rem; 
+    line-height: 1.1;
+    text-align: left;
+    max-width: 160px; 
+  }
+
+  .alert-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px; 
+    white-space: normal; 
+    text-align: center;
+    line-height: 1.1;
+    font-size: 0.55rem;
+    padding: 4px 4px;
+    
+    /* Ensure the shadow exists on mobile too */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* 4. Hamburger Menu */
+  .menu-toggle {
+    display: flex;
+    z-index: 2300;
+    margin-right: 25px; 
+  }
+  
+  .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+  /* 5. Mobile Dropdown */
+  .nav-menu { display: none; }
+
+  .nav-menu.active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; 
+    width: 100%;
+    
+    background-color: var(--bg-glass);
+    border-bottom: var(--border-subtle);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    
+    max-height: 80vh; 
+    overflow-y: auto;
+  }
+
+  .nav-menu.active ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 0;
+  }
+}
