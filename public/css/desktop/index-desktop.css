@@ -12,41 +12,11 @@
    2. HERO SECTION
    ========================================================================== */
 .index-hero {
-  padding: 50px 20px 20px;
-  text-align: center;
   background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(/assets/storefront.jpg);
   background-size: cover;
   background-position: center;
-  border-bottom: var(--border-subtle);
 }
 
-.index-hero-title {
-  font-family: var(--font-headers);
-  font-size: 3.8rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.1;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.index-hero-title > span {
-  display: block;
-  margin-top: 10px;
-  
-  /* Typography */
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: 800;
-  text-transform: none;
-  letter-spacing: 1px;
-  
-  /* Color & Fill */
-  color: var(--text-main);
-  -webkit-text-fill-color: var(--text-main);
-  -webkit-text-stroke: 1px var(--signature-orange);
-  text-shadow: var(--glow-orange);
-}
 
 .hero-outrage {
   margin-top: 30px;
@@ -62,56 +32,12 @@
   color: #f0f0f0;
 }
 
-/* ==========================================================================
-   3. GHOST STATS
-   ========================================================================== */
-.ghost-stats-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  margin: 40px auto;
-  padding: 20px 0;
-  max-width: 800px;
-}
-
-.ghost-stat {
-  text-align: center;
-}
-
-.stat-number {
-  display: block;
-  font-family: var(--font-headers);
-  font-size: 3.5rem; 
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.5); 
-}
-
-.stat-label {
-  display: block;
-  margin-top: 10px;
-  font-family: var(--font-main);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--signature-orange);
-  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
-}
-
-.ghost-divider {
-  width: 1px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.3);
-}
 
 /* ==========================================================================
    GENETICS SECTION (#look-here)
    ========================================================================== */
 .genetics-section {
-  padding: 60px 0; /* Matches spacing of Carousel section */
+  padding: 10px 0; /* Matches spacing of Carousel section */
   background-color: var(--bg-black);
   text-align: center;
 }
@@ -283,7 +209,8 @@
   background: rgba(248, 194, 93, 0.05);
   border: 1px solid rgba(248, 194, 93, 0.3);
   border-radius: var(--radius-subtle);
-  max-width: 650px;
+  width: 60%;
+  max-width: 850px;
   text-align: center;
 }
 
@@ -297,16 +224,7 @@
   font-size: 1.4rem;
 }
 
-.cta-description {
-  font-family: var(--font-main);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #e0e0e0;
-  max-width: 600px;
-  margin: 0 auto 30px;
-}
-
-.btn-petition {
+.cta-btn {
   display: inline-block;
   padding: 15px 40px;
   background-color: var(--signature-orange);
@@ -320,7 +238,7 @@
   border-radius: 4px;
 }
 
-.btn-petition:hover {
+.cta-btn:hover {
   background-color: #fff;
   color: #000;
   transform: translateY(-2px);

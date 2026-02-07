@@ -42,6 +42,6 @@
   #backToTop {
     bottom: 20px;
     right: 20px;
-    font-size: 2.8rem; /* Slightly smaller on mobile to avoid blocking content */
+    font-size: 2rem; /* Slightly smaller on mobile to avoid blocking content */
   }
 }

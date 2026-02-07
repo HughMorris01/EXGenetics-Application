@@ -28,6 +28,114 @@
   border-color: var(--signature-orange);
 }
 
+/* ==========================================================================
+   3. GHOST STATS
+   ========================================================================== */
+.ghost-stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 40px auto;
+  padding: 20px 0;
+  max-width: 800px;
+}
+
+.ghost-stat {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-headers);
+  font-size: 3.5rem; 
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.5); 
+}
+
+.stat-label {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-main);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--signature-orange);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+.ghost-divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   STATUS BADGES
+   ========================================================================== */
+.status-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 60px auto 40px; 
+  padding: 0 20px;
+  max-width: 1200px;      
+}
+
+.status-badge {
+  display: flex;
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px; 
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+  padding: 15px 25px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid #555;
+  border-radius: 4px;
+  
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ccc;
+  cursor: default; 
+  user-select: none;
+}
+
+.status-badge.status-ready {
+  border-left-color: #4caf50;
+  background: linear-gradient(90deg, rgba(76, 175, 80, 0.1) 0%, transparent 100%);
+}
+.status-badge.status-ready i {
+  color: #4caf50;
+  font-size: 1.1rem;
+}
+.status-badge.status-ready span {
+  color: #e8f5e9;
+}
+
+.status-badge.status-warning {
+  border-left-color: var(--accent-red);
+  background: linear-gradient(90deg, rgba(234, 84, 85, 0.1) 0%, transparent 100%);
+}
+.status-badge.status-warning i {
+  color: var(--accent-red);
+  font-size: 1.1rem;
+}
+.status-badge.status-warning span {
+  color: #ffebee;
+  font-weight: 700;
+}
+
 /* --- Petition Split Section --- */
 .petition-split {
   padding: 80px 0;

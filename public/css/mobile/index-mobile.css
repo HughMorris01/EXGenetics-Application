@@ -9,6 +9,10 @@
   .index-layout {
     padding-top: 80px; /* Header (160px) + Banner (40px) */
   }
+  
+  .container {
+    width: var(--container-width-mobile);
+  }
 
   .content-wrapper, .copy-wrapper {
     width: 100%;
@@ -20,12 +24,26 @@
   }
 
   .hero-outrage {
-    font-size: 1rem;
+    font-size: .9rem;
     border-top: none;
-    border-left: 3px solid var(--accent-red) !important;
+    border-left: 2px solid var(--accent-red) !important;
     padding-left: 15px;
     margin-top: 20px;
   }
+
+  /* --- 5. ACTION CONTAINER --- */
+  .action-container {
+    width: 100%;
+    margin: auto;
+    padding: 25px 15px;
+    box-sizing: border-box;
+    margin: 0 0 30px;
+  }
+  
+  .cta-header { font-size: 1rem; }
+  
+  .cta-btn {font-size: 1rem;
+  padding: 15px 20px}
   
   .stat-number {
     font-size: 2.5rem !important;
@@ -37,7 +55,7 @@
   }
 
   .genetics-section h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .genetics-section h2 a {
@@ -93,18 +111,6 @@
     mask-image: none;
     -webkit-mask-image: none;
   }
-
-  /* --- 5. ACTION CONTAINER --- */
-  .action-container {
-    width: 100%;
-    margin: auto;
-    padding: 25px 15px;
-    box-sizing: border-box;
-    margin: 0 0 30px;
-  }
-  
-  .cta-header { font-size: 1.2rem; }
-  .cta-description { font-size: 1rem; }
 
   /* --- 6. STATUS BADGES FIX --- */
   .status-group {
