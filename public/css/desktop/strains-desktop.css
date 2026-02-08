@@ -1,6 +1,8 @@
 /* --- Strains Specific Styles --- */
 
-/* Note: .strains-hero layout/bg is now handled in styles.css */
+.strains-hero { background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('/assets/strains_desktop.jpg'); 
+background-size: cover;
+background-position: center;}
 
 /* --- Strain Card  --- */
 .strain-grid {

@@ -20,7 +20,7 @@
   /* Brand Colors */
   --signature-orange: #f8c25d;
   --bg-black: #000000;
-  --bg-glass: rgba(10, 10, 10, 0.95);
+  --bg-glass: rgba(10, 10, 10, 1);
   --text-main: #f0f0f0;
   --text-muted: #a6a6a6;
   --accent-red: #ea5455;
@@ -33,9 +33,10 @@
   --transition-smooth: all 0.3s ease;
 
   /* Layout Constants */
-  --header-height: 160px;
-  --mobile-header-height: 120px;
-  --hero-height: 30vh; 
+  --header-height-desktop: 158px;
+  --header-height-mobile: 120px;
+  --hero-height-desktop: 40vh;
+  --hero-height-mobile: 20vh;
   --container-width-desktop: 60%;
   --container-width-mobile: 90%;
   --content-width: 100%;
@@ -77,6 +78,14 @@ body {
 }
 
 /* --- GLOBAL TEXT LAYOUTS --- */
+/* --- 1. GLOBAL LAYOUT --- */
+.index-layout {
+  padding-top: 203px; /* Header (160px) + Banner (40px) */
+}
+.non-index-layout {
+  padding-top: var(--header-height-desktop);
+}
+
 .copy-wrapper {
   flex: 1;
   display: flex;
@@ -122,68 +131,66 @@ body {
 
 /* --- THE UNIFIED HERO SYSTEM --- */
 .hero-section {
+  min-height: var(--hero-height-desktop);
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: var(--hero-height);
-  background-size: cover;
-  background-position: center;
-  padding-top: 160px;
-  border-bottom: 1px solid rgb(36, 36, 36);
+}
+
+.hero-content {
   position: relative;
-}
-
-.about-hero { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/assets/interior-3.jpg'); }
-.legacy-hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/storefront.jpg'); }
-.cultivation-hero { background: linear-gradient(rgba(5,20,10,0.9), rgba(5,20,10,0.8)), url('/assets/cultivation-hero.jpg'); }
-.strains-hero { background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('/assets/interior-2.jpg'); }
-.contact-hero { background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.8)), url('/assets/interior-3.jpg'); }
-
-/* --- HERO TYPOGRAPHY --- */
-.hero {
-  padding: 50px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  border-bottom: var(--border-subtle);
+  width: 60%;
+  max-width: 1000px;
 }
+
 .hero-title {
   font-family: var(--font-headers);
-  font-size: var(--fs-hero);
+  font-size: 4rem; 
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: 2px;
-  margin-bottom: 75px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+  margin-bottom: 20px;
+  letter-spacing: -1px; 
+
   
   /* Text Fill */
-  background: linear-gradient(180deg, #ffcc80 0%, var(--signature-orange) 100%);
+  background: linear-gradient(
+    180deg, 
+    #ffffff 0%, 
+    #d9d9d8 10%, 
+    var(--signature-orange) 60%, 
+    #cfa145 100%
+  );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: var(--glow-orange);
+  color: transparent;
+  text-shadow: 25px 25px 5px var(--glow-orange);
 }
 
-.hero-title > span {
+.hero-subtitle {
   display: block;
+  font-size: 1.5rem;
+  color: var(--signature-orange);
+  font-family: var(--font-main);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
   margin-top: 10px;
-  
-  /* Typography */
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: 800;
-  text-transform: none;
-  letter-spacing: 1px;
-  paint-order: stroke fill;
-  
-  /* Color & Fill */
-  color: var(--text-main);
-  -webkit-text-fill-color: var(--text-main);
-  -webkit-text-stroke: 1px var(--signature-orange);
-  text-shadow: var(--glow-orange);
+  text-shadow: none; /* Drop the glow on subtitle for contrast */
 }
-
-
-
 
 .hero-intro-text {
   font-family: var(--font-main);
@@ -199,6 +206,65 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: var(--glow-orange);
+}
+
+
+
+/* Grid Layout for Desktop */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 40px;
+  margin-top: 60px;
+  text-align: left; /* Easier to read than centered text in columns */
+}
+
+.feature-card {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03); /* Subtle glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: var(--signature-orange);
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-family: var(--font-headers);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.7;
+}
+
+/* Make the 'Standstill' card pop */
+.highlight-card {
+  border-color: var(--accent-red);
+  background: linear-gradient(180deg, rgba(234, 84, 85, 0.1), transparent);
+}
+
+.hero-lead {
+  font-size: 1.25rem;
+  color: #ddd;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Add a secondary outline button style */
+.secondary-btn {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  margin-left: 20px;
 }
 
 .glow-header {
@@ -241,3 +307,9 @@ body {
   transform: translateY(-8px) scale(1.1); 
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
 }
+
+
+
+
+
+

@@ -21,7 +21,21 @@
   /* --- 2. HERO SECTION --- */
   .index-hero {
     padding: 120px 15px 0;
+  /* 1. Reset the background property explicitly */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url(/assets/storefront_mobile.jpg);
+    
+  /* 2. Turn off the "fixed" parallax effect for mobile */
+  background-attachment: fixed; 
+  
+  /* 3. Ensure it centers properly */
+  background-position: center top; /* Focuses on the top of the store, not the pavement */
+  background-size: cover;
+
   }
+
+  
 
   .hero-outrage {
     font-size: .9rem;
@@ -30,6 +44,48 @@
     padding-left: 15px;
     margin-top: 20px;
   }
+
+  /* --- FEATURES GRID (Mobile Stack) --- */
+.features-grid {
+  display: flex;             /* Switch from Grid to Flexbox */
+  flex-direction: column;    /* Stack them top-to-bottom */
+  gap: 20px;                 /* Space between cards */
+  margin-top: 30px;
+  padding: 0 15px;           /* Add side padding so it doesn't touch edges */
+}
+
+.feature-card {
+  width: 100%;               /* Full width */
+  padding: 25px 20px;
+  background: rgba(255, 255, 255, 0.05); /* Slightly brighter for visibility */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  text-align: center;        /* Center align looks better on mobile lists */
+}
+
+.feature-icon {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  display: block;            /* Ensures icon sits on its own line */
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* Make the "Standstill" card pop on mobile too */
+.highlight-card {
+  background: linear-gradient(180deg, rgba(234, 84, 85, 0.15), transparent);
+  border-color: var(--accent-red);
+  margin-bottom: 40px;       /* Extra space before the Carousel starts */
+}
 
   /* --- 5. ACTION CONTAINER --- */
   .action-container {

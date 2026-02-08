@@ -7,13 +7,13 @@
   
   /* 1. Header Reset */
   header {
-    height: auto !important;
-    min-height: var(--mobile-header-height);
+   height: auto;
+    position: fixed;
   }
 
   .header-container {
     width: 100%;
-    padding: 10px 15px;
+    padding: 5px 10px;
   }
 
   /* 2. Logo Reset */
@@ -36,7 +36,7 @@
     flex-wrap: nowrap; 
     align-items: center; 
     justify-content: center; 
-    gap: 6px; 
+    gap: 4px; 
     width: 100%;
     margin: 0;
     padding: 0 5px;
@@ -53,8 +53,8 @@
   .alert-message {
     font-size: 0.55rem; 
     line-height: 1.1;
-    text-align: left;
-    max-width: 160px; 
+    text-align: center;
+    max-width: 140px; 
   }
 
   .alert-btn {

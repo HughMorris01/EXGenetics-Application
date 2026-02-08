@@ -1,5 +1,7 @@
 /* --- Northern Legacy Specific Styles --- */
 
+.legacy-hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/storefront.jpg'); }
+
 /* Note: .legacy-hero layout/bg is now handled in styles.css */
 
 /* --- Gallery Section --- */

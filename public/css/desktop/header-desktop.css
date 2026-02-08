@@ -2,30 +2,7 @@
    HEADER-DESKTOP.CSS (Base Styles & Large Screens)
    ========================================================================== */
 
-/* --- FIXED HEADER & NAVIGATION --- */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  
-  /* SAFETY: Never allow header to be wider than screen */
-  max-width: 100vw; 
-  box-sizing: border-box;
-  
-  z-index: 1000;
-  background-color: var(--bg-glass);
-  border-bottom: var(--border-subtle);
-  
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  min-height: var(--header-height);
-  
-  transition: transform 0.3s ease;
-}
-
-/* --- 1. BANNER (Top Bar) --- */
+/* --- BANNER (Top Bar) --- */
 .petition-alert-bar {
   background: linear-gradient(
     180deg, 
@@ -41,8 +18,8 @@ header {
   padding: 8px 0;
   overflow: hidden; 
   box-sizing: border-box;
-  border-bottom: 1pxx solid #dba745; 
-  box-shadow: 0 4px 12px rgba(0,0,0,1)
+  border-bottom: 3px solid #dba745; 
+  box-shadow: 0 4px 12px rgba(0,0,0,1);
 }
 
 .alert-flex {
@@ -113,9 +90,29 @@ header {
   box-shadow: 0 5px 12px rgba(0,0,0,0.3); 
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  
+  /* SAFETY: Never allow header to be wider than screen */
+  max-width: 100vw; 
+  z-index: 1000;
+  background-color: var(--bg-glass);
+  border-bottom: var(--border-subtle);
+  
+  display: flex;
+  flex-direction: column;
+  min-height: var(--header-height);
+  
+  transition: transform 0.3s ease;
+}
+
 /* --- 2. NAVBAR CONTAINER (Logo + Links) --- */
 .header-container {
-  width: var(--container-width);
+  width: var(--container-width-desktop);
   max-width: var(--max-width);
   margin: 0 auto;
   display: flex;

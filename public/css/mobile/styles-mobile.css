@@ -4,6 +4,31 @@
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
+
+  .hero-section {
+  min-height: var(--hero-height-mobile);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  max-width: 1000px;
+}
   
   /* --- Global Text Adjustments --- */
   .copy-wrapper {

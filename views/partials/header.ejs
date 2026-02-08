@@ -1,7 +1,7 @@
 <header>
- <% if (typeof currentPath !== 'undefined' && currentPath === '/') { %>
+  <% if (typeof currentPath !== 'undefined' && currentPath === '/') { %>
     <div class="petition-alert-bar">
-      <div class="container alert-flex">
+      <div class="alert-flex">
         
         <div class="alert-item alert-icon">
           <i class="fa-solid fa-bullhorn"></i> 
@@ -16,13 +16,12 @@
         </div>
 
         <div class="alert-item alert-cta">
-          <a href="/retail#petition" class="alert-btn">Sign the Petition <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/retail#petition" class="alert-btn">Sign on Today <i class="fa-solid fa-arrow-right"></i></a>
         </div>
 
       </div>
     </div>
   <% } %>
-
   <div class="header-container">
     <a href="/" class="header-logo-link">
       <img
@@ -58,7 +57,7 @@
           <a
             href="/strains"
             class="<%= currentPath === '/strains' ? 'active-link' : '' %>"
-            >Strains</a
+            >Featured Strains</a
           >
         </li>
         <li>

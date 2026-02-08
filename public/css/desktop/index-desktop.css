@@ -3,11 +3,6 @@
    Structure: Layout -> Hero -> Stats -> Carousel -> Actions -> Badges
    ========================================================================== */
 
-/* --- 1. GLOBAL LAYOUT --- */
-.index-layout {
-  padding-top: 180px; /* Header (160px) + Banner (40px) */
-}
-
 /* ==========================================================================
    2. HERO SECTION
    ========================================================================== */
@@ -15,8 +10,8 @@
   background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(/assets/storefront.jpg);
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
-
 
 .hero-outrage {
   margin-top: 30px;
