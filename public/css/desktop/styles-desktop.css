@@ -5,61 +5,112 @@
 /* --- 1. THE DESIGN SYSTEM --- */
 :root {
   /* Brand Fonts */
-  --font-main: 'Jost', sans-serif;
-  --font-headers: 'Montserrat', sans-serif;
-  --font-nav: 'Montserrat', sans-serif;
-  --font-accent: 'Playfair Display', serif;
+  --ff-main: 'Jost', sans-serif;
+  --ff-headers: "Times New Roman", sans-serif;
+  --ff-nav: 'Montserrat', sans-serif;
+  --ff-accent: 'Playfair Display', serif;
 
   /* Font Sizes */
-  --fs-hero: 3.5rem;
-  --fs-h2: 2rem;
-  --fs-body: 1rem;
-  --fs-nav: 0.9rem;
-  --fs-small: 0.8rem;
+  --fs-hero: 6rem;
+  --fs-hero-subtitle: 2.4rem; 
+  --fs-h2: 3.2rem;     
+  --fs-main: 1.6rem;   
+  --fs-nav: 1.4rem;    
+  --fs-small: 1.2rem;
+  
+  /* --Font Weights */
+  --fw-hero:900;
+  --fw-hero-subtitle: 500; 
+  --fw-cta:600; 
 
   /* Brand Colors */
   --signature-orange: #f8c25d;
   --bg-black: #000000;
   --bg-glass: rgba(10, 10, 10, 1);
-  --text-main: #f0f0f0;
-  --text-muted: #a6a6a6;
-  --accent-red: #ea5455;
+  --fc-main: #f0f0f0;
+  --fc-muted: #a6a6a6;
+  --fc-accent-red: #ea5455;
+  --glow-orange: 0 10px 30px rgba(248, 194, 93, 0.2);
 
   /* UI Accents */
-  --glow-orange: 0 10px 30px rgba(248, 194, 93, 0.2);
   --shadow-dark: 0 10px 20px rgba(0, 0, 0, 0.3);
   --radius-subtle: 4px; 
   --radius-large: 15px;
   --transition-smooth: all 0.3s ease;
 
-  /* Layout Constants */
-  --header-height-desktop: 158px;
-  --header-height-mobile: 120px;
+ /* Layout Constants */
+  --header-height-desktop: 15.8rem; 
+  --header-height-mobile: 12rem;    
   --hero-height-desktop: 40vh;
   --hero-height-mobile: 20vh;
   --container-width-desktop: 60%;
   --container-width-mobile: 90%;
   --content-width: 100%;
-  --max-width-desktop: 1100px;
+  --max-width-desktop: 110rem;   
 }
 
 /* --- Global Reset --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { overflow-x: hidden; width: 100%; }
+/* ==========================================================================
+   MASTER RESPONSIVE SCALING SYSTEM
+   ========================================================================== */
+html {
+  /* THE BASELINE (1rem = 10px) */
+  font-size: 62.5%; 
+  width: 100%;
+  
+  /* 2. SCALE UP FOR 4K SCREENS (> 2000px) */
+  @media only screen and (min-width: 2000px) {
+    font-size: 75%; /* 1rem = 12px */
+  }
+
+  /* 3. LAPTOP SCALING (1024px - 1300px) */
+  @media only screen and (max-width: 1200px) {
+    font-size: 56.25%; /* 1rem = 9px */
+  }
+
+  /* 4. TABLET SCALING (768px - 1023px) */
+  @media only screen and (max-width: 900px) {
+    font-size: 50%; /* 1rem = 8px */
+  }
+
+  /* 5. SMOOTH SCROLLING (Keep this) */
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-black);
-  color: var(--text-main);
-  font-family: var(--font-main);
+  color: var(--fc-main);
+  font-family: var(--fs-main);
   font-size: var(--fs-body);
   line-height: 1.6;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden; width: 100%;
+}
+  body img, body picture, body video, body canvas, body svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* UI Interactions */
+input, textarea, button, select, a {
+  -webkit-tap-highlight-color: transparent;
+  font: inherit; 
 }
 
 /* --- LAYOUT UTILITIES --- */
+.index-layout {
+  padding-top: 19.2rem; 
+}
+.non-index-layout {
+  padding-top: var(--header-height-desktop);
+}
+
 .container {
   position: relative;
   display: flex;
@@ -72,20 +123,12 @@ body {
 }
 
 .content-wrapper {
-  width: var(--content-width-desktop);
-  padding: 10px 0;
+  width: var(--content-width);
+  padding: 1rem 0; 
   text-align: center;
 }
 
 /* --- GLOBAL TEXT LAYOUTS --- */
-/* --- 1. GLOBAL LAYOUT --- */
-.index-layout {
-  padding-top: 203px; /* Header (160px) + Banner (40px) */
-}
-.non-index-layout {
-  padding-top: var(--header-height-desktop);
-}
-
 .copy-wrapper {
   flex: 1;
   display: flex;
@@ -95,11 +138,9 @@ body {
 }
 
 .copy-text {
-  font-family: var(--font-main);
-  color: var(--text-main);
-  font-size: 1.15rem;
+  font-size: 1.8rem; 
   line-height: 1.6;
-  margin: 20px 0 25px;
+  margin: 2rem 0 2.5rem; 
 }
 
 .copy-text strong {
@@ -108,12 +149,12 @@ body {
 }
 
 .disclaimer {
-  color: var(--accent-red) !important;
+  color: var(--fc-accent-red) !important;
   font-family: Georgia, 'Times New Roman', Times, serif !important;
-  font-size: 0.8rem !important;
+  font-size: 1.3rem !important;
   font-weight: 500 !important;
   letter-spacing: 1px !important;
-  margin-top: 30px !important; 
+  margin-top: 3rem !important; 
   display: block;
 }
 
@@ -121,23 +162,32 @@ body {
 .neon-divider {
   border: 0;
   height: 1px;
-  margin: 20px auto;
+  margin: 2rem auto;
   width: 100%;
-  max-width: 1200px; 
+  max-width: 100rem; 
   background: linear-gradient(90deg, transparent, var(--signature-orange), transparent);
   opacity: 0.7;
-  transform: scaleY(1.1);
+  transform: scaleY(1.2);
+}
+
+/* Non-Hero Header Glow */
+.glow-header {
+  background: linear-gradient(180deg, #d9d9d8 0%, var(--signature-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow-orange);
 }
 
 /* --- THE UNIFIED HERO SYSTEM --- */
 .hero-section {
   min-height: var(--hero-height-desktop);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  display: grid;         
+  place-items: center;
+  padding: 5rem 5rem 7rem; /* 30px 50px */
+}
+
+.hero-section strong, .hero-lead strong {
+  color: var(--signature-orange);
 }
 
 .hero-content {
@@ -148,24 +198,23 @@ body {
   align-items: center;
   text-align: center;
   width: 60%;
-  max-width: 1000px;
+  max-width: 100rem; 
 }
 
 .hero-title {
-  font-family: var(--font-headers);
-  font-size: 4rem; 
-  font-weight: 900;
+  font-family: var(--ff-headers);
+  font-size: var(--fs-hero); 
+  font-weight: var(--fw-hero);
   text-transform: uppercase;
   line-height: 1.1;
-  letter-spacing: 2px;
-  max-width: 800px;
-  margin: 0 auto;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
-  margin-bottom: 20px;
-  letter-spacing: -1px; 
+  letter-spacing: 1px;
+  max-width: 80rem;
+  margin: 0 auto 1.5rem; 
+}
 
-  
-  /* Text Fill */
+.hero-title-glow {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   background: linear-gradient(
     180deg, 
     #ffffff 0%, 
@@ -175,106 +224,27 @@ body {
   );
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  text-shadow: 25px 25px 5px var(--glow-orange);
+  filter: drop-shadow(.1rem .1rem 0.1rem var(--signature-orange));
 }
 
 .hero-subtitle {
   display: block;
-  font-size: 1.5rem;
+  font-size: var(--fs-hero-subtitle); 
   color: var(--signature-orange);
-  font-family: var(--font-main);
-  font-weight: 500;
+  font-weight: var(--fw-hero-subtitle);
+  max-width: 70rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-top: 10px;
-  text-shadow: none; /* Drop the glow on subtitle for contrast */
-}
-
-.hero-intro-text {
-  font-family: var(--font-main);
-  font-size: 1.1rem;
-  color: #e0e0e0;
-  max-width: 700px;
-  margin: 10px auto 0;
-  line-height: 1.6;
-}
-
-.header-glow, .glow-header {
-  background: linear-gradient(180deg, #d9d9d8 0%, var(--signature-orange) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: var(--glow-orange);
-}
-
-
-
-/* Grid Layout for Desktop */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-  gap: 40px;
-  margin-top: 60px;
-  text-align: left; /* Easier to read than centered text in columns */
-}
-
-.feature-card {
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.03); /* Subtle glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-}
-
-.feature-icon {
-  font-size: 2rem;
-  color: var(--signature-orange);
-  margin-bottom: 20px;
-}
-
-.feature-card h3 {
-  font-family: var(--font-headers);
-  font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-}
-
-.feature-card p {
-  font-size: 1rem;
-  color: #ccc;
-  line-height: 1.7;
-}
-
-/* Make the 'Standstill' card pop */
-.highlight-card {
-  border-color: var(--accent-red);
-  background: linear-gradient(180deg, rgba(234, 84, 85, 0.1), transparent);
+  letter-spacing: 0.4rem;
+  margin-bottom: 1rem
 }
 
 .hero-lead {
-  font-size: 1.25rem;
-  color: #ddd;
-  margin-bottom: 40px;
-  line-height: 1.6;
-}
-
-/* Add a secondary outline button style */
-.secondary-btn {
-  background: transparent;
-  border: 2px solid #fff;
-  color: #fff;
-  margin-left: 20px;
-}
-
-.glow-header {
-  text-decoration: none;
-  font-family: var(--font-headers);
-  font-size: 1.8rem;
-  color: var(--signature-orange);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
+  font-family: var(--ff-main);
+  font-size: var(--fs-main);
+  color: var(--fc-main);
+  max-width: 70rem;
+  margin: 2rem auto;
+  line-height: 2;
 }
 
 /* --- BACK TO TOP BUTTON --- */
