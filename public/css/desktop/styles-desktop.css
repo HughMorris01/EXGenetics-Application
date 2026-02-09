@@ -185,7 +185,7 @@ input, textarea, button, select, a {
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: 1px;
-  max-width: 80rem;
+  max-width: 100rem;
   margin: 0 auto 1rem; 
 }
 

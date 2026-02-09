@@ -2,7 +2,13 @@
    ABOUT-DESKTOP.CSS (Pro Version)
    ========================================================================== */
 
-.about-hero { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/assets/interior-3.jpg'); }
+.about-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)), url(/assets/heros/about_hero_desktop.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 25rem;
+}
 
 /* --- Typography & Rhythm --- */
 .about-content {

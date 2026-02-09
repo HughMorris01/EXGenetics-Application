@@ -1,8 +1,13 @@
 /* --- Strains Specific Styles --- */
 
-.strains-hero { background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('/assets/strains_desktop.jpg'); 
-background-size: cover;
-background-position: center;}
+.strains-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)), url(/assets/heros/strains_hero_desktop.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 25rem;
+}
+
 
 /* --- Strain Card  --- */
 .strain-grid {

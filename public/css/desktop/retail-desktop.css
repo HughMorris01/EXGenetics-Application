@@ -1,6 +1,12 @@
 /* --- Northern Legacy Specific Styles --- */
 
-.legacy-hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/storefront.jpg'); }
+.retail-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)), url(/assets/heros/retail_hero_desktop.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  padding-top: 25rem;
+}
 
 /* Note: .legacy-hero layout/bg is now handled in styles.css */
 

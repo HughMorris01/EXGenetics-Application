@@ -1,13 +1,8 @@
 /* ==========================================================================
-   INDEX-DESKTOP.CSS (Base / Default Styles)
-   Structure: Layout -> Hero -> Stats -> Carousel -> Actions -> Badges
-   ========================================================================== */
-
-/* ==========================================================================
-   2. HERO SECTION
+   HERO SECTION
    ========================================================================== */
 .index-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(/assets/storefront.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(/assets/heros/index_hero_desktop.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

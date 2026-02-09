@@ -1,4 +1,10 @@
-.contact-hero { background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.8)), url('/assets/interior-3.jpg'); }
+.contact-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), url(/assets/logo_transparent.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 25rem;
+}
 
 /* --- PARTNERSHIP PORTAL SECTION (Dark Background) --- */
 .partnership-portal {

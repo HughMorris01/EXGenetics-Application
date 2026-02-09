@@ -1,6 +1,14 @@
-/* --- Cultivation Specific Styles --- */
+/* ==========================================================================
+   CULTIVATION-DESKTOP.CSS (Pro Version)
+   ========================================================================== */
 
-.cultivation-hero { background: linear-gradient(rgba(5,20,10,0.9), rgba(5,20,10,0.8)), url('/assets/cultivation-hero.jpg'); }
+.cultivation-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.85)), url(/assets/heros/strains_hero_desktop.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 25rem;
+}
 
 /* --- 2. Philosophy Section (Clean & Technical) --- */
 .cultivation-philosophy {
