@@ -1,57 +1,94 @@
+/* ==========================================================================
+   CONTACT-DESKTOP.CSS
+   Theme: Portal, Forms, High-End Interaction
+   ========================================================================== */
+
 .contact-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), url(/assets/logo_transparent.png);
-  background-size: cover;
-  background-position: center;
+  /* Dark overlay + Logo Background */
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), url(/assets/logo_transparent_edited.png);
+  
+  /* KEY FIX: Two values for background-size 
+     1st Value (Gradient): cover (fills the screen)
+     2nd Value (Logo): 50rem (sets a fixed max-width for the logo)
+  */
+  background-size: cover, 40rem; 
+  
+  /* Center both layers */
+  background-position: top;
+  
+  /* Prevent the logo from repeating/tiling */
+  background-repeat:repeat-x;
+  
+  /* Keep the cool parallax effect */
   background-attachment: fixed;
+  
   padding-top: 25rem;
+}
+
+.contact-us {
+  font-size: 3rem;
+  color: var(--signature-orange);
+  font-family: var(--ff-headers);
+  margin-bottom: 2rem;
 }
 
 /* --- PARTNERSHIP PORTAL SECTION (Dark Background) --- */
 .partnership-portal {
-  padding: 80px 20px;
+  padding: 8rem 2rem;
   background-color: #1a1a1a; 
+  color: #6a6868;
   background-image: radial-gradient(circle at center, #252525 0%, #111111 100%);
   position: relative;
   overflow: hidden;
 }
 
+.intro {
+  font-size: 1.2rem;
+  width: 93%;
+  margin-bottom: 1rem;
+}
+
 /* The White Card (The form itself) */
 .portal-card.portal-light {
   background: #ffffff;
-  padding: 50px;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); 
-  max-width: 750px;
+  padding: 5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.4); 
+  max-width: 75rem;
   margin: 0 auto;
   border: 1px solid #333;
-  opacity: 0; /* Starts hidden for the fade-in animation */
+  
+  /* Fade-in Animation */
+  opacity: 0; 
   animation: fadeInUp 0.8s ease-out forwards;
   animation-delay: 0.1s;
 }
 
-.portal-heading {
+/* .portal-heading {
   color: #000;
-  font-family: var(--font-headers);
+  font-family: var(--ff-headers); 
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-}
+  letter-spacing: 0.2rem;
+} */
 
 /* --- Form Inputs with Glow Effects --- */
 .portal-form input,
 .portal-form select,
 .portal-form textarea {
   width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
   background: #f9f9f9;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   color: #333;
-  font-family: var(--font-main);
-  font-size: 1rem;
+  
+  /* FIX: Updated variable name */
+  font-family: var(--ff-main);
+  font-size: 1.6rem; /* Standard readable size */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -62,28 +99,28 @@
   border-color: var(--signature-orange);
   background: #fff;
   /* Soft Shadow/Glow on active inputs */
-  box-shadow: 0 0 15px rgba(248, 194, 93, 0.25);
+  box-shadow: 0 0 1.5rem rgba(248, 194, 93, 0.25);
   transform: translateY(-1px);
 }
 
 .form-row {
   display: flex;
-  gap: 20px;
+  gap: 2rem;
 }
 
 /* --- Character Counter Styling --- */
 .textarea-container {
-  position: relative; /* Allows absolute positioning of the counter */
-  margin-bottom: 25px; /* Adds space for the counter below */
+  position: relative; 
+  margin-bottom: 2.5rem; 
 }
 
 .textarea-container textarea {
-  margin-bottom: 5px; /* Tighten gap between box and counter */
+  margin-bottom: 0.5rem; 
 }
 
 .char-counter {
-  font-family: var(--font-main);
-  font-size: 0.8rem;
+  font-family: var(--ff-main);
+  font-size: 1.2rem;
   color: #999;
   text-align: right;
   transition: color 0.3s ease;
@@ -95,7 +132,6 @@
   font-weight: bold;
 }
 
-/* Critical color when they hit 0 */
 .char-counter.limit-reached {
   color: #ff4d4d;
   font-weight: 800;
@@ -104,31 +140,31 @@
 /* --- Captcha Row: Vertically Aligned & Glowing --- */
 .captcha-row {
   display: flex;
-  align-items: center; /* PERFECT VERTICAL ALIGNMENT */
+  align-items: center; 
   justify-content: flex-start;
-  gap: 15px;
-  margin-bottom: 25px;
-  padding: 12px 20px;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.2rem 2rem;
   background: #f4f4f4;
-  border-radius: 8px;
-  border-left: 5px solid var(--signature-orange);
+  border-radius: 0.8rem;
+  border-left: 0.5rem solid var(--signature-orange);
   width: fit-content;
-  min-width: 320px;
+  min-width: 32rem;
   transition: all 0.3s ease;
 }
 
 /* Glow when the user clicks into the captcha answer */
 .captcha-row:focus-within {
   background: #fff;
-  box-shadow: 0 0 20px rgba(248, 194, 93, 0.3);
+  box-shadow: 0 0 2rem rgba(248, 194, 93, 0.3);
 }
 
 .captcha-label {
   font-weight: 600;
   color: #333;
-  font-size: 0.95rem;
+  font-size: 1.4rem;
   white-space: nowrap;
-  line-height: 1; /* Key fix for vertical centering */
+  line-height: 1; 
 }
 
 .captcha-label strong {
@@ -136,13 +172,13 @@
 }
 
 .captcha-input {
-  width: 90px !important; /* Slightly wider for buttons */
+  width: 9rem !important; 
   margin-bottom: 0 !important;
   text-align: center;
   font-weight: 800;
   border: 2px solid #ddd !important;
   color: var(--signature-orange) !important;
-  padding-right: 12px !important; /* BREATHING ROOM FOR SPIN BUTTONS */
+  padding-right: 1.2rem !important; 
 }
 
 /* --- Submit Button & Loading Spinner --- */
@@ -150,26 +186,29 @@
   width: 100%;
   background: #000;
   color: #fff;
-  padding: 18px;
+  padding: 1.8rem;
   border: none;
-  font-family: var(--font-headers);
+  
+  /* FIX: Updated variable */
+  font-family: var(--ff-headers);
+  font-size: 1.6rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 .btn-portal:hover {
   background: var(--signature-orange);
   color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(248, 194, 93, 0.3);
+  transform: translateY(-0.2rem);
+  box-shadow: 0 1rem 2rem rgba(248, 194, 93, 0.3);
 }
 
 .btn-portal.loading {
@@ -180,9 +219,9 @@
 }
 
 .spinner {
-  width: 18px;
-  height: 18px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0.3rem solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   border-top-color: #fff;
   animation: spin 0.8s linear infinite;
@@ -205,60 +244,62 @@
 
 .modal-content {
   background: #fff;
-  padding: 45px;
-  border-radius: 12px;
+  padding: 4.5rem;
+  border-radius: 1.2rem;
   text-align: center;
-  max-width: 420px;
+  max-width: 42rem;
   width: 90%;
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  box-shadow: 0 0 4rem rgba(0,0,0,0.6);
   animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .modal-icon i {
   font-size: 3.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .modal-content h3 {
   color: #000000; 
-  font-family: var(--font-headers);
-  margin-bottom: 15px;
-  font-size: 1.6rem;
+  /* FIX: Updated variable */
+  font-family: var(--ff-headers);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
 }
 
 .modal-content p {
   color: #333333; 
-  font-family: var(--font-main);
-  font-size: 1rem;
-  margin-bottom: 30px;
+  /* FIX: Updated variable */
+  font-family: var(--ff-main);
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
   line-height: 1.6;
 }
 
 .btn-modal {
   background: #000;
   color: #fff;
-  border: none; /* Fixes the 'weird' jitter */
-  padding: 12px 40px;
+  border: none; 
+  padding: 1.2rem 4rem;
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   transition: all 0.3s ease;
-  font-family: var(--font-headers); /* Ensures font matches */
+  font-family: var(--ff-headers); 
 }
 
 .btn-modal:hover {
   background: var(--signature-orange);
   color: #000;
-  transform: translateY(-2px); /* Adds the smooth lift */
-  box-shadow: 0 5px 15px rgba(248, 194, 93, 0.3); /* Adds the glow */
+  transform: translateY(-0.2rem); 
+  box-shadow: 0 0.5rem 1.5rem rgba(248, 194, 93, 0.3); 
 }
 
 /* --- ANIMATIONS --- */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(3rem); }
   to { opacity: 1; transform: translateY(0); }
 }
 

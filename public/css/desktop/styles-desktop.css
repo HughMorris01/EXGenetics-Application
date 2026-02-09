@@ -11,7 +11,7 @@
   --ff-accent: 'Playfair Display', serif;
 
   /* Font Sizes */
-  --fs-hero: 6rem;
+  --fs-hero: 4rem;
   --fs-hero-subtitle: 2.4rem; 
   --fs-h2: 3.2rem;     
   --fs-main: 1.6rem;   
@@ -109,6 +109,11 @@ input, textarea, button, select, a {
   padding-top: var(--header-height-desktop);
 }
 
+.container {
+  display: grid;
+  place-items: center;
+}
+
 .content-wrapper {
   position: relative;
   display: flex;
@@ -162,14 +167,6 @@ input, textarea, button, select, a {
   transform: scaleY(1.2);
 }
 
-/* Non-Hero Header Glow */
-.header-glow {
-  background: linear-gradient(180deg, #d9d9d8 0%, var(--signature-orange) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: var(--glow-orange);
-}
-
 /* --- THE UNIFIED HERO SYSTEM --- */
 .hero-section {
   min-height: var(--hero-height-desktop);
@@ -178,7 +175,18 @@ input, textarea, button, select, a {
   padding: 5rem 5rem;
 }
 
-.hero-title {
+.hero-title-index {
+  font-family: var(--ff-headers);
+  font-size: 6rem; 
+  font-weight: var(--fw-hero);
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  max-width: 100rem;
+  margin: 0 auto 1rem; 
+}
+
+.hero-title-non-index {
   font-family: var(--ff-headers);
   font-size: var(--fs-hero); 
   font-weight: var(--fw-hero);
@@ -204,6 +212,14 @@ input, textarea, button, select, a {
   filter: drop-shadow(.1rem .1rem 0.1rem var(--signature-orange));
 }
 
+/* Non-Hero Header Glow */
+.header-glow {
+  background: linear-gradient(180deg, #d9d9d8 0%, var(--signature-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow-orange);
+}
+
 .hero-subtitle {
   display: block;
   font-size: var(--fs-hero-subtitle); 
@@ -227,6 +243,8 @@ input, textarea, button, select, a {
 .hero-lead strong {
   color: var(--signature-orange);
 }
+
+
 
 /* --- BACK TO TOP BUTTON --- */
 #backToTop {

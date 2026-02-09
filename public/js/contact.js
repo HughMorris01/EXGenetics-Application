@@ -130,3 +130,31 @@ if (contactForm) {
       });
   });
 }
+
+// --- 6. Character Counter Logic ---
+const messageInput = document.querySelector('textarea[name="message"]');
+const charCounter = document.getElementById('char-counter');
+const maxLength = 1000;
+
+if (messageInput && charCounter) {
+  messageInput.addEventListener('input', () => {
+    const currentLength = messageInput.value.length;
+    const remaining = maxLength - currentLength;
+
+    charCounter.innerText = `${remaining} characters remaining`;
+
+    // Add 'warning' class when under 100 characters
+    if (remaining < 100) {
+      charCounter.classList.add('warning');
+    } else {
+      charCounter.classList.remove('warning');
+    }
+
+    // Add 'limit-reached' class when at 0
+    if (remaining === 0) {
+      charCounter.classList.add('limit-reached');
+    } else {
+      charCounter.classList.remove('limit-reached');
+    }
+  });
+}

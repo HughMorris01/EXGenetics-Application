@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
   res.render('index', {
     title: 'Excelsior Genetics | Visionary Cultivation',
     currentPath: '/',
-    pageScript: '/js/index.js'
+    pageScript: '/js/index.js',
   });
 });
 
@@ -50,6 +50,7 @@ app.get('/retail', (req, res) => {
   res.render('retail', {
     title: 'Northern Legacy | 1000 Islands\' Dispensary',
     currentPath: '/retail',
+    pageScript: '/js/retail.js',
   });
 });
 

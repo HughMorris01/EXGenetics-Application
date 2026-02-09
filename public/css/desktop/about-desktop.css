@@ -5,7 +5,7 @@
 .about-hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)), url(/assets/heros/about_hero_desktop.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-attachment: fixed;
   padding-top: 25rem;
 }
@@ -25,7 +25,7 @@
 .chapter-title {
   font-family: var(--font-headers);
   font-size: 2.5rem;
-  color: #444; /* Subtle numbering color */
+  color: #999; /* Subtle numbering color */
   text-transform: uppercase;
   letter-spacing: 4px;
   margin-bottom: 30px;
@@ -130,62 +130,149 @@ figcaption {
   margin-right: 10px;
 }
 
-/* --- Petition Card --- */
-.petition-card {
-  background: var(--bg-glass);
+/* ==========================================================================
+   PETITION SECTION
+   ========================================================================== */
+
+.petition-wrapper {
+  padding: 10rem 0;
+  background: radial-gradient(circle at top, #111 0%, #000 100%);
+  border-top: 1px solid rgba(248, 194, 93, 0.2);
+}
+
+.petition-intro {
+  margin-bottom: 5rem;
+}
+
+.petition-header {
+  font-family: var(--ff-headers);
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 2rem;
+}
+
+/* --- The Monolith Card --- */
+.petition-card-monolith {
+  width: 100%;
+  max-width: 80rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--signature-orange);
   border-radius: var(--radius-large);
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(248, 194, 93, 0.1);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.6);
+  margin-bottom: 6rem;
 }
 
-.card-header {
+.petition-card-monolith .card-header {
   background: var(--signature-orange);
-  padding: 15px;
-  text-align: center;
+  padding: 1.5rem;
 }
 
-.card-header h3 {
+.petition-card-monolith .card-header h3 {
   color: #000;
+  font-family: var(--ff-headers);
+  font-size: 1.8rem;
   margin: 0;
-  font-family: var(--font-headers);
-  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.card-body {
-  padding: 30px;
-  text-align: center;
+.petition-card-monolith .card-body {
+  padding: 5rem 4rem;
 }
 
-.progress-bar {
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* --- Progress Bar --- */
+.petition-card-monolith .progress-bar {
   width: 100%;
-  height: 10px;
-  background: #333;
-  border-radius: 5px;
-  margin: 15px 0;
-  overflow: hidden;
+  height: 1.5rem;
+  background: #222;
+  border-radius: 5rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.progress-fill {
+.petition-card-monolith .progress-fill {
+  background: linear-gradient(90deg, var(--signature-orange), var(--fc-accent-red));
+  box-shadow: 0 0 15px var(--fc-accent-red);
   height: 100%;
-  background: var(--accent-red);
+  border-radius: 5rem;
 }
 
-.btn-petition-large {
-  display: inline-block;
-  background: #fff;
-  color: #000;
-  font-weight: 900;
-  text-transform: uppercase;
-  padding: 15px 40px;
-  margin-top: 20px;
+.petition-card-monolith .sub-text {
+  font-size: 1.4rem;
+  color: var(--fc-muted);
+  margin-bottom: 4rem;
+}
+
+.btn-petition {
+  display: inline-flex; /* Changed to flex for better icon alignment */
+  align-items: center;
+  gap: 1rem;
+  padding: .6rem 2rem;
+  
+  font-family: var(--ff-headers);
+  font-weight: 800;
   text-decoration: none;
-  border-radius: 50px; /* Pill shape */
-  transition: all 0.3s ease;
+  text-transform: uppercase;
+  line-height: 1.2;
+  
+  color: #000;
+  background-color: var(--signature-orange);
+  border-radius: 5rem; /* Pill shape */
+  
+  transition: var(--transition-smooth);
+  box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 93, 0.3);
+  margin-top: 2rem; 
 }
 
-.btn-petition-large:hover {
-  background: var(--signature-orange);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px var(--signature-orange);
+/* Hover Effect: Lift & White Flash */
+.btn-petition:hover {
+  transform: translateY(-0.3rem);
+  background-color: #fff; 
+  box-shadow: 0 0.8rem 2.5rem rgba(255, 255, 255, 0.2);
+}
+
+/* --- Modifier: Large Version (For the Monolith) --- */
+.btn-large {
+  padding: 1.5rem 4rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+}
+
+/* Icon Animation on Hover */
+.btn-petition:hover i {
+  transform: rotate(-15deg) scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* --- Horizontal Checklist --- */
+.petition-check-list {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  list-style: none;
+  padding: 0;
+}
+
+.petition-check-list li {
+  font-family: var(--ff-headers);
+  font-size: 1.5rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-transform: uppercase;
+}
+
+.petition-check-list i {
+  color: var(--signature-orange);
+  font-size: 1.8rem;
 }

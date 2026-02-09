@@ -1,96 +1,122 @@
 <%- include('partials/head') %> <%- include('partials/header') %>
+
 <main>
   <section class="hero-section retail-hero">
     <div class="content-wrapper">
-      <h1 class="hero-title header-glow">
-        Northern Legacy
-        <span> The 1000 Islands' First Dedicated Cannabis Dispensary </span>
-      </h1>
+      <h1 class="hero-title-non-index hero-title-glow">Northern Legacy</h1>
+      <p class="hero-subtitle"><i>The</i> 1000 Islands' Cannabis Dispensary</p>
+
+        <hr class="neon-divider" />
+
+        <p class="hero-lead">
+        <strong>Northern Legacy</strong> is more than a storefront; it is the physical embodiment of the<strong> Excelsior standard
+
+        </strong>. Designed to integrate seamlessly with the rugged beauty of the 1000 Islands, our retail space offers a curated environment where the community can finally access <strong>safe, tested, and premium cannabis</strong>.
+      </p>
+        <hr class="neon-divider" />
+
+        <p class="hero-lead">
+        Ideally situated between <strong>Clayton</strong> and <strong>Alexandria Bay</strong>, our flagship location sits directly adjacent to <strong>I-81</strong> and the iconic <strong>Wellesley Island Bridge</strong>. We are positioned to be the premier hub for the region, offering an effortless stop for travelers and locals alike. For those who prefer the comfort of their own sanctuary, we will offer <strong>seamless delivery services</strong>, ensuring you never have to leave home to enjoy the best of the North Country.
+      </p>
+
+        <hr class="neon-divider" />
+
+      <p class="hero-lead">
+        We are not waiting to build; we are waiting for the right to serve. Our full license application was submitted to the NYS OCM <strong>in November 2023</strong>. While our location is secured, our security is active, and our team is trained, we remain held in <strong>administrative limbo</strong>. The clock below represents every second that has passed since we proved our readiness to the State.
+      </p>
     </div>
+    
   </section>
 
-  <section class="legacy-gallery">
+
+
+  <section class="dashboard-section">
+      <div class="ghost-stats-container">
+        <div class="ghost-stat">
+  <span class="stat-number" id="days-waiting">00:00:00:00</span>
+  <span class="stat-label">Days : Hrs : Min : Sec</span>
+</div>
+        <div class="ghost-divider"></div>
+        <div class="ghost-stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Operational Readiness</span>
+        </div>
+        <div class="ghost-divider"></div>
+        <div class="ghost-stat">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Licenses Issued</span>
+        </div>
+      </div>
+
+      <div class="legacy-gallery">
     <div class="container">
+      <h3 class="gallery-header">THE SITE</h3>
       <div class="gallery-grid">
-        <img
-          class="gallery-img"
-          src="/assets/interior-3.jpg"
-          alt="Retail Space"
-        />
-        <img
-          class="gallery-img"
-          src="/assets/storefront_winter.jpg"
-          alt="Northern Legacy Storefront"
-        />
-
-        <img
-          class="gallery-img"
-          src="/assets/interior-2.jpg"
-          alt="Lounge Area"
-        />
+        <div class="gallery-card">
+          <img class="gallery-img" src="/assets/interior-3.jpg" alt="Retail Floor" loading="lazy" />
+          <div class="gallery-label">Education Room & Inventory Vault</div>
+        </div>
+        <div class="gallery-card">
+          <img class="gallery-img" src="/assets/storefront_winter.jpg" alt="Northern Legacy Storefront" loading="lazy" />
+          <div class="gallery-label">Storefront</div>
+        </div>
+        <div class="gallery-card">
+          <img class="gallery-img" src="/assets/interior-2.jpg" alt="Lounge Area" loading="lazy" />
+          <div class="gallery-label">Retail Floor</div>
+        </div>
       </div>
     </div>
+  </div>
+
+      <div class="status-group">
+        <div class="status-badge status-ready">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Location Secured</span>
+        </div>
+
+        <div class="status-badge status-ready">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Experienced Team in Place</span>
+        </div>
+
+        <div class="status-badge status-warning">
+          <i class="fa-solid fa-clock"></i>
+          <span>Status: Application Pending</span>
+        </div>
+      </div>
   </section>
-  <div class="ghost-stats-container">
-    <div class="ghost-stat">
-      <span class="stat-number" id="days-waiting">814</span>
-      <span class="stat-label">Days Waiting</span>
-    </div>
-    <div class="ghost-divider"></div>
-    <div class="ghost-stat">
-      <span class="stat-number">100%</span>
-      <span class="stat-label">Operational Readiness</span>
-    </div>
-    <div class="ghost-divider"></div>
-    <div class="ghost-stat">
-      <span class="stat-number">0</span>
-      <span class="stat-label">Licenses Issued</span>
-    </div>
-  </div>
 
-  <div class="status-group">
-    <div class="status-badge status-ready">
-      <i class="fa-solid fa-circle-check"></i>
-      <span>Location Secured</span>
-    </div>
+  
 
-    <div class="status-badge status-ready">
-      <i class="fa-solid fa-circle-check"></i>
-      <span>Experienced Team in Place</span>
-    </div>
+  <section id="petition" class="petition-wrapper container">
+    
+      <div class="petition-intro">
+        <h2 class="petition-header header-glow">Help Us Open Our Doors</h2>
+        <p class="hero-lead">
+          We have the lease. We have the community support. We have the license application submitted. 
+          <strong>The only thing missing is the State's signature.</strong>
+        </p>
+      </div>
 
-    <div class="status-badge status-warning">
-      <i class="fa-solid fa-clock"></i>
-      <span>Status: Application Pending</span>
-    </div>
-  </div>
-
-  <section id="petition" class="petition-split">
-    <div class="container">
-      <div class="split-layout">
-        <div class="petition-text">
-          <h2 class="accent-red">Help Us Open Our Doors</h2>
-          <p>
-            We have the lease. We have the community support. We have the
-            license application submitted since November 2023. Yet, the State's
-            administrative delays are keeping this storefront empty.
-          </p>
-          <p>
-            By signing this petition, you are telling the OCM that the 1000
-            Islands deserves its local dispensary now, not in 2033.
-          </p>
+      <div class="petition-card-monolith">
+        <div class="card-header">
+          <h3>Community Action Gauge</h3>
         </div>
-        <div class="petition-action">
-          <div class="action-card">
-            <h3>Stand With Us</h3>
-            <p>Target: 500 Signatures</p>
-            <a href="https://chng.it/YOUR_LINK_HERE" class="btn-petition"
-              >Sign the Petition</a
-            >
+        <div class="card-body">
+          <div class="stats-row">
+            <p class="target-text">Goal: <strong>500 Signatures</strong></p>
+            <p class="current-count">Current: <strong>325</strong></p>
           </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 65%"></div>
+          </div>
+          <p class="sub-text">Tell the OCM that the 1000 Islands deserves access now.</p>
+          <a href="https://chng.it/YOUR_LINK_HERE" class="btn-petition btn-large">
+            Sign The Petition <i class="fa-solid fa-pen-nib"></i>
+          </a>
         </div>
       </div>
-    </div>
+    
   </section>
 </main>
 <%- include('partials/footer') %>

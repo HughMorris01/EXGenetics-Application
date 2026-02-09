@@ -60,72 +60,89 @@
 /* 3. Color-Coded Seed Badges */
 .seed-badge {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 1.5rem;   /* 15px */
+  right: 1.5rem; /* 15px */
   z-index: 10;
-  padding: 5px 12px;
+  padding: 0.5rem 1.2rem; /* 5px 12px */
   border-radius: var(--radius-subtle);
-  font-family: var(--font-headers);
-  font-size: 0.7rem;
+  
+  /* FIX: Variable Name & Scale */
+  font-family: var(--ff-headers);
+  font-size: 1.1rem; /* Bumped from 0.7rem (7px) to 11px */
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.1rem;
+  
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.6);
   pointer-events: none;
 }
 
 .badge-reg {
   background: rgba(85, 85, 85, 0.9);
-  color: var(--text-main);
+  /* FIX: Updated variable name */
+  color: var(--fc-main); 
 }
 
 .badge-fem {
-  background: rgba(234, 84, 85, 0.95);
-  color: var(--text-main);
+  /* This matches your --fc-accent-red (ea5455) */
+  background: rgba(234, 84, 85, 0.95); 
+  /* FIX: Updated variable name */
+  color: var(--fc-main); 
 }
 
 /* 4. Text & Info Styles */
 .strain-info {
-  padding: 1.5rem;
+  padding: 2.5rem; /* Increased padding for better spacing */
 }
 
 .strain-name {
-  font-family: var(--font-headers);
+  font-family: var(--ff-headers);
   color: var(--signature-orange);
-  font-size: 1.4rem;
+  /* FIX: 1.4rem (14px) -> 2.4rem (24px) */
+  font-size: 2.4rem; 
   margin-bottom: 0.5rem;
 }
 
 .strain-lineage {
   display: block;
-  font-family: var(--font-main);
-  font-size: 0.85rem;
-  color: var(--accent-red);
+  font-family: var(--ff-main);
+  
+  /* FIX: Variable name mismatch (--accent-red -> --fc-accent-red) */
+  color: var(--fc-accent-red); 
+  
+  /* FIX: 0.85rem (8.5px) -> 1.4rem (14px) */
+  font-size: 1.4rem; 
+  
   font-style: italic;
-  margin-bottom: 12px;
+  margin-bottom: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
 .strain-tag {
   display: inline-block;
-  background: var(--accent-red);
-  color: var(--text-main);
-  padding: 0.4rem 0.8rem;
+  background: var(--fc-accent-red); /* Updated variable here too just in case */
+  color: #fff; /* White text reads better on red */
+  padding: 0.6rem 1.2rem;
   border-radius: var(--radius-subtle);
-  font-family: var(--font-headers);
+  font-family: var(--ff-headers);
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  margin-bottom: 1rem;
+  
+  /* FIX: 0.75rem (7.5px) -> 1.2rem (12px) */
+  font-size: 1.2rem; 
+  
+  margin-bottom: 1.5rem;
   letter-spacing: 1px;
 }
 
 .strain-info p {
   color: #cccccc;
   line-height: 1.6;
-  font-family: var(--font-main);
-  font-size: var(--fs-body);
+  font-family: var(--ff-main);
+  
+  /* FIX: var(--fs-body) is undefined, switched to your standard 1.6rem */
+  font-size: 1.6rem; 
 }
 
 /* --- NEW: Strains Petition Banner --- */

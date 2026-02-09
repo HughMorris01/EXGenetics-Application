@@ -344,7 +344,7 @@
   font-size: 1.1rem !important;
 }
 
-/* Soft Card Design */
+/* --- SOFT CARD DESIGN REFACTOR --- */
 .soft-card {
   text-align: center;
   width: 100%;
@@ -354,25 +354,23 @@
 
 /* Hover Effect 1: Lift Up */
 .soft-card:hover {
-  transform: translateY(-10px); 
+  transform: translateY(-1rem); /* 10px lift */
 }
 
 /* Hover Effect 2: The ZOOM */
 .soft-card:hover .card-image img {
-  transform: scale(1.15); /* Stronger zoom as requested */
+  transform: scale(1.15); 
 }
 
 .card-image {
-  width: 220px;
-  height: 280px; 
-  margin: 0 auto 20px;
+  width: 22rem;  /* 220px */
+  height: 28rem; /* 280px */
+  margin: 0 auto 2rem;
   position: relative;
-  border-radius: 40px; 
-  overflow: hidden; /* Keeps the zoomed image inside the rounded corners */
-  border: 2px solid var(--signature-orange);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-  
-  /* Fix Safari border-radius clipping */
+  border-radius: 4rem; /* 40px */
+  overflow: hidden; 
+  border: 0.2rem solid var(--signature-orange);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5); 
   transform: translateZ(0); 
 }
 
@@ -380,26 +378,35 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease; /* Smooth slow zoom */
+  transition: transform 0.5s ease;
 }
 
+/* --- CARD CONTENT TYPOGRAPHY --- */
 .card-content h4 {
-  font-family: var(--font-headers);
+  font-family: var(--ff-headers); /* Updated variable */
   color: var(--signature-orange);
-  font-size: 1.3rem;
-  margin-bottom: 5px;
+  
+  /* FIX: 1.3rem (13px) -> 2.2rem (22px) for hierarchy */
+  font-size: 2.2rem; 
+  
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
 }
 
 .card-content .lineage {
   display: block;
-  font-family: var(--font-main);
-  color: var(--accent-red); 
-  font-size: .9rem;
+  font-family: var(--ff-main); /* Updated variable */
+  
+  /* FIX: Variable name mismatch (--accent-red -> --fc-accent-red) */
+  color: var(--fc-accent-red); 
+  
+  /* FIX: 0.9rem (9px) -> 1.4rem (14px) for legibility */
+  font-size: 1.4rem;
+  
   font-style: italic;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05rem;
 }
 
 /* Carousel Buttons */
