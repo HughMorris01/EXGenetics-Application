@@ -5,7 +5,7 @@
 
 .cultivation-hero {
   /* Darker overlay to make the text pop */
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url(/assets/heros/strains_hero_desktop.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url(/assets/heros/cultivation_hero_desktop.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -71,9 +71,9 @@
   font-family: var(--ff-headers);
   font-size: 6rem;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.05); /* Ghost number */
+  color: rgba(90, 86, 86, 0.281); /* Ghost number */
   line-height: 1;
-  margin-bottom: -2rem; /* Overlap with title */
+  margin-bottom: .5rem; /* Overlap with title */
   z-index: 0;
   position: relative;
 }

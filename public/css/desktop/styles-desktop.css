@@ -14,14 +14,15 @@
   --fs-hero: 4rem;
   --fs-hero-subtitle: 2.4rem; 
   --fs-h2: 3.2rem;     
-  --fs-main: 1.6rem;   
+  --fs-main: 1.6rem;
+  --fs-body: 1.6rem; /* Added missing variable */   
   --fs-nav: 1.4rem;    
   --fs-small: 1.2rem;
   
-  /* --Font Weights */
-  --fw-hero:900;
+  /* Font Weights */
+  --fw-hero: 900;
   --fw-hero-subtitle: 500; 
-  --fw-cta:600; 
+  --fw-cta: 600; 
 
   /* Brand Colors */
   --signature-orange: #f8c25d;
@@ -44,8 +45,7 @@
   --hero-height-desktop: 40vh;
   --hero-height-mobile: 20vh;
   --container-width-desktop: 60%;
-  --container-width-mobile: 90%;
-  --content-width: 100%;
+  --container-width-mobile: 92%;
   --max-width-desktop: 110rem;   
 }
 
@@ -59,39 +59,40 @@ html {
   /* THE BASELINE (1rem = 10px) */
   font-size: 62.5%; 
   width: 100%;
-  
-  /* 2. SCALE UP FOR 4K SCREENS (> 2000px) */
-  @media only screen and (min-width: 2000px) {
-    font-size: 75%; /* 1rem = 12px */
-  }
-
-  /* 3. LAPTOP SCALING (1024px - 1300px) */
-  @media only screen and (max-width: 1200px) {
-    font-size: 56.25%; /* 1rem = 9px */
-  }
-
-  /* 4. TABLET SCALING (768px - 1023px) */
-  @media only screen and (max-width: 900px) {
-    font-size: 50%; /* 1rem = 8px */
-  }
-
-  /* 5. SMOOTH SCROLLING (Keep this) */
   scroll-behavior: smooth;
+}
+
+/* 2. SCALE UP FOR 4K SCREENS (> 2000px) */
+@media only screen and (min-width: 2000px) {
+  html { font-size: 75%; } /* 1rem = 12px */
+}
+
+/* 3. LAPTOP SCALING (1024px - 1300px) */
+@media only screen and (max-width: 1200px) {
+  html { font-size: 56.25%; } /* 1rem = 9px */
+}
+
+/* 4. TABLET SCALING (768px - 1023px) */
+@media only screen and (max-width: 900px) {
+  html { font-size: 50%; } /* 1rem = 8px */
 }
 
 body {
   background-color: var(--bg-black);
   color: var(--fc-main);
-  font-family: var(--fs-main);
+  /* FIX: Was incorrectly set to var(--fs-main) */
+  font-family: var(--ff-main); 
   font-size: var(--fs-body);
   line-height: 1.6;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden; width: 100%;
+  overflow-x: hidden; 
+  width: 100%;
 }
-  body img, body picture, body video, body canvas, body svg {
+
+body img, body picture, body video, body canvas, body svg {
   display: block;
   max-width: 100%;
   height: auto;
@@ -228,7 +229,7 @@ input, textarea, button, select, a {
   max-width: 70rem;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
-  margin-bottom: 1rem
+  margin-bottom: 1rem; /* FIX: Added missing semicolon */
 }
 
 .hero-lead {
@@ -243,8 +244,6 @@ input, textarea, button, select, a {
 .hero-lead strong {
   color: var(--signature-orange);
 }
-
-
 
 /* --- BACK TO TOP BUTTON --- */
 #backToTop {
@@ -276,9 +275,3 @@ input, textarea, button, select, a {
   transform: translateY(-8px) scale(1.1); 
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
 }
-
-
-
-
-
-
