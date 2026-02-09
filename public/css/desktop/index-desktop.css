@@ -11,6 +11,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  padding-top: 25rem;
 }
 
 /* ==========================================================================
@@ -111,10 +112,10 @@
 .status-group {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  flex-wrap: wrap; 
   width: 90%;
-  gap: 2rem;       /* 20px */
-  margin: 1.5rem 0 3rem; /* 60px auto 40px */
+  gap: 2rem;       
+  margin: 1.5rem 0; 
   padding: 0 0;     
 }
 
@@ -189,7 +190,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
-  margin-top: 6rem;
+  margin: 5rem 0;
   width: 100%;
   max-width: var(--max-width-desktop);
   margin-left: auto;
@@ -262,16 +263,9 @@
    ========================================================================== */
 
 .genetics-section {
-  padding: 8rem 0; /* 80px vertical breathing room */
-  background-color: var(--bg-black);
-  text-align: center;
-}
-
-.genetics-section .content-wrapper {
-  /* Match the hero content width exactly */
-  width: 60%;
-  max-width: 100rem;
-  margin: 0 auto;
+  padding: 5rem 5rem; 
+  display: grid;         
+  place-items: center;
 }
 
 .genetics-header {
@@ -311,7 +305,7 @@
   /* 1. Constrain width to match the hero content (approx 70% on desktop) */
   width: 100%;
   max-width: 100rem; 
-  margin: 4rem auto; 
+  margin: 0 auto; 
   padding: 0 2rem; /* matches hero-callout-row padding */
   
   /* 2. Flex column ensures disclaimer sits above the track */

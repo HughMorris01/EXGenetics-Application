@@ -104,28 +104,20 @@ input, textarea, button, select, a {
 }
 
 /* --- LAYOUT UTILITIES --- */
-.index-layout {
-  padding-top: 19.2rem; 
-}
+
 .non-index-layout {
   padding-top: var(--header-height-desktop);
 }
 
-.container {
+.content-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: var(--container-width-desktop);
   max-width: var(--max-width-desktop);
-  margin: 0 auto;
-}
-
-.content-wrapper {
-  width: var(--content-width);
-  padding: 1rem 0; 
-  text-align: center;
 }
 
 /* --- GLOBAL TEXT LAYOUTS --- */
@@ -171,7 +163,7 @@ input, textarea, button, select, a {
 }
 
 /* Non-Hero Header Glow */
-.glow-header {
+.header-glow {
   background: linear-gradient(180deg, #d9d9d8 0%, var(--signature-orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -183,22 +175,7 @@ input, textarea, button, select, a {
   min-height: var(--hero-height-desktop);
   display: grid;         
   place-items: center;
-  padding: 5rem 5rem 7rem; /* 30px 50px */
-}
-
-.hero-section strong, .hero-lead strong {
-  color: var(--signature-orange);
-}
-
-.hero-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 60%;
-  max-width: 100rem; 
+  padding: 5rem 5rem;
 }
 
 .hero-title {
@@ -209,7 +186,7 @@ input, textarea, button, select, a {
   line-height: 1.1;
   letter-spacing: 1px;
   max-width: 80rem;
-  margin: 0 auto 1.5rem; 
+  margin: 0 auto 1rem; 
 }
 
 .hero-title-glow {
@@ -245,6 +222,10 @@ input, textarea, button, select, a {
   max-width: 70rem;
   margin: 2rem auto;
   line-height: 2;
+}
+
+.hero-lead strong {
+  color: var(--signature-orange);
 }
 
 /* --- BACK TO TOP BUTTON --- */
