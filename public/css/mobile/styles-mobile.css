@@ -4,6 +4,21 @@
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
+
+  /* 1. Locks the background body from scrolling */
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important; 
+  /* touch-action: none; Optional: completely disables touch swiping on the body */
+}
+
+/* 2. Hides the To-Top button when the body is locked */
+/* Note: Change #toTopBtn to whatever ID or class your actual button uses */
+body.no-scroll #toTopBtn {
+  display: none !important; 
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
   
   /* --- 1. Layout & Containers --- */
   /* Expand content width to use the full phone screen */

@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isActive = toggle.classList.toggle('is-active');
       nav.classList.toggle('active');
       toggle.setAttribute('aria-expanded', isActive);
+      document.body.classList.toggle('lock-scroll');
     });
 
     links.forEach((link) => {
@@ -68,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.classList.remove('is-active');
         nav.classList.remove('active');
         toggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('lock-scroll');
       });
     });
   };
