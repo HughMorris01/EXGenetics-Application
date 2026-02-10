@@ -4,24 +4,14 @@
    ========================================================================== */
 
 .contact-hero {
-  /* Dark overlay + Logo Background */
+  /* Logo background + Dark Overlay */
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), url(/assets/logo_transparent_edited.png);
   
-  /* KEY FIX: Two values for background-size 
-     1st Value (Gradient): cover (fills the screen)
-     2nd Value (Logo): 50rem (sets a fixed max-width for the logo)
-  */
+  /* User Preference: 40rem max width for logo */
   background-size: cover, 40rem; 
-  
-  /* Center both layers */
   background-position: top;
-  
-  /* Prevent the logo from repeating/tiling */
-  background-repeat:repeat-x;
-  
-  /* Keep the cool parallax effect */
+  background-repeat: repeat-x; /* As requested */
   background-attachment: fixed;
-  
   padding-top: 25rem;
 }
 
@@ -32,39 +22,38 @@
   margin-bottom: 2rem;
 }
 
-/* --- PARTNERSHIP PORTAL SECTION (Dark Background) --- */
+.intro {
+  color: var(--fc-muted);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+/* --- PARTNERSHIP PORTAL SECTION --- */
 .partnership-portal {
-  padding: 8rem 2rem;
+  padding: 2rem 2rem;
   background-color: #1a1a1a; 
-  color: #6a6868;
   background-image: radial-gradient(circle at center, #252525 0%, #111111 100%);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
-.intro {
-  font-size: 1.2rem;
-  width: 93%;
-  margin-bottom: 1rem;
-}
-
-/* The White Card (The form itself) */
+/* The White Card */
 .portal-card.portal-light {
   background: #ffffff;
-  padding: 5rem;
+  padding: 2rem;
   border-radius: 1.2rem;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.4); 
   max-width: 75rem;
   margin: 0 auto;
   border: 1px solid #333;
   
-  /* Fade-in Animation */
   opacity: 0; 
   animation: fadeInUp 0.8s ease-out forwards;
   animation-delay: 0.1s;
 }
 
-/* .portal-heading {
+.portal-heading {
   color: #000;
   font-family: var(--ff-headers); 
   text-align: center;
@@ -72,9 +61,9 @@
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-} */
+}
 
-/* --- Form Inputs with Glow Effects --- */
+/* --- Form Inputs --- */
 .portal-form input,
 .portal-form select,
 .portal-form textarea {
@@ -85,10 +74,8 @@
   border: 1px solid #ccc;
   border-radius: 0.4rem;
   color: #333;
-  
-  /* FIX: Updated variable name */
   font-family: var(--ff-main);
-  font-size: 1.6rem; /* Standard readable size */
+  font-size: 1.6rem; 
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -98,7 +85,6 @@
   outline: none;
   border-color: var(--signature-orange);
   background: #fff;
-  /* Soft Shadow/Glow on active inputs */
   box-shadow: 0 0 1.5rem rgba(248, 194, 93, 0.25);
   transform: translateY(-1px);
 }
@@ -108,7 +94,7 @@
   gap: 2rem;
 }
 
-/* --- Character Counter Styling --- */
+/* --- Character Counter --- */
 .textarea-container {
   position: relative; 
   margin-bottom: 2.5rem; 
@@ -126,7 +112,6 @@
   transition: color 0.3s ease;
 }
 
-/* Warning color when they get low (under 100 chars) */
 .char-counter.warning {
   color: var(--signature-orange);
   font-weight: bold;
@@ -137,7 +122,7 @@
   font-weight: 800;
 }
 
-/* --- Captcha Row: Vertically Aligned & Glowing --- */
+/* --- Captcha Row --- */
 .captcha-row {
   display: flex;
   align-items: center; 
@@ -153,7 +138,6 @@
   transition: all 0.3s ease;
 }
 
-/* Glow when the user clicks into the captcha answer */
 .captcha-row:focus-within {
   background: #fff;
   box-shadow: 0 0 2rem rgba(248, 194, 93, 0.3);
@@ -181,15 +165,13 @@
   padding-right: 1.2rem !important; 
 }
 
-/* --- Submit Button & Loading Spinner --- */
+/* --- Submit Button --- */
 .btn-portal {
   width: 100%;
   background: #000;
   color: #fff;
   padding: 1.8rem;
   border: none;
-  
-  /* FIX: Updated variable */
   font-family: var(--ff-headers);
   font-size: 1.6rem;
   font-weight: 700;
@@ -259,8 +241,7 @@
 }
 
 .modal-content h3 {
-  color: #000000; 
-  /* FIX: Updated variable */
+  color: #000; 
   font-family: var(--ff-headers);
   margin-bottom: 1.5rem;
   font-size: 2rem;
@@ -269,8 +250,7 @@
 }
 
 .modal-content p {
-  color: #333333; 
-  /* FIX: Updated variable */
+  color: #333; 
   font-family: var(--ff-main);
   font-size: 1.4rem;
   margin-bottom: 3rem;
@@ -322,9 +302,3 @@
 textarea { animation-delay: 0.6s; }
 .captcha-row { animation-delay: 0.7s; }
 .btn-portal { animation-delay: 0.8s; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .form-row { flex-direction: column; gap: 0; }
-  .captcha-row { width: 100%; min-width: 0; }
-}

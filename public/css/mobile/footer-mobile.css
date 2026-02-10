@@ -1,0 +1,44 @@
+/* ==========================================================================
+   FOOTER-MOBILE.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+  
+  .site-footer { 
+    overflow: hidden !important; 
+    padding-bottom: 2rem; 
+  }
+
+  .footer-branding-container { 
+    padding: 0 1rem; 
+    min-height: 12rem; /* Slightly shorter on mobile */
+  }
+  
+  /* --- Simplified Animation --- */
+  /* Replaces the complex 3D zoom with a simple opacity fade */
+  .footer-zoomer {
+    animation: mobile-ghost-fade 10s infinite ease-in-out;
+    transform: translateZ(0); /* Flatten 3D space for performance */
+    pointer-events: none;
+  }
+
+  /* Shrink the logo slightly */
+  .footer-logo-anim {
+    height: 10rem; 
+  }
+
+  @keyframes mobile-ghost-fade {
+    0%, 100% { opacity: 0.1; transform: scale(0.8); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+  }
+
+  /* --- Text Adjustments --- */
+  .footer-company-name {
+    font-size: 1.4rem;
+  }
+
+  .footer-line, .footer-email {
+    font-size: 1.1rem;
+  }
+}

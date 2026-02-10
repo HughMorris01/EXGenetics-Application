@@ -3,196 +3,133 @@
    Max-Width: 768px
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
-  /* --- 1. GLOBAL LAYOUT --- */
-  .index-layout {
-    padding-top: 80px; /* Header (160px) + Banner (40px) */
-  }
-  
-  .container {
-    width: var(--container-width-mobile);
-  }
-
-  .content-wrapper, .copy-wrapper {
-    width: 100%;
-  }
-
-  /* --- 2. HERO SECTION --- */
   .index-hero {
-    padding: 120px 15px 0;
-  /* 1. Reset the background property explicitly */
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-    url(/assets/storefront_mobile.jpg);
-    
-  /* 2. Turn off the "fixed" parallax effect for mobile */
-  background-attachment: fixed; 
-  
-  /* 3. Ensure it centers properly */
-  background-position: center top; /* Focuses on the top of the store, not the pavement */
-  background-size: cover;
+ background: linear-gradient(
+    rgba(0, 0, 0, 0.2) 0%, 
+    rgba(0, 0, 0, 0.5) 50%, 
+    rgba(0, 0, 0, 0.9) 100%
+  ), url(/assets/heros/index_hero_mobile.webp);
+  background-position: left 1rem top 2rem;
+  background-attachment:scroll;
+  padding-top: 23rem;
+}
 
+  /* --- 1. Hero Callout Row --- */
+  .hero-callout-row {
+    flex-direction: column; /* Stack them */
+    align-items: center;
+    gap: 2rem;
+    padding: .5rem .5rem;
+    text-align: center;
   }
-
-  
 
   .hero-outrage {
-    font-size: .9rem;
-    border-top: none;
-    border-left: 2px solid var(--accent-red) !important;
-    padding-left: 15px;
-    margin-top: 20px;
+    text-align: center;
+    font-size: 1.55rem;
+    line-height: 1.4;
+    border-left: 0.3rem solid var(--fc-accent-red); 
+    background: rgba(234, 84, 85, 0.12);
+    padding-left: .5rem
   }
 
-  /* --- FEATURES GRID (Mobile Stack) --- */
-.features-grid {
-  display: flex;             /* Switch from Grid to Flexbox */
-  flex-direction: column;    /* Stack them top-to-bottom */
-  gap: 20px;                 /* Space between cards */
-  margin-top: 30px;
-  padding: 0 15px;           /* Add side padding so it doesn't touch edges */
+  .btn-petition {
+  display: inline-block;
+  padding: 1.3rem 2.2rem;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin-top: 1.5rem;
+  }
+
+  /* --- 2. Status Badges --- */
+  .status-group {
+  flex-direction: column;
+  justify-content: left;
+  align-items: stretch; 
+  text-align: left;
+  width: 90%;
+  gap: 1.5rem;
+  padding-left: 1rem;
 }
 
-.feature-card {
-  width: 100%;               /* Full width */
-  padding: 25px 20px;
-  background: rgba(255, 255, 255, 0.05); /* Slightly brighter for visibility */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  text-align: center;        /* Center align looks better on mobile lists */
+.status-badge {
+  width: auto;      /* Let them shrink to fit their content */
+  max-width: 85%;   /* Prevent them from hitting the very edge */
+  min-width: 0; 
+  justify-content: left;    /* Allow shrinking if needed */
 }
 
-.feature-icon {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  display: block;            /* Ensures icon sits on its own line */
-}
+  /* --- 3. Features Grid --- */
+  .features-grid {
+    grid-template-columns: 1fr; /* Single Column */
+    gap: 3rem;
+    margin: 4rem 0;
+    padding: 0 1rem;
+  }
 
-.feature-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-
-.feature-card p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #ccc;
-}
-
-/* Make the "Standstill" card pop on mobile too */
-.highlight-card {
-  background: linear-gradient(180deg, rgba(234, 84, 85, 0.15), transparent);
-  border-color: var(--accent-red);
-  margin-bottom: 40px;       /* Extra space before the Carousel starts */
-}
-
-  /* --- 5. ACTION CONTAINER --- */
-  .action-container {
-    width: 100%;
-    margin: auto;
-    padding: 25px 15px;
-    box-sizing: border-box;
-    margin: 0 0 30px;
+  .feature-card {
+    padding: 3rem 2rem;
   }
   
-  .cta-header { font-size: 1rem; }
-  
-  .cta-btn {font-size: 1rem;
-  padding: 15px 20px}
-  
-  .stat-number {
-    font-size: 2.5rem !important;
-  }
-
-  /* --- GENETICS SECTION --- */
-  .genetics-section {
-    padding-top: 20px; 
-  }
-
-  .genetics-section h2 {
+  .feature-card p {
     font-size: 1.5rem;
   }
 
-  .genetics-section h2 a {
-    font-size: 1.4rem;
+  /* --- 4. Genetics & Carousel --- */
+  .genetics-section {
+    padding: 4rem 1.5rem;
   }
 
-  .disclaimer {
-    font-size: 0.6rem !important;
-    font-weight: 300 !important;
-    letter-spacing: 1px !important;
-    margin-top: 10px !important; 
-    display: block;
+  .genetics-header a {
+    font-size: 2.4rem; /* Smaller header */
   }
 
-  /* --- 4. CAROUSEL SECTION --- */
   .carousel-wrapper {
-    height: 340px; 
-    width: 100%;
+    padding: 0; /* Maximize width */
   }
 
-  .carousel-slide {
-    width: 180px; /* Fixes the horizontal scroll */
-    margin-right: 20px; 
+  /* Adjust height for mobile proportions */
+  .carousel-track-container {
+    height: 40rem; 
   }
 
   .card-image {
-    width: 160px; 
-    height: 200px; 
-    margin-bottom: 15px;
-    border-radius: 25px; 
-    border: 1px solid var(--signature-orange);
+    width: 18rem;
+    height: 24rem;
   }
-/* Fit names Polynesian Thin Minds on one line*/
-  .fs-polynesian{
-  font-size: .75rem !important;
-}
-
-.carousel-slide .card-content .lineage {
-  font-size: 0.75rem !important; 
-  white-space: nowrap; 
-}
-  .card-content h4 { font-size: 1.1rem; }
-  .card-content .lineage { font-size: 0.8rem; }
-
+  
+  /* Move buttons to the edges to avoid covering art */
   .carousel-btn {
-    width: 40px;
-    height: 40px;
+    width: 4rem;
+    height: 4rem;
     font-size: 1rem;
-    background: rgba(0,0,0,0.6); 
   }
-  
-  .carousel-track-container {
-    mask-image: none;
-    -webkit-mask-image: none;
+  .carousel-btn.prev { left: 0; border-radius: 0 50% 50% 0; }
+  .carousel-btn.next { right: 0; border-radius: 50% 0 0 50%; }
+
+
+  /* --- 5. Final CTA (Monolith) --- */
+  .final-cta-wrapper {
+    margin: 6rem auto 4rem;
+    padding: 0 1.5rem;
   }
 
-  /* --- 6. STATUS BADGES FIX --- */
-  .status-group {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-    box-sizing: border-box;
-    margin-top: 20px;
+  .final-cta-card {
+    padding: 4rem 2rem;
+    gap: 2rem;
   }
 
-  .status-badge {
-    display: flex !important; /* Fixes alignment offset */
-    width: 100%;
-    min-width: 0;
-    justify-content: flex-start;
-    align-items: center;
-    box-sizing: border-box;
-    margin: 0 0 10px 0;
-    
-    /* Uniform Font Size */
-    font-size: 0.85rem !important; 
-    padding: 12px 15px;
+  .cta-title {
+    font-size: 2.6rem;
   }
-  
-  /* Reduce Boldness on the 3rd Badge so it matches others */
-  .status-badge.status-warning span {
-    font-weight: 600 !important; 
+
+  .cta-description {
+    font-size: 1.5rem;
+  }
+
+  .btn-large {
+    width: 100%; /* Full width button */
+    padding: 1.5rem 2rem;
   }
 }

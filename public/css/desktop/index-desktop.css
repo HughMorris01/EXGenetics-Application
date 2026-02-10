@@ -1,72 +1,61 @@
 /* ==========================================================================
-   HERO SECTION
+   INDEX-DESKTOP.CSS
+   Theme: Hero, Carousel, & Feature Grid
    ========================================================================== */
+
+/* --- HERO SECTION --- */
 .index-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(/assets/heros/index_hero_desktop.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)), url(/assets/heros/index_hero_desktop.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   padding-top: 25rem;
 }
 
-/* ==========================================================================
-   HERO CALLOUT ROW (Outrage + CTA)
-   ========================================================================== */
-
-/* 1. The Wrapper (Now holds the Background & Border) */
+/* --- HERO CALLOUT ROW (Outrage + CTA) --- */
 .hero-callout-row {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Vertically centers the text with the button group */
+  align-items: center; 
   justify-content: space-between;
   
   width: 100%;
   max-width: 100rem; 
   margin: 3rem auto;
-  
-  /* MOVED HERE: The Unified Red Envelope */
-  background: rgba(234, 84, 85, 0.05); 
-  border-left: 0.4rem solid var(--fc-accent-red);
-  padding: 2rem 2rem; /* Adds breathing room inside the red box */
+  padding: 0 2rem; 
   gap: 2rem;
 }
 
-/* 2. Left Side: The Outrage Text (Takes up 2/3) */
+/* Left Side: The Outrage Text */
 .hero-outrage {
-  flex: 2; /* This forces it to take 2 parts of the space */
-  
-  /* Resetting old styles so it blends in */
+  flex: 2; 
   margin: 0;
-  padding: 0;
-  
+  padding: 2rem;
   text-align: left;
   font-style: italic;
   line-height: 1.3;
   font-size: var(--fs-main);
-  color:var(--fc-main);
+  color: var(--fc-main);
+  background: rgba(234, 84, 85, 0.1); 
+  border-left: 0.3rem solid var(--fc-accent-red); /* Move border to top */
 }
 
-/* 3. Right Side: The Action Container (Takes up 1/3) */
+/* Right Side: The Action Container */
 .action-container {
-  flex: 1; /* This forces it to take 1 part of the space */
-  
-  /* Resetting old styles */
+  flex: 1; 
   margin: 0;
   background: none; 
   border: none;
   padding: 0;
   width: auto; 
   max-width: none;
-  
-  /* Stack the "Stand with us" text on top of the button */
   display: flex;
   flex-direction: column; 
-  align-items: center; /* Centers button and text nicely */
+  align-items: center; 
   justify-content: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
-/* 4. The "Stand With Us" Text */
 .cta-text {
   font-family: var(--ff-headers);
   color: var(--fc-main); 
@@ -78,10 +67,9 @@
   text-align: center;
 }
 
-
 .btn-petition {
   display: inline-block;
-  padding: .6rem 2rem;
+  padding: 1rem 2rem;
   font-family: var(--ff-headers);
   font-size: 1.2rem;
   font-weight: 800;
@@ -90,28 +78,26 @@
   text-transform: uppercase;
   color: #000;
   background-color: var(--signature-orange);
-  border-radius: 5rem; /* Pill shape */
+  border-radius: 5rem; 
   transition: var(--transition-smooth);
   box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 93, 0.3);
 }
 
 .btn-petition:hover {
   transform: translateY(-0.3rem);
-  background-color: #fff; /* Shifts to white on hover */
+  background-color: #fff; 
   box-shadow: 0 0.8rem 2.5rem rgba(255, 255, 255, 0.2);
 }
 
-/* ==========================================================================
-   6. STATUS BADGES
-   ========================================================================== */
+/* --- STATUS BADGES --- */
 .status-group {
   display: flex;
   justify-content: center;
   flex-wrap: wrap; 
-  width: 90%;
+  width: 70%;
   gap: 2rem;       
-  margin: 1.5rem 0; 
-  padding: 0 0;     
+  margin: 5rem 0 0; 
+  padding: 0;     
 }
 
 .status-badge {
@@ -120,67 +106,49 @@
   min-width: 20rem; 
   max-width: 50rem; 
   justify-content: center;
-  align-items: center;
-  gap: 1.2rem;      /* 12px */
-  
-  /* Size & Spacing */
-  padding: 1rem 1rem; /* 15px 25px */
+  align-items: left;
+  gap: 1.2rem;      
+  padding: 1rem; 
   border-radius: var(--radius-subtle);
   
-  /* Typography */
   font-family: var(--ff-main);
-  font-size: 1.2rem; /* 14px (Bumped up from 0.9rem) */
+  font-size: 1.2rem; 
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   
-  /* Default Style (Gray/Glass) */
   background-color: rgba(255, 255, 255, 0.03);
   border-left: 0.4rem solid #555;
   color: #ccc;
-  
   cursor: default; 
   user-select: none;
   transition: var(--transition-smooth);
 }
 
-/* --- STATE: READY (Green) --- */
+/* Status Colors */
 .status-ready {
   border-left-color: #4caf50;
   background: linear-gradient(90deg, rgba(76, 175, 80, 0.1) 0%, transparent 100%);
   color: #e8f5e9;
 }
+.status-ready i { color: #4caf50; font-size: 1.6rem; }
 
-.status-ready i {
-  color: #4caf50;
-  font-size: 1.6rem; /* Icon slightly larger */
-}
-
-/* --- STATE: PENDING (Orange/Yellow) --- */
 .status-pending {
   border-left-color: var(--signature-orange);
   background: linear-gradient(90deg, rgba(248, 194, 93, 0.1) 0%, transparent 100%);
   color: #fff;
 }
+.status-pending i { color: var(--signature-orange); font-size: 1.6rem; }
 
-.status-pending i {
-  color: var(--signature-orange);
-  font-size: 1.6rem;
-}
-
-/* --- STATE: WARNING (Red - Optional) --- */
 .status-warning {
   border-left-color: var(--fc-accent-red);
   background: linear-gradient(90deg, rgba(234, 84, 85, 0.1) 0%, transparent 100%);
   color: #ffebee;
 }
+.status-warning i { color: var(--fc-accent-red); }
 
-.status-warning i {
-  color: var(--fc-accent-red);
-}
 
-/* --- FEATURES GRID (Centered Pill Layout) --- */
-
+/* --- FEATURES GRID --- */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -192,9 +160,8 @@
   margin-right: auto;
 }
 
-/* Make the <a> tag behave like a card container */
 .feature-card {
-  text-decoration: none; /* Removes underline from links */
+  text-decoration: none; 
   padding: 4rem; 
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -209,12 +176,12 @@
 
 .feature-card:hover {
   transform: translateY(-0.8rem);
-  background: rgba(248, 194, 93, 0.04); /* Subtle orange tint on hover */
+  background: rgba(248, 194, 93, 0.04); 
   border-color: var(--signature-orange);
 }
 
 .feature-icon {
-  font-size: 3.2rem; /* Matches --fs-h2 */
+  font-size: 3.2rem; 
   color: var(--signature-orange);
   margin-bottom: 2.5rem; 
 }
@@ -236,27 +203,23 @@
   margin-bottom: 2.5rem;
 }
 
-/* The "Call to Action" link inside the card */
 .card-link {
   font-family: var(--ff-headers);
   font-size: 1.4rem;
   color: var(--signature-orange);
   text-transform: uppercase;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 0.2rem;
   transition: var(--transition-smooth);
 }
 
 .feature-card:hover .card-link {
   color: #fff;
-  letter-spacing: 3px; /* Subtle expansion effect */
+  letter-spacing: 0.3rem; 
 }
 
 
-/* ==========================================================================
-   GENETICS SECTION REFACTOR
-   ========================================================================== */
-
+/* --- GENETICS SECTION --- */
 .genetics-section {
   padding: 5rem 5rem; 
   display: grid;         
@@ -264,21 +227,20 @@
 }
 
 .genetics-header {
-  margin-bottom: 4rem; /* Space before the first paragraph */
+  margin-bottom: 4rem; 
 }
 
 .genetics-header a {
   text-decoration: none;
   font-family: var(--ff-headers);
-  font-size: var(--fs-h2); /* 3.2rem / 32px */
+  font-size: var(--fs-h2); 
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   transition: var(--transition-smooth);
 }
 
-/* Ensure the divider matches the width of the text blocks */
 .genetics-section .neon-divider {
-  max-width: 70rem; /* Matches .hero-lead max-width */
+  max-width: 70rem; 
   margin: 3rem auto;
 }
 
@@ -289,21 +251,13 @@
 }
 
 
-
-/* ==========================================================================
-   4. CAROUSEL SECTION
-   ========================================================================== */
-
-/* --- Carousel Track --- */
+/* --- CAROUSEL SECTION --- */
 .carousel-wrapper {
   position: relative;
-  /* 1. Constrain width to match the hero content (approx 70% on desktop) */
   width: 100%;
   max-width: 100rem; 
-  margin: 0 auto; 
-  padding: 0 2rem; /* matches hero-callout-row padding */
-  
-  /* 2. Flex column ensures disclaimer sits above the track */
+  margin: 0 auto 8rem; 
+  padding: 0 2rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -311,17 +265,15 @@
 
 .carousel-track-container {
   width: 100%; 
-  height: 450px;
+  height: 45rem; /* Converted to REM (450px) */
   position: relative;
   overflow: hidden;
-  
-  /* Optional: Adjust mask to be sharper since the container is narrower */
   mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .carousel-track {
-  padding: 40px 0;
+  padding: 4rem 0;
   margin: 0;
   list-style: none;
   display: flex; 
@@ -333,18 +285,14 @@
 
 .carousel-slide {
   flex-shrink: 0; 
-  width: 250px; 
-  margin-right: 40px; 
+  width: 25rem; /* 250px */
+  margin-right: 4rem; 
   position: relative;
   display: flex;
   justify-content: center;
 }
 
-.fs-polynesian{
-  font-size: 1.1rem !important;
-}
-
-/* --- SOFT CARD DESIGN REFACTOR --- */
+/* Soft Card */
 .soft-card {
   text-align: center;
   width: 100%;
@@ -352,22 +300,20 @@
   cursor: pointer; 
 }
 
-/* Hover Effect 1: Lift Up */
 .soft-card:hover {
-  transform: translateY(-1rem); /* 10px lift */
+  transform: translateY(-1rem); 
 }
 
-/* Hover Effect 2: The ZOOM */
 .soft-card:hover .card-image img {
   transform: scale(1.15); 
 }
 
 .card-image {
-  width: 22rem;  /* 220px */
-  height: 28rem; /* 280px */
+  width: 22rem;  
+  height: 28rem; 
   margin: 0 auto 2rem;
   position: relative;
-  border-radius: 4rem; /* 40px */
+  border-radius: 4rem; 
   overflow: hidden; 
   border: 0.2rem solid var(--signature-orange);
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5); 
@@ -381,14 +327,10 @@
   transition: transform 0.5s ease;
 }
 
-/* --- CARD CONTENT TYPOGRAPHY --- */
 .card-content h4 {
-  font-family: var(--ff-headers); /* Updated variable */
+  font-family: var(--ff-headers); 
   color: var(--signature-orange);
-  
-  /* FIX: 1.3rem (13px) -> 2.2rem (22px) for hierarchy */
   font-size: 2.2rem; 
-  
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
@@ -396,14 +338,9 @@
 
 .card-content .lineage {
   display: block;
-  font-family: var(--ff-main); /* Updated variable */
-  
-  /* FIX: Variable name mismatch (--accent-red -> --fc-accent-red) */
+  font-family: var(--ff-main); 
   color: var(--fc-accent-red); 
-  
-  /* FIX: 0.9rem (9px) -> 1.4rem (14px) for legibility */
   font-size: 1.4rem;
-  
   font-style: italic;
   font-weight: 500;
   letter-spacing: 0.05rem;
@@ -417,8 +354,8 @@
   background: rgba(0,0,0,0.5); 
   border: 1px solid rgba(255,255,255,0.2);
   color: #fff;
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
@@ -427,14 +364,9 @@
   backdrop-filter: blur(5px);
 }
 
-/* Adjust buttons to sit on the edges of the content box */
-.carousel-btn.prev { left: 0; }
-.carousel-btn.next { right: 0; }
+.carousel-btn.prev { left: 5%; }
+.carousel-btn.next { right: 5%; }
 
-/* --- CAROUSEL BUTTONS INTERACTION --- */
-
-/* 1. Desktop Only: Yellow Hover Effect */
-/* @media (hover: hover) ensures this ONLY happens on devices with a mouse */
 @media (hover: hover) {
   .carousel-btn:hover {
     background: var(--signature-orange);
@@ -443,62 +375,48 @@
   }
 }
 
-/* 2. Mobile/Touch: "Active" Flash Effect */
-/* This triggers when you tap, then fades back immediately when you let go */
 .carousel-btn:active {
   background: var(--signature-orange);
   color: #000;
-  transform: translateY(-50%) scale(0.95); /* Subtle "press down" shrink */
+  transform: translateY(-50%) scale(0.95); 
   transition: background-color 0.1s, transform 0.1s;
 }
 
-
-.carousel-btn.prev { left: 5%; }
-.carousel-btn.next { right: 5%; }
-
-/* ==========================================================================
-   FINAL CTA SECTION (The Monolith)
-   ========================================================================== */
-
+/* --- FINAL CTA SECTION --- */
 .final-cta-wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
   padding: 0 2rem;
-  /* Large spacing to separate it from the carousel */
-  margin: 10rem auto 8rem; 
+  margin: 5rem auto 8rem; 
 }
 
 .final-cta-card {
   position: relative;
   width: 100%;
-  max-width: 90rem; /* Slightly narrower than the hero for focus */
-  
-  /* Vertical Stack Layout */
+  max-width: 90rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 3rem;
   
-  /* Visuals: Dark Glass + Gold Fade */
   padding: 6rem 4rem;
   background: linear-gradient(
     180deg, 
-    rgba(248, 194, 93, 0.08) 0%, /* Gold tint at top */
-    rgba(0, 0, 0, 0.4) 100%       /* Fades to black at bottom */
+    rgba(248, 194, 93, 0.08) 0%, 
+    rgba(0, 0, 0, 0.4) 100%       
   );
   
   border: 1px solid rgba(248, 194, 93, 0.2);
-  border-radius: 2rem; /* Large rounded corners */
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5); /* Deep shadow to make it float */
+  border-radius: 2rem; 
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5); 
 }
 
-/* Optional: A top "Highlight" line to make it look premium */
 .final-cta-card::before {
   content: "";
   position: absolute;
-  top: 0; left: 20%; right: 20%; /* Centered top line */
+  top: 0; left: 20%; right: 20%; 
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--signature-orange), transparent);
   opacity: 0.7;
@@ -506,7 +424,7 @@
 
 .cta-title {
   font-family: var(--ff-headers);
-  font-size: 4rem; /* Big, commanding text */
+  font-size: 4rem; 
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   margin: 0;
@@ -521,12 +439,11 @@
 }
 
 .cta-description strong {
-  color: #fff; /* Highlight key phrase in white */
+  color: #fff; 
 }
 
-/* Button Modifier for extra size */
 .btn-large {
-  padding: 2rem 5rem; /* Bigger click area */
+  padding: 2rem 5rem; 
   font-size: 1.6rem;
   letter-spacing: 0.2rem;
 }
@@ -538,4 +455,3 @@
   font-style: italic;
   opacity: 0.7;
 }
-

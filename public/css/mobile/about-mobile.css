@@ -1,23 +1,70 @@
+/* ==========================================================================
+   ABOUT-MOBILE.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
 @media screen and (max-width: 768px) {
-  /* Stack the grids */
-  .chapter-grid, 
-  .petition-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+
+  .about-hero {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.3) 0%, 
+    rgba(0, 0, 0, 0.6) 60%, 
+    rgba(10, 15, 25, 0.9) 100%
+  ), url(/assets/heros/about_hero_mobile.jpg);
+  background-size: cover;
+  background-position: top;
+  padding-top: 25rem;
+}
+
+  /* --- 1. Hero Adjustments --- */
+  .about-hero {
+    padding-top: 15rem; /* Less empty space */
   }
 
-  /* Adjust Typography */
-  .hero-title { font-size: 2.5rem; }
-  .chapter-title { font-size: 1.8rem; letter-spacing: 2px; }
-  .about-text { font-size: 1.1rem; text-align: left; }
-  
-  /* Image Fixes */
+  /* --- 2. Typography --- */
+  .chapter-title {
+    font-size: 2.2rem;
+    letter-spacing: 0.2rem;
+    border-left-width: 0.3rem;
+  }
+
+  .about-text {
+    font-size: 1.5rem;
+  }
+
+  /* --- 3. Grid Collapse --- */
+  .chapter-grid {
+    grid-template-columns: 1fr; /* Stack vertically */
+    gap: 3rem;
+  }
+
+  /* --- 4. Image Styling --- */
   .framed-image {
-    transform: rotate(0deg); /* Straighten image on mobile */
-    margin: 20px 0;
+    /* Reduce rotation on mobile so it doesn't clip */
+    transform: rotate(1deg); 
+    max-width: 90%; /* Prevent edge touching */
+    margin: 0 auto;
+    display: block;
   }
 
-  /* Petition Adjustments */
-  .petition-header { font-size: 2rem; }
-  .petition-wrapper { padding: 50px 0; }
+  /* --- 5. Petition Monolith --- */
+  .petition-wrapper {
+    padding: 6rem 0;
+  }
+  
+  .petition-header {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  
+  .petition-card-monolith .card-body {
+    padding: 3rem 2rem;
+  }
+
+  /* Stack the horizontal check list */
+  .petition-check-list {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
 }

@@ -1,0 +1,73 @@
+/* ==========================================================================
+   CONTACT-MOBILE.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+
+  .contact-hero {
+  /* 1. Use a solid black or dark gradient base */
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), 
+              url(/assets/heros/contact_hero_mobile.webp);
+  
+  /* 2. DO NOT use 'cover'. Set a specific width that looks good on phones */
+  background-size: 3rem, 10rem; 
+  
+  /* 3. Center it and prevent it from repeating across the sky */
+  background-position: top 2rem center;
+  background-repeat: repeat;
+  
+  /* 4. Ensure the hero has enough height to actually show the image */
+  min-height: 15vh; 
+  padding-top: 5rem;
+}
+  
+  /* --- 1. Form Layout --- */
+  .partnership-portal {
+    padding: 3rem 1rem;
+  }
+
+  .portal-card.portal-light {
+    padding: 3rem 1.5rem;
+    width: 100%;
+  }
+
+  /* Stack inputs that are side-by-side on desktop */
+  .form-row {
+    flex-direction: column; 
+    gap: 0;
+  }
+
+  /* --- 2. Captcha Adjustments --- */
+  .captcha-row {
+    width: 100%;
+    min-width: 0;
+    flex-direction: column; /* Stack label and input */
+    align-items: flex-start;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .captcha-input {
+    width: 100% !important; /* Full width input */
+    text-align: left;
+    padding-left: 1.5rem;
+  }
+
+  /* --- 3. Typography & Sizing --- */
+  .portal-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-portal {
+    padding: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  /* --- 4. Modal Mobile --- */
+  .modal-content {
+    padding: 3rem 2rem;
+    width: 90%;
+  }
+}

@@ -1,0 +1,89 @@
+/* ==========================================================================
+   CULTIVATION-MOBILE.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+
+  .cultivation-hero {
+  /* Darker overlay to make the text pop */
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url(/assets/heros/cultivation_hero_mobile.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 20rem;
+}
+
+  /* --- 1. Process Grid Stacking --- */
+  .process-section {
+    padding: 6rem 0; /* Reduced from 10rem */
+  }
+
+  .narrow-container {
+    padding: 0 1.5rem;
+  }
+
+  .process-grid, 
+  .process-grid.reverse-layout {
+    grid-template-columns: 1fr; /* Force single column */
+    gap: 4rem;
+    text-align: center;
+  }
+
+  /* --- 2. Text & Typography --- */
+  .process-text {
+    align-items: center; /* Center align flex items */
+  }
+
+  .step-badge {
+    font-size: 5rem;
+    margin-bottom: 0;
+  }
+
+  .process-title {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .copy-text {
+    font-size: 1.5rem;
+    text-align: center; /* Center body text on mobile */
+  }
+
+  .tech-list {
+    align-items: center; /* Center list items */
+    margin-top: 2rem;
+  }
+  
+  .tech-list li {
+    font-size: 1.2rem;
+  }
+
+  /* --- 3. Image Frame Adjustments --- */
+  .process-image-wrapper {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .tech-frame {
+    max-width: 100%; /* Fill the container width */
+  }
+  
+  /* --- 4. Petition Monolith --- */
+  .petition-wrapper {
+    padding: 6rem 0;
+  }
+
+  .petition-header {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+
+  .petition-card-monolith .card-body {
+    padding: 3rem 2rem;
+  }
+
+  .stats-row {
+    font-size: 1.4rem; /* Smaller stats text */
+  }
+}

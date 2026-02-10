@@ -45,7 +45,7 @@
   --hero-height-desktop: 40vh;
   --hero-height-mobile: 20vh;
   --container-width-desktop: 60%;
-  --container-width-mobile: 92%;
+  --container-width-mobile: 90%;
   --max-width-desktop: 110rem;   
 }
 
@@ -113,6 +113,7 @@ input, textarea, button, select, a {
 .container {
   display: grid;
   place-items: center;
+  text-align: center;
 }
 
 .content-wrapper {
@@ -124,6 +125,7 @@ input, textarea, button, select, a {
   text-align: center;
   width: var(--container-width-desktop);
   max-width: var(--max-width-desktop);
+  margin: auto;
 }
 
 /* --- GLOBAL TEXT LAYOUTS --- */
@@ -154,6 +156,7 @@ input, textarea, button, select, a {
   letter-spacing: 1px !important;
   margin-top: 3rem !important; 
   display: block;
+  text-align: center;
 }
 
 /* --- GLOBAL DIVIDER --- */
@@ -173,7 +176,7 @@ input, textarea, button, select, a {
   min-height: var(--hero-height-desktop);
   display: grid;         
   place-items: center;
-  padding: 5rem 5rem;
+  padding: 5rem 0;
 }
 
 .hero-title-index {
@@ -229,7 +232,7 @@ input, textarea, button, select, a {
   max-width: 70rem;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
-  margin-bottom: 1rem; /* FIX: Added missing semicolon */
+  margin-bottom: 2rem; /* FIX: Added missing semicolon */
 }
 
 .hero-lead {

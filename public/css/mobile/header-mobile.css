@@ -4,109 +4,103 @@
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
-  
-  /* 1. Header Reset */
-  header {
-   height: auto;
-    position: fixed;
-  }
 
-  .header-container {
-    width: 100%;
-    padding: 5px 10px;
-  }
-
-  /* 2. Logo Reset */
-  .header-logo-link {
-    margin-top: 0;
-    background: none;
-  }
-  .logo {
-    width: 120px !important;
-  }
-
-  /* 3. Banner Fixes */
-  .petition-alert-bar {
-    padding: 6px 0;
-    border-bottom: 3px solid #dba745; 
-  }
-
+  /* --- 1. Alert Bar Stacking --- */
   .alert-flex {
-    flex-direction: row;
-    flex-wrap: nowrap; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 4px; 
-    width: 100%;
-    margin: 0;
-    padding: 0 5px;
-  }
-
-  .alert-icon { font-size: 0.9rem; } 
-
-  .alert-title {
-    font-size: 0.7rem; 
-    line-height: 1;
-    /* Inherits the font-family, italic, and text-shadow from desktop automatically! */
-  }
-
-  .alert-message {
-    font-size: 0.55rem; 
-    line-height: 1.1;
+    gap: 0.8rem;
     text-align: center;
-    max-width: 140px; 
+    padding: 1rem;
+  }
+
+  .alert-title, .alert-message {
+    text-align: center;
+    width: 50%;
   }
 
   .alert-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 75px; 
-    white-space: normal; 
-    text-align: center;
-    line-height: 1.1;
-    font-size: 0.55rem;
-    padding: 4px 4px;
-    
-    /* Ensure the shadow exists on mobile too */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-
-  /* 4. Hamburger Menu */
-  .menu-toggle {
-    display: flex;
-    z-index: 2300;
-    margin-right: 25px; 
-  }
+  /* 1. Turn it into a solid box so the background doesn't break */
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
   
-  .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
-  .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-  .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+  /* 2. Allow the text to wrap inside that box */
+  white-space: normal !important;
+  text-align: center;
+  
+  /* 3. Force the width small enough to trigger the wrap */
+  max-width: 14rem; 
+  width: auto;
+  
+  /* 4. Allow the height to grow to fit 2 lines */
+  height: auto;
+  min-height: 3.5rem; /* Ensures it looks like a button */
+  
+  /* 5. Tighter spacing for the stacked text */
+  line-height: 1.1;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
 
-  /* 5. Mobile Dropdown */
-  .nav-menu { display: none; }
+  /* --- 2. Header Layout --- */
+  header {
+    min-height: var(--header-height-mobile); /* 12rem */
+  }
+
+  .header-container {
+    width: 90%; /* Expand width */
+    padding: 0.5rem 0;
+  }
+
+  /* Resize Logo for Mobile */
+  .logo {
+    width: 15rem;
+  }
+
+  /* --- 3. Hamburger Menu Toggle --- */
+  .menu-toggle {
+    display: flex; /* Show hamburger */
+    z-index: 2200; /* Ensure it floats above the drawer */
+  }
+
+  /* Hamburger Animation (When Active class added by JS) */
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(0.9rem) rotate(45deg);
+  }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-0.9rem) rotate(-45deg);
+  }
+
+  /* --- 4. Mobile Navigation Drawer --- */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Hidden off-screen */
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2000;
+  }
 
   .nav-menu.active {
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0; 
-    width: 100%;
-    
-    background-color: var(--bg-glass);
-    border-bottom: var(--border-subtle);
-    backdrop-filter: blur(10px);
-    padding: 20px 0;
-    
-    max-height: 80vh; 
-    overflow-y: auto;
+    left: 0; /* Slide in */
   }
 
-  .nav-menu.active ul {
+  .nav-menu ul {
     flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 0;
+    gap: 4rem;
+  }
+
+  .nav-menu ul li a {
+    font-size: 2.4rem; /* Larger touch targets */
+    font-family: var(--ff-headers); /* More dramatic font for mobile menu */
+    letter-spacing: 0.4rem;
   }
 }

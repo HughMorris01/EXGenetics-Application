@@ -1,13 +1,100 @@
-/* --- 3. GHOST STATS (Vertical Stack) --- */
+/* ==========================================================================
+   RETAIL-MOBILE.CSS (Phone Overrides)
+   Max-Width: 768px
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+
+  /* --- 1. Hero & Intro --- */
+  .retail-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.85)), url(/assets/heros/retail_hero_mobile.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  padding-top: 18rem;
+}
+
+  /* --- 2. The Dashboard (Ghost Stats) --- */
+  .dashboard-section {
+    padding: 4rem 0;
+  }
+
+  /* CRITICAL: Stack the stats vertically */
   .ghost-stats-container {
-    display: flex; 
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 30px;
+    flex-direction: column !important; 
+    gap: 4rem; 
+    margin: 3rem auto;
     width: 100%;
+    padding: 0 1rem;
+  }
+
+  /* TRANSFORM: Vertical Divider -> Horizontal Separator */
+  .ghost-divider {
+    width: 10rem !important; /* Short horizontal line */
+    height: 1px !important; 
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    margin: 1rem auto;
+  }
+
+  .stat-number {
+    font-size: 3.2rem; 
+  }
+
+  /* --- 3. Status Badges --- */
+  .status-group {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .status-badge {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    justify-content: flex-start; /* Left align icon and text */
+    padding: 1.2rem 2rem;
+  }
+
+  /* --- 4. Gallery Grid --- */
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Single column stack */
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .gallery-card {
+    /* Remove hover lift on mobile */
+    transform: none !important;
   }
   
-  .ghost-divider {
-    width: 50%;
-    height: 1px; 
+  .gallery-img {
+    height: 25rem; /* Shorter images for mobile scroll */
   }
+
+  /* --- 5. Petition Monolith --- */
+  .petition-wrapper {
+    padding: 6rem 1.5rem;
+  }
+
+  .petition-card-monolith {
+    width: 100%;
+    margin-bottom: 4rem;
+  }
+
+  .petition-card-monolith .card-body {
+    padding: 3rem 2rem;
+  }
+
+  .stats-row {
+    font-size: 1.4rem;
+  }
+
+  .btn-large {
+    width: 100%; 
+    padding: 1.5rem;
+    justify-content: center;
+  }
+}

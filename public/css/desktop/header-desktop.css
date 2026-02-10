@@ -4,7 +4,6 @@
 
 /* --- BANNER (Top Bar) --- */
 .petition-alert-bar {
-  /* Keep your existing gradients/colors */
   background: linear-gradient(
     180deg, 
     #f9dd9d 0%,               
@@ -15,8 +14,7 @@
   width: 100%;
   overflow: hidden; 
   
-  /* 3. TRANSITION SETTINGS */
-  /* We animate max-height and opacity to make it slide up/disappear smoothly */
+  /* Transition for smooth collapse */
   opacity: 1;
   transform: translateY(0);
   transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease;
@@ -26,9 +24,9 @@
 header.header-scrolled .petition-alert-bar {
   max-height: 0;
   opacity: 0;
-  padding: 0; /* Removes vertical padding so it fully vanishes */
+  padding: 0; 
   border-bottom: none;
-  pointer-events: none; /* Prevents clicking hidden buttons */
+  pointer-events: none; 
 }
 
 .alert-flex {
@@ -36,32 +34,31 @@ header.header-scrolled .petition-alert-bar {
   flex-direction: row;
   justify-content: center;
   align-items: center; 
-  gap: 15px; 
+  gap: 1.5rem; 
   width: 100%;
   margin: 0 auto;
   padding: 1.2rem 2rem;
 }
 
-/* SECTION 1: Horn (Added a slight tilt for style) */
+/* SECTION 1: Horn */
 .alert-icon {
   font-size: 2rem;
   display: flex;
   align-items: center;
-  transform: rotate(-10deg); /* dynamic tilt */
+  transform: rotate(-10deg); 
 }
 
-/* SECTION 2: Title (Stamped Look) */
+/* SECTION 2: Title */
 .alert-title {
-  font-family: var(--font-headers); /* Matches your H1s */
+  /* FIX: Updated to master variable */
+  font-family: var(--ff-headers); 
   font-weight: 900;
-  font-style: italic; /* Adds urgency */
+  font-style: italic; 
   text-transform: uppercase;
   font-size: 1.5rem; 
   line-height: 1;    
   text-align: right; 
   white-space: nowrap;
-  
-  /* FANCY TWEAK: 'Stamped' effect (White shadow on bottom right) */
   text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
@@ -71,33 +68,34 @@ header.header-scrolled .petition-alert-bar {
   font-weight: 600;
   line-height: 1.2;
   text-align: left;
-  max-width: 400px; 
+  max-width: 40rem; 
 }
 
-/* SECTION 4: Button (Tactile Feel) */
+/* SECTION 4: Button */
 .alert-btn {
   background: #000;
   color: #fff;
   text-decoration: none;
   padding: .6rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  letter-spacing: 0.1rem;
+  transition: var(--transition-smooth);
   white-space: nowrap;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.2);
   border: 1px solid rgba(255,255,255,0.1);
 }
 
 .alert-btn:hover {
   background: #fff;
   color: #000;
-  transform: translateY(-2px); 
-  box-shadow: 0 5px 12px rgba(0,0,0,0.3); 
+  transform: translateY(-0.2rem); 
+  box-shadow: 0 0.5rem 1.2rem rgba(0,0,0,0.3); 
 }
 
+/* --- MAIN HEADER LAYOUT --- */
 header {
   position: fixed;
   display: flex;
@@ -106,37 +104,36 @@ header {
   left: 0;
   width: 100%;
   max-width: 100vw; 
-  min-height: var(--header-height);
+  
+  /* FIX: Explicitly use the desktop variable */
+  min-height: var(--header-height-desktop); 
   z-index: 1000;
   
-  /* 1. INITIAL STATE: Transparent & Borderless */
+  /* Initial State */
   background-color: transparent; 
-  border-bottom: 1px solid transparent; /* Keeps layout stable */
-  
+  border-bottom: 1px solid transparent; 
   transition: background-color 0.4s ease, border-bottom 0.4s ease, transform 0.3s ease;
 }
 
-/* --- SCROLLED STATE (Added by JS) --- */
+/* Scrolled State */
 header.header-scrolled {
-  /* 2. SCROLL STATE: Solid Black & Subtle Border */
   background-color: #000; 
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.5);
 }
 
-/* --- 2. NAVBAR CONTAINER (Logo + Links) --- */
+/* --- NAV CONTAINER --- */
 .header-container {
-  width: 70%;
+  width: 70%; /* Desktop width */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  padding: 10px 0;
-  box-sizing: border-box;
+  padding: 1rem 0;
 }
 
-/* --- 3. LOGO --- */
+/* --- LOGO --- */
 .header-logo-link {
   position: relative;
   z-index: 2200;
@@ -145,7 +142,7 @@ header.header-scrolled {
 }
 
 .logo {
-  width: 175px;
+  width: 17.5rem;
   height: auto;
   display: block;
   transition: var(--transition-smooth);
@@ -155,23 +152,25 @@ header.header-scrolled {
   transform: scale(1.03);
 }
 
-/* --- 4. DESKTOP NAVIGATION --- */
+/* --- DESKTOP NAVIGATION --- */
 .nav-menu ul {
   list-style: none;
   display: flex;
   text-align: center;
-  gap: 30px;
+  gap: 3rem;
   margin: 0;
   padding: 0;
 }
 
 .nav-menu ul li a {
   text-decoration: none;
-  color: var(--text-main);
-  font-family: var(--font-nav);
+  /* FIX: Updated variable */
+  color: var(--fc-main); 
+  /* FIX: Updated variable */
+  font-family: var(--ff-nav); 
   font-weight: 600;
   font-size: var(--fs-nav);
-  letter-spacing: 3px;
+  letter-spacing: 0.3rem;
   text-transform: uppercase;
   position: relative;
   transition: var(--transition-smooth);
@@ -182,26 +181,27 @@ header.header-scrolled {
   color: var(--signature-orange) !important;
 }
 
+/* Underline Effect */
 .active-link::after {
   content: '';
   display: block;
   width: 100%;
   height: 2px;
   background: var(--signature-orange);
-  margin-top: 2px;
+  margin-top: 0.2rem;
 }
 
-/* --- 5. MOBILE ELEMENTS (Hidden on Desktop) --- */
+/* --- MOBILE ELEMENTS (Hidden on Desktop) --- */
 .menu-toggle {
-  display: none;
+  display: none; /* Flex on mobile */
   flex-direction: column;
   cursor: pointer;
-  gap: 6px;
+  gap: 0.6rem;
 }
 
 .bar {
-  width: 30px;
-  height: 3px;
-  background-color: var(--text-main);
+  width: 3rem;
+  height: 0.3rem;
+  background-color: var(--fc-main);
   transition: all 0.3s ease;
 }
