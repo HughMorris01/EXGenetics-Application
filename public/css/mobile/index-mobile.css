@@ -34,10 +34,14 @@
     padding-left: .5rem
   }
 
+  .cta-text {
+    font-size: 1.5rem;
+  }
+
   .btn-petition {
   display: inline-block;
-  padding: 1.3rem 2.2rem;
-  font-size: 1.4rem;
+  padding: 2rem 5rem;
+  font-size: 2rem;
   line-height: 1.2;
   margin-top: 1.5rem;
   }
