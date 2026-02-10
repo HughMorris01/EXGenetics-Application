@@ -10,7 +10,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding-bottom: 10rem !important;
+  padding: 20rem 0 10rem !important;
   overflow: hidden; 
 }
 
@@ -152,6 +152,10 @@
   line-height: 1.6;
   font-family: var(--ff-main);
   font-size: 1.6rem; 
+}
+
+.status-group {
+margin: 2rem 0 -5rem;
 }
 
 /* --- BOTTOM BANNER --- */
