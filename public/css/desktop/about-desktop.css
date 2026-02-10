@@ -12,6 +12,11 @@
 
 /* --- Typography & Rhythm --- */
 .about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   padding: 8rem 0;
   background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
 }

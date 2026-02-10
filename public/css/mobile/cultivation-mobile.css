@@ -1,12 +1,11 @@
 /* ==========================================================================
-   CULTIVATION-MOBILE.CSS (Phone Overrides)
-   Max-Width: 768px
+   CULTIVATION-MOBILE.CSS
+   Mobile Overrides (Max-width: 768px)
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
 
   .cultivation-hero {
-  /* Darker overlay to make the text pop */
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url(/assets/heros/cultivation_hero_mobile.jpg);
   background-size: cover;
   background-position: center;
@@ -14,76 +13,40 @@
   padding-top: 20rem;
 }
 
-  /* --- 1. Process Grid Stacking --- */
-  .process-section {
-    padding: 6rem 0; /* Reduced from 10rem */
-  }
-
   .narrow-container {
-    padding: 0 1.5rem;
+    width: 100% !important; /* Forces it to fill the screen, bypassing your variable */
+    max-width: 100% !important; /* Prevents desktop styles from interfering */
+    margin: 0 auto;
+    padding: 0 2rem !important; /* Restores the 'safe area' so text doesn't touch the glass */
+    box-sizing: border-box; /* Ensures the padding doesn't accidentally make it wider than 100% */
+  }
+  .process-section {
+    padding: 6rem 0; 
   }
 
-  .process-grid, 
-  .process-grid.reverse-layout {
-    grid-template-columns: 1fr; /* Force single column */
-    gap: 4rem;
-    text-align: center;
-  }
-
-  /* --- 2. Text & Typography --- */
-  .process-text {
-    align-items: center; /* Center align flex items */
-  }
-
-  .step-badge {
-    font-size: 5rem;
-    margin-bottom: 0;
-  }
-
-  .process-title {
-    font-size: 2.4rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .copy-text {
-    font-size: 1.5rem;
-    text-align: center; /* Center body text on mobile */
-  }
-
-  .tech-list {
-    align-items: center; /* Center list items */
-    margin-top: 2rem;
-  }
-  
-  .tech-list li {
-    font-size: 1.2rem;
-  }
-
-  /* --- 3. Image Frame Adjustments --- */
+  /* 1. SHRINK AND FLOAT IMAGES ON MOBILE */
   .process-image-wrapper {
-    width: 100%;
-    margin-top: 1rem;
+    float: left !important; /* Restores the text wrapping */
+    width: 50% !important; /* Shrinks the photo to half the screen width */
+    margin: 0.5rem 1.5rem 1rem 0 !important; /* Tighter gap so text has room to breathe */
   }
 
-  .tech-frame {
-    max-width: 100%; /* Fill the container width */
+  /* 2. KEEP ALTERNATING EFFECT ON MOBILE */
+  .process-section:nth-of-type(even) .process-image-wrapper {
+    float: right !important; /* Puts the even photos on the right */
+    margin: 0.5rem 0 1rem 1.5rem !important; /* Moves the gap to the left side of the photo */
   }
-  
-  /* --- 4. Petition Monolith --- */
+
+  /* Petition Adjustments */
   .petition-wrapper {
     padding: 6rem 0;
   }
-
+  
   .petition-header {
-    font-size: 3rem;
-    line-height: 1.1;
+    font-size: 3rem; 
   }
-
+  
   .petition-card-monolith .card-body {
-    padding: 3rem 2rem;
-  }
-
-  .stats-row {
-    font-size: 1.4rem; /* Smaller stats text */
+    padding: 3rem 2rem; 
   }
 }

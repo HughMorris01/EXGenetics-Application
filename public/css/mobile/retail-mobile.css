@@ -12,7 +12,7 @@
   background-position: center;
   background-attachment: scroll;
   background-repeat: no-repeat;
-  padding-top: 18rem;
+  padding-top: 20rem;
 }
 
   /* --- 2. The Dashboard (Ghost Stats) --- */
@@ -41,23 +41,7 @@
     font-size: 3.2rem; 
   }
 
-  /* --- 3. Status Badges --- */
-  .status-group {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding-top: 3rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .status-badge {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-    justify-content: flex-start; /* Left align icon and text */
-    padding: 1.2rem 2rem;
-  }
-
+  
   /* --- 4. Gallery Grid --- */
   .gallery-grid {
     grid-template-columns: 1fr; /* Single column stack */
@@ -74,27 +58,10 @@
     height: 25rem; /* Shorter images for mobile scroll */
   }
 
-  /* --- 5. Petition Monolith --- */
-  .petition-wrapper {
-    padding: 6rem 1.5rem;
-  }
+  .cta-text {
+  font-size: 1.5rem;
+  max-width: 60% !important;
+  line-height: 1.2;
+}
 
-  .petition-card-monolith {
-    width: 100%;
-    margin-bottom: 4rem;
-  }
-
-  .petition-card-monolith .card-body {
-    padding: 3rem 2rem;
-  }
-
-  .stats-row {
-    font-size: 1.4rem;
-  }
-
-  .btn-large {
-    width: 100%; 
-    padding: 1.5rem;
-    justify-content: center;
-  }
 }

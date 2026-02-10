@@ -99,8 +99,13 @@
   }
 
   .nav-menu ul li a {
-    font-size: 2.4rem; /* Larger touch targets */
-    font-family: var(--ff-headers); /* More dramatic font for mobile menu */
+    font-size: 2.4rem; 
+    font-family: var(--ff-headers); 
     letter-spacing: 0.4rem;
+    
+    /* ADD THESE 3 LINES: Shrinks the link and centers it */
+    display: block;
+    width: max-content; 
+    margin: 0 auto; 
   }
 }

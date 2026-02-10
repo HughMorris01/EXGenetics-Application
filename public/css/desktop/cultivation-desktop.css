@@ -4,20 +4,17 @@
    ========================================================================== */
 
 .cultivation-hero {
-  /* Darker overlay to make the text pop */
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url(/assets/heros/cultivation_hero_desktop.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)), url(/assets/heros/cultivation_hero_desktop.webp);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   padding-top: 25rem;
 }
 
-/* --- INTRO SECTION --- */
 .cultivation-intro {
   background-color: #000;
   padding: 8rem 0 4rem;
   text-align: center;
-  /* Uses .content-wrapper from main styles to center automatically */
   margin: 0 auto; 
 }
 
@@ -28,54 +25,34 @@
   margin-bottom: 2rem;
 }
 
-/* --- PROCESS SECTIONS (Restrained Layout) --- */
 .process-section {
   padding: 10rem 0;
-  background-color: #050505; /* Deep black */
+  /* A deep Charcoal Gray */
+  background-color: #121212; 
   position: relative;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .process-section.alt-bg {
-  background-color: #0b0b0b; /* Slightly lighter black for contrast */
+  /* A slightly lighter Slate Gray for contrast */
+  background-color: #1c1c1c; 
 }
 
-/* Constrain the overall width of the process rows */
-.narrow-container {
-  max-width: 100rem; /* Keeps content tight and centered */
-  margin: 0 auto;
-}
-
-.process-grid {
-  display: grid;
-  /* TEXT DOMINANT RATIO: Text gets 1.5fr, Image gets 0.8fr */
-  grid-template-columns: 1.5fr 0.8fr; 
-  gap: 8rem;
-  align-items: center;
-}
-
-.process-grid.reverse-layout {
-  /* IMAGE | TEXT (Keeping the same ratio visually) */
-  grid-template-columns: 0.8fr 1.5fr; 
-}
-
-/* --- TEXT CONTENT --- */
-.process-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* The Number Badge (01, 02, 03) */
 .step-badge {
   font-family: var(--ff-headers);
   font-size: 6rem;
   font-weight: 900;
-  color: rgba(90, 86, 86, 0.281); /* Ghost number */
   line-height: 1;
-  margin-bottom: .5rem; /* Overlap with title */
-  z-index: 0;
+  margin-bottom: .5rem; 
   position: relative;
+  z-index: 0;
+  /* Default ghost color for #0f1113 sections */
+  color: rgba(255, 255, 255, 0.203); 
+}
+
+/* Adjusting number visibility for the .alt-bg sections */
+.alt-bg .step-badge {
+  color: rgba(134, 130, 130, 0.267);
 }
 
 .process-title {
@@ -83,44 +60,42 @@
   font-size: 3rem;
   color: var(--signature-orange);
   text-transform: uppercase;
-  margin-bottom: 2rem;
-  z-index: 1;
+  margin-bottom: 3rem;
   position: relative;
   text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-.tech-list {
-  list-style: none;
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.narrow-container {
+  max-width: var(--container-width-desktop, 100rem); 
+  margin: 0 auto;
+  padding: 0 2rem; 
 }
 
-.tech-list li {
-  font-size: 1.4rem;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* Clearfix to prevent floated images from bleeding into the tech list */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.tech-list i {
-  color: var(--signature-orange);
-  font-size: 1.8rem;
-  width: 30px; /* Fixed width for alignment */
-  text-align: center;
+.copy-text {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 2rem;
 }
 
-/* --- IMAGE STYLING (Restrained Size) --- */
-/* --- IMAGE STYLING (Uniform Size) --- */
+/* Image Shrunk and Floated Left (Default) */
 .process-image-wrapper {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
+  float: left;
+  width: 28rem; /* Reduced from 38rem */
+  margin: 0.5rem 3rem 1.5rem 0; /* Tighter gap to match the smaller photo */
+}
+
+/* Alternating Logic: Target even sections, float right */
+.process-section:nth-of-type(even) .process-image-wrapper {
+  float: right;
+  margin: 0.5rem 0 1.5rem 3rem; /* Swaps the margin to the left side */
 }
 
 .tech-frame {
@@ -128,12 +103,9 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1rem; 
   border-radius: 2px;
-  
   width: 100%;
-  max-width: 45rem; /* Caps width at 450px */
 }
 
-/* The decorative corners */
 .tech-frame::after {
   content: '';
   position: absolute;
@@ -155,26 +127,49 @@
 .tech-frame img {
   width: 100%;
   display: block;
-  
-  /* 1. FORCE THE SHAPE (4:3 is a standard photo shape) */
   aspect-ratio: 4 / 3; 
-  
-  /* 2. CROP TO FIT (Prevents squishing/stretching) */
   object-fit: cover;   
-  object-position: center; /* Centers the crop */
-
-  filter: contrast(1.1) saturate(0.9); /* Clinical look */
+  object-position: center; 
+  filter: contrast(1.1) saturate(0.9); 
   transition: all 0.5s ease;
 }
 
 .tech-frame:hover img {
-  filter: contrast(1) saturate(1);
+  filter: contrast(.8) saturate(.8);
 }
 
+/* --- TECH LIST (Bottom) --- */
+.tech-list {
+  clear: both; /* Ensures it always drops below the floated image and text */
+  list-style: none;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+
+.tech-list li {
+  font-size: 1.4rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tech-list i {
+  color: var(--signature-orange);
+  font-size: 1.8rem;
+  width: 30px; 
+  text-align: center;
+}
 
 /* --- RE-INCLUDE PETITION STYLES --- */
-/* (Assuming these aren't loaded globally yet) */
-
 .petition-wrapper {
   padding: 10rem 0;
   background: radial-gradient(circle at top, #111 0%, #000 100%);
@@ -185,6 +180,7 @@
 
 .petition-intro {
   margin-bottom: 5rem;
+  text-align: center; 
 }
 
 .petition-header {
@@ -206,6 +202,7 @@
   margin-bottom: 6rem;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .petition-card-monolith .card-header {
@@ -255,41 +252,35 @@
 }
 
 .btn-petition {
-  display: inline-flex; /* Changed to flex for better icon alignment */
+  display: inline-flex; 
   align-items: center;
   gap: 1rem;
   padding: .6rem 2rem;
-  
   font-family: var(--ff-headers);
   font-weight: 800;
   text-decoration: none;
   text-transform: uppercase;
   line-height: 1.2;
-  
   color: #000;
   background-color: var(--signature-orange);
-  border-radius: 5rem; /* Pill shape */
-  
-  transition: var(--transition-smooth);
+  border-radius: 5rem; 
+  transition: var(--transition-smooth, all 0.3s ease); 
   box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 93, 0.3);
   margin-top: 2rem; 
 }
 
-/* Hover Effect: Lift & White Flash */
 .btn-petition:hover {
   transform: translateY(-0.3rem);
   background-color: #fff; 
   box-shadow: 0 0.8rem 2.5rem rgba(255, 255, 255, 0.2);
 }
 
-/* --- Modifier: Large Version (For the Monolith) --- */
 .btn-large {
   padding: 1.5rem 4rem;
   font-size: 1.6rem;
   letter-spacing: 0.2rem;
 }
 
-/* Icon Animation on Hover */
 .btn-petition:hover i {
   transform: rotate(-15deg) scale(1.1);
   transition: transform 0.3s ease;

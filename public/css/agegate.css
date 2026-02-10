@@ -62,8 +62,12 @@
 
 /* --- CONTENT STYLING --- */
 .age-content {
-  text-align: center;
-    max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    text-align: center;
+    max-width: 50rem;
     width: 90%;
     background: rgba(20, 20, 20, 0.85);
     padding: 3rem 2rem;
@@ -75,19 +79,23 @@
 }
 
 .age-logo {
-  width: 180px;
-  margin-bottom: 1.5rem;
+  width: 18rem;
+  margin-bottom: 0 auto 1.5rem;
   filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
 
 .age-content h2 {
   font-family: var(--font-headers);
-  font-size: 1.8rem;
+  font-size: 2.3rem;
   letter-spacing: 4px;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
   color: var(--signature-orange);
   text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.age-content p {
+  font-size: 1.3rem;
 }
 
 .age-buttons {
@@ -98,8 +106,8 @@
 }
 
 .btn-verify, .btn-exit {
-  min-width: 120px;
-  padding: 12px 0;
+  min-width: 17rem;
+  padding: 1rem 3rem;
   border-radius: 4px;
   font-weight: 700;
   cursor: pointer;
@@ -107,20 +115,6 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.3s ease;
-}
-
-/* --- SHARED BASE STYLES --- */
-.btn-verify, .btn-exit {
-  min-width: 120px;
-  padding: 12px 0;
-  border-radius: 4px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: var(--font-headers);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  /* Faster transition makes buttons feel more responsive */
-  transition: transform 0.1s ease, background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 /* --- 1. VERIFY BUTTON (Base) --- */
@@ -179,10 +173,10 @@
 
 
 
-.age-disclaimer {
+.age-content .age-disclaimer {
   max-width: 80%;
   margin: 2rem auto 0;
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   color: #aaa;
   line-height: 1.4;
 }
@@ -203,7 +197,7 @@
 
   /* Content Sizing */
   .age-content {
-    font-size: .9rem;
+    font-size: 1.8rem;
     height: 80%;
     padding: 2rem 1.5rem;
     width: 90%;
@@ -213,16 +207,18 @@
 
   .age-logo { width: 190px; margin-bottom: 1rem; }
 
-  .age-content h2 { font-size: 1.3rem; margin-bottom: 1rem; }
+  .age-content h2 { font-size: 1.8rem; margin-bottom: 1rem; }
   
   .age-buttons {
     flex-direction: column;
     gap: 15px;
-    width: 100%;
  
   }
   
-  .btn-verify, .btn-exit { width: 100%; }
+  .btn-verify, .btn-exit {
+  
+  padding: 1.5rem 10rem;
+}
 
   .age-disclaimer {
   margin: 1rem auto 0;
