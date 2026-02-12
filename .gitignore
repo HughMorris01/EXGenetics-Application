@@ -15,7 +15,7 @@ jspm_packages/
 *.docx
 *.doc
 *.pdf
-!docs/qa/*.docx
+!docs/qa/*.pdf
 
 # Debug logs
 npm-debug.log*
