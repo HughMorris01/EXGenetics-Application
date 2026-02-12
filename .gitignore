@@ -1,3 +1,40 @@
-node_modules
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Security & Secrets
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+
+# Documentation & Local Drafts
+# (Ignoring Word docs and local QA drafts)
+*.docx
+*.doc
+*.pdf
+!docs/*.pdf
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+
+# Operating System Files
 .DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build and Production
+dist/
+build/
+.next/
