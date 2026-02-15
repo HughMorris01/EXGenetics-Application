@@ -15,7 +15,11 @@ jspm_packages/
 *.docx
 *.doc
 *.pdf
-!docs/qa/*.pdf
+
+# ONLY allow specific project assets
+!docs/media/github_collage.png
+!docs/media/github_collage_social.png
+!docs/qa/QA_Case_Study.pdf
 
 # Debug logs
 npm-debug.log*

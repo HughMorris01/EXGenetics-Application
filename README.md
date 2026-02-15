@@ -15,7 +15,6 @@ The official production web application for **ExGenetics** (dba Northern Legacy)
 * **Mobile-First Design:** Fully responsive UI/UX optimized for high-conversion performance across all device types.
 
 ---
-
 ## 🛠 Tech Stack
 * **Runtime:** Node.js
 * **Framework:** Express.js
