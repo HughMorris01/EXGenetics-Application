@@ -88,24 +88,4 @@
   </div>
 </main>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LeRhnIsAAAAAMku8cBhoSbLDQ7Q80D3TyTf9wAr"></script>
-<script>
-  const form = document.getElementById('contact-form');
-  
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    
-    grecaptcha.ready(function() {
-      // Execute the reCAPTCHA assessment for the 'contact' action
-      grecaptcha.execute('YOUR_SITE_KEY', {action: 'contact'}).then(function(token) {
-        // Inject the generated token into the hidden input
-        document.getElementById('recaptcha_token').value = token;
-        
-        // Submit the form to the Express backend
-        form.submit();
-      });
-    });
-  });
-</script>
-
 <%- include('partials/footer') %>

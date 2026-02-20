@@ -3,48 +3,7 @@ const submitBtn = contactForm ? contactForm.querySelector('.btn-portal') : null;
 const statusModal = document.getElementById('status-modal');
 const closeModalBtn = document.getElementById('close-modal');
 
-
-
-// --- 1. CAPTCHA REFRESH LOGIC (NEW) ---
-const refreshCaptcha = () => {
-  if (!contactForm) return;
-
-  // Generate two new random numbers between 1 and 10
-  const newA = Math.floor(Math.random() * 10) + 1;
-  const newB = Math.floor(Math.random() * 10) + 1;
-
-  // Update the hidden inputs so the server gets the new math
-  const inputA = contactForm.querySelector('input[name="math_a"]');
-  const inputB = contactForm.querySelector('input[name="math_b"]');
-  if (inputA) inputA.value = newA;
-  if (inputB) inputB.value = newB;
-
-  // Update the visual label (Find the <strong> tag)
-  const labelStrong = contactForm.querySelector('.captcha-label strong');
-  if (labelStrong) {
-    labelStrong.innerText = `${newA} + ${newB}`;
-  }
-
-  // Clear the user's old answer
-  const answerInput = contactForm.querySelector('input[name="math_answer"]');
-  if (answerInput) {
-    answerInput.value = '';
-    answerInput.placeholder = '?';
-  }
-};
-
-// --- 2. Auto-Clear Placeholder Logic ---
-const captchaInput = document.querySelector('.captcha-input');
-if (captchaInput) {
-  captchaInput.addEventListener('focus', function() {
-    this.placeholder = '';
-  });
-  captchaInput.addEventListener('blur', function() {
-    this.placeholder = '?';
-  });
-}
-
-// --- 3. Button State Management ---
+// --- 1. Button State Management ---
 const setButtonLoading = (isLoading) => {
   if (!submitBtn) return;
   if (isLoading) {
@@ -58,7 +17,7 @@ const setButtonLoading = (isLoading) => {
   }
 };
 
-// --- 4. Dual-Purpose Modal Controller ---
+// --- 2. Dual-Purpose Modal Controller ---
 const showStatusModal = (type, title, message) => {
   const titleEl = document.getElementById('modal-title');
   const msgEl = document.getElementById('modal-message');
@@ -85,53 +44,59 @@ if (closeModalBtn) {
   });
 }
 
-// --- 5. Form Submission Handler ---
+// --- 3. Form Submission Handler (Integrated with reCAPTCHA v3) ---
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     setButtonLoading(true);
 
-    const formData = {
-      name: contactForm.querySelector('input[name="name"]').value,
-      email: contactForm.querySelector('input[name="email"]').value,
-      phone: contactForm.querySelector('input[name="phone"]').value,
-      partnerType: contactForm.querySelector('select[name="partnerType"]').value,
-      business: contactForm.querySelector('input[name="business"]').value,
-      message: contactForm.querySelector('textarea[name="message"]').value,
-      honeypot: document.getElementById('honeypot').value,
-      math_a: contactForm.querySelector('input[name="math_a"]').value,
-      math_b: contactForm.querySelector('input[name="math_b"]').value,
-      math_answer: contactForm.querySelector('input[name="math_answer"]').value,
-    };
+    // Trigger Google reCAPTCHA validation invisible check
+    grecaptcha.ready(function() {
+      // IMPORTANT: Replace 'YOUR_SITE_KEY' below with your actual Google Site Key
+      grecaptcha.execute('6LeRhnIsAAAAAHjVTaeHLD3fyHp-0kRHS4oumzOr', {action: 'contact'}).then(function(token) {
+        
+        // Build the payload payload ONLY after getting the token
+        const formData = {
+          name: contactForm.querySelector('input[name="name"]').value,
+          email: contactForm.querySelector('input[name="email"]').value,
+          phone: contactForm.querySelector('input[name="phone"]').value,
+          partnerType: contactForm.querySelector('select[name="partnerType"]').value,
+          business: contactForm.querySelector('input[name="business"]').value,
+          message: contactForm.querySelector('textarea[name="message"]').value,
+          honeypot: document.getElementById('honeypot').value,
+          recaptcha_token: token // <--- Pass the generated token to the server
+        };
 
-    fetch('/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        setButtonLoading(false);
-        if (data === 'success') {
-          showStatusModal('success', 'Inquiry Received', 'Thank you for reaching out! A confirmation has been sent to your inbox.');
-          contactForm.reset();
-          refreshCaptcha(); // <--- NEW CAPTCHA ON SUCCESS
-        } else if (data === 'captcha_error') {
-          showStatusModal('error', 'Math Error', 'The security check answer was incorrect. Please try again.');
-          refreshCaptcha(); // <--- NEW CAPTCHA ON ERROR (Force them to try again)
-        } else {
-          showStatusModal('error', 'Submission Failed', 'Our system is having trouble. Please check your credentials or email us directly.');
-        }
-      })
-      .catch((err) => {
-        setButtonLoading(false);
-        console.error(err);
-        showStatusModal('error', 'Network Error', 'Something went wrong with the connection.');
+        // Send the AJAX request to your Express server
+        fetch('/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        })
+          .then((res) => res.text())
+          .then((data) => {
+            setButtonLoading(false);
+            if (data === 'success') {
+              showStatusModal('success', 'Inquiry Received', 'Thank you for reaching out! A confirmation has been sent to your inbox.');
+              contactForm.reset();
+            } else if (data === 'captcha_error') {
+              // Updated error message to reflect bot detection instead of math failure
+              showStatusModal('error', 'Verification Failed', 'Our security system flagged this request. Please try again later.');
+            } else {
+              showStatusModal('error', 'Submission Failed', 'Our system is having trouble. Please check your credentials or email us directly.');
+            }
+          })
+          .catch((err) => {
+            setButtonLoading(false);
+            console.error(err);
+            showStatusModal('error', 'Network Error', 'Something went wrong with the connection.');
+          });
       });
+    });
   });
 }
 
-// --- 6. Character Counter Logic ---
+// --- 4. Character Counter Logic ---
 const messageInput = document.querySelector('textarea[name="message"]');
 const charCounter = document.getElementById('char-counter');
 const maxLength = 1000;
