@@ -54,14 +54,11 @@ app.get('/retail', (req, res) => {
   });
 });
 
-// UPDATED: Now sends 'captcha' object to fix the ReferenceError
-// --- UPDATED GET ROUTE ---
 app.get('/contact', (req, res) => {
   res.render('contact', {
     title: 'Contact Us | Partnership Inquiry',
     currentPath: '/contact',
     pageScript: '/js/contact.js'
-    // Math captcha generation removed
   });
 });
 
@@ -84,15 +81,14 @@ const getRandomJoke = () =>
   cannabisJokes[Math.floor(Math.random() * cannabisJokes.length)];
 
 // --- 3. CONTACT FORM LOGIC ---
-// Notice the 'async' added here
 app.post('/contact', async (req, res) => { 
   // 1. Honeypot Trap
   if (req.body.honeypot && req.body.honeypot !== '') {
     console.log('Bot submission blocked (honeypot).');
-    return res.send('success'); // Fake success to trick the bot
+    return res.send('success'); 
   }
 
-  // 2. NEW: Google reCAPTCHA v3 Validation
+  // 2. Google reCAPTCHA v3 Validation
   const recaptchaToken = req.body.recaptcha_token;
   
   if (!recaptchaToken) {
@@ -101,13 +97,10 @@ app.post('/contact', async (req, res) => {
   }
 
   try {
-    // Verify the token with Google
     const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`;
     const recaptchaResponse = await fetch(verifyURL, { method: 'POST' });
     const recaptchaData = await recaptchaResponse.json();
 
-    // Google returns a score from 0.0 (bot) to 1.0 (human). 
-    // 0.5 is the standard threshold.
     if (!recaptchaData.success || recaptchaData.score < 0.5) {
       console.log(`Bot submission blocked (score: ${recaptchaData.score}).`);
       return res.send('captcha_error');
@@ -197,7 +190,7 @@ app.post('/contact', async (req, res) => {
             <p style="font-style: italic;">"${req.body.message}"</p>
           </div>
           <div style="text-align: center; margin: 20px 0; padding: 10px; border: 1px dashed #ccc; background-color: #fafafa; border-radius: 4px;">
-            <p style="margin: 0; font-size: 12px; color: #666;"><strong>System Note:</strong> The user successfully solved: ${math_a} + ${math_b}</p>
+            <p style="margin: 0; font-size: 12px; color: #155724; font-weight: bold;">✓ Verified Human (reCAPTCHA v3)</p>
           </div>
           ${signatureHTML}
         </div>

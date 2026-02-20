@@ -123,3 +123,23 @@ if (messageInput && charCounter) {
     }
   });
 }
+
+// --- 5. Phone Number Auto-Formatting ---
+const phoneInput = document.querySelector('input[name="phone"]');
+
+if (phoneInput) {
+  phoneInput.addEventListener('input', function (e) {
+    // Strip out all non-numeric characters from the input
+    let x = e.target.value.replace(/\D/g, '');
+    
+    // Format the string dynamically as (XXX) XXX-XXXX
+    if (x.length > 0) {
+      x = '(' + x.substring(0, 3) + 
+          (x.length > 3 ? ') ' + x.substring(3, 6) : '') + 
+          (x.length > 6 ? '-' + x.substring(6, 10) : '');
+    }
+    
+    // Update the input field with the formatted value
+    e.target.value = x;
+  });
+}
