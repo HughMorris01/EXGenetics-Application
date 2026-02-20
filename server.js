@@ -55,15 +55,13 @@ app.get('/retail', (req, res) => {
 });
 
 // UPDATED: Now sends 'captcha' object to fix the ReferenceError
+// --- UPDATED GET ROUTE ---
 app.get('/contact', (req, res) => {
-  const num1 = Math.floor(Math.random() * 10) + 1;
-  const num2 = Math.floor(Math.random() * 10) + 1;
-  
   res.render('contact', {
     title: 'Contact Us | Partnership Inquiry',
     currentPath: '/contact',
-    pageScript: '/js/contact.js',
-    captcha: { num1, num2 } 
+    pageScript: '/js/contact.js'
+    // Math captcha generation removed
   });
 });
 
@@ -86,20 +84,37 @@ const getRandomJoke = () =>
   cannabisJokes[Math.floor(Math.random() * cannabisJokes.length)];
 
 // --- 3. CONTACT FORM LOGIC ---
-app.post('/contact', (req, res) => {
+// Notice the 'async' added here
+app.post('/contact', async (req, res) => { 
   // 1. Honeypot Trap
   if (req.body.honeypot && req.body.honeypot !== '') {
     console.log('Bot submission blocked (honeypot).');
-    return res.send('success');
+    return res.send('success'); // Fake success to trick the bot
   }
 
-  // 2. UPDATED: Math Captcha Validation
-  const { math_a, math_b, math_answer } = req.body;
-  const expectedSum = parseInt(math_a) + parseInt(math_b);
+  // 2. NEW: Google reCAPTCHA v3 Validation
+  const recaptchaToken = req.body.recaptcha_token;
   
-  if (parseInt(math_answer) !== expectedSum) {
-    console.log('Bot submission blocked (math fail).');
+  if (!recaptchaToken) {
+    console.log('Bot submission blocked (missing token).');
     return res.send('captcha_error');
+  }
+
+  try {
+    // Verify the token with Google
+    const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`;
+    const recaptchaResponse = await fetch(verifyURL, { method: 'POST' });
+    const recaptchaData = await recaptchaResponse.json();
+
+    // Google returns a score from 0.0 (bot) to 1.0 (human). 
+    // 0.5 is the standard threshold.
+    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      console.log(`Bot submission blocked (score: ${recaptchaData.score}).`);
+      return res.send('captcha_error');
+    }
+  } catch (err) {
+    console.error('Error verifying reCAPTCHA:', err);
+    return res.send('error');
   }
 
   // 3. Setup Mailer
@@ -112,7 +127,7 @@ app.post('/contact', (req, res) => {
       pass: process.env.HI_EMAIL_PASSWORD,
     },
   });
-
+  
   const selectedJoke = getRandomJoke();
   const type = req.body.partnerType;
 

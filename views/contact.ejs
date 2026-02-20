@@ -1,4 +1,5 @@
-<%- include('partials/head') %> <%- include('partials/header') %>
+<%- include('partials/head') %> 
+<%- include('partials/header') %>
 
 <main>
   <section class="hero-section contact-hero">
@@ -13,7 +14,7 @@
         Excelsior Genetics is actively building a network of elite partners and welcomes inquiries from one and all. Licensed dispensaries, local vendors, and community advocates are encouraged to reach out.
       </p>
 
-        <form action="/contact" method="POST" class="portal-form">
+        <form action="/contact" method="POST" class="portal-form" id="contact-form">
           <div style="display: none">
             <input
               type="text"
@@ -67,25 +68,10 @@
               1000 characters remaining
             </div>
           </div>
-          <div class="captcha-row">
-            <input type="hidden" name="math_a" value="<%= captcha.num1 %>" />
-            <input type="hidden" name="math_b" value="<%= captcha.num2 %>" />
 
-            <label for="math_answer" class="captcha-label">
-              Security Check: What is
-              <strong><%= captcha.num1 %> + <%= captcha.num2 %></strong> ?
-            </label>
+          <input type="hidden" name="recaptcha_token" id="recaptcha_token" required />
 
-            <input
-              type="number"
-              name="math_answer"
-              class="captcha-input"
-              placeholder="?"
-              required
-            />
-          </div>
-
-          <button type="submit" class="btn-portal">Send Message</button>
+          <button type="submit" class="btn-portal" id="submit-btn">Send Message</button>
         </form>
       </div>
   </section>
@@ -101,4 +87,25 @@
     </div>
   </div>
 </main>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LeRhnIsAAAAAMku8cBhoSbLDQ7Q80D3TyTf9wAr"></script>
+<script>
+  const form = document.getElementById('contact-form');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    
+    grecaptcha.ready(function() {
+      // Execute the reCAPTCHA assessment for the 'contact' action
+      grecaptcha.execute('YOUR_SITE_KEY', {action: 'contact'}).then(function(token) {
+        // Inject the generated token into the hidden input
+        document.getElementById('recaptcha_token').value = token;
+        
+        // Submit the form to the Express backend
+        form.submit();
+      });
+    });
+  });
+</script>
+
 <%- include('partials/footer') %>
