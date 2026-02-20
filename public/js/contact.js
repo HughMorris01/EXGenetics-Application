@@ -53,7 +53,7 @@ if (contactForm) {
     // Trigger Google reCAPTCHA validation invisible check
     grecaptcha.ready(function() {
       // IMPORTANT: Replace 'YOUR_SITE_KEY' below with your actual Google Site Key
-      grecaptcha.execute('6LeRhnIsAAAAAHjVTaeHLD3fyHp-0kRHS4oumzOr', {action: 'contact'}).then(function(token) {
+      grecaptcha.execute('6LeRhnIsAAAAAMku8cBhoSbLDQ7Q80D3TyTf9wAr', {action: 'contact'}).then(function(token) {
         
         // Build the payload payload ONLY after getting the token
         const formData = {
