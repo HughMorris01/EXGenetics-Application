@@ -39,7 +39,7 @@
             <p class="cta-text">
               Stand with us. Help us open the 1000 Islands' first dispensary.
             </p>
-            <a href="#petition" class="btn-petition">Sign Our Petition</a>
+            <a href="https://c.org/HrGp2jzv8B" target="_blank" class="btn-petition">Sign Our Petition</a>
           </div>
         </div>
 
@@ -53,7 +53,8 @@
     <i class="fa-solid fa-flask-vial feature-icon"></i>
     <h3>Our Process</h3>
     <p>
-      From specialized pheno-hunting to rigorous stress-testing, learn how 20 years of expertise goes into every plant we cultivate.
+      From specialized pheno-hunting to rigorous stress-testing, learn how 20 
+      years of expertise goes into every plant we cultivate.
     </p>
     <span class="card-link">Learn More &rarr;</span>
   </a>
@@ -85,7 +86,8 @@
       </h2>
 
       <p class="hero-lead">
-        We've partnered with the <strong>original architects of modern cannabis</strong> to develop a private genetic vault typically unavailable to the commercial market. Our process is one of relentless selection. Every cultivar in our lineup has been rigorously stress-tested and <strong>pheno-hunted for maximum expression</strong>. 
+        We've partnered with the <strong>original architects of modern cannabis</strong> to develop a private genetic vault typically unavailable to the commercial market.
+        Our process is one of relentless selection. Every cultivar in our lineup has been rigorously stress-tested and <strong>pheno-hunted for maximum expression</strong>.
       </p>
 
       <hr class="neon-divider" />
@@ -404,16 +406,20 @@
     <h2 class="cta-title header-glow">Make Your Voice Heard</h2>
     
     <p class="cta-description">
-      The 1000 Islands community is ready for safe, regulated access. 
-      We have the location, the team, and the support. 
+      The 1000 Islands community is ready for safe, regulated access. We have the location, the team, and the support. 
       <strong>All we need is the state's green light.</strong>
     </p>
 
     <div class="cta-action-row">
-      <a href="/retail#petition" class="btn-petition btn-large">
+      <a href="https://c.org/HrGp2jzv8B" target="_blank" class="btn-petition btn-large">
         Join Our Cause
       </a>
-      <p class="cta-subtext">Join 200+ neighbors who have already signed.</p>
+      
+      <% if (typeof sigCount !== 'undefined' && sigCount >= 20) { %>
+        <p class="cta-subtext">Join <%= sigCount %> neighbors who have already signed.</p>
+      <% } else { %>
+        <p class="cta-subtext">Join your neighbors who have already signed.</p>
+      <% } %>
     </div>
 
   </div>

@@ -293,16 +293,27 @@
         <div class="card-header">
           <h3>Community Action Gauge</h3>
         </div>
+        
         <div class="card-body">
           <div class="stats-row">
             <p class="target-text">Goal: <strong>500 Signatures</strong></p>
-            <p class="current-count">Current: <strong>325</strong></p>
+            
+            <% if (typeof sigCount !== 'undefined' && sigCount >= 20) { %>
+              <p class="current-count" id="signature-text">Current: <strong><%= sigCount %></strong></p>
+            <% } else { %>
+              <p class="current-count" id="signature-text" style="display: none;">Current: <strong><%= typeof sigCount !== 'undefined' ? sigCount : 0 %></strong></p>
+            <% } %>
           </div>
+
           <div class="progress-bar">
-            <div class="progress-fill" style="width: 65%"></div>
+            <div class="progress-fill" id="signature-progress" 
+                 style="width: <%= typeof sigCount !== 'undefined' ? Math.min((sigCount / 500) * 100, 100) + '%' : '0%' %>">
+            </div>
           </div>
+          
           <p class="sub-text">We are ready to serve. Tell the State to let us open.</p>
-          <a href="https://chng.it/YOUR_LINK_HERE" class="btn-petition btn-large">
+          
+          <a href="https://c.org/HrGp2jzv8B" target="_blank" class="btn-petition btn-large">
             Sign The Petition <i class="fa-solid fa-pen-nib"></i>
           </a>
         </div>

@@ -15,7 +15,59 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// --- 2. PAGE ROUTES ---
+// --- 2. PETITION SCRAPER MIDDLEWARE ---
+let cachedSignatureCount = 0; // Starts at 0, updates on first load
+let lastScrapedTime = 0;
+const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
+const PETITION_URL = 'https://c.org/HrGp2jzv8B';
+
+async function getSignatureCount() {
+  const now = Date.now();
+  // Return cached count if 15 minutes haven't passed
+  if (now - lastScrapedTime < CACHE_DURATION && cachedSignatureCount > 0) {
+    return cachedSignatureCount;
+  }
+
+  try {
+    // Fetch the raw HTML from Change.org
+    const response = await fetch(PETITION_URL, {
+      headers: { 
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36' 
+      }
+    });
+    
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const html = await response.text();
+    
+    // Search the HTML string for the signature count
+    const match = html.match(/"signatureCount":\s*(\d+)/) || 
+                  html.match(/"signatureCount":\{"total":(\d+)/) ||
+                  html.match(/<strong>([\d,]+)<\/strong>\s*signatures/i);
+    
+    if (match && match[1]) {
+      // Remove any commas and convert to an integer
+      cachedSignatureCount = parseInt(match[1].replace(/,/g, ''), 10);
+      lastScrapedTime = now;
+      console.log(`Successfully scraped new signature count: ${cachedSignatureCount}`);
+    }
+  } catch (err) {
+    console.error('Error fetching signature count:', err.message);
+  }
+  
+  return cachedSignatureCount;
+}
+
+// Attach sigCount to every route automatically
+app.use(async (req, res, next) => {
+  // Only trigger the scraper on actual page loads, not image/css requests
+  if (req.method === 'GET' && !req.path.startsWith('/assets') && !req.path.startsWith('/css') && !req.path.startsWith('/js')) {
+    res.locals.sigCount = await getSignatureCount();
+  }
+  next();
+});
+
+// --- 3. PAGE ROUTES ---
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -80,7 +132,7 @@ const cannabisJokes = [
 const getRandomJoke = () =>
   cannabisJokes[Math.floor(Math.random() * cannabisJokes.length)];
 
-// --- 3. CONTACT FORM LOGIC ---
+// --- 4. CONTACT FORM LOGIC ---
 app.post('/contact', async (req, res) => { 
   // 1. Honeypot Trap
   if (req.body.honeypot && req.body.honeypot !== '') {
