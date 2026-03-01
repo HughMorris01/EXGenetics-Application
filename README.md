@@ -90,14 +90,14 @@ To get a local copy up and running, follow these simple steps.
 
 ## 🔐 Environment Variables
 
-To fully run this project locally (specifically the contact form), you will need to add the following environment variables to a `.env` file in the root directory.
+To fully run this project locally (specifically the contact form), you will need to add the following environment variables to a `.env` file in the root directory. The contact form triggers automated emails from the "digital liason" to both the inquirer advising of receipt of inquiry, as well as notification to the two company principals.
 
 ```env
 PORT=3000
-HI_EMAIL=your_zoho_email@exgenetics.com
-HI_EMAIL_PASSWORD=your_zoho_app_password
-GREGS_EMAIL=admin1@example.com
-JASONS_EMAIL=admin2@example.com
+DIGITAL_LIASON_EMAIL=liason_email@example.com
+DIGITAL_LIASON_PASSWORD=liason_password
+ADMIN1_EMAIL=admin1@example.com
+ADMIN2_EMAIL=admin2@example.com
 RECAPTCHA_SECRET_KEY=your_google_recaptcha_secret
 ```
 
@@ -122,6 +122,6 @@ This project follows a strict Software Development Life Cycle (SDLC) using a Doc
 ## 📞 Contact
 
 **Greg Farrell** - Full-Stack MERN Developer & QA Engineer  
-[LinkedIn Profile](https://www.linkedin.com/in/gregory-farrell) | [Portfolio Website](https://your-portfolio.com)
+[LinkedIn Profile](https://www.linkedin.com/in/gregory-farrell) 
 
 Project Link: [https://github.com/HughMorris01/excelsior_genetics](https://github.com/HughMorris01/excelsior_genetics)
