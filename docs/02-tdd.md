@@ -77,4 +77,4 @@
 - **Zoho Mail SMTP**
   - **Purpose:** Transactional email delivery.
   - **Implementation:** `nodemailer` transport configuration.
-  - **Environment Variables:** `HI_EMAIL`, `HI_EMAIL_PASSWORD`, `GREGS_EMAIL`, `JASONS_EMAIL`.
+  - **Environment Variables:** `DIGITAL_LIASON_EMAIL`, `DIGITAL_LIASON_EMAIL_PASSWORD`, `GREGS_EMAIL`, `JASONS_EMAIL`.

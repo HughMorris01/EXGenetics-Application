@@ -168,8 +168,8 @@ app.post('/contact', async (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.HI_EMAIL,
-      pass: process.env.HI_EMAIL_PASSWORD,
+      user: process.env.DIGITAL_LIASON_EMAIL,
+      pass: process.env.DIGITAL_LIASON_PASSWORD,
     },
   });
   
@@ -217,8 +217,8 @@ app.post('/contact', async (req, res) => {
 
   // 8. ADMIN EMAIL OPTIONS
   const adminMailOptions = {
-    from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
-    to: [process.env.GREGS_EMAIL, process.env.JASONS_EMAIL],
+    from: `"EXG Digital Liaison" <${process.env.DIGITAL_LIASON_EMAIL}>`,
+    to: [process.env.ADMIN1_EMAIL, process.env.ADMIN2_EMAIL],
     subject: `EXG Portal: ${req.body.partnerType} Inquiry from ${req.body.name}`,
     attachments: [logoAttachment],
     html: `
@@ -252,7 +252,7 @@ app.post('/contact', async (req, res) => {
 
   // 9. USER CONFIRMATION OPTIONS
   const confirmationOptions = {
-    from: `"EXG Digital Liaison" <${process.env.HI_EMAIL}>`,
+    from: `"EXG Digital Liaison" <${process.env.DIGITAL_LIASON_EMAIL}>`,
     to: req.body.email,
     subject: `Received: Your Inquiry to Excelsior Genetics`,
     attachments: [logoAttachment],
