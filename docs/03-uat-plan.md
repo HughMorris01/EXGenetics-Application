@@ -29,36 +29,36 @@
 
 | ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| **NAV-01** | Age Gate | Load the site in a fresh incognito window. | Age verification overlay appears and blocks scrolling. | [ ] | ![Age Gate Image](./media/image-1.png) | |
-| **NAV-02** | Session Storage | Click "I am 21+" and refresh the page. | Overlay fades out; does not reappear on refresh. | [ ] | ![Age Gate Gone](./media/image-2.png) | |
-| **NAV-03** | 404 Route | Navigate to a non-existent URL (e.g., `/xyz`). | Custom 404 EJS template renders cleanly. | [ ] | ![404 Page](./media/image-3.png) | |
+| **NAV-01** | Age Gate | Load the site in a fresh incognito window. | Age verification overlay appears and blocks scrolling. | PASS | ![Age Gate Image](./media/image-1.png) | |
+| **NAV-02** | Session Storage | Click "I am 21+" and refresh the page. | Overlay fades out; does not reappear on refresh. | PASS | ![Age Gate Gone](./media/image-2.png) | |
+| **NAV-03** | 404 Route | Navigate to a non-existent URL (e.g., `/xyz`). | Custom 404 EJS template renders cleanly. | PASS | ![404 Page](./media/image-3.png) | |
 
 **Phase 2: Core Functionality (Backend Logic)**
 
 | ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| **CORE-01** | Petition Scraper | Load any page containing the petition gauge (e.g., `/about`). | Progress bar and signature text display a valid integer fetched from Change.org. | [ ] | ![Petition Signatures](./media/image-4.png) | |
-| **CORE-02** | Form Reset | Complete a successful submission. | Success modal appears and form fields automatically clear. | [ ] | ![Success Modal](./media/image-5.png) | |
+| **CORE-01** | Petition Scraper | Load any page containing the petition gauge (e.g., `/about`). | Progress bar and signature text display a valid integer fetched from Change.org. | PASS | ![Petition Signatures](./media/image-4.png) | |
+| **CORE-02** | Form Reset | Complete a successful submission. | Success modal appears and form fields automatically clear. | PASS | ![Success Modal](./media/image-5.png)![Forms Clear](./media/image-13.png) | |
 
 **Phase 3: Security & Integrations**
 
 | ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| **SEC-01** | reCAPTCHA v3 | Inspect network tab during form submission. | Valid token is generated and verified by backend. | [ ] | ![ReCaptcha Token](./media/image-6.png) | |
-| **INT-01** | Email Routing | Submit a test inquiry via the form. | Admin (Zoho) receives detailed notification; User receives branded auto-reply. | [ ] | ![Zoho Email](./media/image-7.png) | |
+| **SEC-01** | reCAPTCHA v3 | Inspect network tab during form submission. | Valid token is generated and verified by backend. | PASS | ![ReCaptcha Token](./media/image-6.png) | |
+| **INT-01** | Email Routing | Submit a test inquiry via the form. | Admin (Zoho) receives detailed notification; User receives branded auto-reply. | PASS | ![Zoho Email](./media/image-7.png) | |
 
 **Phase 4: UI/UX & Responsiveness**
 
 | ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| **UI-01** | Mobile Menu | Open app on a mobile viewport and click the hamburger icon. | Menu expands smoothly, locks body scroll; links work. | [ ] | ![Nav Menu Expands](./media/image-8.png) | |
-| **UI-02** | Header Scroll | Scroll down more than 50px from the top of the page. | Transparent header transitions to a solid black background. | [ ] | ![Dynamic Nav Bar Opacity](./media/image-8.png) | |
-| **UI-03** | Carousel | Click the next/prev arrows on the Strains page. | Genetics carousel scrolls horizontally without breaking layout. | [ ] |![Carousel Works](./media/image-9.png) | |
+| **UI-01** | Mobile Menu | Open app on a mobile viewport and click the hamburger icon. | Menu expands smoothly, locks body scroll; links work. | PASS | ![Nav Menu Expands](./media/image-10.png) | |
+| **UI-02** | Header Scroll | Scroll down more than 50px from the top of the page. | Transparent header transitions to a solid black background. | PASS | ![Dynamic Nav Bar Opacity](./media/image-12.png)![Dynamic Nav Bar Opacity](./media/image-11.png) | |
+| **UI-03** | Carousel | Click the next/prev arrows on the Strains page. | Genetics carousel scrolls horizontally without breaking layout. | PASS |![Carousel Works](./media/image-8.png) | |
 
 **4. Final Sign-Off**
 
 _By signing below, the developer and client agree that all functional requirements have been tested, proven via screenshot evidence, and are approved for production deployment._
 
-**Developer Signature:** _Gregory Farrell_ **Date:** ___3/1/26_____
+**Developer Signature:** _  Gregory Farrell  _ **Date:** _3/1/26_
 
-**Client Signature:** _Jason Stowell_ **Date:** _3/1/26__
+**Client Signature:** _  Jason Stowell  _ **Date:** _3/1/26_
