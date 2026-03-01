@@ -1,90 +1,127 @@
 ![Excelsior Dashboard Collage](./docs/media/github_collage.png)
 
-# 🌿 ExGenetics Web Application
+# 🌿 Excelsior Genetics | Brand Platform
 
-The official production web application for **ExGenetics** (dba Northern Legacy), a license-pending cannabis startup in Upstate New York. This platform serves as a high-performance informational hub and lead-generation portal, engineered for regulatory compliance and secure data handling.
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](#)
+[![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](#)
+[![EJS](https://img.shields.io/badge/EJS-A91E50?style=for-the-badge&logo=ejs&logoColor=white)](#)
+[![Testing](https://img.shields.io/badge/UAT-Passing-success?style=for-the-badge)](#)
 
-**🌐 Live Site:** [exgenetics.com](https://exgenetics.com)
+> **Deep Roots. Higher Standards.** A high-performance, server-side rendered web application establishing brand legitimacy and rallying community support for the 1000 Islands' premier legacy cannabis operator.
 
----
-
-## 🚀 Key Commercial Features
-* **Compliance Age Gate:** Implements strict NYS-compliant age verification logic (21+). Utilizes **Session Storage** to manage verification state locally, prioritizing user privacy and performance.
-* **Dynamic Modular Architecture:** Architected using **EJS (Embedded JavaScript)** to allow for dry, modular components (headers/footers) and dynamic content delivery.
-* **Secure SMTP Pipeline:** Custom backend integration with external mail relays for automated partnership inquiries and customer engagement.
-* **Mobile-First Design:** Fully responsive UI/UX optimized for high-conversion performance across all device types.
-
----
-## 🛠 Tech Stack
-* **Runtime:** Node.js
-* **Framework:** Express.js
-* **Templating Engine:** EJS
-* **Frontend:** HTML5, CSS3, Vanilla JavaScript (ES6+)
-* **Security & Env:** Dotenv, SSL/TLS Encryption
+**🌐 Live Site:** [https://www.exgenetics.com](https://www.exgenetics.com)
 
 ---
 
-## 🧪 Quality Assurance & Testing
-This project followed a structured QA cycle to ensure the reliability of core business logic and messaging pipelines.
-
-### **Technical QA Case Study**
-A detailed breakdown of the testing strategy, functional test cases, and resolved high-severity defects is available:
-👉 **[View the Technical QA Case Study](./docs/QA-Case-Study-Partnership-Portal.pdf)**
-
-### **Core Testing Focus:**
-* **Data Validation:** Sanitization of server-side inputs to prevent malformed data entry.
-* **Integration Testing:** Verification of secure **Port 465/SSL** handshakes between the backend and SMTP relays.
-* **Security Hardening:** Implementation of environment-based credential management.
-* **Edge Case Verification:** Validation of user flow redirects and error-state messaging logic.
+## 📖 Table of Contents
+- [About the Project](#-about-the-project)
+- [Key Features](#-key-features)
+- [Tech Stack & Architecture](#%EF%B8%8F-tech-stack--architecture)
+- [Getting Started](#-getting-started)
+- [Environment Variables](#-environment-variables)
+- [Testing & QA](#-testing--qa)
+- [Project Documentation](#-project-documentation)
+- [Contact](#-contact)
 
 ---
 
-## ⚙️ Local Development Setup
+## 🎯 About the Project
 
-### 1. Prerequisites
-* **Node.js** (v14 or higher)
-* **npm** (Node Package Manager)
+**The Problem:** Excelsior Genetics is experiencing extended administrative delays in securing their New York State cannabis license. They need a robust digital footprint to legitimize their brand, showcase their 20-year cultivation expertise, and rally local community support to pressure state officials.
 
-### 2. Installation
-```bash
-git clone (https://github.com/HughMorris01/EXGenetics-Application.git)
-cd EXGenetics-Application
-npm install
-```
+**The Solution:** An informational Node.js/Express web application utilizing server-side rendered EJS templates. It features a deep-dive into their cultivation science, a secure partnership contact portal, and a custom backend web scraper that fetches live petition signatures to drive political leverage.
 
-### 3. Environment Configuration
-Create a `.env` file in the root directory and add the following keys to enable the secure mail relay:
+---
+
+## ✨ Key Features
+
+* 📊 **Dynamic Petition Scraper:** Custom Node.js middleware that scrapes Change.org in real-time, injecting live signature counts directly into the UI.
+* 🤝 **Partnership Portal:** A secure, AJAX-driven contact form utilizing Google reCAPTCHA v3 to prevent spam, and Nodemailer (via Zoho SMTP) for automated lead-routing.
+* ⚡ **Stateless Architecture:** Highly optimized, file-based content routing using EJS templates for lightning-fast page loads without the overhead of a database.
+* 🔞 **Session-Based Age Gate:** A seamless 21+ verification wall that locks scrolling and stores consent in `sessionStorage` to prevent intrusive popups on subsequent page loads.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+**Frontend:**
+* HTML5 & CSS3 (Custom fluid typography scaling system)
+* Vanilla JavaScript (ES6)
+* EJS (Embedded JavaScript Templating)
+
+**Backend:**
+* Node.js & Express.js
+* Nodemailer (Zoho SMTP integration)
+* Node-Fetch (HTML Scraping & DOM Parsing)
+
+**Security & Deployment:**
+* Google reCAPTCHA v3
+* AWS Lightsail / Vercel Serverless
+
+---
+
+## 🚀 Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+* Node.js (v18.0.0 or higher)
+* npm or yarn
+
+### Installation
+
+1. **Clone the repo**
+   ```sh
+   git clone [https://github.com/HughMorris01/excelsior_genetics.git](https://github.com/HughMorris01/excelsior_genetics.git)
+   ```
+2. **Install NPM packages**
+   ```sh
+   cd excelsior_genetics
+   npm install
+   ```
+3. **Set up Environment Variables** (See below)
+4. **Run the development server**
+   ```sh
+   npm start
+   ```
+   The application will be available at `http://localhost:3000`.
+
+---
+
+## 🔐 Environment Variables
+
+To fully run this project locally (specifically the contact form), you will need to add the following environment variables to a `.env` file in the root directory.
 
 ```env
-EMAIL_AUTO=your-automated-emailer@example.com
-EMAIL_AUTO_PASS=your-automated-emailer-password
-EMAIL=your-personal-email@example.com (Receives confirmation from the automated emailer)
-```
-
-### 4. Running the App
-```bash
-npm start
+PORT=3000
+HI_EMAIL=your_zoho_email@exgenetics.com
+HI_EMAIL_PASSWORD=your_zoho_app_password
+GREGS_EMAIL=admin1@example.com
+JASONS_EMAIL=admin2@example.com
+RECAPTCHA_SECRET_KEY=your_google_recaptcha_secret
 ```
 
 ---
 
-## 🛠️ Technical Support & Troubleshooting
+## 🧪 Testing & QA
 
-If you encounter issues during local setup or while using the secure mail relay, please review the following common resolutions:
+Quality assurance is integrated into the development lifecycle. A rigorous manual User Acceptance Testing (UAT) protocol ensures all core features (Age Gate, API integrations, Web Scraper, Form validations) function flawlessly across multiple viewports.
 
-### **SMTP Connection & Authentication**
-* **Error 535 / Authentication Failed:** Ensure you are using a provider-generated **App-Specific Password** rather than your standard account login. Most secure relays (Zoho, Gmail) require this for 2FA-enabled accounts.
-* **Connection Timeout / Port 465:** Verify that your local firewall or ISP allows outbound traffic on Port 465. If Port 465 is blocked, ensure you have correctly updated the `Nodemailer` transport settings to utilize `secure: true`.
-* **Environment Variables:** Confirm the `.env` file is in the root directory and formatted correctly without spaces around the `=` signs.
-
-### **Session & Age Verification**
-* **State Persistence:** If the Age Gate reappears on every page load, verify that **Session Storage** is enabled in your browser. This application does not use persistent cookies for verification to enhance user privacy.
-* **Node Versioning:** If dependencies fail to install, ensure you are using **Node v14+**. You can check your version by running `node -v` in your terminal.
+*View the full [UAT Protocol & Evidence](./docs/03-uat-plan.md).*
 
 ---
 
-## 📂 Project Structure
-* `/public`: Static assets (CSS, Images, Client-side JS)
-* `/views`: EJS templates and modular partials
-* `/docs/media/qa`: Technical documentation and QA reports
-* `server.js`: Main server configuration and route handling
+## 📂 Project Documentation
+
+This project follows a strict Software Development Life Cycle (SDLC) using a Documentation-First approach. Comprehensive documentation, including the Product Requirements Document (PRD) and Technical Design Document (TDD), can be found in the `/docs` directory.
+
+👉 **[View the complete Documentation Guide](./docs/README.md)**
+
+---
+
+## 📞 Contact
+
+**Greg Farrell** - Full-Stack MERN Developer & QA Engineer  
+[LinkedIn Profile](https://www.linkedin.com/in/gregory-farrell) | [Portfolio Website](https://your-portfolio.com)
+
+Project Link: [https://github.com/HughMorris01/excelsior_genetics](https://github.com/HughMorris01/excelsior_genetics)

@@ -1,64 +1,80 @@
-**User Acceptance Testing (UAT) & Quality Assurance Plan**
+**Technical Design Document (TDD)**
 
-**Project Name:** Excelsior Genetics Brand Platform
+**Project Name: Excelsior Genetics Brand Platform**
 
-**Developer/Tester:** Greg Farrell
+**Developer: Greg Farrell**
 
-**Date of Testing:** 2026-03-01
+**Date: 2026-03-01**
 
-**Project Version/Release:** v1.0 - Production Candidate
+**1. Architecture & Tech Stack**
 
-**1. Testing Environment Checklist**
+**Frontend:** HTML5, CSS3 (Custom responsive scaling system), Vanilla JS (ES6)
+**Templating:** EJS (Embedded JavaScript templates)
+**Backend:** Node.js, Express.js
+**Database:** None (Stateless, file-based content routing)
+**Version Control:** Git / GitHub
 
-- **Operating Systems Tested:** Windows 11, Android
-- **Browsers Tested:** Chrome, Safari, Firefox
-- **Device Viewports:** - Desktop (1920x1080)
-  - Mobile (390x844)
+**2. Database Schema**
 
-**2. Testing Protocol & Evidence**
+*N/A - This project utilizes a stateless architecture. Product data (strains) and content are hardcoded into the EJS templates for maximum speed and SEO optimization. No external database is required.*
 
-- **Goal:** Verify that all Functional and Technical requirements outlined in the PRD and TDD have been met.
-- **Screenshot Protocol:** Every core functionality test **must** be accompanied by a screenshot proving the expected result. In this Markdown document, embed screenshots directly in the "Proof" column using the syntax: `![Description](./path-to-image.png)`.
-- **Status Codes:** - **PASS:** Feature works exactly as expected.
-  - **FAIL:** Feature is broken or produces an error.
-  - **FLAG:** Feature works, but UI/UX feels clunky or needs refinement.
+**3. API & Express Routes**
 
-**3. Test Cases**
+| **Method** | **Endpoint** | **Description** | **Auth Required** |
+| --- | --- | --- | --- |
+| **GET** | `/` | Renders index.ejs (Home) | No |
+| **GET** | `/about` | Renders about.ejs (History/Story) | No |
+| **GET** | `/cultivation`| Renders cultivation.ejs (Process) | No |
+| **GET** | `/strains` | Renders strains.ejs (Genetic Library) | No |
+| **GET** | `/retail` | Renders retail.ejs (Northern Legacy teaser) | No |
+| **GET** | `/contact` | Renders contact.ejs (Form UI) | No |
+| **POST** | `/contact` | Processes form, validates reCAPTCHA, triggers Nodemailer | No |
+| **GET** | `*` | 404 Catch-all route | No |
 
-**Phase 1: Access & Navigation**
+**4. Backend Logic & Middleware**
 
-| ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| **NAV-01** | Age Gate | Load the site in a fresh incognito window. | Age verification overlay appears and blocks scrolling. | [ ] | ![Age Gate Image](./media/image-1.png) | |
-| **NAV-02** | Session Storage | Click "I am 21+" and refresh the page. | Overlay fades out; does not reappear on refresh. | [ ] | ![Age Gate Gone](./media/image-2.png) | |
-| **NAV-03** | 404 Route | Navigate to a non-existent URL (e.g., `/xyz`). | Custom 404 EJS template renders cleanly. | [ ] | ![404 Page](./media/image-3.png) | |
+**Middleware: Petition Scraper (`server.js`)**
+- Intercepts incoming `GET` requests (excluding static assets).
+- Uses `fetch` to request the Change.org petition URL.
+- Uses Regex (`/"signatureCount":\s*(\d+)/`) to parse the live HTML and extract the count.
+- Implements a 15-minute memory cache (`CACHE_DURATION = 15 * 60 * 1000`) to prevent rate-limiting.
+- Injects `sigCount` into `res.locals` so it is globally available to all EJS views.
 
-**Phase 2: Core Functionality (Backend Logic)**
+**Controller: Form Handler (`POST /contact`)**
+- **Validation 1:** Checks for `req.body.honeypot`. If filled, silently drops request (Bot trap).
+- **Validation 2:** Sends `recaptcha_token` to Google API. Rejects if score < 0.5.
+- **Action:** Uses `nodemailer` to dispatch an HTML-formatted notification to the admin team (Greg & Jason) via Zoho SMTP.
+- **Action:** Dispatches a branded auto-responder to the user's email based on `partnerType`.
+- **Response:** Returns raw text strings (`'success'`, `'captcha_error'`, `'error'`) to be handled by frontend AJAX.
 
-| ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| **CORE-01** | Petition Scraper | Load any page containing the petition gauge (e.g., `/about`). | Progress bar and signature text display a valid integer fetched from Change.org. | [ ] | ![Petition Signatures](./media/image-4.png) | |
-| **CORE-02** | Form Reset | Complete a successful submission. | Success modal appears and form fields automatically clear. | [ ] | ![Success Modal](./media/image-5.png) | |
+**5. Frontend Architecture**
 
-**Phase 3: Security & Integrations**
+**5.1. EJS Template Structure**
+- `/views/partials/head.ejs`: Meta tags, CSS links, external scripts.
+- `/views/partials/header.ejs`: Main navigation logic.
+- `/views/partials/footer.ejs`: Legal disclaimers, global footer.
+- `/views/*.ejs`: Individual page templates utilizing `<%- include() %>` for partials.
 
-| ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| **SEC-01** | reCAPTCHA v3 | Inspect network tab during form submission. | Valid token is generated and verified by backend. | [ ] | ![ReCaptcha Token](./media/image-6.png) | |
-| **INT-01** | Email Routing | Submit a test inquiry via the form. | Admin (Zoho) receives detailed notification; User receives branded auto-reply. | [ ] | ![Zoho Email](./media/image-7.png) | |
+**5.2. Client-Side Scripts**
+- `script.js`: Master initialization. Handles the SessionStorage Age Gate (`exg_age_verified`), mobile navigation toggles, and scroll-to-top collision detection.
+- `header.js`: Listens to `window.scrollY` to trigger CSS class changes (transparent to black background) when passing the 50px threshold.
+- `contact.js`: Intercepts contact form submission, requests reCAPTCHA token via `grecaptcha.execute()`, packages payload, and executes the asynchronous `fetch('/contact')` request. Handles UI state via dynamic modal popups.
 
-**Phase 4: UI/UX & Responsiveness**
+**5.3. Styling Guidelines (CSS)**
+- **Architecture:** Custom responsive scaling system adjusting the root `html` font-size using media queries (1rem = 12px on 4K, 1rem = 8px on Mobile).
+- **Primary Colors:** `--bg-black`, `--signature-orange` (`#f8c25d`), `--fc-main` (`#f0f0f0`).
+- **Typography:** 'Jost' (Body/Main), 'Times New Roman' (Headers), 'Montserrat' (Nav).
 
-| ID  | Feature | Steps to Execute | Expected Result | Pass/Fail | Screenshot Proof | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| **UI-01** | Mobile Menu | Open app on a mobile viewport and click the hamburger icon. | Menu expands smoothly, locks body scroll; links work. | [ ] | ![Nav Menu Expands](./media/image-8.png) | |
-| **UI-02** | Header Scroll | Scroll down more than 50px from the top of the page. | Transparent header transitions to a solid black background. | [ ] | ![Dynamic Nav Bar Opacity](./media/image-8.png) | |
-| **UI-03** | Carousel | Click the next/prev arrows on the Strains page. | Genetics carousel scrolls horizontally without breaking layout. | [ ] |![Carousel Works](./media/image-9.png) | |
+**6. Third-Party APIs & Integrations**
 
-**4. Final Sign-Off**
-
-_By signing below, the developer and client agree that all functional requirements have been tested, proven via screenshot evidence, and are approved for production deployment._
-
-**Developer Signature:** _Gregory Farrell_ **Date:** ___3/1/26_____
-
-**Client Signature:** _Jason Stowell_ **Date:** _3/1/26__
+- **Change.org (Scraping)**
+  - **Purpose:** Display live petition signatures.
+  - **Implementation:** Node-fetch on backend.
+- **Google reCAPTCHA (v3)**
+  - **Purpose:** Invisible form spam protection.
+  - **Implementation:** Frontend script generates token; backend validates via `https://www.google.com/recaptcha/api/siteverify`.
+  - **Environment Variables:** `RECAPTCHA_SITE_KEY` (Client), `RECAPTCHA_SECRET_KEY` (Server).
+- **Zoho Mail SMTP**
+  - **Purpose:** Transactional email delivery.
+  - **Implementation:** `nodemailer` transport configuration.
+  - **Environment Variables:** `HI_EMAIL`, `HI_EMAIL_PASSWORD`, `GREGS_EMAIL`, `JASONS_EMAIL`.
