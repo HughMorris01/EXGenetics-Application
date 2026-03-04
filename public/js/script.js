@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // CLEANUP:
         setTimeout(() => {
           ageOverlay.style.display = 'none';
-        }, 2200); 
+        }, 1800); 
       });
     }
   }

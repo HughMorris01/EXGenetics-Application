@@ -8,7 +8,8 @@
     
     <title><%= title %></title>
     
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.png" />
+   
+    <link rel="icon" href="/assets/favicon.png" sizes="96x96" type="image/png">
     
    <link href="/css/desktop/styles-desktop.css" rel="stylesheet" />
    <link href="/css/mobile/styles-mobile.css" rel="stylesheet" />
@@ -45,6 +46,14 @@
     <% } else if (currentPath === '/404') { %>
       <link href="/css/404.css" rel="stylesheet" />
     <% } %>
+
+    <script>
+  // This runs instantly before the body even loads
+  if (sessionStorage.getItem('exg_age_verified') !== 'true') {
+    // Force the age gate to be visible instantly using a dynamic style
+    document.write('<style>#age-overlay { display: flex !important; } body { overflow: hidden !important; }</style>');
+  }
+</script>
     
   </head>
   <body>
