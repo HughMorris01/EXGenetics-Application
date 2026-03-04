@@ -35,12 +35,12 @@
     -webkit-clip-path .8s cubic-bezier(0.19, 1, 0.22, 1),
     
     /* Unblur: Synced with shrink */
-    backdrop-filter 1.8s ease .5s,
-    -webkit-backdrop-filter 1.8s ease .5s,
-    background-color 1.8s ease,
+    backdrop-filter 1.5s ease,
+    -webkit-backdrop-filter 1.5s ease,
+    background-color 1.5s ease .3s,
 
     /* Fade: Lingers slightly longer */
-    opacity 1.8s ease .3s;
+    opacity 1.3s ease .5s;
 }
 
 /* --- ANIMATION STEP 1: IMPLODE TO CENTER --- */

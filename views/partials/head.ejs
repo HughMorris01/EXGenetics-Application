@@ -48,10 +48,8 @@
     <% } %>
 
     <script>
-  // This runs instantly before the body even loads
   if (sessionStorage.getItem('exg_age_verified') !== 'true') {
-    // Force the age gate to be visible instantly using a dynamic style
-    document.write('<style>#age-overlay { display: flex !important; } body { overflow: hidden !important; }</style>');
+    document.write('<style id="age-gate-blocker">#age-overlay { display: flex !important; } body { overflow: hidden !important; }</style>');
   }
 </script>
     

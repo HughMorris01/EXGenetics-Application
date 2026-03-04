@@ -34,8 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('exg_age_verified', 'true');
 
         // FIX: UNLOCK THE SCROLL
-        // Allow the user to scroll again immediately
         document.body.classList.remove('lock-scroll');
+        
+        // NEW FIX: Delete the hardcoded head style
+        const blocker = document.getElementById('age-gate-blocker');
+        if (blocker) blocker.remove();
 
         // TRIGGER ANIMATION:
         ageOverlay.classList.add('rect-shrink');
