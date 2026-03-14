@@ -21,10 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // A. Check Session immediately
     if (sessionStorage.getItem('exg_age_verified') !== 'true') {
       ageOverlay.style.display = 'flex';
-      
-      // FIX: LOCK THE SCROLL
-      // This stops the user from scrolling the background, 
-      // which fixes the "flashing blur" glitch.
       document.body.classList.add('lock-scroll');
     }
 
@@ -32,11 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnYes) {
       btnYes.addEventListener('click', () => {
         sessionStorage.setItem('exg_age_verified', 'true');
-
-        // FIX: UNLOCK THE SCROLL
         document.body.classList.remove('lock-scroll');
         
-        // NEW FIX: Delete the hardcoded head style
         const blocker = document.getElementById('age-gate-blocker');
         if (blocker) blocker.remove();
 
@@ -44,10 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ageOverlay.classList.add('rect-shrink');
         ageOverlay.classList.add('final-fade');
 
-        // CLEANUP:
+        // CLEANUP: Matches the exact 1.6s CSS footprint
         setTimeout(() => {
           ageOverlay.style.display = 'none';
-        }, 1800); 
+        }, 1600); 
+      });
+    }
+
+    // C. Handle "Exit" Click (The Fix)
+    if (btnNo) {
+      btnNo.addEventListener('click', () => {
+        // Redirect them to your existing denied page
+        window.location.href = '/denied';
       });
     }
   }

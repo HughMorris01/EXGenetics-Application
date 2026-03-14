@@ -216,13 +216,9 @@
 
 /* --- GENETICS SECTION --- */
 .genetics-section {
-  padding: 5rem 5rem; 
+  padding: 5rem 5rem 0rem; 
   display: grid;         
   place-items: center;
-}
-
-.genetics-header {
-  margin-bottom: 4rem; 
 }
 
 .genetics-header a {
@@ -377,76 +373,125 @@
   transition: background-color 0.1s, transform 0.1s;
 }
 
-/* --- FINAL CTA SECTION --- */
-.final-cta-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0 2rem;
-  margin: 5rem auto 8rem; 
+/* --- RE-INCLUDE PETITION STYLES --- */
+.petition-wrapper {
+  padding: 10rem 0;
+  background: radial-gradient(circle at top, #111 0%, #000 100%);
+  border-top: 1px solid rgba(248, 194, 93, 0.2);
+  display: grid;
+  place-items: center;
 }
 
-.final-cta-card {
-  position: relative;
-  width: 100%;
-  max-width: 90rem; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 3rem;
-  
-  padding: 6rem 4rem;
-  background: linear-gradient(
-    180deg, 
-    rgba(248, 194, 93, 0.08) 0%, 
-    rgba(0, 0, 0, 0.4) 100%       
-  );
-  
-  border: 1px solid rgba(248, 194, 93, 0.2);
-  border-radius: 2rem; 
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5); 
+.narrow-container {
+  max-width: var(--container-width-desktop, 100rem); 
+  margin: 0 auto;
+  padding: 0 2rem; 
 }
 
-.final-cta-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 20%; right: 20%; 
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--signature-orange), transparent);
-  opacity: 0.7;
+.petition-intro {
+  margin-bottom: 5rem;
+  text-align: center; 
 }
 
-.cta-title {
+.petition-header {
   font-family: var(--ff-headers);
-  font-size: 4rem; 
+  font-size: 5rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  margin: 0;
+  margin-bottom: 2rem;
 }
 
-.cta-description {
-  font-family: var(--ff-main);
+.petition-card-monolith {
+  width: 100%;
+  max-width: 80rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--signature-orange);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.6);
+  margin-bottom: 6rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.petition-card-monolith .card-header {
+  background: var(--signature-orange);
+  padding: 1.5rem;
+}
+
+.petition-card-monolith .card-header h3 {
+  color: #000;
+  font-family: var(--ff-headers);
   font-size: 1.8rem;
-  color: #ccc;
-  max-width: 60rem;
-  line-height: 1.6;
+  margin: 0;
+  letter-spacing: 2px;
 }
 
-.cta-description strong {
-  color: #fff; 
+.petition-card-monolith .card-body {
+  padding: 5rem 4rem;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.petition-card-monolith .progress-bar {
+  width: 100%;
+  height: 1.5rem;
+  background: #222;
+  border-radius: 5rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.petition-card-monolith .progress-fill {
+  background: linear-gradient(90deg, var(--signature-orange), var(--fc-accent-red));
+  box-shadow: 0 0 15px var(--fc-accent-red);
+  height: 100%;
+  border-radius: 5rem;
+}
+
+.petition-card-monolith .sub-text {
+  font-size: 1.4rem;
+  color: var(--fc-muted);
+  margin-bottom: 4rem;
+}
+
+.btn-petition {
+  display: inline-flex; 
+  align-items: center;
+  gap: 1rem;
+  padding: .6rem 2rem;
+  font-family: var(--ff-headers);
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #000;
+  background-color: var(--signature-orange);
+  border-radius: 5rem; 
+  transition: var(--transition-smooth, all 0.3s ease); 
+  box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 93, 0.3);
+  margin-top: 2rem; 
+}
+
+.btn-petition:hover {
+  transform: translateY(-0.3rem);
+  background-color: #fff; 
+  box-shadow: 0 0.8rem 2.5rem rgba(255, 255, 255, 0.2);
 }
 
 .btn-large {
-  padding: 2rem 5rem; 
+  padding: 1.5rem 4rem;
   font-size: 1.6rem;
   letter-spacing: 0.2rem;
 }
 
-.cta-subtext {
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
-  color: var(--fc-muted);
-  font-style: italic;
-  opacity: 0.7;
+.btn-petition:hover i {
+  transform: rotate(-15deg) scale(1.1);
+  transition: transform 0.3s ease;
 }

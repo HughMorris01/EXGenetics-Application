@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 8rem 0;
+  padding: 8rem 0 0;
   background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
 }
 
@@ -91,113 +91,84 @@ figcaption {
 .alert-box {
   background: rgba(234, 84, 85, 0.1); /* Matches --fc-accent-red */
   border-left: 0.4rem solid var(--fc-accent-red);
-  padding: 2rem;
+  padding: 1rem;
   margin-bottom: 3rem;
 }
 
-/* ==========================================================================
-   PETITION SECTION (The Monolith)
-   ========================================================================== */
-
-.petition-wrapper {
-  padding: 10rem 0;
-  background: radial-gradient(circle at top, #111 0%, #000 100%);
-  border-top: 1px solid rgba(248, 194, 93, 0.2);
+/* --- FINAL CTA SECTION --- */
+.final-cta-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 2rem;
+  margin: 3rem auto 5rem; 
 }
 
-.petition-intro {
-  margin-bottom: 5rem;
+.final-cta-card {
+  position: relative;
+  width: 100%;
+  max-width: 90rem; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+  
+  padding: 6rem 4rem;
+  background: linear-gradient(
+    180deg, 
+    rgba(248, 194, 93, 0.08) 0%, 
+    rgba(0, 0, 0, 0.4) 100%       
+  );
+  
+  border: 1px solid rgba(248, 194, 93, 0.2);
+  border-radius: 2rem; 
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5); 
 }
 
-.petition-header {
+.final-cta-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 20%; right: 20%; 
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--signature-orange), transparent);
+  opacity: 0.7;
+}
+
+.cta-title {
   font-family: var(--ff-headers);
-  font-size: 5rem;
+  font-size: 4rem; 
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  margin-bottom: 2rem;
-}
-
-/* --- The Monolith Card --- */
-.petition-card-monolith {
-  width: 100%;
-  max-width: 80rem;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--signature-orange);
-  border-radius: var(--radius-large);
-  overflow: hidden;
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.6);
-  margin-bottom: 6rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.petition-card-monolith .card-header {
-  background: var(--signature-orange);
-  padding: 1.5rem;
-}
-
-.petition-card-monolith .card-header h3 {
-  color: #000;
-  font-family: var(--ff-headers);
-  font-size: 1.8rem;
   margin: 0;
-  letter-spacing: 0.2rem;
 }
 
-.petition-card-monolith .card-body {
-  padding: 5rem 4rem;
-}
-
-.stats-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
+.cta-description {
+  font-family: var(--ff-main);
   font-size: 1.8rem;
+  color: #ccc;
+  max-width: 60rem;
+  line-height: 1.6;
 }
 
-/* --- Progress Bar --- */
-.petition-card-monolith .progress-bar {
-  width: 100%;
-  height: 1.5rem;
-  background: #222;
-  border-radius: 5rem;
-  margin-bottom: 3rem;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.petition-card-monolith .progress-fill {
-  background: linear-gradient(90deg, var(--signature-orange), var(--fc-accent-red));
-  box-shadow: 0 0 1.5rem var(--fc-accent-red);
-  height: 100%;
-  border-radius: 5rem;
-}
-
-.petition-card-monolith .sub-text {
-  font-size: 1.4rem;
-  color: var(--fc-muted);
-  margin-bottom: 4rem;
+.cta-description strong {
+  color: #fff; 
 }
 
 .btn-petition {
-  display: inline-flex; 
-  align-items: center;
-  gap: 1rem;
-  padding: 0.6rem 2rem;
-  
+  display: inline-block;
+  padding: 1rem 2rem;
   font-family: var(--ff-headers);
+  font-size: 1.5rem;
   font-weight: 800;
+  line-height: 1.2;
   text-decoration: none;
   text-transform: uppercase;
-  line-height: 1.2;
-  
   color: #000;
   background-color: var(--signature-orange);
   border-radius: 5rem; 
-  
   transition: var(--transition-smooth);
   box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 93, 0.3);
-  margin-top: 2rem; 
 }
 
 .btn-petition:hover {
@@ -207,14 +178,17 @@ figcaption {
 }
 
 .btn-large {
-  padding: 1.5rem 4rem;
+  padding: 2rem 5rem; 
   font-size: 1.6rem;
   letter-spacing: 0.2rem;
 }
 
-.btn-petition:hover i {
-  transform: rotate(-15deg) scale(1.1);
-  transition: transform 0.3s ease;
+.cta-subtext {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--fc-muted);
+  font-style: italic;
+  opacity: 0.7;
 }
 
 /* --- Horizontal Checklist --- */

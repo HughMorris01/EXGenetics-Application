@@ -19,6 +19,10 @@
 .about-chapter {
 width:90%
 }
+
+.about-chapter:nth-child(1) {
+  padding-top: 0;
+}
   /* --- 2. Typography --- */
   .chapter-title {
     font-size: 2.2rem;
@@ -43,6 +47,14 @@ width:90%
     max-width: 90%; /* Prevent edge touching */
     margin: 0 auto;
     display: block;
+  }
+
+  .alert-box {
+    padding: 1rem;
+  }
+ 
+  .alert-box .copy-text {
+    margin: 0;
   }
 
   /* --- 5. Petition Monolith --- */

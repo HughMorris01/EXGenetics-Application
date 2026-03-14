@@ -149,53 +149,29 @@
       </div>
   </section>
 
-  <section id="petition" class="petition-wrapper">
-  <div class="container">
-    <div class="petition-intro">
-      <h2 class="petition-header header-glow">Don't Let The Legacy Die</h2>
-      <p class="hero-lead">
-        We have the infrastructure. We have the genetics. We have the passion. The only thing we are missing is the final signature on the license.
-        <strong>Your support is the leverage we need to move the needle.</strong>
-      </p>
-    </div>
+  <section class="final-cta-wrapper">
+  <div class="final-cta-card">
 
-    <div class="petition-card-monolith">
-      <div class="card-header">
-        <h3>Community Action Gauge</h3>
-      </div>
-      
-      <div class="card-body">
-        <div class="stats-row">
-          <p class="target-text">Goal: <strong>500 Signatures</strong></p>
-          
-          <% if (typeof sigCount !== 'undefined' && sigCount >= 20) { %>
-            <p class="current-count" id="signature-text">Current: <strong><%= sigCount %></strong></p>
-          <% } else { %>
-            <p class="current-count" id="signature-text" style="display: none;">Current: <strong><%= typeof sigCount !== 'undefined' ? sigCount : 0 %></strong></p>
-          <% } %>
-        </div>
+  <h2 class="cta-title header-glow">Make Your Voice Heard</h2>
 
-        <div class="progress-bar">
-          <div class="progress-fill" id="signature-progress" 
-               style="width: <%= typeof sigCount !== 'undefined' ? Math.min((sigCount / 500) * 100, 100) + '%' : '1%' %>">
-          </div>
-        </div>
-        
-        <p class="sub-text">Join your neighbors in demanding fair processing for 1000 Islands entrepreneurs.</p>
-        
-        <a href="https://c.org/HrGp2jzv8B" target="_blank" class="btn-petition btn-large">
-          Sign The Petition <i class="fa-solid fa-pen-nib"></i>
-        </a>
-      </div>
-    </div>
+  <p class="cta-description">
+    The 1000 Islands community is ready for safe, regulated access. We have the location, the team, and the support. 
+    <strong>All we need is the state's green light.</strong>
+  </p>
 
-    <ul class="petition-check-list">
-      <li><i class="fa-solid fa-circle-check"></i> 100% Locally Owned</li>
-      <li><i class="fa-solid fa-circle-check"></i> CCTM Mentorship Graduates</li>
-      <li><i class="fa-solid fa-circle-check"></i> Ready to Hire Immediately</li>
-    </ul>
+  <div class="cta-action-row">
+    <a href="https://c.org/HrGp2jzv8B" target="_blank" class="btn-petition btn-large">
+      Join Our Cause
+    </a>
+    
+    <% if (typeof sigCount !== 'undefined' && sigCount >= 20) { %>
+      <p class="cta-subtext">Join <%= sigCount %> neighbors who have already signed.</p>
+    <% } else { %>
+      <p class="cta-subtext">Join your neighbors who have already signed.</p>
+    <% } %>
+  </div>
 
   </div>
-</section>
+  </section>
 </main>
 <%- include('partials/footer') %>

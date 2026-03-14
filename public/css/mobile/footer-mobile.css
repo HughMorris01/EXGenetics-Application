@@ -12,7 +12,7 @@
 
   .footer-branding-container { 
     padding: 0 1rem; 
-    min-height: 12rem; /* Slightly shorter on mobile */
+    min-height: 15rem; /* Slightly shorter on mobile */
   }
   
   /* --- Simplified Animation --- */
@@ -25,7 +25,7 @@
 
   /* Shrink the logo slightly */
   .footer-logo-anim {
-    height: 10rem; 
+    height: 12rem; 
   }
 
   @keyframes mobile-ghost-fade {
@@ -35,10 +35,14 @@
 
   /* --- Text Adjustments --- */
   .footer-company-name {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
 
   .footer-line, .footer-email {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
+  }
+
+  .copyright-text {
+    font-size: 1.2rem;
   }
 }

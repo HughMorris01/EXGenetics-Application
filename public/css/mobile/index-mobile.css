@@ -97,6 +97,11 @@
     padding: 4rem 1.5rem;
   }
 
+  .genetics-header {
+  margin-bottom: 3rem; 
+}
+
+
   .genetics-header a {
     font-size: 2.4rem; /* Smaller header */
     margin-bottom: -2rem;
@@ -132,22 +137,25 @@
   .carousel-btn.next { right: 0; border-radius: 0 50% 50% 0; }
 
 
-  /* --- 5. Final CTA (Monolith) --- */
-  .final-cta-wrapper {
-    margin: 6rem auto 4rem;
-    padding: 0 1.5rem;
-  }
+  /* Petition Adjustments */
 
-  .final-cta-card {
-    padding: 4rem 2rem;
-    gap: 2rem;
+  .narrow-container {
+    width: 100% !important; /* Forces it to fill the screen, bypassing your variable */
+    max-width: 100% !important; /* Prevents desktop styles from interfering */
+    margin: 0 auto;
+    padding: 0 2rem !important; /* Restores the 'safe area' so text doesn't touch the glass */
+    box-sizing: border-box; /* Ensures the padding doesn't accidentally make it wider than 100% */
   }
-
-  .cta-title {
-    font-size: 2.6rem;
+  .petition-wrapper {
+    padding: 6rem 0;
+    margin-top: 3rem;
   }
-
-  .cta-description {
-    font-size: 1.5rem;
+  
+  .petition-header {
+    font-size: 3rem; 
+  }
+  
+  .petition-card-monolith .card-body {
+    padding: 3rem 2rem; 
   }
 }
