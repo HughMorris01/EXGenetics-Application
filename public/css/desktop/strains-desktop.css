@@ -48,6 +48,7 @@
   overflow: hidden;
   transition: var(--transition-smooth);
   position: relative; /* Context for badges */
+  scroll-margin-top: 15rem;
 }
 
 .strain-card:hover {
