@@ -51,6 +51,49 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/denied';
       });
     }
+
+    // --- INFINITE SCROLL CAROUSEL ---
+  const initCarousel = () => {
+    const container = document.querySelector('.carousel-track-container');
+    const track = document.querySelector('.carousel-track');
+    
+    if (!container || !track) return;
+
+    // 1. Duplicate the existing slides to create the infinite illusion
+    const slides = Array.from(track.children);
+    slides.forEach(slide => {
+      const clone = slide.cloneNode(true);
+      track.appendChild(clone);
+    });
+
+    let isInteracting = false;
+    let animationId;
+
+    // 2. Pause on hover or touch so the user can actually click a strain
+    container.addEventListener('mouseenter', () => isInteracting = true);
+    container.addEventListener('mouseleave', () => isInteracting = false);
+    container.addEventListener('touchstart', () => isInteracting = true);
+    container.addEventListener('touchend', () => setTimeout(() => isInteracting = false, 500));
+
+    // 3. The continuous rolling logic
+    const autoScroll = () => {
+      if (!isInteracting) {
+        container.scrollLeft += 1; // Adjust this number to change speed
+      }
+
+      // If we scroll past the halfway point, instantly snap back to the start
+      if (container.scrollLeft >= track.scrollWidth / 2) {
+        container.scrollLeft -= track.scrollWidth / 2;
+      }
+      
+      animationId = requestAnimationFrame(autoScroll);
+    };
+
+    // Start the engine
+    animationId = requestAnimationFrame(autoScroll);
+  };
+
+  initCarousel();
   }
 
   // --- 2. MOBILE NAVIGATION ---

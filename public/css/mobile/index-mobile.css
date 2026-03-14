@@ -112,12 +112,7 @@
   .carousel-wrapper {
     padding: 0; /* Maximize width */
   }
-
-  /* Adjust height for mobile proportions */
-  .carousel-track-container {
-    height: 40rem; 
-  }
-
+  
   .carousel-slide {
   margin-right: 0; 
 }
@@ -127,15 +122,23 @@
     height: 24rem;
   }
   
-  /* Move buttons to the edges to avoid covering art */
+  /* Hide the desktop navigation buttons on mobile */
   .carousel-btn {
-    width: 6rem;
-    height: 6rem;
-    font-size: 4rem;
+    display: none !important;
   }
-  .carousel-btn.prev { left: 0; border-radius: 50% 0 0 50%; }
-  .carousel-btn.next { right: 0; border-radius: 0 50% 50% 0; }
 
+  /* Enable smooth native swiping and hide the ugly scrollbar */
+  .carousel-track-container {
+    height: 40rem; 
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto; 
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .carousel-track-container::-webkit-scrollbar { 
+    display: none; /* Chrome/Safari/Edge */
+  }
 
   /* Petition Adjustments */
 
