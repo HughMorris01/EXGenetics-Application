@@ -59,42 +59,49 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!container || !track) return;
 
-    // 1. Duplicate the existing slides to create the infinite illusion
-    const slides = Array.from(track.children);
-    slides.forEach(slide => {
-      const clone = slide.cloneNode(true);
-      track.appendChild(clone);
-    });
+    // 1. Create a massive runway (copy it 6 times just like Northern Legacy)
+    const originalContent = track.innerHTML;
+    // .repeat() is a clean way to duplicate the string 6 times
+    track.innerHTML = originalContent.repeat(6); 
 
     let isInteracting = false;
     let animationId;
 
-    // 2. Pause on hover or touch so the user can actually click a strain
+    // 2. Start in the dead center so they can instantly swipe left
+    // We use a tiny timeout to ensure the DOM has calculated the new width first
+    setTimeout(() => {
+      container.scrollLeft = container.scrollWidth / 2;
+    }, 100);
+
+    // 3. Pause auto-scroll on touch/hover
     container.addEventListener('mouseenter', () => isInteracting = true);
     container.addEventListener('mouseleave', () => isInteracting = false);
     container.addEventListener('touchstart', () => isInteracting = true);
     container.addEventListener('touchend', () => setTimeout(() => isInteracting = false, 500));
 
-    // 3. The continuous rolling logic
+    // 4. Continuous rolling logic
     const autoScroll = () => {
       if (!isInteracting) {
-        container.scrollLeft += 1; // Adjust this number to change speed
+        container.scrollLeft += 0.8; 
       }
 
-      // If we scroll past the halfway point, instantly snap back to the start
-      if (container.scrollLeft >= track.scrollWidth / 2) {
-        container.scrollLeft -= track.scrollWidth / 2;
+      const halfWidth = container.scrollWidth / 2;
+      
+      // Use the exact same thresholds from your React component
+      if (container.scrollLeft >= halfWidth + 500) {
+        container.scrollLeft -= halfWidth;
+      } else if (container.scrollLeft <= 5) { // The '5' buffer prevents mobile wall-bouncing
+        container.scrollLeft += halfWidth;
       }
       
       animationId = requestAnimationFrame(autoScroll);
     };
 
-    // Start the engine
     animationId = requestAnimationFrame(autoScroll);
   };
 
   initCarousel();
-  }
+}
 
   // --- 2. MOBILE NAVIGATION ---
   const initMobileMenu = () => {
